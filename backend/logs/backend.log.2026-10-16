@@ -1,0 +1,136 @@
+2026-10-16 01:45:06 - QATools - INFO - Run roku test: device='US_KIT-428_athens' automated_test_id='TRCParamountProviderTestCase.test_live_now_free_trial_hint_present' testrail_case_id='2660704941' repeat=1
+2026-10-16 01:45:06 - QATools - INFO - Roku test started: device='US_KIT-428_athens' automated_test_id='TRCParamountProviderTestCase.test_live_now_free_trial_hint_present' testrail_case_id='2660704941' pid=391136 log=/workspaces/automation-ide/mycode/QATools/data/roku_test_log/roku_test__TRCParamountProviderTestCase.test_live_now_free_trial_hint_present__2660704941__US_KIT-428_athens__1__20261016_014506.log
+2026-10-16 01:53:11 - QATools - INFO - Run roku test: device='US_KIT-428_athens' automated_test_id='TRCParamountProviderTestCase.test_live_now_free_trial_hint_present' testrail_case_id='2660704941' repeat=1
+2026-10-16 01:53:11 - QATools - INFO - Roku test started: device='US_KIT-428_athens' automated_test_id='TRCParamountProviderTestCase.test_live_now_free_trial_hint_present' testrail_case_id='2660704941' pid=392764 log=/workspaces/automation-ide/mycode/QATools/data/roku_test_log/roku_test__TRCParamountProviderTestCase.test_live_now_free_trial_hint_present__2660704941__US_KIT-428_athens__1__20261016_015311.log
+2026-10-16 02:00:03 - QATools - INFO - Run roku test: device='US_KIT-428_athens' automated_test_id='TRCParamountProviderTestCase.test_live_now_free_trial_hint_present' testrail_case_id='2660704941' repeat=1
+2026-10-16 02:00:03 - QATools - INFO - Roku test started: device='US_KIT-428_athens' automated_test_id='TRCParamountProviderTestCase.test_live_now_free_trial_hint_present' testrail_case_id='2660704941' pid=393832 log=/workspaces/automation-ide/mycode/QATools/data/roku_test_log/roku_test__TRCParamountProviderTestCase.test_live_now_free_trial_hint_present__2660704941__US_KIT-428_athens__1__20261016_020003.log
+2026-10-16 02:12:42 - QATools - INFO - Run roku test: device='US_KIT-428_athens' automated_test_id='TRCParamountProviderTestCase.test_live_now_free_trial_hint_present' testrail_case_id='2660704941' repeat=1
+2026-10-16 02:12:42 - QATools - INFO - Roku test started: device='US_KIT-428_athens' automated_test_id='TRCParamountProviderTestCase.test_live_now_free_trial_hint_present' testrail_case_id='2660704941' pid=395926 log=/workspaces/automation-ide/mycode/QATools/data/roku_test_log/roku_test__TRCParamountProviderTestCase.test_live_now_free_trial_hint_present__2660704941__US_KIT-428_athens__1__20261016_021242.log
+2026-10-16 04:59:14 - QATools - INFO - Checkout git branch 'yuzheng/AUTO-78935/fix_issue' in: /workspaces/automation-ide/automated_tests
+2026-10-16 04:59:14 - QATools - INFO - Checked out git branch 'yuzheng/AUTO-78935/fix_issue'
+2026-10-16 04:59:38 - QATools - INFO - Run roku test: device='d_ws22_Sandia_DE' automated_test_id='HdmiInputResQuantumDataTest.test_4096_2160_30' testrail_case_id='2659885357' repeat=1
+2026-10-16 04:59:38 - QATools - INFO - Roku test started: device='d_ws22_Sandia_DE' automated_test_id='HdmiInputResQuantumDataTest.test_4096_2160_30' testrail_case_id='2659885357' pid=417899 log=/workspaces/automation-ide/mycode/QATools/data/roku_test_log/roku_test__HdmiInputResQuantumDataTest.test_4096_2160_30__2659885357__d_ws22_Sandia_DE__1__20261016_045938.log
+2026-10-16 05:04:23 - QATools - INFO - Run roku test: device='d_ws22_Sandia_DE' automated_test_id='HdmiInputResQuantumDataTest.test_4096_2160_30' testrail_case_id='2659885357' repeat=1
+2026-10-16 05:04:23 - QATools - INFO - Roku test started: device='d_ws22_Sandia_DE' automated_test_id='HdmiInputResQuantumDataTest.test_4096_2160_30' testrail_case_id='2659885357' pid=418736 log=/workspaces/automation-ide/mycode/QATools/data/roku_test_log/roku_test__HdmiInputResQuantumDataTest.test_4096_2160_30__2659885357__d_ws22_Sandia_DE__1__20261016_050423.log
+2026-10-16 05:27:49 - QATools - INFO - Run roku test: device='d_ws22_athens_uk' automated_test_id='HdmiInputResQuantumDataTest.test_4096_2160_30' testrail_case_id='2659885357' repeat=1
+2026-10-16 05:27:49 - QATools - INFO - Roku test started: device='d_ws22_athens_uk' automated_test_id='HdmiInputResQuantumDataTest.test_4096_2160_30' testrail_case_id='2659885357' pid=422041 log=/workspaces/automation-ide/mycode/QATools/data/roku_test_log/roku_test__HdmiInputResQuantumDataTest.test_4096_2160_30__2659885357__d_ws22_athens_uk__1__20261016_052749.log
+2026-10-16 05:33:14 - QATools - INFO - Run roku test: device='d_ws22_athens_uk' automated_test_id='HdmiInputResQuantumDataTest.test_4096_2160_30' testrail_case_id='2659885357' repeat=1
+2026-10-16 05:33:14 - QATools - INFO - Roku test started: device='d_ws22_athens_uk' automated_test_id='HdmiInputResQuantumDataTest.test_4096_2160_30' testrail_case_id='2659885357' pid=423028 log=/workspaces/automation-ide/mycode/QATools/data/roku_test_log/roku_test__HdmiInputResQuantumDataTest.test_4096_2160_30__2659885357__d_ws22_athens_uk__1__20261016_053314.log
+2026-10-16 06:23:11 - QATools - INFO - Run roku test: device='d_ws22_athens_uk' automated_test_id='HdmiInputResQuantumDataTest.test_4096_2160_30' testrail_case_id='2659885357' repeat=1
+2026-10-16 06:23:11 - QATools - INFO - Roku test started: device='d_ws22_athens_uk' automated_test_id='HdmiInputResQuantumDataTest.test_4096_2160_30' testrail_case_id='2659885357' pid=430715 log=/workspaces/automation-ide/mycode/QATools/data/roku_test_log/roku_test__HdmiInputResQuantumDataTest.test_4096_2160_30__2659885357__d_ws22_athens_uk__1__20261016_062311.log
+2026-10-16 06:54:50 - QATools - INFO - Run roku test: device='d_ws22_athens_uk' automated_test_id='HdmiInputResQuantumDataTest.test_vesa_4096_2160_60_444_8bit' testrail_case_id='2659885427' repeat=1
+2026-10-16 06:54:50 - QATools - INFO - Roku test started: device='d_ws22_athens_uk' automated_test_id='HdmiInputResQuantumDataTest.test_vesa_4096_2160_60_444_8bit' testrail_case_id='2659885427' pid=436518 log=/workspaces/automation-ide/mycode/QATools/data/roku_test_log/roku_test__HdmiInputResQuantumDataTest.test_vesa_4096_2160_60_444_8bit__2659885427__d_ws22_athens_uk__1__20261016_065450.log
+2026-10-16 06:55:30 - QATools - INFO - Checkout git branch 'yuzheng/AUTO-79025/fix_issue' in: /workspaces/automation-ide/automated_tests
+2026-10-16 06:55:30 - QATools - INFO - Checked out git branch 'yuzheng/AUTO-79025/fix_issue'
+2026-10-16 06:55:36 - QATools - INFO - Run roku test: device='d_ws22_athens_uk' automated_test_id='HdmiInputResQuantumDataTest.test_vesa_4096_2160_60_444_8bit' testrail_case_id='2659885427' repeat=1
+2026-10-16 06:55:36 - QATools - INFO - Roku test started: device='d_ws22_athens_uk' automated_test_id='HdmiInputResQuantumDataTest.test_vesa_4096_2160_60_444_8bit' testrail_case_id='2659885427' pid=436704 log=/workspaces/automation-ide/mycode/QATools/data/roku_test_log/roku_test__HdmiInputResQuantumDataTest.test_vesa_4096_2160_60_444_8bit__2659885427__d_ws22_athens_uk__1__20261016_065536.log
+2026-10-16 07:06:49 - QATools - INFO - Run roku test: device='d_ws22_athens_uk' automated_test_id='HdmiInputResQuantumDataTest.test_vesa_4096_2160_60_444_8bit' testrail_case_id='2659885427' repeat=1
+2026-10-16 07:06:49 - QATools - INFO - Roku test started: device='d_ws22_athens_uk' automated_test_id='HdmiInputResQuantumDataTest.test_vesa_4096_2160_60_444_8bit' testrail_case_id='2659885427' pid=439325 log=/workspaces/automation-ide/mycode/QATools/data/roku_test_log/roku_test__HdmiInputResQuantumDataTest.test_vesa_4096_2160_60_444_8bit__2659885427__d_ws22_athens_uk__1__20261016_070649.log
+2026-10-16 07:14:58 - QATools - INFO - Run roku test: device='d_ws22_athens_uk' automated_test_id='HdmiInputResQuantumDataTest.test_vesa_4096_2160_60_444_8bit' testrail_case_id='2659885427' repeat=1
+2026-10-16 07:14:58 - QATools - INFO - Roku test started: device='d_ws22_athens_uk' automated_test_id='HdmiInputResQuantumDataTest.test_vesa_4096_2160_60_444_8bit' testrail_case_id='2659885427' pid=440663 log=/workspaces/automation-ide/mycode/QATools/data/roku_test_log/roku_test__HdmiInputResQuantumDataTest.test_vesa_4096_2160_60_444_8bit__2659885427__d_ws22_athens_uk__1__20261016_071458.log
+2026-10-16 07:30:58 - QATools - INFO - Run roku test: device='d_ws22_athens_uk' automated_test_id='HdmiInputResQuantumDataTest.test_vesa_4096_2160_60_444_8bit' testrail_case_id='2659885427' repeat=1
+2026-10-16 07:30:58 - QATools - INFO - Roku test started: device='d_ws22_athens_uk' automated_test_id='HdmiInputResQuantumDataTest.test_vesa_4096_2160_60_444_8bit' testrail_case_id='2659885427' pid=443085 log=/workspaces/automation-ide/mycode/QATools/data/roku_test_log/roku_test__HdmiInputResQuantumDataTest.test_vesa_4096_2160_60_444_8bit__2659885427__d_ws22_athens_uk__1__20261016_073058.log
+2026-10-16 07:36:54 - QATools - INFO - List analyze history from: /workspaces/automation-ide/mycode/QATools/data/analyzer_history
+2026-10-16 07:36:54 - QATools - INFO - List analyze history from: /workspaces/automation-ide/mycode/QATools/data/analyzer_history
+2026-10-16 07:36:54 - QATools - INFO - List devices from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-16 07:36:54 - QATools - INFO - List git branches in: /workspaces/automation-ide/automated_tests
+2026-10-16 07:36:54 - QATools - INFO - Get current git branch in: /workspaces/automation-ide/automated_tests
+2026-10-16 07:36:54 - QATools - INFO - List devices from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-16 07:36:54 - QATools - INFO - Get current git branch in: /workspaces/automation-ide/automated_tests
+2026-10-16 07:36:54 - QATools - INFO - List git branches in: /workspaces/automation-ide/automated_tests
+2026-10-16 07:37:14 - QATools - INFO - Run roku test: device='d_ws22_athens_uk' automated_test_id='HdmiInputResQuantumDataTest.test_vesa_4096_2160_60_444_8bit' testrail_case_id='2659885427' repeat=0
+2026-10-16 07:37:15 - QATools - INFO - Roku test started: device='d_ws22_athens_uk' automated_test_id='HdmiInputResQuantumDataTest.test_vesa_4096_2160_60_444_8bit' testrail_case_id='2659885427' pid=444064 log=/workspaces/automation-ide/mycode/QATools/data/roku_test_log/roku_test__HdmiInputResQuantumDataTest.test_vesa_4096_2160_60_444_8bit__2659885427__d_ws22_athens_uk__0__20261016_073714.log
+2026-10-16 07:49:22 - QATools - INFO - Run roku test: device='d_ws22_athens_uk' automated_test_id='HdmiInputResQuantumDataTest.test_vesa_4096_2160_60_444_8bit' testrail_case_id='2659885427' repeat=0
+2026-10-16 07:49:22 - QATools - INFO - Roku test started: device='d_ws22_athens_uk' automated_test_id='HdmiInputResQuantumDataTest.test_vesa_4096_2160_60_444_8bit' testrail_case_id='2659885427' pid=446520 log=/workspaces/automation-ide/mycode/QATools/data/roku_test_log/roku_test__HdmiInputResQuantumDataTest.test_vesa_4096_2160_60_444_8bit__2659885427__d_ws22_athens_uk__0__20261016_074922.log
+2026-10-16 07:49:58 - QATools - INFO - List analyze history from: /workspaces/automation-ide/mycode/QATools/data/analyzer_history
+2026-10-16 07:49:58 - QATools - INFO - List analyze history from: /workspaces/automation-ide/mycode/QATools/data/analyzer_history
+2026-10-16 07:50:02 - QATools - INFO - List skills from: /workspaces/automation-ide/mycode/QATools/data/skill_data
+2026-10-16 07:50:02 - QATools - INFO - List sessions from: /workspaces/automation-ide/mycode/QATools/data/agent_session
+2026-10-16 07:50:02 - QATools - INFO - List skills from: /workspaces/automation-ide/mycode/QATools/data/skill_data
+2026-10-16 07:50:02 - QATools - INFO - List sessions from: /workspaces/automation-ide/mycode/QATools/data/agent_session
+2026-10-16 07:50:02 - QATools - INFO - List devices from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-16 07:50:02 - QATools - INFO - List git branches in: /workspaces/automation-ide/automated_tests
+2026-10-16 07:50:02 - QATools - INFO - Get current git branch in: /workspaces/automation-ide/automated_tests
+2026-10-16 07:50:03 - QATools - INFO - List devices from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-16 07:50:03 - QATools - INFO - List git branches in: /workspaces/automation-ide/automated_tests
+2026-10-16 07:50:03 - QATools - INFO - Get current git branch in: /workspaces/automation-ide/automated_tests
+2026-10-16 08:00:05 - QATools - INFO - Run roku test: device='d_ws22_athens_uk_2' automated_test_id='HdmiInputResQuantumDataTest.test_vesa_4096_2160_60_444_8bit' testrail_case_id='2659885427' repeat=0
+2026-10-16 08:00:05 - QATools - INFO - Roku test started: device='d_ws22_athens_uk_2' automated_test_id='HdmiInputResQuantumDataTest.test_vesa_4096_2160_60_444_8bit' testrail_case_id='2659885427' pid=448926 log=/workspaces/automation-ide/mycode/QATools/data/roku_test_log/roku_test__HdmiInputResQuantumDataTest.test_vesa_4096_2160_60_444_8bit__2659885427__d_ws22_athens_uk_2__0__20261016_080005.log
+2026-10-16 13:11:17 - QATools - INFO - loaded config from /workspaces/automation-ide/mycode/QATools/backend/conf/config.yml
+2026-10-16 13:11:18 - QATools - INFO - loaded config from /workspaces/automation-ide/mycode/QATools/backend/conf/config.yml
+2026-10-16 13:11:25 - QATools - INFO - List device details from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-16 13:11:26 - QATools - INFO - List device details from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-16 13:29:03 - QATools - INFO - List analyze history from: /workspaces/automation-ide/mycode/QATools/data/analyzer_history
+2026-10-16 13:29:03 - QATools - INFO - List analyze history from: /workspaces/automation-ide/mycode/QATools/data/analyzer_history
+2026-10-16 14:52:49 - QATools - INFO - List device details from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-16 14:52:49 - QATools - INFO - List device details from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-16 14:52:57 - QATools - INFO - View device: d2
+2026-10-16 14:53:03 - QATools - INFO - View device: d_ws22_Sandia_DE
+2026-10-16 14:53:13 - QATools - INFO - View device: d_ws22_miami_LATAM
+2026-10-16 15:54:03 - QATools - INFO - loaded config from /workspaces/automation-ide/mycode/QATools/backend/conf/config.yml
+2026-10-16 15:54:03 - QATools - INFO - loaded config from /workspaces/automation-ide/mycode/QATools/backend/conf/config.yml
+2026-10-16 15:54:14 - QATools - INFO - List device details from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-16 15:54:14 - QATools - INFO - List device details from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-16 15:54:22 - QATools - INFO - View device: d_ws22_us_roxton
+2026-10-16 15:54:28 - QATools - INFO - View device: d_ws22_Sandia_DE
+2026-10-16 15:54:38 - QATools - INFO - View device: d_ws22_Damon_US
+2026-10-16 15:54:43 - QATools - INFO - View device: d_ws22_ca_roxton
+2026-10-16 15:54:55 - QATools - INFO - View device: d_ws22_Alpine_CA
+2026-10-16 15:55:12 - QATools - INFO - View device: d_ws22_athens_uk_2
+2026-10-16 16:22:50 - QATools - INFO - List device details from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-16 16:22:50 - QATools - INFO - List device details from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-16 16:23:17 - QATools - INFO - List device details from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-16 16:24:14 - QATools - INFO - List device details from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-16 16:24:14 - QATools - INFO - List device details from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-16 16:31:11 - QATools - INFO - List device details from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-16 16:31:11 - QATools - INFO - List device details from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-16 16:33:19 - QATools - INFO - loaded config from /workspaces/automation-ide/mycode/QATools/backend/conf/config.yml
+2026-10-16 16:33:19 - QATools - INFO - loaded config from /workspaces/automation-ide/mycode/QATools/backend/conf/config.yml
+2026-10-16 16:33:21 - QATools - INFO - List device details from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-16 16:33:21 - QATools - INFO - List device details from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-16 16:33:26 - QATools - INFO - List device details from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-16 16:33:26 - QATools - INFO - List device details from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-16 16:33:28 - QATools - INFO - Reserve device: US_KIT-428_athens
+2026-10-16 16:34:42 - QATools - INFO - Reserve device: US_KIT-428_athens
+2026-10-16 16:43:00 - QATools - INFO - List device details from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-16 16:43:00 - QATools - INFO - List device details from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-16 16:43:09 - QATools - INFO - Reserve device: d2
+2026-10-16 16:43:09 - QATools - INFO - Reserve device: nope_xxx
+2026-10-16 16:43:18 - QATools - INFO - List devices from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-16 16:43:34 - QATools - INFO - Reserve device: d2
+2026-10-16 16:43:34 - QATools - INFO - Reserve device: nope_xxx
+2026-10-16 16:44:55 - QATools - INFO - List device details from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-16 16:44:55 - QATools - INFO - List device details from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-16 16:50:40 - QATools - INFO - Reserve device: US_KIT-428_athens
+2026-10-16 16:50:43 - QATools - INFO - List device details from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-16 16:50:43 - QATools - INFO - List device details from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-16 16:50:45 - QATools - INFO - Reserve device: US_KIT-428_athens
+2026-10-16 16:50:59 - QATools - INFO - loaded config from /workspaces/automation-ide/mycode/QATools/backend/conf/config.yml
+2026-10-16 16:50:59 - QATools - INFO - loaded config from /workspaces/automation-ide/mycode/QATools/backend/conf/config.yml
+2026-10-16 16:51:01 - QATools - INFO - List device details from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-16 16:51:01 - QATools - INFO - List device details from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-16 16:51:13 - QATools - INFO - Reserve device: US_KIT-428_athens
+2026-10-16 16:51:15 - QATools - INFO - Device 'US_KIT-428_athens' (serial=X01200Y74NAU) reserved until 2026-11-15T16:51:13
+2026-10-16 16:53:32 - QATools - INFO - Reserve device: US_KIT-428_athens
+2026-10-16 16:53:33 - QATools - INFO - Device 'US_KIT-428_athens' (serial=X01200Y74NAU) reserved until 2026-11-15T16:53:32
+2026-10-16 16:56:11 - QATools - INFO - View device: d_01
+2026-10-16 16:56:54 - QATools - INFO - Reserve device: d_01
+2026-10-16 16:56:56 - QATools - ERROR - Reserve failed for 'd_01': HTTP 403 forbidden
+2026-10-16 16:57:05 - QATools - INFO - View device: d_01
+2026-10-16 16:59:36 - QATools - INFO - loaded config from /workspaces/automation-ide/mycode/QATools/backend/conf/config.yml
+2026-10-16 16:59:36 - QATools - INFO - loaded config from /workspaces/automation-ide/mycode/QATools/backend/conf/config.yml
+2026-10-16 16:59:38 - QATools - INFO - List device details from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-16 16:59:38 - QATools - INFO - List device details from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-16 17:00:57 - QATools - INFO - Add device: RTVSP_18_2_1
+2026-10-16 17:00:57 - QATools - INFO - Device configuration 'RTVSP_18_2_1' added
+2026-10-16 17:00:57 - QATools - INFO - List device details from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-16 17:01:06 - QATools - INFO - Sync device: RTVSP_18_2_1 with QA Hub
+2026-10-16 17:01:09 - QATools - INFO - Device configuration 'RTVSP_18_2_1' synced with QA Hub (serial=X02900R2DH3L)
+2026-10-16 17:01:09 - QATools - INFO - List device details from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-16 17:01:13 - QATools - INFO - Reserve device: RTVSP_18_2_1
+2026-10-16 17:01:15 - QATools - INFO - Device 'RTVSP_18_2_1' (serial=X02900R2DH3L) reserved until 2026-11-15T17:01:13
+2026-10-16 17:16:39 - QATools - INFO - List device details from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-16 17:20:25 - QATools - INFO - Sync device: d_ws22_miami_LATAM with QA Hub
+2026-10-16 17:20:26 - QATools - INFO - Device configuration 'd_ws22_miami_LATAM' synced with QA Hub (serial=X0200021GGV8)
+2026-10-16 17:20:26 - QATools - INFO - List device details from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-16 17:20:29 - QATools - INFO - View device: d_ws22_miami_LATAM

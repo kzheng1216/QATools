@@ -1,0 +1,183 @@
+{
+    "name": "d_ws22_Damon_US_26595379",
+    "description": "",
+    "tasks": [
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "HdmiInputResQuantumDataTest.test_480i_60",
+                "testrail_case_id": 2659885331,
+                "device": "d_ws22_Damon_US",
+                "testrail_plan_id": 26595379,
+                "repeat": 0,
+                "automation_test_branch": "yuzheng/AUTO-73326/2659885426_2659885427_cherrypick_AUTO-76252",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "HdmiInputResQuantumDataTest.test_480p_60",
+                "testrail_case_id": 2659885332,
+                "device": "d_ws22_Damon_US",
+                "testrail_plan_id": 26595379,
+                "repeat": 0,
+                "automation_test_branch": "yuzheng/AUTO-73326/2659885426_2659885427_cherrypick_AUTO-76252",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "HdmiInputResQuantumDataTest.test_3840_2160_30",
+                "testrail_case_id": 2659885352,
+                "device": "d_ws22_Damon_US",
+                "testrail_plan_id": 26595379,
+                "repeat": 0,
+                "automation_test_branch": "yuzheng/AUTO-73326/2659885426_2659885427_cherrypick_AUTO-76252",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "HdmiInputResQuantumDataTest.test_3840_2160_60",
+                "testrail_case_id": 2659885354,
+                "device": "d_ws22_Damon_US",
+                "testrail_plan_id": 26595379,
+                "repeat": 0,
+                "automation_test_branch": "yuzheng/AUTO-73326/2659885426_2659885427_cherrypick_AUTO-76252",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "HdmiInputResQuantumDataTest.test_vesa_640x480_60",
+                "testrail_case_id": 2659885413,
+                "device": "d_ws22_Damon_US",
+                "testrail_plan_id": 26595379,
+                "repeat": 0,
+                "automation_test_branch": "yuzheng/AUTO-73326/2659885426_2659885427_cherrypick_AUTO-76252",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "HdmiInputResQuantumDataTest.test_vesa_720x400_70",
+                "testrail_case_id": 2659885414,
+                "device": "d_ws22_Damon_US",
+                "testrail_plan_id": 26595379,
+                "repeat": 0,
+                "automation_test_branch": "yuzheng/AUTO-73326/2659885426_2659885427_cherrypick_AUTO-76252",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "HdmiInputResQuantumDataTest.test_vesa_800x600_56",
+                "testrail_case_id": 2659885415,
+                "device": "d_ws22_Damon_US",
+                "testrail_plan_id": 26595379,
+                "repeat": 0,
+                "automation_test_branch": "yuzheng/AUTO-73326/2659885426_2659885427_cherrypick_AUTO-76252",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "HdmiInputResQuantumDataTest.test_vesa_800x600_60",
+                "testrail_case_id": 2659885416,
+                "device": "d_ws22_Damon_US",
+                "testrail_plan_id": 26595379,
+                "repeat": 0,
+                "automation_test_branch": "yuzheng/AUTO-73326/2659885426_2659885427_cherrypick_AUTO-76252",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "HdmiInputResQuantumDataTest.test_vesa_1024x768_60",
+                "testrail_case_id": 2659885417,
+                "device": "d_ws22_Damon_US",
+                "testrail_plan_id": 26595379,
+                "repeat": 0,
+                "automation_test_branch": "yuzheng/AUTO-73326/2659885426_2659885427_cherrypick_AUTO-76252",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "HdmiInputResQuantumDataTest.test_vesa_1280x800_75",
+                "testrail_case_id": 2659885420,
+                "device": "d_ws22_Damon_US",
+                "testrail_plan_id": 26595379,
+                "repeat": 0,
+                "automation_test_branch": "yuzheng/AUTO-73326/2659885426_2659885427_cherrypick_AUTO-76252",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "HdmiInputResQuantumDataTest.test_vesa_1280x1024_60",
+                "testrail_case_id": 2659885422,
+                "device": "d_ws22_Damon_US",
+                "testrail_plan_id": 26595379,
+                "repeat": 0,
+                "automation_test_branch": "yuzheng/AUTO-73326/2659885426_2659885427_cherrypick_AUTO-76252",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        }
+    ],
+    "execution_mode": "SERIAL"
+}

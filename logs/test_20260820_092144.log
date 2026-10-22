@@ -1,0 +1,22 @@
+2026-08-20 09:21:44 - QATools - INFO - Parsing profile from: /workspaces/automation-ide/mycode/QATools/4_runcase/common/../profiles/ws22_d_us_roxton_ext.json
+2026-08-20 09:21:44 - QATools - INFO - Total tasks to execute: 1
+2026-08-20 09:21:44 - QATools - INFO - --------------------------------------------------------
+2026-08-20 09:21:44 - QATools - INFO - - Run Task: 1/1
+2026-08-20 09:21:44 - QATools - INFO - - Case IDs: ['TVInputPictureQualityChangeVerificationHDMIaftercolorreset.test_color_picture_quality_change_after_reset']
+2026-08-20 09:21:44 - QATools - INFO - Case:TVInputPictureQualityChangeVerificationHDMIaftercolorreset.test_color_picture_quality_change_after_reset | main  | main  | DeviceName:d_ws22_us_roxton | DeviceSN:X027007481ER | DeviceIP:10.64.30.147    | PlanId:[file-system]25772547 | Repeat:0   | Time:2026-08-20 09:21:44 |
+2026-08-20 09:21:47 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2835824]}
+2026-08-20 09:21:47 - QATools - INFO - Current suite ID: 2835824
+2026-08-20 09:21:47 - QATools - INFO - Test suite 2835824 has no Jenkins build assigned yet.
+2026-08-20 09:36:25 - QATools - INFO - - [Build Result] - build_url: https://jenkins.eswat.rokulabs.net/job/qa_hub_launch_suite/1271813/
+2026-08-20 09:36:25 - QATools - INFO - {
+  "_class": "org.jenkinsci.plugins.workflow.job.WorkflowRun",
+  "building": false,
+  "result": "SUCCESS"
+}
+2026-08-20 09:36:25 - QATools - INFO - - Case IDs: ['TVInputPictureQualityChangeVerificationHDMIaftercolorreset.test_color_picture_quality_change_after_reset'], Status: Failed
+2026-08-20 09:36:25 - QATools - INFO - #########################################################
+2026-08-20 09:36:25 - QATools - INFO - -- [Summary] --
+2026-08-20 09:36:25 - QATools - INFO - #########################################################
+2026-08-20 09:36:25 - QATools - INFO - - Result: 1/1
+2026-08-20 09:36:25 - QATools - INFO - - Case IDs: ['TVInputPictureQualityChangeVerificationHDMIaftercolorreset.test_color_picture_quality_change_after_reset'], Status: Failed
+2026-08-20 09:36:25 - QATools - INFO - - Case IDs: ['TVInputPictureQualityChangeVerificationHDMIaftercolorreset.test_color_picture_quality_change_after_reset'], Status: Failed

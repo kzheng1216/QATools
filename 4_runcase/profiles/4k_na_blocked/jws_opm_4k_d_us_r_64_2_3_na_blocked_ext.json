@@ -1,0 +1,217 @@
+{
+    "name": "d_us_r_64_2_3",
+    "description": "",
+    "tasks": [
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2659878788",
+                "device": "d_us_r_64_2_3",
+                "testrail_plan_id": 25528593,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "yuzheng/NO-JIRA/main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2659883951",
+                "device": "d_us_r_64_2_3",
+                "testrail_plan_id": 25528593,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "yuzheng/NO-JIRA/main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2659884317",
+                "device": "d_us_r_64_2_3",
+                "testrail_plan_id": 25528593,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "yuzheng/NO-JIRA/main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2659885273",
+                "device": "d_us_r_64_2_3",
+                "testrail_plan_id": 25528593,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "yuzheng/NO-JIRA/main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2659898372",
+                "device": "d_us_r_64_2_3",
+                "testrail_plan_id": 25528593,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "yuzheng/NO-JIRA/main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2659898468",
+                "device": "d_us_r_64_2_3",
+                "testrail_plan_id": 25528593,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "yuzheng/NO-JIRA/main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2659898517",
+                "device": "d_us_r_64_2_3",
+                "testrail_plan_id": 25528593,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "yuzheng/NO-JIRA/main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2659899162",
+                "device": "d_us_r_64_2_3",
+                "testrail_plan_id": 25528593,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "yuzheng/NO-JIRA/main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2717775514",
+                "device": "d_us_r_64_2_3",
+                "testrail_plan_id": 25528593,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "yuzheng/NO-JIRA/main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2659884264",
+                "device": "d_us_r_64_2_3",
+                "testrail_plan_id": 25528593,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "yuzheng/NO-JIRA/main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2659885871",
+                "device": "d_us_r_64_2_3",
+                "testrail_plan_id": 25528593,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "yuzheng/NO-JIRA/main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2659885904",
+                "device": "d_us_r_64_2_3",
+                "testrail_plan_id": 25528593,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "yuzheng/NO-JIRA/main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2659898399",
+                "device": "d_us_r_64_2_3",
+                "testrail_plan_id": 25528593,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "yuzheng/NO-JIRA/main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2659899145",
+                "device": "d_us_r_64_2_3",
+                "testrail_plan_id": 25528593,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "yuzheng/NO-JIRA/main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        }
+    ],
+    "execution_mode": "SERIAL"
+}

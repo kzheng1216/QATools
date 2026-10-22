@@ -1,0 +1,39 @@
+{
+    "name": "p2",
+    "description": "",
+    "tasks": [
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "339569987",
+                "testrail_case_id": 339569987,
+                "device": "d2",
+                "testrail_plan_id": 0,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "339569987",
+                "testrail_case_id": 339569987,
+                "device": "d2",
+                "testrail_plan_id": 0,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        }
+    ],
+    "execution_mode": "SERIAL"
+}

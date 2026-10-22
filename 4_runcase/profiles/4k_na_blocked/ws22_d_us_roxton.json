@@ -1,0 +1,412 @@
+{
+    "name": "d_us_roxton",
+    "description": "",
+    "tasks": [
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "HdmiModeHdmiNetflixHdrLogoTests.test_hdr_badge_verification_resume_tv_by_power_on",
+                "device": "d_us_roxton",
+                "testrail_plan_id": 25772547,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "HdmiModeHdmiNetflixHdrLogoTests.test_hdr_badge_verification_resume_tv_system_restart",
+                "device": "d_us_roxton",
+                "testrail_plan_id": 25772547,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "HdmiModeHdmiNetflixHdrLogoTests.test_hdr_badge_verification_resume_tv_suspend_mode",
+                "device": "d_us_roxton",
+                "testrail_plan_id": 25772547,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "RemoveInputAVWithDeviceConnected.test_remove_tv_input_with_device_connected",
+                "device": "d_us_roxton",
+                "testrail_plan_id": 25772547,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "AddInputHDMI3.test_add_tv_input",
+                "device": "d_us_roxton",
+                "testrail_plan_id": 25772547,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2659880484",
+                "device": "d_us_roxton",
+                "testrail_plan_id": 25772547,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2659883019",
+                "device": "d_us_roxton",
+                "testrail_plan_id": 25772547,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2659883020",
+                "device": "d_us_roxton",
+                "testrail_plan_id": 25772547,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2659883021",
+                "device": "d_us_roxton",
+                "testrail_plan_id": 25772547,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2659883022",
+                "device": "d_us_roxton",
+                "testrail_plan_id": 25772547,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2659884033",
+                "device": "d_us_roxton",
+                "testrail_plan_id": 25772547,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "SystemAboutNetworkNameSetting.test_about_network_name",
+                "device": "d_us_roxton",
+                "testrail_plan_id": 25772547,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2659884299",
+                "device": "d_us_roxton",
+                "testrail_plan_id": 25772547,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2659884317",
+                "device": "d_us_roxton",
+                "testrail_plan_id": 25772547,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "TVInputCompositeTest.test_av_hud",
+                "device": "d_us_roxton",
+                "testrail_plan_id": 25772547,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2659884673",
+                "device": "d_us_roxton",
+                "testrail_plan_id": 25772547,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2659884675",
+                "device": "d_us_roxton",
+                "testrail_plan_id": 25772547,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "HomeScreenLuxTests.test_home_screen_backlight_consistency_hdmi",
+                "device": "d_us_roxton",
+                "testrail_plan_id": 25772547,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "HdmiModeHdmiNetflixHdrLogoTests.testcase_hdr_notification_off",
+                "device": "d_us_roxton",
+                "testrail_plan_id": 25772547,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2659885255",
+                "device": "d_us_roxton",
+                "testrail_plan_id": 25772547,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2659885517",
+                "device": "d_us_roxton",
+                "testrail_plan_id": 25772547,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2659885518",
+                "device": "d_us_roxton",
+                "testrail_plan_id": 25772547,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2659885812",
+                "device": "d_us_roxton",
+                "testrail_plan_id": 25772547,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "USBUnplugOnVideoPlayback.test_unplug_during_video_playback",
+                "device": "d_us_roxton",
+                "testrail_plan_id": 25772547,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "SystemAboutEthernetMACSetting.test_about_ethernet_mac",
+                "device": "d_us_roxton",
+                "testrail_plan_id": 25772547,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "SystemAboutWirelessMACSetting.test_about_wireless_mac",
+                "device": "d_us_roxton",
+                "testrail_plan_id": 25772547,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2727886743",
+                "device": "d_us_roxton",
+                "testrail_plan_id": 25772547,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        }
+    ],
+    "execution_mode": "SERIAL"
+}

@@ -1,0 +1,82 @@
+{
+    "roku": {
+        "brand_name": "LOGIK",
+        "device_id": "S0XSP05MAXM4",
+        "ip_address": "10.64.30.92",
+        "serial_number": "X02000HMAXM4",
+        "avr_info_config": {
+            "ip_address": "10.64.24.243",
+            "brand": "yamaha"
+        },
+        "qa_bot_config": {
+            "host": "10.64.16.16"
+        },
+        "maxwell_config": {
+            "host": "10.64.29.240"
+        },
+        "power_config": {
+            "host": "10.64.21.252",
+            "outlet": 1,
+            "model": "TP_LINK_HS300"
+        },
+        "devices_config": {
+            "HDMI 1": {
+                "device_id": "S0DA2383U885",
+                "brand_name": "Roku",
+                "ip_address": "10.64.17.91",
+                "device_type": "ROKU",
+                "serial_number": "X01000W3U885",
+                "channel_credentials": {
+                    "YouTube": {
+                        "username": "rokudkqa@gmail.com",
+                        "password": "Syncaudio1!"
+                    }
+                }
+            },
+            "HDMI 3": {
+                "device_type": "QA_BOT"
+            }
+        },
+        "tuner_input_config": {
+            "lab": "PVG_16F_NA"
+        },
+        "upgrade_config": [
+            {
+                "build": "15.3.5.00100"
+            },
+            {
+                "build": "15.3.5.00900"
+            }
+        ],
+        "channel_credentials": {
+            "YouTube": {
+                "username": "rokudkqa@gmail.com",
+                "password": "Syncaudio1!"
+            },
+            "Hulu": {
+                "password": "hulueval02",
+                "username": "hulu.cert.eval02@hulu.com"
+            },
+            "Vudu": {
+                "password": "Roku1234",
+                "username": "rchakka@roku.com"
+            },
+            "Netflix": {
+                "password": "Roku1234!",
+                "username": "tester_xp_kpi@netflix.com"
+            },
+            "Pandora": {
+                "password": "danger",
+                "username": "testytesterperson@live.com"
+            },
+            "Apple TV": {
+                "password": "Atv@551012!!",
+                "username": "QA_ATX8@roku.com"
+            },
+            "Prime Video": {
+                "password": "ahov1234!",
+                "username": "npi.auto.run@gmail.com"
+            }
+        }
+    }
+}

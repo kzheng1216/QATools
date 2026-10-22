@@ -1,0 +1,52 @@
+2026-08-20 06:43:04 - QATools - INFO - Parsing profile from: /workspaces/automation-ide/mycode/QATools/4_runcase/common/../profiles/ws22_d_ws22_athens_uk.json
+2026-08-20 06:43:04 - QATools - INFO - Total tasks to execute: 27
+2026-08-20 06:43:04 - QATools - INFO - --------------------------------------------------------
+2026-08-20 06:43:04 - QATools - INFO - - Run Task: 1/27
+2026-08-20 06:43:04 - QATools - INFO - - Case IDs: ['HdmiInputResQuantumDataTest.test_480i_60']
+2026-08-20 06:43:04 - QATools - INFO - Case:HdmiInputResQuantumDataTest.test_480i_60 | main  | main  | DeviceName:d_ws22_athens_uk | DeviceSN:X01200PEY323 | DeviceIP:10.64.37.156    | PlanId:[file-system]25772488 | Repeat:0   | Time:2026-08-20 06:43:04 |
+2026-08-20 06:43:07 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2835606]}
+2026-08-20 06:43:07 - QATools - INFO - Current suite ID: 2835606
+2026-08-20 06:43:08 - QATools - INFO - Test suite 2835606 has no Jenkins build assigned yet.
+2026-08-20 06:52:24 - QATools - INFO - - [Build Result] - build_url: https://jenkins.eswat.rokulabs.net/job/qa_hub_launch_suite/1271645/
+2026-08-20 06:52:24 - QATools - INFO - {
+  "_class": "org.jenkinsci.plugins.workflow.job.WorkflowRun",
+  "building": false,
+  "result": "SUCCESS"
+}
+2026-08-20 06:52:24 - QATools - INFO - - Case IDs: ['HdmiInputResQuantumDataTest.test_480i_60'], Status: Failed
+2026-08-20 06:52:24 - QATools - INFO - --------------------------------------------------------
+2026-08-20 06:52:24 - QATools - INFO - - Run Task: 2/27
+2026-08-20 06:52:24 - QATools - INFO - - Case IDs: ['HdmiInputResQuantumDataTest.test_480p_60']
+2026-08-20 06:52:24 - QATools - INFO - Case:HdmiInputResQuantumDataTest.test_480p_60 | main  | main  | DeviceName:d_ws22_athens_uk | DeviceSN:X01200PEY323 | DeviceIP:10.64.37.156    | PlanId:[file-system]25772488 | Repeat:0   | Time:2026-08-20 06:52:24 |
+2026-08-20 06:52:27 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2835619]}
+2026-08-20 06:52:27 - QATools - INFO - Current suite ID: 2835619
+2026-08-20 06:52:27 - QATools - INFO - Test suite 2835619 has no Jenkins build assigned yet.
+2026-08-20 06:59:57 - QATools - INFO - - [Build Result] - build_url: https://jenkins.eswat.rokulabs.net/job/qa_hub_launch_suite/1271657/
+2026-08-20 06:59:57 - QATools - INFO - {
+  "_class": "org.jenkinsci.plugins.workflow.job.WorkflowRun",
+  "building": false,
+  "result": "SUCCESS"
+}
+2026-08-20 06:59:57 - QATools - INFO - - Case IDs: ['HdmiInputResQuantumDataTest.test_480p_60'], Status: Blocked
+2026-08-20 06:59:57 - QATools - INFO - --------------------------------------------------------
+2026-08-20 06:59:57 - QATools - INFO - - Run Task: 3/27
+2026-08-20 06:59:57 - QATools - INFO - - Case IDs: ['HdmiInputResQuantumDataTest.test_720p_24']
+2026-08-20 06:59:57 - QATools - INFO - Case:HdmiInputResQuantumDataTest.test_720p_24 | main  | main  | DeviceName:d_ws22_athens_uk | DeviceSN:X01200PEY323 | DeviceIP:10.64.37.156    | PlanId:[file-system]25772488 | Repeat:0   | Time:2026-08-20 06:59:57 |
+2026-08-20 06:59:59 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2835629]}
+2026-08-20 06:59:59 - QATools - INFO - Current suite ID: 2835629
+2026-08-20 07:00:00 - QATools - INFO - Test suite 2835629 has no Jenkins build assigned yet.
+2026-08-20 07:07:08 - QATools - INFO - - [Build Result] - build_url: https://jenkins.eswat.rokulabs.net/job/qa_hub_launch_suite/1271664/
+2026-08-20 07:07:08 - QATools - INFO - {
+  "_class": "org.jenkinsci.plugins.workflow.job.WorkflowRun",
+  "building": false,
+  "result": "SUCCESS"
+}
+2026-08-20 07:07:08 - QATools - INFO - - Case IDs: ['HdmiInputResQuantumDataTest.test_720p_24'], Status: Blocked
+2026-08-20 07:07:08 - QATools - INFO - --------------------------------------------------------
+2026-08-20 07:07:08 - QATools - INFO - - Run Task: 4/27
+2026-08-20 07:07:08 - QATools - INFO - - Case IDs: ['HdmiInputResQuantumDataTest.test_720p_30']
+2026-08-20 07:07:08 - QATools - INFO - Case:HdmiInputResQuantumDataTest.test_720p_30 | main  | main  | DeviceName:d_ws22_athens_uk | DeviceSN:X01200PEY323 | DeviceIP:10.64.37.156    | PlanId:[file-system]25772488 | Repeat:0   | Time:2026-08-20 07:07:08 |
+2026-08-20 07:07:11 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2835643]}
+2026-08-20 07:07:11 - QATools - INFO - Current suite ID: 2835643
+2026-08-20 07:07:12 - QATools - INFO - Test suite 2835643 has no Jenkins build assigned yet.
+2026-08-20 07:07:24 - QATools - INFO - Test suite 2835643 has no Jenkins build assigned yet.

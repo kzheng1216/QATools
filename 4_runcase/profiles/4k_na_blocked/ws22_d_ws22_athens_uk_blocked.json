@@ -1,0 +1,292 @@
+{
+    "name": "d_ws22_athens_uk",
+    "description": "",
+    "tasks": [
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "SystemUpdateSettingUnconnected.test_connect_to_internet_screen_display",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "TVOptionsPictureModeSettingsAV.test_options_settings_picture_mode_normal",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "RemoveInputHDMI3.test_remove_tv_input",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "JPGVerificationTest.test_jpg_playback_image_brightness_validation",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "TVInputPictureSizeAdvancedSettingsApplyLocallyRMP.test_advanced_settings_picture_size_zoom_applied_locally",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "TVInputResetFineTunePictureSettingsPictureQualityChangeVerificationHDMI.test_backlight_picture_quality_change_after_reset",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "TVInputResetFineTunePictureSettingsPictureQualityChangeVerificationHDMI.test_contrast_picture_quality_change_after_reset",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "TVInputPictureQualityChangeVerificationHDMIaftersharpnessreset.test_sharpness_picture_quality_change_after_reset",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "TVInputPictureQualityChangeVerificationHDMIaftercolorreset.test_color_picture_quality_change_after_reset",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "M2TSVideoFormatPlaybackTests.test_video_playback_m2ts_h265",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "PrimeVideoChannelTestCase.test_launch_from_poweroff_using_partner_button_uninstalled",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2659883950",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "TestSettingsPerInputUI.test_settings_per_input_hdmi1",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "PowerOnSettingsTest.test_power_on_settings_check",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2659898256",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2659898257",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2659898289",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2659898371",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "USBUnplugOnVideoPlayback.test_unplug_during_video_playback",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        }
+    ],
+    "execution_mode": "SERIAL"
+}

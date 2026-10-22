@@ -1,0 +1,716 @@
+@host = http://127.0.0.1:9888
+
+##===========================================================
+##- Device
+##===========================================================
+### List device config files -> { devices: ["d_01.json", ...] }
+GET {{host}}/v1/device/list
+
+### List devices with presence flags (ip_address + qa_bot/maxwell/power/avr/HDMI 1-3)
+GET {{host}}/v1/device/list_details
+
+### View one device config
+GET {{host}}/v1/device/d_123
+
+### Add a device config
+POST {{host}}/v1/device/add/d_123
+Content-Type: application/json
+
+{
+    "roku": {
+        "device_id": "S0XNH2DXA37H",
+        "serial_number": "X020008XA37H",
+        "brand_name": "QBell",
+        "ip_address": "10.64.24.99",
+        "maxwell_config": {
+            "host": "10.64.29.240"
+        }
+    }
+}
+
+### Update a device config
+PATCH {{host}}/v1/device/update/d_123
+Content-Type: application/json
+
+{
+    "roku": {
+        "device_id": "S0XNH2DXA37H1",
+        "serial_number": "X020008XA37H",
+        "brand_name": "QBell",
+        "ip_address": "10.64.24.99"
+    }
+}
+
+### Delete a device config
+DELETE {{host}}/v1/device/delete/d_123
+
+### Sync a device config with QA Hub (by its roku.serial_number)
+PATCH {{host}}/v1/device/sync_with_qa_hub/d_123
+
+
+##===========================================================
+##- Profile
+##===========================================================
+### List profile config files
+GET {{host}}/v1/profile/list
+
+### Generate a profile from a cached TestRail data file (QUERY params)
+GET {{host}}/v1/profile/generate_with_testrail_data?plan=26595350&device=d_01&testrail_data_file=26595350_Failed.json
+
+### View one profile
+GET {{host}}/v1/profile/p_123
+
+### Add a profile (task carries a single `config` object)
+POST {{host}}/v1/profile/add/p_123
+Content-Type: application/json
+
+{
+  "name": "execution plan 2655393379",
+  "description": "execution plan 2655393379",
+  "tasks": [
+    {
+      "config": {
+        "case_type": "BDD",
+        "case_id": "2659884070",
+        "device": "d_us_r_24_1_1",
+        "testrail_plan_id": 0,
+        "repeat": 0,
+        "automation_test_branch": "main",
+        "roku_automation_branch": "main"
+      },
+      "execution_mode": "PARALLEL",
+      "stop_if_success": true,
+      "print_console_message": false,
+      "timeout": 36000
+    }
+  ],
+  "execution_mode": "SERIAL"
+}
+
+### Update a profile
+PATCH {{host}}/v1/profile/update/p_123
+Content-Type: application/json
+
+{
+  "name": "execution plan 26553933791111",
+  "description": "execution plan 2655393379",
+  "tasks": [
+    {
+      "config": {
+        "case_type": "BDD",
+        "case_id": "2659884070",
+        "device": "d_us_r_24_1_1",
+        "testrail_plan_id": 0,
+        "repeat": 0,
+        "automation_test_branch": "main",
+        "roku_automation_branch": "main"
+      },
+      "execution_mode": "PARALLEL",
+      "stop_if_success": true,
+      "print_console_message": false,
+      "timeout": 36000
+    }
+  ],
+  "execution_mode": "SERIAL"
+}
+
+### Delete a profile
+DELETE {{host}}/v1/profile/delete/p_123
+
+
+##===========================================================
+##- Run Case
+##===========================================================
+### Run a BDD case (QUERY params). select: All|Fail|Pass|Skipped|Blocked|NA|Unknown|NoTest
+POST {{host}}/v1/runcase/run?profile_name=p_01&select=All
+
+### List running test_runner.py processes
+GET {{host}}/v1/runcase/list_running
+
+### Stop a running case by pid
+POST {{host}}/v1/runcase/stop?pid=123456
+
+### List cache files -> { files: [{ name, mtime }] }
+GET {{host}}/v1/runcase/list_cache
+
+### View one cache file -> { cache_file_content: "..." }
+GET {{host}}/v1/runcase/view_cache/p_01.json.cache
+
+### Delete one cache file
+GET {{host}}/v1/runcase/delete_cache/p_01.json.cache
+
+### List summary report files -> { files: [{ name, mtime }] }
+GET {{host}}/v1/runcase/list_report
+
+### View one summary report file -> { summary_report_content: "..." }
+GET {{host}}/v1/runcase/view_report/p_01.json_summary_report.txt
+
+### Delete one summary report file
+GET {{host}}/v1/runcase/delete_report/p_01.json_summary_report.txt
+
+### Clear all cache + summary report files
+GET {{host}}/v1/runcase/clear
+
+### List QAHub suites by user + state (state: running | complete)
+GET {{host}}/v1/runcase/list_suites?user=yuzheng&state=running
+
+### Terminate a QAHub suite by id
+GET {{host}}/v1/runcase/terminate_suite?suite_id=2889747
+
+### Resolve a suite's Jenkins build console URL
+GET {{host}}/v1/runcase/suite_build_url?suite_id=2889747
+
+### Status of currently running test_runner.py processes (ps text)
+GET {{host}}/v1/runcase/status
+
+### List saved "Running Suites" user-query history
+GET {{host}}/v1/runcase/user_query_list
+
+### Remember a searched user name
+POST {{host}}/v1/runcase/user_query_list/add
+Content-Type: application/json
+
+{
+    "name": "yuzheng"
+}
+
+### Delete a saved user name
+DELETE {{host}}/v1/runcase/user_query_list/yuzheng
+
+
+##===========================================================
+##- Roku Test (local roku_test runner)
+##===========================================================
+### Run a roku_test (QUERY params)
+POST {{host}}/v1/rokutest/run?device=d_01&automated_test_id=bdd-2659886031&testrail_case_id=2659886031&repeat=0
+
+### Status of a run by pid -> { pid, status: running|not_running, command }
+GET {{host}}/v1/rokutest/status/123456
+
+### List log files -> { logs: [{ name, state, mtime, result }] }
+GET {{host}}/v1/rokutest/log/list
+
+### View one log file -> { log: "..." }
+GET {{host}}/v1/rokutest/log/view/roku_test_d_01_bdd-2659886031_0_20260101_000000.log
+
+### Delete one log file (GET, as defined in the controller)
+GET {{host}}/v1/rokutest/log/delete/roku_test_d_01_bdd-2659886031_0_20260101_000000.log
+
+
+##===========================================================
+##- Branch (automated_tests git repo)
+##===========================================================
+### List branches -> { automated_tests_branches: [...] }
+GET {{host}}/v1/branch/automated_tests/list
+
+### Current branch -> { automated_tests_branch: "..." }
+GET {{host}}/v1/branch/automated_tests/current
+
+### Checkout a branch
+POST {{host}}/v1/branch/automated_tests/checkout
+Content-Type: application/json
+
+{
+    "branch_name": "main"
+}
+
+
+##===========================================================
+##- TestRail
+##===========================================================
+### List this instance's statuses (id + label)
+GET {{host}}/v1/testrail/status/list
+
+### List cases of a status under a plan (QUERY params; sync=true forces refresh)
+GET {{host}}/v1/testrail/plan/case/list?plan=26595350&status=Failed&sync=false
+
+### List configured testrail plans
+GET {{host}}/v1/testrail/plan/list
+
+### Add a testrail plan
+POST {{host}}/v1/testrail/plan/add
+Content-Type: application/json
+
+{
+    "id": 26595350,
+    "name": "WS22 4K NA"
+}
+
+### Delete a testrail plan by id
+DELETE {{host}}/v1/testrail/plan/delete?plan_id=26595350
+
+### List cached testrail data files for a plan -> { "<status>": "<file>.json" }
+GET {{host}}/v1/testrail/testrail_data/list?plan=26595350
+
+### Group cached testrail data files by plan + status
+GET {{host}}/v1/testrail/testrail_data/available
+
+
+##===========================================================
+##- Analyze History (saved AI log analyses)
+##===========================================================
+### List saved analyses (optional filters: case_id, profile, result, date)
+GET {{host}}/v1/analyze_history/list?case_id=&profile=&result=&date=
+
+### Distinct case_id / result values (for filter dropdowns)
+GET {{host}}/v1/analyze_history/categories
+
+### View one saved analysis (markdown)
+GET {{host}}/v1/analyze_history/view?name=2659886400__p_01__2659886400__Failed__en-US__2026-01-01_00-00-00.md
+
+### Delete one saved analysis
+DELETE {{host}}/v1/analyze_history/delete?name=2659886400__p_01__2659886400__Failed__en-US__2026-01-01_00-00-00.md
+
+
+##===========================================================
+##- Agent (AI)
+##===========================================================
+### Active agent info
+GET {{host}}/v1/agent/info
+
+### Available models
+GET {{host}}/v1/agent/models
+
+### Switch active model / params
+POST {{host}}/v1/agent/switch
+Content-Type: application/json
+
+{
+    "model": "claude-sonnet-4-6",
+    "max_tokens": 128000,
+    "temperature": 0.7
+}
+
+### Chat with the active agent (optional internal search + session)
+POST {{host}}/v1/agent/chat
+Content-Type: application/json
+
+{
+    "prompt": "Summarize the latest failures.",
+    "use_internal": true,
+    "sources": ["JIRA", "TESTRAIL"],
+    "session_id": null
+}
+
+### Analyze a log (prompt can be a Jenkins console URL; QUERY params carry metadata)
+POST {{host}}/v1/agent/analyze?profile_name=p_01&locale=en-US&testrail_case_id=2659886400&case_id=2659886400&case_test_result=Failed
+Content-Type: application/json
+
+{
+    "prompt": "https://jenkins.eswat.rokulabs.net/job/qa_hub_launch_suite/1317209/consoleFull",
+    "use_internal": false
+}
+
+### Search indexed data (JIRA/Confluence/TestRail/GitLab/...)
+POST {{host}}/v1/agent/search
+Content-Type: application/json
+
+{
+    "query": "HDR notification HDMI",
+    "sources": ["JIRA", "TESTRAIL"],
+    "limit": 10
+}
+
+
+##===========================================================
+##- Session (agent chat sessions)
+##===========================================================
+### List sessions (summaries, newest first)
+GET {{host}}/v1/session/list
+
+### Get full session (with messages)
+GET {{host}}/v1/session/sess_20260101_000000_abcd
+
+### Create a new empty session
+POST {{host}}/v1/session/create
+
+### Delete a session
+DELETE {{host}}/v1/session/delete/sess_20260101_000000_abcd
+
+
+##===========================================================
+##- Skill
+##===========================================================
+### List skills
+GET {{host}}/v1/skill/list
+
+### Export all skills as a .zip (declared before /{skill_name})
+GET {{host}}/v1/skill/export/all
+
+### View one skill (SKILL.md content)
+GET {{host}}/v1/skill/my_skill
+
+### Add a skill
+POST {{host}}/v1/skill/add/my_skill
+Content-Type: application/json
+
+{
+    "skill": "# My Skill\n\nMarkdown content here."
+}
+
+### Update a skill
+PUT {{host}}/v1/skill/update/my_skill
+Content-Type: application/json
+
+{
+    "skill": "# My Skill (updated)\n\nNew content."
+}
+
+### Delete a skill
+DELETE {{host}}/v1/skill/delete/my_skill
+
+
+##===========================================================
+##- Reference (links + docs)
+##===========================================================
+### List reference items + docs + their categories
+GET {{host}}/v1/reference/list
+
+### Add a reference item (kind: 'ref' or 'docs')
+POST {{host}}/v1/reference/add
+Content-Type: application/json
+
+{
+    "kind": "ref",
+    "name": "QA Hub",
+    "category": "Tools",
+    "url": "https://qahub.eng.roku.com"
+}
+
+### Update a reference item at index
+PUT {{host}}/v1/reference/update
+Content-Type: application/json
+
+{
+    "kind": "ref",
+    "index": 0,
+    "name": "QA Hub",
+    "category": "Tools",
+    "url": "https://qahub.eng.roku.com"
+}
+
+### Delete a reference item (QUERY params)
+DELETE {{host}}/v1/reference/delete?kind=ref&index=0
+
+### Upload a Markdown doc (saved under docs/ and listed in 'docs')
+POST {{host}}/v1/reference/doc/upload
+Content-Type: application/json
+
+{
+    "name": "guide.md",
+    "category": "Guides",
+    "content": "# Guide\n\nContent."
+}
+
+### Get a doc's markdown content
+GET {{host}}/v1/reference/doc/content?name=guide.md
+
+
+##===========================================================
+##- Config / Settings
+##===========================================================
+### Admin login (gates the Settings tab)
+POST {{host}}/v1/config/admin/login
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "secret"
+}
+
+### List tabs + visibility + order
+GET {{host}}/v1/config/tabs/list
+
+### Disable a tab
+GET {{host}}/v1/config/tabs/runcase/disable
+
+### Enable a tab
+GET {{host}}/v1/config/tabs/runcase/enable
+
+### Reorder tabs (display order = key order)
+PUT {{host}}/v1/config/tabs/reorder
+Content-Type: application/json
+
+{
+    "order": ["device", "profile", "runcase", "rokutest"]
+}
+
+### List configured agent models
+GET {{host}}/v1/config/models/list
+
+### Add an agent model
+POST {{host}}/v1/config/models/add
+Content-Type: application/json
+
+{
+    "name": "claude-sonnet-4-6",
+    "description": "Claude Sonnet 4.6",
+    "model": "claude-sonnet-4-6",
+    "max_tokens": 128000,
+    "temperature": 0.7
+}
+
+### Update an agent model (by name)
+PUT {{host}}/v1/config/models/update/claude-sonnet-4-6
+Content-Type: application/json
+
+{
+    "name": "claude-sonnet-4-6",
+    "description": "Claude Sonnet 4.6",
+    "model": "claude-sonnet-4-6",
+    "max_tokens": 128000,
+    "temperature": 0.7
+}
+
+### Delete an agent model (by name)
+DELETE {{host}}/v1/config/models/delete/claude-sonnet-4-6
+
+### Get agent credentials (masked)
+GET {{host}}/v1/config/agent/get
+
+### Update agent credentials (empty secret = keep existing)
+PUT {{host}}/v1/config/agent/update
+Content-Type: application/json
+
+{
+    "api_key": "",
+    "key_id": "",
+    "key_alias": "kzheng"
+}
+
+### Get the default agent model params
+GET {{host}}/v1/config/agent/default
+
+### Set the default agent model (applied live)
+PUT {{host}}/v1/config/agent/default
+Content-Type: application/json
+
+{
+    "model": "claude-sonnet-4-6",
+    "timeout_sec": 300.0,
+    "max_tokens": 128000,
+    "temperature": 0.7
+}
+
+### Get Analyze config (default locale + prompt template)
+GET {{host}}/v1/config/analyze/get
+
+### Update Analyze config
+PUT {{host}}/v1/config/analyze/update
+Content-Type: application/json
+
+{
+    "default_locale": "zh-CN",
+    "prompt_template": "Analyze the log in {lang}:\n{content}"
+}
+
+### Get account settings (secrets masked)
+GET {{host}}/v1/config/account/get
+
+### Update account settings (empty secret = keep; takes effect after restart)
+PUT {{host}}/v1/config/account/update
+Content-Type: application/json
+
+{
+    "EMAIL": "kzheng@roku.com",
+    "QAHUB_TOKEN": "",
+    "TESTRAIL_USERNAME": "",
+    "TESTRAIL_API_KEY": "",
+    "JIRA_TOKEN": ""
+}
+
+### Restart the backend
+POST {{host}}/v1/config/backend/restart
+
+
+##===========================================================
+##- File Transfer
+##===========================================================
+### Get effective root dir + http.server port
+GET {{host}}/v1/file_transfer/config
+
+### Update root dir and/or http.server port
+PUT {{host}}/v1/file_transfer/config
+Content-Type: application/json
+
+{
+    "root": "data/file_transfer",
+    "http_port": 9000
+}
+
+### Recursive tree of the root directory
+GET {{host}}/v1/file_transfer/tree
+
+### Upload a file (base64) into a directory under the root
+POST {{host}}/v1/file_transfer/upload
+Content-Type: application/json
+
+{
+    "dir": "",
+    "name": "video.ts",
+    "content_base64": "AAAA"
+}
+
+### Delete a file (QUERY param, root-relative path)
+DELETE {{host}}/v1/file_transfer/file?path=video.ts
+
+### Create a directory
+POST {{host}}/v1/file_transfer/mkdir
+Content-Type: application/json
+
+{
+    "path": "subdir"
+}
+
+### Delete a directory (recursive, QUERY param)
+DELETE {{host}}/v1/file_transfer/dir?path=subdir
+
+### http.server status
+GET {{host}}/v1/file_transfer/http/status
+
+### Start the managed http.server
+POST {{host}}/v1/file_transfer/http/start
+
+### Stop the managed http.server
+POST {{host}}/v1/file_transfer/http/stop
+
+### Start an scp upload (returns job_id to poll)
+POST {{host}}/v1/file_transfer/scp/start
+Content-Type: application/json
+
+{
+    "rel_path": "video.ts",
+    "is_dir": false,
+    "user": "pi",
+    "host": "10.64.25.111",
+    "remote_dir": "/home/pi",
+    "password": "raspberry"
+}
+
+### List cached scp targets (Host dropdown)
+GET {{host}}/v1/file_transfer/scp/servers
+
+### Delete cached scp target(s) (QUERY params; username/upload_dir optional)
+DELETE {{host}}/v1/file_transfer/scp/servers?server=10.64.25.111&username=pi&upload_dir=/home/pi
+
+### Poll an scp job's progress
+GET {{host}}/v1/file_transfer/scp/status/<job_id>
+
+
+##===========================================================
+##- Cmd / Run Script (QATools/data/cmd)
+##===========================================================
+### Recursive tree of the cmd directory
+GET {{host}}/v1/cmd/tree
+
+### View a file's text content (QUERY param)
+GET {{host}}/v1/cmd/file?path=test/restart.sh
+
+### Create/overwrite a text file
+POST {{host}}/v1/cmd/file
+Content-Type: application/json
+
+{
+    "dir": "test",
+    "name": "restart.sh",
+    "content": "#!/usr/bin/env bash\necho hi\n"
+}
+
+### Upload a binary file (base64)
+POST {{host}}/v1/cmd/upload
+Content-Type: application/json
+
+{
+    "dir": "",
+    "name": "data.bin",
+    "content_base64": "AAAA"
+}
+
+### Delete a file (QUERY param)
+DELETE {{host}}/v1/cmd/file?path=test/restart.sh
+
+### Create a directory
+POST {{host}}/v1/cmd/mkdir
+Content-Type: application/json
+
+{
+    "path": "test"
+}
+
+### Delete a directory (recursive, QUERY param)
+DELETE {{host}}/v1/cmd/dir?path=test
+
+### List recent run records (newest first)
+GET {{host}}/v1/cmd/cache
+
+### Delete a run record (QUERY param)
+DELETE {{host}}/v1/cmd/cache?cmdline=ls%20-l
+
+### Run a command line (cwd persists via returned cwd; password for ssh/scp)
+POST {{host}}/v1/cmd/run
+Content-Type: application/json
+
+{
+    "cmdline": "ls -l",
+    "password": null,
+    "cwd": null
+}
+
+### Open an interactive ssh session -> { session_id, label }
+POST {{host}}/v1/cmd/ssh/start
+Content-Type: application/json
+
+{
+    "host": "10.64.25.111",
+    "user": "pi",
+    "password": "raspberry"
+}
+
+### Send input to an ssh session
+POST {{host}}/v1/cmd/ssh/input
+Content-Type: application/json
+
+{
+    "session_id": "<session_id>",
+    "data": "ls -l\n"
+}
+
+### Poll ssh session output from a byte offset (QUERY params)
+GET {{host}}/v1/cmd/ssh/output?session_id=<session_id>&since=0
+
+### Stop an ssh session (QUERY param)
+POST {{host}}/v1/cmd/ssh/stop?session_id=<session_id>
+
+
+##===========================================================
+##- User
+##===========================================================
+### Admin login
+POST {{host}}/v1/user/admin/login
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "secret"
+}
+
+### Reserve a device on QA Hub
+POST https://qahub.eswat.rokulabs.net/api/v1/roku/reservations
+Content-Type: application/json
+
+{
+    "serial_numbers": ["X01200Y74NAU"],
+    "start": -1,
+    "end": "2026-11-15T15:57:02",
+    "summary": "",
+    "steal": false
+}
+
+### Import cases to a testrail plan
+POST {{host}}/v1/testrail/plan/case/add
+Content-Type: application/json
+
+{
+    "plan_id": 27307809,
+    "case_ids": [1419588331, 2660704941]
+}

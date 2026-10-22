@@ -1,0 +1,72 @@
+2026-08-24 06:50:06 - QATools - INFO - Parsing profile from: /workspaces/automation-ide/mycode/QATools/4_runcase/common/../profiles/ws22_d_ca_roxton_qd.json
+2026-08-24 06:50:06 - QATools - INFO - Total tasks to execute: 1
+2026-08-24 06:50:06 - QATools - INFO - --------------------------------------------------------
+2026-08-24 06:50:06 - QATools - INFO - - Run Task: 1/1
+2026-08-24 06:50:06 - QATools - INFO - - Case IDs: ['HdmiInputResQuantumDataTest.test_480i_60']
+2026-08-24 06:50:06 - QATools - INFO - Case:HdmiInputResQuantumDataTest.test_480i_60 | main  | main  | DeviceName:d_ws22_ca_roxton | DeviceSN:X027007481ER | DeviceIP:10.64.30.147    | PlanId:[file-system]0   | Repeat:0   | Time:2026-08-24 06:50:06 |
+2026-08-24 06:50:11 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2842981]}
+2026-08-24 06:50:11 - QATools - INFO - Current suite ID: 2842981
+2026-08-24 06:50:12 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:50:22 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:50:33 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:50:44 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:50:55 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:51:05 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:51:17 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:51:28 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:51:39 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:51:49 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:52:00 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:52:11 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:52:21 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:52:32 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:52:43 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:52:53 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:53:04 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:53:15 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:53:26 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:53:36 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:53:47 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:53:58 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:54:08 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:54:19 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:54:30 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:54:41 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:54:52 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:55:02 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:55:13 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:55:24 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:55:34 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:55:45 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:55:56 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:56:07 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:56:17 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:56:28 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:56:39 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:56:50 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:57:00 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:57:11 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:57:22 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:57:32 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:57:43 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:57:54 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:58:05 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:58:16 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:58:26 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:58:37 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:58:48 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:58:59 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:59:10 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:59:20 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:59:31 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:59:42 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 06:59:52 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 07:00:03 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 07:00:14 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 07:00:24 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 07:00:35 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 07:00:46 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 07:00:57 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 07:01:07 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 07:01:18 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.
+2026-08-24 07:01:29 - QATools - INFO - Test suite 2842981 has no Jenkins build assigned yet.

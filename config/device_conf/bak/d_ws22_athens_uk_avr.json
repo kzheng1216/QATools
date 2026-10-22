@@ -1,0 +1,53 @@
+{
+    "roku": {
+        "ip_address": "10.64.37.156",
+        "serial_number": "X01200PEY323",
+        "device_id": "S121F59EY323",
+        "brand_name": "CHiQ",
+        "avr_info_config": {
+            "ip_address": "10.64.24.243",
+            "brand": "yamaha",
+            "cec_name": "TSR-700"
+        },
+        "power_config": {
+            "host": "10.64.21.252",
+            "model": "TP_LINK_HS300",
+            "outlet": 1
+        },
+        "qa_bot_config": {
+            "host": "10.64.16.16"
+        },
+        "devices_config": {
+            "HDMI 1": {
+                "device_id": "046070858759",
+                "brand_name": "Roku",
+                "ip_address": "10.64.37.45",
+                "device_type": "ROKU",
+                "power_config": {
+                    "host": "10.64.21.252",
+                    "model": "TP_LINK_HS300",
+                    "outlet": 5
+                },
+                "serial_number": "YJ000F858759",
+                "channel_credentials": {
+                    "YouTube": {
+                        "password": "Syncaudio1!",
+                        "username": "rokudkqa@gmail.com"
+                    }
+                }
+            },
+            "HDMI 2": {
+                "device_type": "QA_BOT"
+            }
+        },
+        "maxwell_config": {
+            "host": "10.64.29.240"
+        },
+        "display_power_config": {
+            "host": "10.64.21.252",
+            "model": "TP_LINK_HS300",
+            "outlet": 2
+        },
+        "picture_mode_threshold": -2
+    }
+}

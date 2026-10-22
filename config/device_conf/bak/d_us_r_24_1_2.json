@@ -1,0 +1,30 @@
+{
+    "roku": {
+        "ip_address": "10.64.24.9",
+        "serial_number": "X00100ATYRMY",
+        "device_id": "S02KA14TYRMY",
+        "brand_name": "Hisense",
+        "maxwell_config": {
+            "host": "10.64.29.240",
+            "port": 80
+        },
+        "power_config": {
+            "host": "10.64.18.72",
+            "outlet": 3,
+            "model": "RTVSP_POWER_SWITCH"
+        },
+        "qa_bot_config": {
+            "host": "10.64.24.62"
+        },
+        "rtvsp_config": {
+            "host": "10.64.24.62",
+            "port": 1
+        },
+        "serial_config": {
+            "host": "10.64.24.62",
+            "serial_port": 1,
+            "model": "5",
+            "baudrate": 115200
+        }
+    }
+}

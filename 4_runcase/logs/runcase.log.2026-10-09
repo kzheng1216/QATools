@@ -1,0 +1,97 @@
+2026-10-09 01:17:36 - QATools - INFO - Parsing profile from: /workspaces/automation-ide/mycode/QATools/4_runcase/common/../profiles/profile_26595408_Failed_d_ws22_athens_uk.json
+2026-10-09 01:17:36 - QATools - INFO - Total tasks to execute: 1
+2026-10-09 01:17:36 - QATools - INFO - --------------------------------------------------------
+2026-10-09 01:17:36 - QATools - INFO - - Run Task: 1/1
+2026-10-09 01:17:36 - QATools - INFO - - Case IDs: ['2659885518']
+2026-10-09 01:17:36 - QATools - INFO - Case:2659885518 | yuzheng/AUTO-77350/fix | main  | DeviceName:d_ws22_athens_uk | DeviceSN:X01200PEY323 | DeviceIP:10.64.37.156    | PlanId:[file-system]26595408 | Repeat:0   | Time:2026-10-09 01:17:36 |
+2026-10-09 01:17:40 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2950524]}
+2026-10-09 01:17:40 - QATools - INFO - Current suite ID: 2950524
+2026-10-09 01:17:56 - QATools - INFO - Test suite: 2950524 status: Running
+2026-10-09 01:29:59 - QATools - INFO - Test suite: 2950524 status: Unknown
+2026-10-09 01:29:59 - QATools - INFO - - Case IDs: ['2659885518'], Status: Unknown
+2026-10-09 01:29:59 - QATools - INFO - #########################################################
+2026-10-09 01:29:59 - QATools - INFO - -- [Summary] --
+2026-10-09 01:29:59 - QATools - INFO - #########################################################
+2026-10-09 01:29:59 - QATools - INFO - - Result: 1/1
+2026-10-09 01:29:59 - QATools - INFO - - Case IDs: ['2659885518'], Status: Unknown
+2026-10-09 01:31:06 - QATools - INFO - Parsing profile from: /workspaces/automation-ide/mycode/QATools/4_runcase/common/../profiles/profile_26595408_Failed_d_ws22_athens_uk.json
+2026-10-09 01:31:06 - QATools - INFO - Total tasks to execute: 1
+2026-10-09 01:31:06 - QATools - INFO - --------------------------------------------------------
+2026-10-09 01:31:06 - QATools - INFO - - Run Task: 1/1
+2026-10-09 01:31:06 - QATools - INFO - - Case IDs: ['2659885518']
+2026-10-09 01:31:06 - QATools - INFO - Case:2659885518 | yuzheng/AUTO-77350/fix | main  | DeviceName:d_ws22_athens_uk | DeviceSN:X01200PEY323 | DeviceIP:10.64.37.156    | PlanId:[file-system]26595408 | Repeat:0   | Time:2026-10-09 01:31:06 |
+2026-10-09 01:31:09 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2950549]}
+2026-10-09 01:31:09 - QATools - INFO - Current suite ID: 2950549
+2026-10-09 01:31:10 - QATools - INFO - Test suite: 2950549 status: Setup
+2026-10-09 01:31:23 - QATools - INFO - Test suite: 2950549 status: Running
+2026-10-09 01:41:36 - QATools - INFO - Test suite: 2950549 status: Unknown
+2026-10-09 01:41:36 - QATools - INFO - - Case IDs: ['2659885518'], Status: Unknown
+2026-10-09 01:41:36 - QATools - INFO - #########################################################
+2026-10-09 01:41:36 - QATools - INFO - -- [Summary] --
+2026-10-09 01:41:36 - QATools - INFO - #########################################################
+2026-10-09 01:41:36 - QATools - INFO - - Result: 1/1
+2026-10-09 01:41:36 - QATools - INFO - - Case IDs: ['2659885518'], Status: Unknown
+2026-10-09 01:43:40 - QATools - INFO - Parsing profile from: /workspaces/automation-ide/mycode/QATools/4_runcase/common/../profiles/profile_26595408_Failed_d_ws22_athens_uk.json
+2026-10-09 01:43:40 - QATools - INFO - Total tasks to execute: 1
+2026-10-09 01:43:40 - QATools - INFO - --------------------------------------------------------
+2026-10-09 01:43:40 - QATools - INFO - - Run Task: 1/1
+2026-10-09 01:43:40 - QATools - INFO - - Case IDs: ['2659885518']
+2026-10-09 01:43:40 - QATools - INFO - Case:2659885518 | main  | main  | DeviceName:d_ws22_athens_uk | DeviceSN:X01200PEY323 | DeviceIP:10.64.37.156    | PlanId:[file-system]26595408 | Repeat:0   | Time:2026-10-09 01:43:40 |
+2026-10-09 01:43:43 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2950564]}
+2026-10-09 01:43:43 - QATools - INFO - Current suite ID: 2950564
+2026-10-09 01:43:59 - QATools - INFO - Test suite: 2950564 status: Running
+2026-10-09 02:45:46 - QATools - INFO - Test suite: 2950564 status: Pass
+2026-10-09 02:45:46 - QATools - INFO - Test suite 2950564 passed.
+2026-10-09 02:45:46 - QATools - INFO - Stopping further execution due to stop_if_success=True.
+2026-10-09 02:45:46 - QATools - INFO - - Case IDs: ['2659885518'], Status: Pass
+2026-10-09 02:45:46 - QATools - INFO - #########################################################
+2026-10-09 02:45:46 - QATools - INFO - -- [Summary] --
+2026-10-09 02:45:46 - QATools - INFO - #########################################################
+2026-10-09 02:45:46 - QATools - INFO - - Result: 1/1
+2026-10-09 02:45:46 - QATools - INFO - - Case IDs: ['2659885518'], Status: Pass
+2026-10-09 07:03:39 - QATools - INFO - Parsing profile from: /workspaces/automation-ide/mycode/QATools/4_runcase/common/../profiles/p_01.json
+2026-10-09 07:03:39 - QATools - INFO - Total tasks to execute: 1
+2026-10-09 07:03:39 - QATools - INFO - --------------------------------------------------------
+2026-10-09 07:03:39 - QATools - INFO - - Run Task: 1/1
+2026-10-09 07:03:39 - QATools - INFO - - Case IDs: ['2659885517']
+2026-10-09 07:03:39 - QATools - INFO - Case:2659885517 | main  | main  | DeviceName:d_ws22_athens_uk | DeviceSN:X01200PEY323 | DeviceIP:10.64.37.156    | PlanId:[file-system]0   | Repeat:0   | Time:2026-10-09 07:03:39 |
+2026-10-09 07:03:41 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2950889]}
+2026-10-09 07:03:41 - QATools - INFO - Current suite ID: 2950889
+2026-10-09 07:04:00 - QATools - INFO - Test suite: 2950889 status: Running
+2026-10-09 07:57:17 - QATools - INFO - Test suite: 2950889 status: Pass
+2026-10-09 07:57:17 - QATools - INFO - Test suite 2950889 passed.
+2026-10-09 07:57:17 - QATools - INFO - Stopping further execution due to stop_if_success=True.
+2026-10-09 07:57:17 - QATools - INFO - - Case IDs: ['2659885517'], Status: Pass
+2026-10-09 07:57:17 - QATools - INFO - #########################################################
+2026-10-09 07:57:17 - QATools - INFO - -- [Summary] --
+2026-10-09 07:57:17 - QATools - INFO - #########################################################
+2026-10-09 07:57:17 - QATools - INFO - - Result: 1/1
+2026-10-09 07:57:17 - QATools - INFO - - Case IDs: ['2659885517'], Status: Pass
+2026-10-09 08:00:09 - QATools - INFO - Parsing profile from: /workspaces/automation-ide/mycode/QATools/4_runcase/common/../profiles/p_01.json
+2026-10-09 08:00:09 - QATools - INFO - Total tasks to execute: 2
+2026-10-09 08:00:09 - QATools - INFO - --------------------------------------------------------
+2026-10-09 08:00:09 - QATools - INFO - - Run Task: 1/2
+2026-10-09 08:00:09 - QATools - INFO - - Case IDs: ['2659885517']
+2026-10-09 08:00:09 - QATools - INFO - Case:2659885517 | main  | main  | DeviceName:d_ws22_athens_uk | DeviceSN:X01200PEY323 | DeviceIP:10.64.37.156    | PlanId:[file-system]26595408 | Repeat:0   | Time:2026-10-09 08:00:09 |
+2026-10-09 08:00:17 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2950955]}
+2026-10-09 08:00:17 - QATools - INFO - Current suite ID: 2950955
+2026-10-09 08:00:36 - QATools - INFO - Test suite: 2950955 status: Running
+2026-10-09 08:56:00 - QATools - INFO - Test suite: 2950955 status: Pass
+2026-10-09 08:56:00 - QATools - INFO - Test suite 2950955 passed.
+2026-10-09 08:56:00 - QATools - INFO - Stopping further execution due to stop_if_success=True.
+2026-10-09 08:56:00 - QATools - INFO - - Case IDs: ['2659885517'], Status: Pass
+2026-10-09 08:56:00 - QATools - INFO - --------------------------------------------------------
+2026-10-09 08:56:00 - QATools - INFO - - Run Task: 2/2
+2026-10-09 08:56:00 - QATools - INFO - - Case IDs: ['2659885255']
+2026-10-09 08:56:00 - QATools - INFO - Case:2659885255 | main  | main  | DeviceName:d_ws22_athens_uk | DeviceSN:X01200PEY323 | DeviceIP:10.64.37.156    | PlanId:[file-system]26595408 | Repeat:0   | Time:2026-10-09 08:56:00 |
+2026-10-09 08:56:04 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2951059]}
+2026-10-09 08:56:04 - QATools - INFO - Current suite ID: 2951059
+2026-10-09 08:56:23 - QATools - INFO - Test suite: 2951059 status: Running
+2026-10-09 09:12:27 - QATools - INFO - Test suite: 2951059 status: Failed
+2026-10-09 09:12:27 - QATools - INFO - - Case IDs: ['2659885255'], Status: Failed
+2026-10-09 09:12:27 - QATools - INFO - #########################################################
+2026-10-09 09:12:27 - QATools - INFO - -- [Summary] --
+2026-10-09 09:12:27 - QATools - INFO - #########################################################
+2026-10-09 09:12:27 - QATools - INFO - - Result: 2/2
+2026-10-09 09:12:27 - QATools - INFO - - Case IDs: ['2659885517'], Status: Pass
+2026-10-09 09:12:27 - QATools - INFO - - Case IDs: ['2659885255'], Status: Failed

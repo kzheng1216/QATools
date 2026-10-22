@@ -1,0 +1,22 @@
+2026-08-24 05:18:31 - QATools - INFO - Parsing profile from: /workspaces/automation-ide/mycode/QATools/4_runcase/common/../profiles/ws22_d_us_roxton_qd.json
+2026-08-24 05:18:31 - QATools - INFO - Total tasks to execute: 1
+2026-08-24 05:18:31 - QATools - INFO - --------------------------------------------------------
+2026-08-24 05:18:31 - QATools - INFO - - Run Task: 1/1
+2026-08-24 05:18:31 - QATools - INFO - - Case IDs: ['HdmiInputResQuantumDataTest.test_480i_60']
+2026-08-24 05:18:31 - QATools - INFO - Case:HdmiInputResQuantumDataTest.test_480i_60 | main  | main  | DeviceName:d_ws22_ca_roxton | DeviceSN:X027007481ER | DeviceIP:10.64.30.147    | PlanId:[file-system]0   | Repeat:0   | Time:2026-08-24 05:18:31 |
+2026-08-24 05:18:33 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2842697]}
+2026-08-24 05:18:33 - QATools - INFO - Current suite ID: 2842697
+2026-08-24 05:18:34 - QATools - INFO - Test suite 2842697 has no Jenkins build assigned yet.
+2026-08-24 05:24:07 - QATools - INFO - - [Build Result] - build_url: https://jenkins.eswat.rokulabs.net/job/qa_hub_launch_suite/1275484/
+2026-08-24 05:24:07 - QATools - INFO - {
+  "_class": "org.jenkinsci.plugins.workflow.job.WorkflowRun",
+  "building": false,
+  "result": "SUCCESS"
+}
+2026-08-24 05:24:07 - QATools - INFO - - Case IDs: ['HdmiInputResQuantumDataTest.test_480i_60'], Status: Blocked
+2026-08-24 05:24:07 - QATools - INFO - #########################################################
+2026-08-24 05:24:07 - QATools - INFO - -- [Summary] --
+2026-08-24 05:24:07 - QATools - INFO - #########################################################
+2026-08-24 05:24:07 - QATools - INFO - - Result: 1/1
+2026-08-24 05:24:07 - QATools - INFO - - Case IDs: ['HdmiInputResQuantumDataTest.test_480i_60'], Status: Blocked
+2026-08-24 05:24:07 - QATools - INFO - - Case IDs: ['HdmiInputResQuantumDataTest.test_480i_60'], Status: Blocked

@@ -1,0 +1,11 @@
+# QATools frontend configuration.
+# Read at build/dev-server start time by vite.config.ts.
+#
+# NOTE: left-nav tab visibility is NO LONGER configured here. It is managed at
+# runtime via the backend (/v1/config/tabs/*, backend/conf/config.yml) and the
+# in-app Settings page. This file only configures the Vite dev server.
+
+# Dev server bind + backend target for the /api proxy.
+server:
+  host: "0.0.0.0"
+  port: 9898

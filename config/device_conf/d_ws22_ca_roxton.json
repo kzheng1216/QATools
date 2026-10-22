@@ -1,0 +1,44 @@
+{
+    "roku": {
+        "ip_address": "10.64.30.147",
+        "serial_number": "X027007481ER",
+        "device_id": "S1C1854481ER",
+        "brand_name": "HKPRO",
+        "qa_bot_config": {
+            "host": "10.64.31.215"
+        },
+        "power_config": {
+            "host": "10.64.31.253",
+            "outlet": 1,
+            "model": "TP_LINK_HS300"
+        },
+        "devices_config": {
+            "HDMI 1": {
+                "device_id": "S0DA2383U885",
+                "brand_name": "Roku",
+                "ip_address": "10.64.17.91",
+                "device_type": "ROKU",
+                "serial_number": "X01000W3U885",
+                "channel_credentials": {
+                    "YouTube": {
+                        "username": "rokudkqa@gmail.com",
+                        "password": "Syncaudio1!"
+                    }
+                },
+                "power_config": {
+                    "host": "10.64.31.253",
+                    "model": "TP_LINK_HS300",
+                    "outlet": 5
+                }
+            },
+            "HDMI 2": {
+                "device_type": "QA_BOT"
+            }
+        },
+        "display_power_config": {
+            "host": "10.64.21.252",
+            "model": "TP_LINK_HS300",
+            "outlet": 2
+        }
+    }
+}

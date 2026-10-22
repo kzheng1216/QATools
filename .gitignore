@@ -1,0 +1,19 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Zone.Identifier / *.Identifier files
+*.Identifier
+
+# Ignore log
+4_runcase/logs/*.log
+4_runcase/profile_logs/*.log
+backend/logs/*.log
+frontend/logs/*.log
+
+# node_modules
+frontend/node_modules/
+
+# data
+data/file_transfer/*

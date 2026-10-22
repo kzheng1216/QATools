@@ -1,0 +1,101 @@
+server_config:
+  host: 0.0.0.0
+  port: 9888
+tabs:
+  device: true
+  profile: true
+  testrail: true
+  runcase: true
+  rokutest: true
+  analyzehistory: true
+  agent: true
+  reference: true
+  filetransfer: true
+file_transfer:
+  root: /workspaces/automation-ide/mycode/QATools/data/file_transfer
+  http_port: 9000
+  scp_server_cache:
+  - server: 10.64.16.16
+    upload_dir: /home/qauser/usb_otg
+    username: qauser
+  - server: 10.64.25.111
+    upload_dir: /home/pi
+    username: pi
+  - server: 10.64.16.16
+    upload_dir: /tmp
+    username: qauser
+  - server: 10.64.16.16
+    upload_dir: /home/qauser/QATools/data/file_transfer
+    username: qauser
+  cmd_cache:
+  - path: test/restart.sh
+    args: ''
+    exit_code: 0
+    at: '2026-10-06 05:02:40'
+  - cmd: ls -l
+  - cmd: pwd
+analyze_config:
+  default_locale: zh-CN
+  prompt_template: "You are a senior QA automation engineer analyzing a failed test/build\
+    \ log.\nAnalyze the log below and produce a detailed root-cause analysis in {lang},\
+    \ formatted as Markdown with these sections:\n## Summary \u2014 one or two sentences:\
+    \ what was tested and the overall outcome; mention the case id and device when\
+    \ known.\n## Device Context \u2014 briefly note the DUT (device under test) from\
+    \ the provided device info (ip, serial, brand, power/serial host, linked HDMI\
+    \ devices, region hints in the device name); call out anything that could explain\
+    \ the failure (offline power switch, wrong outlet, mismatched serial host, missing\
+    \ HDMI device, etc.).\n## Verdict \u2014 PASS / FAIL / BLOCKED / FLAKY plus your\
+    \ confidence (High/Medium/Low).\n## Key Errors \u2014 quote the most important\
+    \ error/exception lines verbatim in code blocks, with line/timestamp if available;\
+    \ prioritize the FIRST error that triggered the failure over downstream noise.\n\
+    ## Root Cause \u2014 the most likely cause, distinguishing between a product/software-under-test\
+    \ bug, a test/automation framework issue, an environment/infrastructure issue\
+    \ (device offline, network, build setup), or a flaky/timing issue; cross-check\
+    \ against the device config when relevant; if uncertain give the top 2 hypotheses\
+    \ ranked by likelihood.\n## Impact \u2014 what functionality is affected and how\
+    \ severe.\n## Suggested Next Steps \u2014 concrete, ordered actions to confirm\
+    \ and fix or retry, naming any specific component, config, device, or owner.\n\
+    ## Related Signals \u2014 warnings, retries, version mismatches, or anomalies\
+    \ worth noting even if not the direct cause.\n\nRules: base every claim on evidence\
+    \ from the log and quote the relevant lines; if the log is truncated or inconclusive,\
+    \ say so and state what else is needed; do not invent errors that are not present.\n\
+    \nLog:\n<<<\n{content}\n>>>"
+agent_config:
+  base_url: https://ai-hub-lite.msc.rokulabs.net/v1
+  api_key: sk-M8v6QjlbuUdptrXsEG_RXQ
+  key_id: 2f217cc120a154fdcb1988f15e0635676b93b6d72a755d8714f4cd72bb0d0729
+  key_alias: kzheng
+  model: claude-haiku-5-5
+  timeout_sec: 300.0
+  max_tokens: 128000
+  temperature: 1.0
+agent_model:
+- name: gpt-5.4
+  description: GPT-5.4
+  model: gpt-5.4
+  max_tokens: 128000
+  temperature: 0.7
+- name: claude-haiku-5-5
+  description: ''
+  model: claude-haiku-5-5
+  max_tokens: 128000
+  temperature: 1.0
+runcase_user_query_list:
+- name: yuzheng
+- name: zzhang
+- name: xyi
+roku_test_cache_data:
+  automation_id:
+  - TunerChannelChangeTimeWithSensor.test_replay_digital_channel_change_time_ldr
+  - HdmiInputResQuantumDataTest.test_vesa_4096_2160_60_444_8bit
+  - HdmiInputResQuantumDataTest.test_vesa_3840_2160_60_444_8bit
+  - HdmiInputResQuantumDataTest.test_4096_2160_30
+  - TRCParamountProviderTestCase.test_live_now_free_trial_hint_present
+  - YouTubeChannelTestCase.test_stream_1_minute
+  testrail_case_id:
+  - '1419588331'
+  - '2659885427'
+  - '2659885426'
+  - '2659885357'
+  - '2660704941'
+  - '9640309'

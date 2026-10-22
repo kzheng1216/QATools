@@ -1,0 +1,23 @@
+2026-08-20 08:00:14 - QATools - INFO - Parsing profile from: /workspaces/automation-ide/mycode/QATools/4_runcase/common/../profiles/ws22_d_ws22_athens_uk.json
+2026-08-20 08:00:15 - QATools - INFO - Total tasks to execute: 27
+2026-08-20 08:00:15 - QATools - INFO - --------------------------------------------------------
+2026-08-20 08:00:15 - QATools - INFO - - Run Task: 1/27
+2026-08-20 08:00:15 - QATools - INFO - - Case IDs: ['HdmiInputResQuantumDataTest.test_480i_60']
+2026-08-20 08:00:15 - QATools - INFO - Case:HdmiInputResQuantumDataTest.test_480i_60 | main  | main  | DeviceName:d_ws22_athens_uk | DeviceSN:X01200PEY323 | DeviceIP:10.64.37.156    | PlanId:[file-system]25772488 | Repeat:0   | Time:2026-08-20 08:00:15 |
+2026-08-20 08:00:21 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2835713]}
+2026-08-20 08:00:21 - QATools - INFO - Current suite ID: 2835713
+2026-08-20 08:00:22 - QATools - INFO - Test suite 2835713 has no Jenkins build assigned yet.
+2026-08-20 08:20:26 - QATools - INFO - - [Build Result] - build_url: https://jenkins.eswat.rokulabs.net/job/qa_hub_launch_suite/1271726/
+2026-08-20 08:20:26 - QATools - INFO - {
+  "_class": "org.jenkinsci.plugins.workflow.job.WorkflowRun",
+  "building": false,
+  "result": "SUCCESS"
+}
+2026-08-20 08:20:26 - QATools - INFO - - Case IDs: ['HdmiInputResQuantumDataTest.test_480i_60'], Status: Unknown
+2026-08-20 08:20:26 - QATools - INFO - --------------------------------------------------------
+2026-08-20 08:20:26 - QATools - INFO - - Run Task: 2/27
+2026-08-20 08:20:26 - QATools - INFO - - Case IDs: ['HdmiInputResQuantumDataTest.test_480p_60']
+2026-08-20 08:20:26 - QATools - INFO - Case:HdmiInputResQuantumDataTest.test_480p_60 | main  | main  | DeviceName:d_ws22_athens_uk | DeviceSN:X01200PEY323 | DeviceIP:10.64.37.156    | PlanId:[file-system]25772488 | Repeat:0   | Time:2026-08-20 08:20:26 |
+2026-08-20 08:20:28 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2835740]}
+2026-08-20 08:20:28 - QATools - INFO - Current suite ID: 2835740
+2026-08-20 08:20:29 - QATools - INFO - Test suite 2835740 has no Jenkins build assigned yet.

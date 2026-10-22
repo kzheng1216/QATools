@@ -1,0 +1,45 @@
+{
+    "roku": {
+        "ip_address": "10.64.25.181",
+        "serial_number": "X01900MTUPK9",
+        "device_id": "S08D439TUPK9",
+        "brand_name": "Hisense",
+        "maxwell_config": {
+            "host": "10.64.29.240",
+            "port": 80
+        },
+        "devices_config": {
+            "HDMI 1": {
+                "brand_name": "Roku",
+                "ip_address": "10.64.24.164",
+                "device_type": "ROKU",
+                "serial_number": "X025003AEYSF",
+                "device_id": "S0J735CAEYSF",
+                "product": "logan",
+                "power_config": {
+                    "host": "10.64.19.43",
+                    "outlet": 4,
+                    "model": "90_240VAC_SMART_PDU"
+                }
+            }
+        },
+        "power_config": {
+            "host": "10.64.25.215",
+            "outlet": 3,
+            "model": "RTVSP_POWER_SWITCH"
+        },
+        "qa_bot_config": {
+            "host": "10.64.24.224"
+        },
+        "rtvsp_config": {
+            "host": "10.64.24.224",
+            "port": 1
+        },
+        "serial_config": {
+            "host": "10.64.24.224",
+            "serial_port": 1,
+            "model": "5",
+            "baudrate": 115200
+        }
+    }
+}

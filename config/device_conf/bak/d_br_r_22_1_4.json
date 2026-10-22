@@ -1,0 +1,30 @@
+{
+    "roku": {
+        "ip_address": "10.64.55.149",
+        "serial_number": "X00000P9U5DL",
+        "device_id": "S03M3009U5DL",
+        "brand_name": "Philco",
+        "maxwell_config": {
+            "host": "10.64.29.240",
+            "port": 80
+        },
+        "power_config": {
+            "host": "10.64.55.159",
+            "outlet": 4,
+            "model": "RTVSP_POWER_SWITCH"
+        },
+        "qa_bot_config": {
+            "host": "10.64.55.158"
+        },
+        "rtvsp_config": {
+            "host": "10.64.55.158",
+            "port": 1
+        },
+        "serial_config": {
+            "host": "10.64.55.158",
+            "serial_port": 1,
+            "model": "5",
+            "baudrate": 115200
+        }
+    }
+}

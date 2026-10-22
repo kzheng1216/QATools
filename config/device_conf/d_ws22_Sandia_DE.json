@@ -1,0 +1,48 @@
+{
+    "roku": {
+        "ip_address": "10.64.36.220",
+        "serial_number": "X029008R2980",
+        "device_id": "S28EY62R2980",
+        "brand_name": "METZ",
+        "power_config": {
+            "host": "10.64.22.128",
+            "model": "TP_LINK_HS300",
+            "outlet": 5
+        },
+        "qa_bot_config": {
+            "host": "10.64.36.213"
+        },
+        "devices_config": {
+            "HDMI 1": {
+                "device_id": "S02A219WT18T",
+                "brand_name": "Roku",
+                "ip_address": "10.64.17.13",
+                "device_type": "ROKU",
+                "power_config": {
+                    "host": "10.64.22.128",
+                    "model": "TP_LINK_HS300",
+                    "outlet": 6
+                },
+                "serial_number": "X01000EWT18T",
+                "channel_credentials": {
+                    "YouTube": {
+                        "password": "Syncaudio1!",
+                        "username": "rokudkqa@gmail.com"
+                    }
+                }
+            },
+            "HDMI 2": {
+                "device_type": "QA_BOT"
+            }
+        },
+        "partner_config": {
+            "support_url": "www.metzblue.com",
+            "support_phone": "49 911-9706-0"
+        },
+        "display_power_config": {
+            "host": "10.64.22.128",
+            "model": "TP_LINK_HS300",
+            "outlet": 3
+        }
+    }
+}

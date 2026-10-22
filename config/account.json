@@ -1,0 +1,6 @@
+{
+  "EMAIL": "yuzheng@roku.com",
+  "DATA_BASE_DIR": "data",
+  "ROKU_TEST_LOG_DIR": "roku_test_log",
+  "AUTOMATED_TESTS_RELATIVE_DIR": "../../automated_tests"
+}

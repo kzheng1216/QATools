@@ -1,0 +1,9 @@
+2026-08-24 07:12:22 - QATools - INFO - Parsing profile from: /workspaces/automation-ide/mycode/QATools/4_runcase/common/../profiles/ws22_d_ca_roxton_qd.json
+2026-08-24 07:12:22 - QATools - INFO - Total tasks to execute: 1
+2026-08-24 07:12:22 - QATools - INFO - --------------------------------------------------------
+2026-08-24 07:12:22 - QATools - INFO - - Run Task: 1/1
+2026-08-24 07:12:22 - QATools - INFO - - Case IDs: ['HdmiInputResQuantumDataTest.test_480i_60']
+2026-08-24 07:12:22 - QATools - INFO - Case:HdmiInputResQuantumDataTest.test_480i_60 | main  | main  | DeviceName:d_ws22_ca_roxton | DeviceSN:X027007481ER | DeviceIP:10.64.30.147    | PlanId:[file-system]0   | Repeat:0   | Time:2026-08-24 07:12:22 |
+2026-08-24 07:12:25 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2843058]}
+2026-08-24 07:12:25 - QATools - INFO - Current suite ID: 2843058
+2026-08-24 07:12:25 - QATools - INFO - Test suite 2843058 has no Jenkins build assigned yet.

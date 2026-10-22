@@ -1,0 +1,155 @@
+2026-10-08 08:25:13 - QATools - INFO - Parsing profile from: /workspaces/automation-ide/mycode/QATools/4_runcase/common/../profiles/profile_26595408_Retest_d_ws22_athens_uk.json
+2026-10-08 08:25:13 - QATools - INFO - Total tasks to execute: 2
+2026-10-08 08:25:13 - QATools - INFO - --------------------------------------------------------
+2026-10-08 08:25:13 - QATools - INFO - - Run Task: 1/2
+2026-10-08 08:25:13 - QATools - INFO - - Case IDs: ['TVInputHDMIVolumeModeSettingsAppliesGlobally.test_hdmi1_volume_mode_leveling_setting_apply_to_tuner']
+2026-10-08 08:25:13 - QATools - INFO - Case:TVInputHDMIVolumeModeSettingsAppliesGlobally.test_hdmi1_volume_mode_leveling_setting_apply_to_tuner | main  | main  | DeviceName:d_ws22_athens_uk | DeviceSN:X01200PEY323 | DeviceIP:10.64.37.156    | PlanId:[file-system]26595408 | Repeat:0   | Time:2026-10-08 08:25:13 |
+2026-10-08 08:25:17 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2948442]}
+2026-10-08 08:25:17 - QATools - INFO - Current suite ID: 2948442
+2026-10-08 08:25:33 - QATools - INFO - Test suite: 2948442 status: Running
+2026-10-08 08:41:03 - QATools - INFO - Test suite: 2948442 status: Pass
+2026-10-08 08:41:03 - QATools - INFO - Test suite 2948442 passed.
+2026-10-08 08:41:03 - QATools - INFO - Stopping further execution due to stop_if_success=True.
+2026-10-08 08:41:03 - QATools - INFO - - Case IDs: ['TVInputHDMIVolumeModeSettingsAppliesGlobally.test_hdmi1_volume_mode_leveling_setting_apply_to_tuner'], Status: Pass
+2026-10-08 08:41:03 - QATools - INFO - --------------------------------------------------------
+2026-10-08 08:41:03 - QATools - INFO - - Run Task: 2/2
+2026-10-08 08:41:03 - QATools - INFO - - Case IDs: ['2659899130']
+2026-10-08 08:41:03 - QATools - INFO - Case:2659899130 | main  | main  | DeviceName:d_ws22_athens_uk | DeviceSN:X01200PEY323 | DeviceIP:10.64.37.156    | PlanId:[file-system]26595408 | Repeat:0   | Time:2026-10-08 08:41:03 |
+2026-10-08 08:41:07 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2948462]}
+2026-10-08 08:41:07 - QATools - INFO - Current suite ID: 2948462
+2026-10-08 08:41:24 - QATools - INFO - Test suite: 2948462 status: Running
+2026-10-08 08:47:27 - QATools - INFO - Test suite: 2948462 status: Pass
+2026-10-08 08:47:27 - QATools - INFO - Test suite 2948462 passed.
+2026-10-08 08:47:27 - QATools - INFO - Stopping further execution due to stop_if_success=True.
+2026-10-08 08:47:27 - QATools - INFO - - Case IDs: ['2659899130'], Status: Pass
+2026-10-08 08:47:27 - QATools - INFO - #########################################################
+2026-10-08 08:47:27 - QATools - INFO - -- [Summary] --
+2026-10-08 08:47:27 - QATools - INFO - #########################################################
+2026-10-08 08:47:27 - QATools - INFO - - Result: 2/2
+2026-10-08 08:47:27 - QATools - INFO - - Case IDs: ['TVInputHDMIVolumeModeSettingsAppliesGlobally.test_hdmi1_volume_mode_leveling_setting_apply_to_tuner'], Status: Pass
+2026-10-08 08:47:27 - QATools - INFO - - Case IDs: ['2659899130'], Status: Pass
+2026-10-08 09:05:56 - QATools - INFO - Parsing profile from: /workspaces/automation-ide/mycode/QATools/4_runcase/common/../profiles/profile_26595408_Failed_d_ws22_athens_uk.json
+2026-10-08 09:05:56 - QATools - INFO - Total tasks to execute: 8
+2026-10-08 09:05:56 - QATools - INFO - --------------------------------------------------------
+2026-10-08 09:05:56 - QATools - INFO - - Run Task: 1/8
+2026-10-08 09:05:56 - QATools - INFO - - Case IDs: ['HdmiModeHdrLogoYoutubeHlgContentTests.test_hdr_badge_verification_resume_tv_by_power_on']
+2026-10-08 09:05:56 - QATools - INFO - Case:HdmiModeHdrLogoYoutubeHlgContentTests.test_hdr_badge_verification_resume_tv_by_power_on | main  | main  | DeviceName:d_ws22_athens_uk | DeviceSN:X01200PEY323 | DeviceIP:10.64.37.156    | PlanId:[file-system]26595408 | Repeat:0   | Time:2026-10-08 09:05:56 |
+2026-10-08 09:05:58 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2948497]}
+2026-10-08 09:05:58 - QATools - INFO - Current suite ID: 2948497
+2026-10-08 09:06:15 - QATools - INFO - Test suite: 2948497 status: Running
+2026-10-08 09:18:28 - QATools - INFO - Test suite: 2948497 status: Failed
+2026-10-08 09:18:28 - QATools - INFO - - Case IDs: ['HdmiModeHdrLogoYoutubeHlgContentTests.test_hdr_badge_verification_resume_tv_by_power_on'], Status: Failed
+2026-10-08 09:18:28 - QATools - INFO - --------------------------------------------------------
+2026-10-08 09:18:28 - QATools - INFO - - Run Task: 2/8
+2026-10-08 09:18:28 - QATools - INFO - - Case IDs: ['HdmiModeHdrLogoYoutubeHlgContentTests.test_hdr_badge_verification_resume_tv_suspend_mode']
+2026-10-08 09:18:28 - QATools - INFO - Case:HdmiModeHdrLogoYoutubeHlgContentTests.test_hdr_badge_verification_resume_tv_suspend_mode | main  | main  | DeviceName:d_ws22_athens_uk | DeviceSN:X01200PEY323 | DeviceIP:10.64.37.156    | PlanId:[file-system]26595408 | Repeat:0   | Time:2026-10-08 09:18:28 |
+2026-10-08 09:18:31 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2948560]}
+2026-10-08 09:18:31 - QATools - INFO - Current suite ID: 2948560
+2026-10-08 09:18:48 - QATools - INFO - Test suite: 2948560 status: Queued
+2026-10-08 09:18:48 - QATools - INFO - Test suite 2948560 is queued. Retrying...
+2026-10-08 09:18:49 - QATools - INFO - Case:HdmiModeHdrLogoYoutubeHlgContentTests.test_hdr_badge_verification_resume_tv_suspend_mode | main  | main  | DeviceName:d_ws22_athens_uk | DeviceSN:X01200PEY323 | DeviceIP:10.64.37.156    | PlanId:[file-system]26595408 | Repeat:0   | Time:2026-10-08 09:18:49 |
+2026-10-08 09:18:52 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2948561]}
+2026-10-08 09:18:52 - QATools - INFO - Current suite ID: 2948561
+2026-10-08 09:19:21 - QATools - INFO - Case:HdmiModeHdrLogoYoutubeHlgContentTests.test_hdr_badge_verification_resume_tv_suspend_mode | main  | main  | DeviceName:d_ws22_athens_uk | DeviceSN:X01200PEY323 | DeviceIP:10.64.37.156    | PlanId:[file-system]26595408 | Repeat:0   | Time:2026-10-08 09:19:21 |
+2026-10-08 09:19:24 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2948562]}
+2026-10-08 09:19:24 - QATools - INFO - Current suite ID: 2948562
+2026-10-08 09:19:52 - QATools - INFO - Case:HdmiModeHdrLogoYoutubeHlgContentTests.test_hdr_badge_verification_resume_tv_suspend_mode | main  | main  | DeviceName:d_ws22_athens_uk | DeviceSN:X01200PEY323 | DeviceIP:10.64.37.156    | PlanId:[file-system]26595408 | Repeat:0   | Time:2026-10-08 09:19:52 |
+2026-10-08 09:19:56 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2948566]}
+2026-10-08 09:19:56 - QATools - INFO - Current suite ID: 2948566
+2026-10-08 09:20:12 - QATools - INFO - Test suite: 2948566 status: Running
+2026-10-08 09:28:06 - QATools - INFO - Parsing profile from: /workspaces/automation-ide/mycode/QATools/4_runcase/common/../profiles/profile_26595408_Failed_d_ws22_athens_uk.json
+2026-10-08 09:28:06 - QATools - INFO - Total tasks to execute: 8
+2026-10-08 09:28:06 - QATools - INFO - --------------------------------------------------------
+2026-10-08 09:28:06 - QATools - INFO - - Run Task: 1/8
+2026-10-08 09:28:06 - QATools - INFO - - Case IDs: ['HdmiModeHdrLogoYoutubeHlgContentTests.test_hdr_badge_verification_resume_tv_by_power_on']
+2026-10-08 09:28:06 - QATools - INFO - Case:HdmiModeHdrLogoYoutubeHlgContentTests.test_hdr_badge_verification_resume_tv_by_power_on | main  | main  | DeviceName:d_ws22_athens_uk | DeviceSN:X01200PEY323 | DeviceIP:10.64.37.156    | PlanId:[file-system]26595408 | Repeat:0   | Time:2026-10-08 09:28:06 |
+2026-10-08 09:28:09 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2948580]}
+2026-10-08 09:28:09 - QATools - INFO - Current suite ID: 2948580
+2026-10-08 09:28:27 - QATools - INFO - Test suite: 2948580 status: Running
+2026-10-08 09:55:34 - QATools - INFO - Test suite: 2948580 status: Failed
+2026-10-08 09:55:34 - QATools - INFO - - Case IDs: ['HdmiModeHdrLogoYoutubeHlgContentTests.test_hdr_badge_verification_resume_tv_by_power_on'], Status: Failed
+2026-10-08 09:55:34 - QATools - INFO - --------------------------------------------------------
+2026-10-08 09:55:34 - QATools - INFO - - Run Task: 2/8
+2026-10-08 09:55:34 - QATools - INFO - - Case IDs: ['HdmiModeHdrLogoYoutubeHlgContentTests.test_hdr_badge_verification_resume_tv_suspend_mode']
+2026-10-08 09:55:34 - QATools - INFO - Case:HdmiModeHdrLogoYoutubeHlgContentTests.test_hdr_badge_verification_resume_tv_suspend_mode | main  | main  | DeviceName:d_ws22_athens_uk | DeviceSN:X01200PEY323 | DeviceIP:10.64.37.156    | PlanId:[file-system]26595408 | Repeat:0   | Time:2026-10-08 09:55:34 |
+2026-10-08 09:55:37 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2948615]}
+2026-10-08 09:55:37 - QATools - INFO - Current suite ID: 2948615
+2026-10-08 09:55:38 - QATools - INFO - Test suite: 2948615 status: Setup
+2026-10-08 09:55:49 - QATools - INFO - Test suite: 2948615 status: Running
+2026-10-08 10:13:36 - QATools - INFO - Test suite: 2948615 status: Failed
+2026-10-08 10:13:36 - QATools - INFO - - Case IDs: ['HdmiModeHdrLogoYoutubeHlgContentTests.test_hdr_badge_verification_resume_tv_suspend_mode'], Status: Failed
+2026-10-08 10:13:36 - QATools - INFO - --------------------------------------------------------
+2026-10-08 10:13:36 - QATools - INFO - - Run Task: 3/8
+2026-10-08 10:13:36 - QATools - INFO - - Case IDs: ['HUDInformationShownTests.test_hud_information_after_channel_tune']
+2026-10-08 10:13:36 - QATools - INFO - Case:HUDInformationShownTests.test_hud_information_after_channel_tune | main  | main  | DeviceName:d_ws22_athens_uk | DeviceSN:X01200PEY323 | DeviceIP:10.64.37.156    | PlanId:[file-system]26595408 | Repeat:0   | Time:2026-10-08 10:13:36 |
+2026-10-08 10:13:40 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2948645]}
+2026-10-08 10:13:40 - QATools - INFO - Current suite ID: 2948645
+2026-10-08 10:13:58 - QATools - INFO - Test suite: 2948645 status: Running
+2026-10-08 10:23:58 - QATools - INFO - Test suite: 2948645 status: Unknown
+2026-10-08 10:23:58 - QATools - INFO - - Case IDs: ['HUDInformationShownTests.test_hud_information_after_channel_tune'], Status: Unknown
+2026-10-08 10:23:58 - QATools - INFO - --------------------------------------------------------
+2026-10-08 10:23:58 - QATools - INFO - - Run Task: 4/8
+2026-10-08 10:23:58 - QATools - INFO - - Case IDs: ['2659901775']
+2026-10-08 10:23:58 - QATools - INFO - Case:2659901775 | main  | main  | DeviceName:d_ws22_athens_uk | DeviceSN:X01200PEY323 | DeviceIP:10.64.37.156    | PlanId:[file-system]26595408 | Repeat:0   | Time:2026-10-08 10:23:58 |
+2026-10-08 10:24:00 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2948685]}
+2026-10-08 10:24:00 - QATools - INFO - Current suite ID: 2948685
+2026-10-08 10:24:18 - QATools - INFO - Test suite: 2948685 status: Queued
+2026-10-08 10:24:18 - QATools - INFO - Test suite 2948685 is queued. Retrying...
+2026-10-08 10:24:19 - QATools - INFO - Case:2659901775 | main  | main  | DeviceName:d_ws22_athens_uk | DeviceSN:X01200PEY323 | DeviceIP:10.64.37.156    | PlanId:[file-system]26595408 | Repeat:0   | Time:2026-10-08 10:24:19 |
+2026-10-08 10:24:22 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2948688]}
+2026-10-08 10:24:22 - QATools - INFO - Current suite ID: 2948688
+2026-10-08 10:24:51 - QATools - INFO - Case:2659901775 | main  | main  | DeviceName:d_ws22_athens_uk | DeviceSN:X01200PEY323 | DeviceIP:10.64.37.156    | PlanId:[file-system]26595408 | Repeat:0   | Time:2026-10-08 10:24:51 |
+2026-10-08 10:24:54 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2948689]}
+2026-10-08 10:24:54 - QATools - INFO - Current suite ID: 2948689
+2026-10-08 10:25:12 - QATools - INFO - Test suite: 2948689 status: Running
+2026-10-08 10:30:07 - QATools - INFO - Test suite: 2948689 status: Blocked
+2026-10-08 10:30:07 - QATools - INFO - - Case IDs: ['2659901775'], Status: Blocked
+2026-10-08 10:30:07 - QATools - INFO - --------------------------------------------------------
+2026-10-08 10:30:07 - QATools - INFO - - Run Task: 5/8
+2026-10-08 10:30:07 - QATools - INFO - - Case IDs: ['StoreModeNandPosVideoTest.test_store_mode_posvideo_persistence_factory_reset']
+2026-10-08 10:30:07 - QATools - INFO - Case:StoreModeNandPosVideoTest.test_store_mode_posvideo_persistence_factory_reset | main  | main  | DeviceName:d_ws22_athens_uk | DeviceSN:X01200PEY323 | DeviceIP:10.64.37.156    | PlanId:[file-system]26595408 | Repeat:0   | Time:2026-10-08 10:30:07 |
+2026-10-08 10:30:14 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2948696]}
+2026-10-08 10:30:14 - QATools - INFO - Current suite ID: 2948696
+2026-10-08 10:30:31 - QATools - INFO - Test suite: 2948696 status: Running
+2026-10-08 10:42:01 - QATools - INFO - Test suite: 2948696 status: Failed
+2026-10-08 10:42:01 - QATools - INFO - - Case IDs: ['StoreModeNandPosVideoTest.test_store_mode_posvideo_persistence_factory_reset'], Status: Failed
+2026-10-08 10:42:01 - QATools - INFO - --------------------------------------------------------
+2026-10-08 10:42:01 - QATools - INFO - - Run Task: 6/8
+2026-10-08 10:42:01 - QATools - INFO - - Case IDs: ['2659884675']
+2026-10-08 10:42:01 - QATools - INFO - Case:2659884675 | main  | main  | DeviceName:d_ws22_athens_uk | DeviceSN:X01200PEY323 | DeviceIP:10.64.37.156    | PlanId:[file-system]26595408 | Repeat:0   | Time:2026-10-08 10:42:01 |
+2026-10-08 10:42:05 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2948741]}
+2026-10-08 10:42:05 - QATools - INFO - Current suite ID: 2948741
+2026-10-08 10:42:22 - QATools - INFO - Test suite: 2948741 status: Running
+2026-10-08 10:56:22 - QATools - INFO - Test suite: 2948741 status: Unknown
+2026-10-08 10:56:22 - QATools - INFO - - Case IDs: ['2659884675'], Status: Unknown
+2026-10-08 10:56:22 - QATools - INFO - --------------------------------------------------------
+2026-10-08 10:56:22 - QATools - INFO - - Run Task: 7/8
+2026-10-08 10:56:22 - QATools - INFO - - Case IDs: ['2659885255']
+2026-10-08 10:56:22 - QATools - INFO - Case:2659885255 | main  | main  | DeviceName:d_ws22_athens_uk | DeviceSN:X01200PEY323 | DeviceIP:10.64.37.156    | PlanId:[file-system]26595408 | Repeat:0   | Time:2026-10-08 10:56:22 |
+2026-10-08 10:56:25 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2948795]}
+2026-10-08 10:56:25 - QATools - INFO - Current suite ID: 2948795
+2026-10-08 10:56:41 - QATools - INFO - Test suite: 2948795 status: Running
+2026-10-08 11:14:05 - QATools - INFO - Test suite: 2948795 status: Failed
+2026-10-08 11:14:05 - QATools - INFO - - Case IDs: ['2659885255'], Status: Failed
+2026-10-08 11:14:05 - QATools - INFO - --------------------------------------------------------
+2026-10-08 11:14:05 - QATools - INFO - - Run Task: 8/8
+2026-10-08 11:14:05 - QATools - INFO - - Case IDs: ['2659885518']
+2026-10-08 11:14:05 - QATools - INFO - Case:2659885518 | yuzheng/AUTO-77350/fix | main  | DeviceName:d_ws22_athens_uk | DeviceSN:X01200PEY323 | DeviceIP:10.64.37.156    | PlanId:[file-system]26595408 | Repeat:0   | Time:2026-10-08 11:14:05 |
+2026-10-08 11:14:08 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2948811]}
+2026-10-08 11:14:08 - QATools - INFO - Current suite ID: 2948811
+2026-10-08 11:14:09 - QATools - INFO - Test suite: 2948811 status: Setup
+2026-10-08 11:14:21 - QATools - INFO - Test suite: 2948811 status: Running
+2026-10-08 12:01:02 - QATools - INFO - Test suite: 2948811 status: Blocked
+2026-10-08 12:01:02 - QATools - INFO - - Case IDs: ['2659885518'], Status: Blocked
+2026-10-08 12:01:02 - QATools - INFO - #########################################################
+2026-10-08 12:01:02 - QATools - INFO - -- [Summary] --
+2026-10-08 12:01:02 - QATools - INFO - #########################################################
+2026-10-08 12:01:02 - QATools - INFO - - Result: 8/8
+2026-10-08 12:01:02 - QATools - INFO - - Case IDs: ['HdmiModeHdrLogoYoutubeHlgContentTests.test_hdr_badge_verification_resume_tv_by_power_on'], Status: Failed
+2026-10-08 12:01:02 - QATools - INFO - - Case IDs: ['HdmiModeHdrLogoYoutubeHlgContentTests.test_hdr_badge_verification_resume_tv_suspend_mode'], Status: Failed
+2026-10-08 12:01:02 - QATools - INFO - - Case IDs: ['HUDInformationShownTests.test_hud_information_after_channel_tune'], Status: Unknown
+2026-10-08 12:01:02 - QATools - INFO - - Case IDs: ['2659901775'], Status: Blocked
+2026-10-08 12:01:02 - QATools - INFO - - Case IDs: ['StoreModeNandPosVideoTest.test_store_mode_posvideo_persistence_factory_reset'], Status: Failed
+2026-10-08 12:01:02 - QATools - INFO - - Case IDs: ['2659884675'], Status: Unknown
+2026-10-08 12:01:02 - QATools - INFO - - Case IDs: ['2659885255'], Status: Failed
+2026-10-08 12:01:02 - QATools - INFO - - Case IDs: ['2659885518'], Status: Blocked

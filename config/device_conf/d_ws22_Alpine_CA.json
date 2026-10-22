@@ -1,0 +1,53 @@
+{
+    "roku": {
+        "device_id": "S254464JCSNP",
+        "brand_name": "onn",
+        "ip_address": "10.64.21.235",
+        "power_config": {
+            "host": "10.64.31.253",
+            "model": "TP_LINK_HS300",
+            "outlet": 1
+        },
+        "qa_bot_config": {
+            "host": "10.64.31.215"
+        },
+        "serial_number": "X03900EJCSNP",
+        "devices_config": {
+            "HDMI 1": {
+                "device_id": "S02C207FM8HV",
+                "brand_name": "Roku",
+                "ip_address": "10.64.22.151",
+                "device_type": "ROKU",
+                "power_config": {
+                    "host": "10.64.31.253",
+                    "model": "TP_LINK_HS300",
+                    "outlet": 5
+                },
+                "serial_number": "X01000NFM8HV",
+                "channel_credentials": {
+                    "YouTube": {
+                        "password": "Syncaudio1!",
+                        "username": "rokudkqa@gmail.com"
+                    }
+                }
+            },
+            "HDMI 2": {
+                "device_type": "QA_BOT"
+            }
+        },
+        "partner_config": {
+            "support_url": "https://onntvsupport.ca",
+            "support_phone": "844-334-2355"
+        },
+        "avr_info_config": {
+            "ip_address": "10.64.24.243",
+            "brand": "yamaha",
+            "cec_name": "TSR-700"
+        },
+        "display_power_config": {
+            "host": "10.64.31.253",
+            "model": "TP_LINK_HS300",
+            "outlet": 4
+        }
+    }
+}

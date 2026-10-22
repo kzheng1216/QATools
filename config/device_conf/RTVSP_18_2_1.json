@@ -1,0 +1,45 @@
+{
+    "roku": {
+        "ip_address": "10.64.24.34",
+        "serial_number": "X02900R2DH3L",
+        "device_id": "S18LY4A2DH3L",
+        "brand_name": "Westinghouse",
+        "maxwell_config": {
+            "host": "10.64.29.240",
+            "port": 80
+        },
+        "devices_config": {
+            "HDMI 1": {
+                "brand_name": "Roku",
+                "ip_address": "10.64.24.39",
+                "device_type": "ROKU",
+                "serial_number": "YJ00H3566900",
+                "device_id": "KW896H566900",
+                "product": "bryan2",
+                "power_config": {
+                    "host": "10.64.29.49",
+                    "outlet": 5,
+                    "model": "90_240VAC_SMART_PDU"
+                }
+            }
+        },
+        "power_config": {
+            "host": "10.64.28.134",
+            "outlet": 1,
+            "model": "RTVSP_POWER_SWITCH"
+        },
+        "qa_bot_config": {
+            "host": "10.64.28.134"
+        },
+        "rtvsp_config": {
+            "host": "10.64.28.134",
+            "port": 1
+        },
+        "serial_config": {
+            "host": "10.64.28.134",
+            "serial_port": 1,
+            "model": "ToolBot",
+            "baudrate": 115200
+        }
+    }
+}

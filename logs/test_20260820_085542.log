@@ -1,0 +1,24 @@
+2026-08-20 08:55:42 - QATools - INFO - Parsing profile from: /workspaces/automation-ide/mycode/QATools/4_runcase/common/../profiles/ws22_d_us_roxton_ext.json
+2026-08-20 08:55:42 - QATools - INFO - Total tasks to execute: 1
+2026-08-20 08:55:42 - QATools - INFO - --------------------------------------------------------
+2026-08-20 08:55:42 - QATools - INFO - - Run Task: 1/1
+2026-08-20 08:55:42 - QATools - INFO - - Case IDs: ['LiveTvCaptionsModeSettingPersistance.test_captions_mode_setting_off_persistance']
+2026-08-20 08:55:42 - QATools - INFO - Case:LiveTvCaptionsModeSettingPersistance.test_captions_mode_setting_off_persistance | main  | main  | DeviceName:d_ws22_us_roxton | DeviceSN:X027007481ER | DeviceIP:10.64.30.147    | PlanId:[file-system]25772547 | Repeat:0   | Time:2026-08-20 08:55:42 |
+2026-08-20 08:55:45 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2835783]}
+2026-08-20 08:55:45 - QATools - INFO - Current suite ID: 2835783
+2026-08-20 08:55:46 - QATools - INFO - Test suite 2835783 has no Jenkins build assigned yet.
+2026-08-20 09:18:53 - QATools - INFO - - [Build Result] - build_url: https://jenkins.eswat.rokulabs.net/job/qa_hub_launch_suite/1271773/
+2026-08-20 09:18:53 - QATools - INFO - {
+  "_class": "org.jenkinsci.plugins.workflow.job.WorkflowRun",
+  "building": false,
+  "result": "SUCCESS"
+}
+2026-08-20 09:18:53 - QATools - INFO - Test suite 2835783 passed.
+2026-08-20 09:18:53 - QATools - INFO - Stopping further execution due to stop_if_success=True.
+2026-08-20 09:18:53 - QATools - INFO - - Case IDs: ['LiveTvCaptionsModeSettingPersistance.test_captions_mode_setting_off_persistance'], Status: Pass
+2026-08-20 09:18:53 - QATools - INFO - #########################################################
+2026-08-20 09:18:53 - QATools - INFO - -- [Summary] --
+2026-08-20 09:18:53 - QATools - INFO - #########################################################
+2026-08-20 09:18:53 - QATools - INFO - - Result: 1/1
+2026-08-20 09:18:53 - QATools - INFO - - Case IDs: ['LiveTvCaptionsModeSettingPersistance.test_captions_mode_setting_off_persistance'], Status: Pass
+2026-08-20 09:18:53 - QATools - INFO - - Case IDs: ['LiveTvCaptionsModeSettingPersistance.test_captions_mode_setting_off_persistance'], Status: Pass

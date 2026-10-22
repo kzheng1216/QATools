@@ -1,0 +1,19 @@
+2026-10-03 08:02:48 - QATools - INFO - Parsing profile from: /workspaces/automation-ide/mycode/QATools/4_runcase/common/../profiles/profile_26595408_Failed_d_ws22_athens_uk.json
+2026-10-03 08:03:31 - QATools - INFO - Parsing profile from: /workspaces/automation-ide/mycode/QATools/4_runcase/common/../profiles/profile_26595408_Failed_d_ws22_athens_uk.json
+2026-10-03 08:04:39 - QATools - INFO - Parsing profile from: /workspaces/automation-ide/mycode/QATools/4_runcase/common/../profiles/profile_26595408_Failed_d_ws22_athens_uk.json
+2026-10-03 08:09:41 - QATools - INFO - Parsing profile from: /workspaces/automation-ide/mycode/QATools/4_runcase/common/../profiles/profile_26595408_Failed_d_ws22_athens_uk.json
+2026-10-03 08:09:41 - QATools - INFO - Total tasks to execute: 1
+2026-10-03 08:09:41 - QATools - INFO - --------------------------------------------------------
+2026-10-03 08:09:41 - QATools - INFO - - Run Task: 1/1
+2026-10-03 08:09:41 - QATools - INFO - - Case IDs: ['HdmiModeHdrLogoYoutubeHlgContentTests.test_hdr_badge_verification_resume_tv_by_power_on']
+2026-10-03 08:09:41 - QATools - INFO - Case:HdmiModeHdrLogoYoutubeHlgContentTests.test_hdr_badge_verification_resume_tv_by_power_on | main  | main  | DeviceName:d_ws22_athens_uk | DeviceSN:X01200PEY323 | DeviceIP:10.64.37.156    | PlanId:[file-system]0   | Repeat:0   | Time:2026-10-03 08:09:41 |
+2026-10-03 08:09:44 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2937580]}
+2026-10-03 08:09:44 - QATools - INFO - Current suite ID: 2937580
+2026-10-03 08:10:02 - QATools - INFO - Test suite: 2937580 status: Running
+2026-10-03 08:33:04 - QATools - INFO - Test suite: 2937580 status: Failed
+2026-10-03 08:33:04 - QATools - INFO - - Case IDs: ['HdmiModeHdrLogoYoutubeHlgContentTests.test_hdr_badge_verification_resume_tv_by_power_on'], Status: Failed
+2026-10-03 08:33:04 - QATools - INFO - #########################################################
+2026-10-03 08:33:04 - QATools - INFO - -- [Summary] --
+2026-10-03 08:33:04 - QATools - INFO - #########################################################
+2026-10-03 08:33:04 - QATools - INFO - - Result: 1/1
+2026-10-03 08:33:04 - QATools - INFO - - Case IDs: ['HdmiModeHdrLogoYoutubeHlgContentTests.test_hdr_badge_verification_resume_tv_by_power_on'], Status: Failed

@@ -1,0 +1,449 @@
+{
+    "name": "backlogreviewp01",
+    "description": "",
+    "tasks": [
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "YouTubeChannelTestCase.test_stream_1_minute",
+                "testrail_case_id": 9640309,
+                "device": "US_KIT-428_athens",
+                "testrail_plan_id": 0,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "FeaturedFreeNavigationTestCase.test_press_home_and_down_navigates_to_featured_free",
+                "testrail_case_id": 1342911026,
+                "device": "US_KIT-428_athens",
+                "testrail_plan_id": 0,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "PrimeVideoChannelTestCase.test_beacon_channel_launch_performance_from_suspend_wireless",
+                "testrail_case_id": 1397745540,
+                "device": "US_KIT-428_athens",
+                "testrail_plan_id": 0,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "TunerChannelChangeTimeWithSensor.test_replay_digital_channel_change_time_ldr",
+                "testrail_case_id": 1419588331,
+                "device": "US_KIT-428_athens",
+                "testrail_plan_id": 0,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "StoreModeEpopSettings.test_epop_reappears_timing_after_previous_epop_cycles",
+                "testrail_case_id": 2234413286,
+                "device": "US_KIT-428_athens",
+                "testrail_plan_id": 0,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "WhatToWatchBOBTest.test_verify_bob_lines_displayed",
+                "testrail_case_id": 2652597091,
+                "device": "US_KIT-428_athens",
+                "testrail_plan_id": 0,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "PrimeVideoChannelTestCase.test_partner_button_in_another_channel_uninstalled",
+                "testrail_case_id": 2659879390,
+                "device": "US_KIT-428_athens",
+                "testrail_plan_id": 0,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "DisneyPlusChannelTestCase.test_launch_using_partner_button_uninstalled",
+                "testrail_case_id": 2659879585,
+                "device": "US_KIT-428_athens",
+                "testrail_plan_id": 0,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "DisneyPlusChannelTestCase.test_partner_button_in_another_channel_uninstalled",
+                "testrail_case_id": 2659879594,
+                "device": "US_KIT-428_athens",
+                "testrail_plan_id": 0,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "RMPVideoPlaybackTransitionTests.test_video_sdr_hdr10plus_playback_transition",
+                "testrail_case_id": 2659898832,
+                "device": "US_KIT-428_athens",
+                "testrail_plan_id": 0,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "RMPVideoPlaybackTransitionTests.test_video_hdr_hdr10plus_playback_transition",
+                "testrail_case_id": 2659898833,
+                "device": "US_KIT-428_athens",
+                "testrail_plan_id": 0,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "RMPVideoPlaybackTransitionTests.test_video_dolby_hdr10plus_playback_transition",
+                "testrail_case_id": 2659898834,
+                "device": "US_KIT-428_athens",
+                "testrail_plan_id": 0,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "RMPVideoPlaybackTransitionTests.test_video_hlg_hdr10plus_playback_transition",
+                "testrail_case_id": 2659898835,
+                "device": "US_KIT-428_athens",
+                "testrail_plan_id": 0,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "StoreModeEpop3Settings.test_epop3_check_model_size",
+                "testrail_case_id": 2659901727,
+                "device": "US_KIT-428_athens",
+                "testrail_plan_id": 0,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "TheAmoebaExperimentSanityTestSuite.test_wtw_postitive",
+                "testrail_case_id": 2660700637,
+                "device": "US_KIT-428_athens",
+                "testrail_plan_id": 0,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "TRCParamountProviderTestCase.test_live_now_free_trial_hint_present",
+                "testrail_case_id": 2660704941,
+                "device": "US_KIT-428_athens",
+                "testrail_plan_id": 0,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "TheNRTSaveListTestSuite.test_globalsearch",
+                "testrail_case_id": 2660772076,
+                "device": "US_KIT-428_athens",
+                "testrail_plan_id": 0,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "TheAmoebaExperimentSanityTestSuite.test_ff_negative",
+                "testrail_case_id": 2665750435,
+                "device": "US_KIT-428_athens",
+                "testrail_plan_id": 0,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "TheAmoebaExperimentSanityTestSuite.test_ff_postitive",
+                "testrail_case_id": 2665750476,
+                "device": "US_KIT-428_athens",
+                "testrail_plan_id": 0,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "TheAmoebaExperimentSanityTestSuite.test_pressrightfromhome",
+                "testrail_case_id": 2665750477,
+                "device": "US_KIT-428_athens",
+                "testrail_plan_id": 0,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "AirplayAVSyncTest.test_av_sync_youtube",
+                "testrail_case_id": 2671119035,
+                "device": "US_KIT-428_athens",
+                "testrail_plan_id": 0,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "RBTVStoreModeEpopSettings.test_epop_disable",
+                "testrail_case_id": 2671846659,
+                "device": "US_KIT-428_athens",
+                "testrail_plan_id": 0,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "MPSmoke.test_smoke_rsg_hls_live",
+                "testrail_case_id": 2681115972,
+                "device": "US_KIT-428_athens",
+                "testrail_plan_id": 0,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2690733676",
+                "testrail_case_id": 2690733676,
+                "device": "US_KIT-428_athens",
+                "testrail_plan_id": 0,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2729374341",
+                "testrail_case_id": 2729374341,
+                "device": "US_KIT-428_athens",
+                "testrail_plan_id": 0,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2734022039",
+                "testrail_case_id": 2734022039,
+                "device": "US_KIT-428_athens",
+                "testrail_plan_id": 0,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2754569273",
+                "testrail_case_id": 2754569273,
+                "device": "US_KIT-428_athens",
+                "testrail_plan_id": 0,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2790705513",
+                "testrail_case_id": 2790705513,
+                "device": "US_KIT-428_athens",
+                "testrail_plan_id": 0,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2790959941",
+                "testrail_case_id": 2790959941,
+                "device": "US_KIT-428_athens",
+                "testrail_plan_id": 0,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2790959942",
+                "testrail_case_id": 2790959942,
+                "device": "US_KIT-428_athens",
+                "testrail_plan_id": 0,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2790959943",
+                "testrail_case_id": 2790959943,
+                "device": "US_KIT-428_athens",
+                "testrail_plan_id": 0,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2808623569",
+                "testrail_case_id": 2808623569,
+                "device": "US_KIT-428_athens",
+                "testrail_plan_id": 0,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2811953380",
+                "testrail_case_id": 2811953380,
+                "device": "US_KIT-428_athens",
+                "testrail_plan_id": 0,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2825373465",
+                "testrail_case_id": 2825373465,
+                "device": "US_KIT-428_athens",
+                "testrail_plan_id": 0,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "timeout": 360000
+        }
+    ],
+    "execution_mode": "SERIAL"
+}

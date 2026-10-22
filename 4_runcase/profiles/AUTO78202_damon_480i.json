@@ -1,0 +1,22 @@
+{
+    "name": "AUTO78202_damon_480i",
+    "description": "Verify AUTO-78202 fix: VIC6 480i reports 4:3",
+    "tasks": [
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "HdmiInputResQuantumDataTest.test_480i_60",
+                "device": "d_ws22_Damon_US",
+                "testrail_plan_id": 0,
+                "repeat": 0,
+                "automation_test_branch": "yuzheng/AUTO-78202/fix_issue",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        }
+    ],
+    "execution_mode": "SERIAL"
+}

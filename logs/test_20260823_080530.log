@@ -1,0 +1,136 @@
+2026-08-23 08:05:30 - QATools - INFO - Parsing profile from: /workspaces/automation-ide/mycode/QATools/4_runcase/common/../profiles/ws22_d_ws22_athens_uk_ext.json
+2026-08-23 08:05:30 - QATools - INFO - Total tasks to execute: 20
+2026-08-23 08:05:30 - QATools - INFO - --------------------------------------------------------
+2026-08-23 08:05:30 - QATools - INFO - - Run Task: 1/20
+2026-08-23 08:05:30 - QATools - INFO - - Case IDs: ['2659884673']
+2026-08-23 08:05:30 - QATools - INFO - Case:2659884673 | main  | yuzheng/NO-JIRA/main | DeviceName:d_ws22_athens_uk | DeviceSN:X01200PEY323 | DeviceIP:10.64.37.156    | PlanId:[file-system]26042426 | Repeat:0   | Time:2026-08-23 08:05:30 |
+2026-08-23 08:05:33 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2841235]}
+2026-08-23 08:05:33 - QATools - INFO - Current suite ID: 2841235
+2026-08-23 08:05:34 - QATools - INFO - Test suite 2841235 has no Jenkins build assigned yet.
+2026-08-23 08:11:48 - QATools - INFO - - [Build Result] - build_url: https://jenkins.eswat.rokulabs.net/job/qa_hub_launch_suite/1274576/
+2026-08-23 08:11:48 - QATools - INFO - {
+  "_class": "org.jenkinsci.plugins.workflow.job.WorkflowRun",
+  "building": false,
+  "result": "SUCCESS"
+}
+2026-08-23 08:11:48 - QATools - INFO - Test suite 2841235 passed.
+2026-08-23 08:11:48 - QATools - INFO - Stopping further execution due to stop_if_success=True.
+2026-08-23 08:11:48 - QATools - INFO - - Case IDs: ['2659884673'], Status: Pass
+2026-08-23 08:11:48 - QATools - INFO - --------------------------------------------------------
+2026-08-23 08:11:48 - QATools - INFO - - Run Task: 2/20
+2026-08-23 08:11:48 - QATools - INFO - - Case IDs: ['2659884675']
+2026-08-23 08:11:48 - QATools - INFO - Case:2659884675 | main  | yuzheng/NO-JIRA/main | DeviceName:d_ws22_athens_uk | DeviceSN:X01200PEY323 | DeviceIP:10.64.37.156    | PlanId:[file-system]26042426 | Repeat:0   | Time:2026-08-23 08:11:48 |
+2026-08-23 08:11:52 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2841239]}
+2026-08-23 08:11:52 - QATools - INFO - Current suite ID: 2841239
+2026-08-23 08:11:52 - QATools - INFO - Test suite 2841239 has no Jenkins build assigned yet.
+2026-08-23 08:18:07 - QATools - INFO - - [Build Result] - build_url: https://jenkins.eswat.rokulabs.net/job/qa_hub_launch_suite/1274580/
+2026-08-23 08:18:07 - QATools - INFO - {
+  "_class": "org.jenkinsci.plugins.workflow.job.WorkflowRun",
+  "building": false,
+  "result": "SUCCESS"
+}
+2026-08-23 08:18:07 - QATools - INFO - Test suite 2841239 passed.
+2026-08-23 08:18:07 - QATools - INFO - Stopping further execution due to stop_if_success=True.
+2026-08-23 08:18:07 - QATools - INFO - - Case IDs: ['2659884675'], Status: Pass
+2026-08-23 08:18:07 - QATools - INFO - --------------------------------------------------------
+2026-08-23 08:18:07 - QATools - INFO - - Run Task: 3/20
+2026-08-23 08:18:07 - QATools - INFO - - Case IDs: ['2659883947']
+2026-08-23 08:18:07 - QATools - INFO - Case:2659883947 | main  | yuzheng/NO-JIRA/main | DeviceName:d_ws22_athens_uk | DeviceSN:X01200PEY323 | DeviceIP:10.64.37.156    | PlanId:[file-system]26042426 | Repeat:0   | Time:2026-08-23 08:18:07 |
+2026-08-23 08:18:11 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2841243]}
+2026-08-23 08:18:11 - QATools - INFO - Current suite ID: 2841243
+2026-08-23 08:18:11 - QATools - INFO - Test suite 2841243 has no Jenkins build assigned yet.
+2026-08-23 08:25:01 - QATools - INFO - - [Build Result] - build_url: https://jenkins.eswat.rokulabs.net/job/qa_hub_launch_suite/1274584/
+2026-08-23 08:25:01 - QATools - INFO - {
+  "_class": "org.jenkinsci.plugins.workflow.job.WorkflowRun",
+  "building": false,
+  "result": "SUCCESS"
+}
+2026-08-23 08:25:01 - QATools - INFO - Test suite 2841243 passed.
+2026-08-23 08:25:01 - QATools - INFO - Stopping further execution due to stop_if_success=True.
+2026-08-23 08:25:01 - QATools - INFO - - Case IDs: ['2659883947'], Status: Pass
+2026-08-23 08:25:01 - QATools - INFO - --------------------------------------------------------
+2026-08-23 08:25:01 - QATools - INFO - - Run Task: 4/20
+2026-08-23 08:25:01 - QATools - INFO - - Case IDs: ['2659884317']
+2026-08-23 08:25:01 - QATools - INFO - Case:2659884317 | main  | yuzheng/NO-JIRA/main | DeviceName:d_ws22_athens_uk | DeviceSN:X01200PEY323 | DeviceIP:10.64.37.156    | PlanId:[file-system]26042426 | Repeat:0   | Time:2026-08-23 08:25:01 |
+2026-08-23 08:25:04 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2841248]}
+2026-08-23 08:25:04 - QATools - INFO - Current suite ID: 2841248
+2026-08-23 08:25:06 - QATools - INFO - Test suite 2841248 has no Jenkins build assigned yet.
+2026-08-23 08:31:51 - QATools - INFO - - [Build Result] - build_url: https://jenkins.eswat.rokulabs.net/job/qa_hub_launch_suite/1274588/
+2026-08-23 08:31:51 - QATools - INFO - {
+  "_class": "org.jenkinsci.plugins.workflow.job.WorkflowRun",
+  "building": false,
+  "result": "SUCCESS"
+}
+2026-08-23 08:31:51 - QATools - INFO - Test suite 2841248 passed.
+2026-08-23 08:31:51 - QATools - INFO - Stopping further execution due to stop_if_success=True.
+2026-08-23 08:31:51 - QATools - INFO - - Case IDs: ['2659884317'], Status: Pass
+2026-08-23 08:31:51 - QATools - INFO - --------------------------------------------------------
+2026-08-23 08:31:51 - QATools - INFO - - Run Task: 5/20
+2026-08-23 08:31:51 - QATools - INFO - - Case IDs: ['2659901699']
+2026-08-23 08:31:51 - QATools - INFO - Case:2659901699 | main  | yuzheng/NO-JIRA/main | DeviceName:d_ws22_athens_uk | DeviceSN:X01200PEY323 | DeviceIP:10.64.37.156    | PlanId:[file-system]26042426 | Repeat:0   | Time:2026-08-23 08:31:51 |
+2026-08-23 08:31:53 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2841254]}
+2026-08-23 08:31:53 - QATools - INFO - Current suite ID: 2841254
+2026-08-23 08:31:55 - QATools - INFO - Test suite 2841254 has no Jenkins build assigned yet.
+2026-08-23 08:38:25 - QATools - INFO - - [Build Result] - build_url: https://jenkins.eswat.rokulabs.net/job/qa_hub_launch_suite/1274592/
+2026-08-23 08:38:25 - QATools - INFO - {
+  "_class": "org.jenkinsci.plugins.workflow.job.WorkflowRun",
+  "building": false,
+  "result": "SUCCESS"
+}
+2026-08-23 08:38:25 - QATools - INFO - Test suite 2841254 passed.
+2026-08-23 08:38:25 - QATools - INFO - Stopping further execution due to stop_if_success=True.
+2026-08-23 08:38:25 - QATools - INFO - - Case IDs: ['2659901699'], Status: Pass
+2026-08-23 08:38:25 - QATools - INFO - --------------------------------------------------------
+2026-08-23 08:38:25 - QATools - INFO - - Run Task: 6/20
+2026-08-23 08:38:25 - QATools - INFO - - Case IDs: ['2659885898']
+2026-08-23 08:38:25 - QATools - INFO - Case:2659885898 | main  | yuzheng/NO-JIRA/main | DeviceName:d_ws22_athens_uk | DeviceSN:X01200PEY323 | DeviceIP:10.64.37.156    | PlanId:[file-system]26042426 | Repeat:0   | Time:2026-08-23 08:38:25 |
+2026-08-23 08:38:28 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2841259]}
+2026-08-23 08:38:28 - QATools - INFO - Current suite ID: 2841259
+2026-08-23 08:38:30 - QATools - INFO - Test suite 2841259 has no Jenkins build assigned yet.
+2026-08-23 08:45:05 - QATools - INFO - - [Build Result] - build_url: https://jenkins.eswat.rokulabs.net/job/qa_hub_launch_suite/1274597/
+2026-08-23 08:45:05 - QATools - INFO - {
+  "_class": "org.jenkinsci.plugins.workflow.job.WorkflowRun",
+  "building": false,
+  "result": "SUCCESS"
+}
+2026-08-23 08:45:05 - QATools - INFO - Test suite 2841259 passed.
+2026-08-23 08:45:05 - QATools - INFO - Stopping further execution due to stop_if_success=True.
+2026-08-23 08:45:05 - QATools - INFO - - Case IDs: ['2659885898'], Status: Pass
+2026-08-23 08:45:05 - QATools - INFO - --------------------------------------------------------
+2026-08-23 08:45:05 - QATools - INFO - - Run Task: 7/20
+2026-08-23 08:45:05 - QATools - INFO - - Case IDs: ['2659883022']
+2026-08-23 08:45:05 - QATools - INFO - Case:2659883022 | main  | yuzheng/NO-JIRA/main | DeviceName:d_ws22_athens_uk | DeviceSN:X01200PEY323 | DeviceIP:10.64.37.156    | PlanId:[file-system]26042426 | Repeat:0   | Time:2026-08-23 08:45:05 |
+2026-08-23 08:45:10 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2841266]}
+2026-08-23 08:45:10 - QATools - INFO - Current suite ID: 2841266
+2026-08-23 08:45:11 - QATools - INFO - Test suite 2841266 has no Jenkins build assigned yet.
+2026-08-23 08:52:04 - QATools - INFO - - [Build Result] - build_url: https://jenkins.eswat.rokulabs.net/job/qa_hub_launch_suite/1274603/
+2026-08-23 08:52:04 - QATools - INFO - {
+  "_class": "org.jenkinsci.plugins.workflow.job.WorkflowRun",
+  "building": false,
+  "result": "SUCCESS"
+}
+2026-08-23 08:52:04 - QATools - INFO - Test suite 2841266 passed.
+2026-08-23 08:52:04 - QATools - INFO - Stopping further execution due to stop_if_success=True.
+2026-08-23 08:52:04 - QATools - INFO - - Case IDs: ['2659883022'], Status: Pass
+2026-08-23 08:52:04 - QATools - INFO - --------------------------------------------------------
+2026-08-23 08:52:04 - QATools - INFO - - Run Task: 8/20
+2026-08-23 08:52:04 - QATools - INFO - - Case IDs: ['ConnectDevices.test_connect_devices_do_this_later']
+2026-08-23 08:52:04 - QATools - INFO - Case:ConnectDevices.test_connect_devices_do_this_later | main  | yuzheng/NO-JIRA/main | DeviceName:d_ws22_athens_uk | DeviceSN:X01200PEY323 | DeviceIP:10.64.37.156    | PlanId:[file-system]26042426 | Repeat:0   | Time:2026-08-23 08:52:04 |
+2026-08-23 08:52:10 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2841271]}
+2026-08-23 08:52:10 - QATools - INFO - Current suite ID: 2841271
+2026-08-23 08:52:10 - QATools - INFO - Test suite 2841271 has no Jenkins build assigned yet.
+2026-08-23 08:59:06 - QATools - INFO - - [Build Result] - build_url: https://jenkins.eswat.rokulabs.net/job/qa_hub_launch_suite/1274607/
+2026-08-23 08:59:06 - QATools - INFO - {
+  "_class": "org.jenkinsci.plugins.workflow.job.WorkflowRun",
+  "building": false,
+  "result": "SUCCESS"
+}
+2026-08-23 08:59:06 - QATools - INFO - Test suite 2841271 passed.
+2026-08-23 08:59:06 - QATools - INFO - Stopping further execution due to stop_if_success=True.
+2026-08-23 08:59:06 - QATools - INFO - - Case IDs: ['ConnectDevices.test_connect_devices_do_this_later'], Status: Pass
+2026-08-23 08:59:06 - QATools - INFO - --------------------------------------------------------
+2026-08-23 08:59:06 - QATools - INFO - - Run Task: 9/20
+2026-08-23 08:59:06 - QATools - INFO - - Case IDs: ['FactoryResetTV.test_tv_setting_reset_to_default_after_factory_reset']
+2026-08-23 08:59:06 - QATools - INFO - Case:FactoryResetTV.test_tv_setting_reset_to_default_after_factory_reset | main  | yuzheng/NO-JIRA/main | DeviceName:d_ws22_athens_uk | DeviceSN:X01200PEY323 | DeviceIP:10.64.37.156    | PlanId:[file-system]26042426 | Repeat:0   | Time:2026-08-23 08:59:06 |
+2026-08-23 08:59:09 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2841275]}
+2026-08-23 08:59:09 - QATools - INFO - Current suite ID: 2841275

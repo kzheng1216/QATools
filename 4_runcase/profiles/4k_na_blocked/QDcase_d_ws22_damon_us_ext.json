@@ -1,0 +1,37 @@
+{
+    "name": "d_ws22_athens_uk",
+    "description": "",
+    "tasks": [
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "HdmiInputResQuantumDataTest.test_3840_2160_30",
+                "device": "d_ws22_Damon_US",
+                "testrail_plan_id": 26322263,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "HdmiInputResQuantumDataTest.test_480p_60",
+                "device": "d_ws22_Damon_US",
+                "testrail_plan_id": 26322263,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        }
+    ],
+    "execution_mode": "SERIAL"
+}

@@ -1,0 +1,238 @@
+2026-10-09 01:16:12 - QATools - INFO - List profiles from: /workspaces/automation-ide/mycode/QATools/4_runcase/profiles
+2026-10-09 01:16:12 - QATools - INFO - List profiles from: /workspaces/automation-ide/mycode/QATools/4_runcase/profiles
+2026-10-09 01:16:20 - QATools - INFO - View profile: profile_26595408_Failed_d_ws22_athens_uk
+2026-10-09 01:17:29 - QATools - INFO - Update profile: profile_26595408_Failed_d_ws22_athens_uk
+2026-10-09 01:17:29 - QATools - INFO - Profile configuration 'profile_26595408_Failed_d_ws22_athens_uk' updated
+2026-10-09 01:17:29 - QATools - INFO - List profiles from: /workspaces/automation-ide/mycode/QATools/4_runcase/profiles
+2026-10-09 01:17:32 - QATools - INFO - List profiles from: /workspaces/automation-ide/mycode/QATools/4_runcase/profiles
+2026-10-09 01:17:32 - QATools - INFO - List user query list from: /workspaces/automation-ide/mycode/QATools/backend/conf/config.yml
+2026-10-09 01:17:32 - QATools - INFO - List profiles from: /workspaces/automation-ide/mycode/QATools/4_runcase/profiles
+2026-10-09 01:17:32 - QATools - INFO - List user query list from: /workspaces/automation-ide/mycode/QATools/backend/conf/config.yml
+2026-10-09 01:17:36 - QATools - INFO - Run case: profile='profile_26595408_Failed_d_ws22_athens_uk' select='All'
+2026-10-09 01:17:36 - QATools - INFO - Run case started: profile='profile_26595408_Failed_d_ws22_athens_uk' pid=210625
+2026-10-09 01:20:36 - QATools - INFO - List profiles from: /workspaces/automation-ide/mycode/QATools/4_runcase/profiles
+2026-10-09 01:20:36 - QATools - INFO - List profiles from: /workspaces/automation-ide/mycode/QATools/4_runcase/profiles
+2026-10-09 01:20:38 - QATools - INFO - View profile: profile_26595408_Failed_d_ws22_athens_uk
+2026-10-09 01:31:01 - QATools - INFO - List profiles from: /workspaces/automation-ide/mycode/QATools/4_runcase/profiles
+2026-10-09 01:31:01 - QATools - INFO - List user query list from: /workspaces/automation-ide/mycode/QATools/backend/conf/config.yml
+2026-10-09 01:31:01 - QATools - INFO - List profiles from: /workspaces/automation-ide/mycode/QATools/4_runcase/profiles
+2026-10-09 01:31:01 - QATools - INFO - List user query list from: /workspaces/automation-ide/mycode/QATools/backend/conf/config.yml
+2026-10-09 01:31:06 - QATools - INFO - Run case: profile='profile_26595408_Failed_d_ws22_athens_uk' select='All'
+2026-10-09 01:31:06 - QATools - INFO - Run case started: profile='profile_26595408_Failed_d_ws22_athens_uk' pid=212828
+2026-10-09 01:31:43 - QATools - INFO - List devices from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 01:31:43 - QATools - INFO - List devices from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 01:32:15 - QATools - INFO - loaded config from /workspaces/automation-ide/mycode/QATools/backend/conf/config.yml
+2026-10-09 01:32:15 - QATools - INFO - loaded config from /workspaces/automation-ide/mycode/QATools/backend/conf/config.yml
+2026-10-09 01:32:17 - QATools - INFO - List devices from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 01:32:17 - QATools - INFO - List devices from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 01:32:22 - QATools - INFO - View device: d_ws22_Damon_US
+2026-10-09 01:32:27 - QATools - INFO - View device: d_ws22_miami_LATAM
+2026-10-09 01:35:26 - QATools - INFO - List devices from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 01:35:26 - QATools - INFO - List devices from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 01:35:40 - QATools - INFO - List devices from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 01:36:41 - QATools - INFO - List devices from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 01:36:41 - QATools - INFO - List devices from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 01:36:44 - QATools - INFO - View device: d_ws22_us_roxton
+2026-10-09 01:36:46 - QATools - INFO - View device: d_ws22_us_roxton
+2026-10-09 01:39:56 - QATools - INFO - List profiles from: /workspaces/automation-ide/mycode/QATools/4_runcase/profiles
+2026-10-09 01:39:56 - QATools - INFO - List profiles from: /workspaces/automation-ide/mycode/QATools/4_runcase/profiles
+2026-10-09 01:40:00 - QATools - INFO - View profile: profile_26595408_Failed_d_ws22_athens_uk
+2026-10-09 01:40:10 - QATools - INFO - View profile: profile_26595408_Failed_d_ws22_athens_uk
+2026-10-09 01:43:22 - QATools - INFO - View profile: profile_26595408_Failed_d_ws22_athens_uk
+2026-10-09 01:43:32 - QATools - INFO - Update profile: profile_26595408_Failed_d_ws22_athens_uk
+2026-10-09 01:43:32 - QATools - INFO - Profile configuration 'profile_26595408_Failed_d_ws22_athens_uk' updated
+2026-10-09 01:43:32 - QATools - INFO - List profiles from: /workspaces/automation-ide/mycode/QATools/4_runcase/profiles
+2026-10-09 01:43:35 - QATools - INFO - List user query list from: /workspaces/automation-ide/mycode/QATools/backend/conf/config.yml
+2026-10-09 01:43:35 - QATools - INFO - List profiles from: /workspaces/automation-ide/mycode/QATools/4_runcase/profiles
+2026-10-09 01:43:35 - QATools - INFO - List user query list from: /workspaces/automation-ide/mycode/QATools/backend/conf/config.yml
+2026-10-09 01:43:35 - QATools - INFO - List profiles from: /workspaces/automation-ide/mycode/QATools/4_runcase/profiles
+2026-10-09 01:43:40 - QATools - INFO - Run case: profile='profile_26595408_Failed_d_ws22_athens_uk' select='All'
+2026-10-09 01:43:40 - QATools - INFO - Run case started: profile='profile_26595408_Failed_d_ws22_athens_uk' pid=214951
+2026-10-09 01:43:46 - QATools - INFO - List devices from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 01:43:46 - QATools - INFO - List devices from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 01:44:30 - QATools - INFO - List devices from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 01:45:28 - QATools - INFO - List devices from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 01:45:28 - QATools - INFO - List devices from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 01:45:32 - QATools - INFO - View device: d_ws22_us_roxton
+2026-10-09 01:57:56 - QATools - INFO - View device: d_ws22_Damon_US
+2026-10-09 01:58:03 - QATools - INFO - View device: d_ws22_Damon_US
+2026-10-09 01:58:06 - QATools - INFO - List profiles from: /workspaces/automation-ide/mycode/QATools/4_runcase/profiles
+2026-10-09 01:58:06 - QATools - INFO - List profiles from: /workspaces/automation-ide/mycode/QATools/4_runcase/profiles
+2026-10-09 01:58:08 - QATools - INFO - View profile: profile_26595408_Failed_d_ws22_athens_uk
+2026-10-09 04:33:25 - QATools - INFO - List user query list from: /workspaces/automation-ide/mycode/QATools/backend/conf/config.yml
+2026-10-09 04:33:25 - QATools - INFO - List profiles from: /workspaces/automation-ide/mycode/QATools/4_runcase/profiles
+2026-10-09 04:33:26 - QATools - INFO - List user query list from: /workspaces/automation-ide/mycode/QATools/backend/conf/config.yml
+2026-10-09 04:33:26 - QATools - INFO - List profiles from: /workspaces/automation-ide/mycode/QATools/4_runcase/profiles
+2026-10-09 04:33:26 - QATools - INFO - List devices from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 04:33:26 - QATools - INFO - List git branches in: /workspaces/automation-ide/automated_tests
+2026-10-09 04:33:26 - QATools - INFO - Get current git branch in: /workspaces/automation-ide/automated_tests
+2026-10-09 04:33:26 - QATools - INFO - List devices from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 04:33:26 - QATools - INFO - List git branches in: /workspaces/automation-ide/automated_tests
+2026-10-09 04:33:26 - QATools - INFO - Get current git branch in: /workspaces/automation-ide/automated_tests
+2026-10-09 04:35:44 - QATools - INFO - Run roku test: device='d_ws22_Damon_US' automated_test_id='HdmiInputResQuantumDataTest.test_vesa_3840_2160_60_444_8bit' testrail_case_id='2659885426' repeat=0
+2026-10-09 04:35:44 - QATools - INFO - Roku test started: device='d_ws22_Damon_US' automated_test_id='HdmiInputResQuantumDataTest.test_vesa_3840_2160_60_444_8bit' testrail_case_id='2659885426' pid=239026 log=/workspaces/automation-ide/mycode/QATools/data/roku_test_log/roku_test__HdmiInputResQuantumDataTest.test_vesa_3840_2160_60_444_8bit__2659885426__d_ws22_Damon_US__0__20261009_043544.log
+2026-10-09 04:35:52 - QATools - INFO - List profiles from: /workspaces/automation-ide/mycode/QATools/4_runcase/profiles
+2026-10-09 04:35:52 - QATools - INFO - List profiles from: /workspaces/automation-ide/mycode/QATools/4_runcase/profiles
+2026-10-09 04:35:54 - QATools - INFO - List devices from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 04:35:54 - QATools - INFO - List devices from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 04:36:11 - QATools - INFO - Add device: d_ws22_Damon_US_2
+2026-10-09 04:36:11 - QATools - INFO - Device configuration 'd_ws22_Damon_US_2' added
+2026-10-09 04:36:11 - QATools - INFO - List devices from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 04:36:16 - QATools - INFO - View device: d_ws22_Damon_US_2
+2026-10-09 04:36:20 - QATools - INFO - View device: d_ws22_Damon_US
+2026-10-09 04:36:30 - QATools - INFO - View device: d_ws22_Damon_US_2
+2026-10-09 04:37:10 - QATools - INFO - Update device: d_ws22_Damon_US_2
+2026-10-09 04:37:10 - QATools - INFO - Device configuration 'd_ws22_Damon_US_2' updated
+2026-10-09 04:37:10 - QATools - INFO - List devices from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 04:37:14 - QATools - INFO - List git branches in: /workspaces/automation-ide/automated_tests
+2026-10-09 04:37:14 - QATools - INFO - List devices from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 04:37:14 - QATools - INFO - Get current git branch in: /workspaces/automation-ide/automated_tests
+2026-10-09 04:37:14 - QATools - INFO - List devices from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 04:37:14 - QATools - INFO - Get current git branch in: /workspaces/automation-ide/automated_tests
+2026-10-09 04:37:14 - QATools - INFO - List git branches in: /workspaces/automation-ide/automated_tests
+2026-10-09 04:58:13 - QATools - INFO - Run roku test: device='d_ws22_Damon_US' automated_test_id='HdmiInputResQuantumDataTest.test_vesa_4096_2160_60_444_8bit' testrail_case_id='2659885427' repeat=0
+2026-10-09 04:58:13 - QATools - INFO - Roku test started: device='d_ws22_Damon_US' automated_test_id='HdmiInputResQuantumDataTest.test_vesa_4096_2160_60_444_8bit' testrail_case_id='2659885427' pid=243665 log=/workspaces/automation-ide/mycode/QATools/data/roku_test_log/roku_test__HdmiInputResQuantumDataTest.test_vesa_4096_2160_60_444_8bit__2659885427__d_ws22_Damon_US__0__20261009_045813.log
+2026-10-09 05:20:37 - QATools - INFO - Checkout git branch 'yuzheng/AUTO-73326/2659885426_2659885427_2' in: /workspaces/automation-ide/automated_tests
+2026-10-09 05:20:37 - QATools - INFO - Checked out git branch 'yuzheng/AUTO-73326/2659885426_2659885427_2'
+2026-10-09 05:20:42 - QATools - INFO - Run roku test: device='d_ws22_Damon_US' automated_test_id='HdmiInputResQuantumDataTest.test_vesa_4096_2160_60_444_8bit' testrail_case_id='2659885427' repeat=0
+2026-10-09 05:20:42 - QATools - INFO - Roku test started: device='d_ws22_Damon_US' automated_test_id='HdmiInputResQuantumDataTest.test_vesa_4096_2160_60_444_8bit' testrail_case_id='2659885427' pid=255027 log=/workspaces/automation-ide/mycode/QATools/data/roku_test_log/roku_test__HdmiInputResQuantumDataTest.test_vesa_4096_2160_60_444_8bit__2659885427__d_ws22_Damon_US__0__20261009_052042.log
+2026-10-09 05:27:15 - QATools - INFO - Run roku test: device='d_ws22_Damon_US' automated_test_id='HdmiInputResQuantumDataTest.test_vesa_4096_2160_60_444_8bit' testrail_case_id='2659885427' repeat=0
+2026-10-09 05:27:15 - QATools - INFO - Roku test started: device='d_ws22_Damon_US' automated_test_id='HdmiInputResQuantumDataTest.test_vesa_4096_2160_60_444_8bit' testrail_case_id='2659885427' pid=257868 log=/workspaces/automation-ide/mycode/QATools/data/roku_test_log/roku_test__HdmiInputResQuantumDataTest.test_vesa_4096_2160_60_444_8bit__2659885427__d_ws22_Damon_US__0__20261009_052715.log
+2026-10-09 05:31:34 - QATools - INFO - List devices from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 05:31:34 - QATools - INFO - List devices from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 05:31:38 - QATools - INFO - View device: d_ws22_Damon_US_2
+2026-10-09 05:32:27 - QATools - INFO - List profiles from: /workspaces/automation-ide/mycode/QATools/4_runcase/profiles
+2026-10-09 05:32:27 - QATools - INFO - List user query list from: /workspaces/automation-ide/mycode/QATools/backend/conf/config.yml
+2026-10-09 05:32:27 - QATools - INFO - List user query list from: /workspaces/automation-ide/mycode/QATools/backend/conf/config.yml
+2026-10-09 05:32:27 - QATools - INFO - List profiles from: /workspaces/automation-ide/mycode/QATools/4_runcase/profiles
+2026-10-09 05:32:29 - QATools - INFO - List devices from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 05:32:29 - QATools - INFO - List git branches in: /workspaces/automation-ide/automated_tests
+2026-10-09 05:32:29 - QATools - INFO - Get current git branch in: /workspaces/automation-ide/automated_tests
+2026-10-09 05:32:29 - QATools - INFO - List devices from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 05:32:29 - QATools - INFO - List git branches in: /workspaces/automation-ide/automated_tests
+2026-10-09 05:32:29 - QATools - INFO - Get current git branch in: /workspaces/automation-ide/automated_tests
+2026-10-09 05:33:29 - QATools - INFO - Run roku test: device='d_ws22_Damon_US_2' automated_test_id='HdmiInputResQuantumDataTest.test_vesa_3840_2160_60_444_8bit' testrail_case_id='2659885426' repeat=0
+2026-10-09 05:33:29 - QATools - INFO - Roku test started: device='d_ws22_Damon_US_2' automated_test_id='HdmiInputResQuantumDataTest.test_vesa_3840_2160_60_444_8bit' testrail_case_id='2659885426' pid=258916 log=/workspaces/automation-ide/mycode/QATools/data/roku_test_log/roku_test__HdmiInputResQuantumDataTest.test_vesa_3840_2160_60_444_8bit__2659885426__d_ws22_Damon_US_2__0__20261009_053329.log
+2026-10-09 05:44:11 - QATools - INFO - Run roku test: device='d_ws22_Damon_US_2' automated_test_id='HdmiInputResQuantumDataTest.test_vesa_3840_2160_60_444_8bit' testrail_case_id='2659885426' repeat=0
+2026-10-09 05:44:11 - QATools - INFO - Roku test started: device='d_ws22_Damon_US_2' automated_test_id='HdmiInputResQuantumDataTest.test_vesa_3840_2160_60_444_8bit' testrail_case_id='2659885426' pid=261252 log=/workspaces/automation-ide/mycode/QATools/data/roku_test_log/roku_test__HdmiInputResQuantumDataTest.test_vesa_3840_2160_60_444_8bit__2659885426__d_ws22_Damon_US_2__0__20261009_054411.log
+2026-10-09 05:58:46 - QATools - INFO - Run roku test: device='d_ws22_Damon_US_2' automated_test_id='HdmiInputResQuantumDataTest.test_vesa_4096_2160_60_444_8bit' testrail_case_id='2659885427' repeat=0
+2026-10-09 05:58:46 - QATools - INFO - Roku test started: device='d_ws22_Damon_US_2' automated_test_id='HdmiInputResQuantumDataTest.test_vesa_4096_2160_60_444_8bit' testrail_case_id='2659885427' pid=265186 log=/workspaces/automation-ide/mycode/QATools/data/roku_test_log/roku_test__HdmiInputResQuantumDataTest.test_vesa_4096_2160_60_444_8bit__2659885427__d_ws22_Damon_US_2__0__20261009_055846.log
+2026-10-09 06:22:21 - QATools - INFO - Run roku test: device='d_ws22_athens_uk_2' automated_test_id='HdmiInputResQuantumDataTest.test_vesa_4096_2160_60_444_8bit' testrail_case_id='2659885427' repeat=0
+2026-10-09 06:22:21 - QATools - INFO - Roku test started: device='d_ws22_athens_uk_2' automated_test_id='HdmiInputResQuantumDataTest.test_vesa_4096_2160_60_444_8bit' testrail_case_id='2659885427' pid=269961 log=/workspaces/automation-ide/mycode/QATools/data/roku_test_log/roku_test__HdmiInputResQuantumDataTest.test_vesa_4096_2160_60_444_8bit__2659885427__d_ws22_athens_uk_2__0__20261009_062221.log
+2026-10-09 06:30:12 - QATools - INFO - Run roku test: device='d_ws22_athens_uk_2' automated_test_id='HdmiInputResQuantumDataTest.test_vesa_4096_2160_60_444_8bit' testrail_case_id='2659885427' repeat=0
+2026-10-09 06:30:12 - QATools - INFO - Roku test started: device='d_ws22_athens_uk_2' automated_test_id='HdmiInputResQuantumDataTest.test_vesa_4096_2160_60_444_8bit' testrail_case_id='2659885427' pid=271863 log=/workspaces/automation-ide/mycode/QATools/data/roku_test_log/roku_test__HdmiInputResQuantumDataTest.test_vesa_4096_2160_60_444_8bit__2659885427__d_ws22_athens_uk_2__0__20261009_063012.log
+2026-10-09 07:03:18 - QATools - INFO - List profiles from: /workspaces/automation-ide/mycode/QATools/4_runcase/profiles
+2026-10-09 07:03:18 - QATools - INFO - List profiles from: /workspaces/automation-ide/mycode/QATools/4_runcase/profiles
+2026-10-09 07:03:20 - QATools - INFO - View profile: p_01
+2026-10-09 07:03:32 - QATools - INFO - Update profile: p_01
+2026-10-09 07:03:32 - QATools - INFO - Profile configuration 'p_01' updated
+2026-10-09 07:03:32 - QATools - INFO - List profiles from: /workspaces/automation-ide/mycode/QATools/4_runcase/profiles
+2026-10-09 07:03:34 - QATools - INFO - List profiles from: /workspaces/automation-ide/mycode/QATools/4_runcase/profiles
+2026-10-09 07:03:34 - QATools - INFO - List user query list from: /workspaces/automation-ide/mycode/QATools/backend/conf/config.yml
+2026-10-09 07:03:34 - QATools - INFO - List profiles from: /workspaces/automation-ide/mycode/QATools/4_runcase/profiles
+2026-10-09 07:03:34 - QATools - INFO - List user query list from: /workspaces/automation-ide/mycode/QATools/backend/conf/config.yml
+2026-10-09 07:03:39 - QATools - INFO - Run case: profile='p_01' select='All'
+2026-10-09 07:03:39 - QATools - INFO - Run case started: profile='p_01' pid=277110
+2026-10-09 07:03:55 - QATools - INFO - List profiles from: /workspaces/automation-ide/mycode/QATools/4_runcase/profiles
+2026-10-09 07:03:55 - QATools - INFO - List profiles from: /workspaces/automation-ide/mycode/QATools/4_runcase/profiles
+2026-10-09 07:04:01 - QATools - INFO - View profile: p_01
+2026-10-09 07:04:05 - QATools - INFO - List devices from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 07:04:05 - QATools - INFO - List devices from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 07:04:09 - QATools - INFO - View device: d_ws22_athens_uk
+2026-10-09 07:42:36 - QATools - INFO - List devices from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 07:42:36 - QATools - INFO - List git branches in: /workspaces/automation-ide/automated_tests
+2026-10-09 07:42:36 - QATools - INFO - Get current git branch in: /workspaces/automation-ide/automated_tests
+2026-10-09 07:42:36 - QATools - INFO - List devices from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 07:42:36 - QATools - INFO - List git branches in: /workspaces/automation-ide/automated_tests
+2026-10-09 07:42:36 - QATools - INFO - Get current git branch in: /workspaces/automation-ide/automated_tests
+2026-10-09 07:42:38 - QATools - INFO - List profiles from: /workspaces/automation-ide/mycode/QATools/4_runcase/profiles
+2026-10-09 07:42:38 - QATools - INFO - List user query list from: /workspaces/automation-ide/mycode/QATools/backend/conf/config.yml
+2026-10-09 07:42:38 - QATools - INFO - List profiles from: /workspaces/automation-ide/mycode/QATools/4_runcase/profiles
+2026-10-09 07:42:38 - QATools - INFO - List user query list from: /workspaces/automation-ide/mycode/QATools/backend/conf/config.yml
+2026-10-09 07:55:03 - QATools - INFO - List user query list from: /workspaces/automation-ide/mycode/QATools/backend/conf/config.yml
+2026-10-09 07:55:03 - QATools - INFO - List profiles from: /workspaces/automation-ide/mycode/QATools/4_runcase/profiles
+2026-10-09 07:55:03 - QATools - INFO - List user query list from: /workspaces/automation-ide/mycode/QATools/backend/conf/config.yml
+2026-10-09 07:55:03 - QATools - INFO - List profiles from: /workspaces/automation-ide/mycode/QATools/4_runcase/profiles
+2026-10-09 07:55:19 - QATools - INFO - Admin login succeeded
+2026-10-09 07:55:41 - QATools - INFO - List user query list from: /workspaces/automation-ide/mycode/QATools/backend/conf/config.yml
+2026-10-09 07:55:41 - QATools - INFO - List profiles from: /workspaces/automation-ide/mycode/QATools/4_runcase/profiles
+2026-10-09 07:55:41 - QATools - INFO - List user query list from: /workspaces/automation-ide/mycode/QATools/backend/conf/config.yml
+2026-10-09 07:55:41 - QATools - INFO - List profiles from: /workspaces/automation-ide/mycode/QATools/4_runcase/profiles
+2026-10-09 07:58:48 - QATools - INFO - List profiles from: /workspaces/automation-ide/mycode/QATools/4_runcase/profiles
+2026-10-09 07:58:48 - QATools - INFO - List profiles from: /workspaces/automation-ide/mycode/QATools/4_runcase/profiles
+2026-10-09 07:58:50 - QATools - INFO - View profile: p_01
+2026-10-09 07:59:49 - QATools - INFO - Update profile: p_01
+2026-10-09 07:59:49 - QATools - INFO - Profile configuration 'p_01' updated
+2026-10-09 07:59:49 - QATools - INFO - List profiles from: /workspaces/automation-ide/mycode/QATools/4_runcase/profiles
+2026-10-09 07:59:50 - QATools - INFO - View profile: p_01
+2026-10-09 08:00:06 - QATools - INFO - List user query list from: /workspaces/automation-ide/mycode/QATools/backend/conf/config.yml
+2026-10-09 08:00:06 - QATools - INFO - List profiles from: /workspaces/automation-ide/mycode/QATools/4_runcase/profiles
+2026-10-09 08:00:06 - QATools - INFO - List profiles from: /workspaces/automation-ide/mycode/QATools/4_runcase/profiles
+2026-10-09 08:00:06 - QATools - INFO - List user query list from: /workspaces/automation-ide/mycode/QATools/backend/conf/config.yml
+2026-10-09 08:00:09 - QATools - INFO - Run case: profile='p_01' select='All'
+2026-10-09 08:00:09 - QATools - INFO - Run case started: profile='p_01' pid=284539
+2026-10-09 08:00:09 - QATools - INFO - List user query list from: /workspaces/automation-ide/mycode/QATools/backend/conf/config.yml
+2026-10-09 08:00:09 - QATools - INFO - List profiles from: /workspaces/automation-ide/mycode/QATools/4_runcase/profiles
+2026-10-09 08:00:20 - QATools - INFO - List user query list from: /workspaces/automation-ide/mycode/QATools/backend/conf/config.yml
+2026-10-09 08:00:20 - QATools - INFO - List profiles from: /workspaces/automation-ide/mycode/QATools/4_runcase/profiles
+2026-10-09 08:00:33 - QATools - INFO - List user query list from: /workspaces/automation-ide/mycode/QATools/backend/conf/config.yml
+2026-10-09 08:00:33 - QATools - INFO - List profiles from: /workspaces/automation-ide/mycode/QATools/4_runcase/profiles
+2026-10-09 08:00:46 - QATools - INFO - List user query list from: /workspaces/automation-ide/mycode/QATools/backend/conf/config.yml
+2026-10-09 08:00:46 - QATools - INFO - List profiles from: /workspaces/automation-ide/mycode/QATools/4_runcase/profiles
+2026-10-09 08:01:28 - QATools - INFO - List user query list from: /workspaces/automation-ide/mycode/QATools/backend/conf/config.yml
+2026-10-09 08:01:28 - QATools - INFO - List user query list from: /workspaces/automation-ide/mycode/QATools/backend/conf/config.yml
+2026-10-09 08:01:35 - QATools - INFO - Backend restart scheduled via restart.sh
+2026-10-09 08:01:37 - QATools - INFO - loaded config from /workspaces/automation-ide/mycode/QATools/backend/conf/config.yml
+2026-10-09 08:01:40 - QATools - INFO - loaded config from /workspaces/automation-ide/mycode/QATools/backend/conf/config.yml
+2026-10-09 08:01:50 - QATools - INFO - Saved runcase user query '_tmptest'
+2026-10-09 08:01:50 - QATools - INFO - Deleted runcase user query '_tmptest'
+2026-10-09 08:01:50 - QATools - INFO - List user query list from: /workspaces/automation-ide/mycode/QATools/backend/conf/config.yml
+2026-10-09 08:02:40 - QATools - INFO - List devices from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 08:02:40 - QATools - INFO - List git branches in: /workspaces/automation-ide/automated_tests
+2026-10-09 08:02:40 - QATools - INFO - Get current git branch in: /workspaces/automation-ide/automated_tests
+2026-10-09 08:02:40 - QATools - INFO - List devices from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 08:02:40 - QATools - INFO - Get current git branch in: /workspaces/automation-ide/automated_tests
+2026-10-09 08:02:40 - QATools - INFO - List git branches in: /workspaces/automation-ide/automated_tests
+2026-10-09 08:02:40 - QATools - INFO - List user query list from: /workspaces/automation-ide/mycode/QATools/backend/conf/config.yml
+2026-10-09 08:02:40 - QATools - INFO - List profiles from: /workspaces/automation-ide/mycode/QATools/4_runcase/profiles
+2026-10-09 08:02:40 - QATools - INFO - List user query list from: /workspaces/automation-ide/mycode/QATools/backend/conf/config.yml
+2026-10-09 08:02:40 - QATools - INFO - List profiles from: /workspaces/automation-ide/mycode/QATools/4_runcase/profiles
+2026-10-09 08:02:46 - QATools - INFO - Deleted runcase user query 'na123'
+2026-10-09 08:02:58 - QATools - INFO - Saved runcase user query 'xyi'
+2026-10-09 08:30:23 - QATools - INFO - List devices from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 08:30:23 - QATools - INFO - List devices from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 08:30:27 - QATools - INFO - View device: d_ws22_us_roxton
+2026-10-09 08:37:26 - QATools - INFO - List devices from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 08:37:42 - QATools - INFO - List devices from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 08:38:16 - QATools - INFO - List devices from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 08:38:16 - QATools - INFO - List devices from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 08:39:26 - QATools - INFO - Backend restart scheduled via restart.sh
+2026-10-09 08:39:28 - QATools - INFO - loaded config from /workspaces/automation-ide/mycode/QATools/backend/conf/config.yml
+2026-10-09 08:39:29 - QATools - INFO - loaded config from /workspaces/automation-ide/mycode/QATools/backend/conf/config.yml
+2026-10-09 08:39:32 - QATools - INFO - List device details from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 08:40:50 - QATools - INFO - List device details from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 08:40:50 - QATools - INFO - List device details from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 08:43:08 - QATools - INFO - List device details from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 08:43:08 - QATools - INFO - List device details from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 08:44:43 - QATools - INFO - List device details from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 08:44:43 - QATools - INFO - List device details from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 08:50:40 - QATools - INFO - Backend restart scheduled via restart.sh
+2026-10-09 08:50:42 - QATools - INFO - loaded config from /workspaces/automation-ide/mycode/QATools/backend/conf/config.yml
+2026-10-09 08:50:42 - QATools - INFO - loaded config from /workspaces/automation-ide/mycode/QATools/backend/conf/config.yml
+2026-10-09 08:50:46 - QATools - INFO - List device details from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 08:53:11 - QATools - INFO - List device details from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 08:53:11 - QATools - INFO - List device details from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 08:54:22 - QATools - INFO - Backend restart scheduled via restart.sh
+2026-10-09 08:54:23 - QATools - INFO - loaded config from /workspaces/automation-ide/mycode/QATools/backend/conf/config.yml
+2026-10-09 08:54:24 - QATools - INFO - loaded config from /workspaces/automation-ide/mycode/QATools/backend/conf/config.yml
+2026-10-09 08:54:30 - QATools - INFO - List device details from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 08:56:53 - QATools - INFO - List device details from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 08:56:53 - QATools - INFO - List device details from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 08:56:59 - QATools - INFO - Backend restart scheduled via restart.sh
+2026-10-09 08:57:00 - QATools - INFO - loaded config from /workspaces/automation-ide/mycode/QATools/backend/conf/config.yml
+2026-10-09 08:57:01 - QATools - INFO - loaded config from /workspaces/automation-ide/mycode/QATools/backend/conf/config.yml
+2026-10-09 08:57:05 - QATools - INFO - List device details from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 08:58:05 - QATools - INFO - List device details from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 08:58:05 - QATools - INFO - List device details from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 09:37:33 - QATools - INFO - List device details from: /workspaces/automation-ide/mycode/QATools/config/device_conf
+2026-10-09 09:37:33 - QATools - INFO - List device details from: /workspaces/automation-ide/mycode/QATools/config/device_conf

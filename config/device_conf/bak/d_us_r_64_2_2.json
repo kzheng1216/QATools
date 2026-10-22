@@ -1,0 +1,30 @@
+{
+    "roku": {
+        "ip_address": "10.64.25.188",
+        "serial_number": "X01200YSWWWV",
+        "device_id": "S0RE544SWWWV",
+        "brand_name": "PHILIPS",
+        "maxwell_config": {
+            "host": "10.64.29.240",
+            "port": 80
+        },
+        "power_config": {
+            "host": "10.64.25.211",
+            "outlet": 2,
+            "model": "RTVSP_POWER_SWITCH"
+        },
+        "qa_bot_config": {
+            "host": "10.64.19.205"
+        },
+        "rtvsp_config": {
+            "host": "10.64.19.205",
+            "port": 1
+        },
+        "serial_config": {
+            "host": "10.64.19.205",
+            "serial_port": 1,
+            "model": "5",
+            "baudrate": 115200
+        }
+    }
+}

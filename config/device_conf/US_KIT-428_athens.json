@@ -1,0 +1,38 @@
+{
+    "roku": {
+        "ip_address": "10.64.21.162",
+        "serial_number": "X01200Y74NAU",
+        "device_id": "S14UD0074NAU",
+        "brand_name": "Philips",
+        "channel_credentials": {
+            "YouTube": {
+                "username": "rokudkqa@gmail.com",
+                "password": "Syncaudio1!"
+            },
+            "Hulu": {
+                "password": "hulueval02",
+                "username": "hulu.cert.eval02@hulu.com"
+            },
+            "Vudu": {
+                "password": "Roku1234",
+                "username": "rchakka@roku.com"
+            },
+            "Netflix": {
+                "password": "Roku1234!",
+                "username": "tester_xp_kpi@netflix.com"
+            },
+            "Pandora": {
+                "password": "danger",
+                "username": "testytesterperson@live.com"
+            },
+            "Apple TV": {
+                "password": "Atv@551012!!",
+                "username": "QA_ATX8@roku.com"
+            },
+            "Prime Video": {
+                "password": "ahov1234!",
+                "username": "npi.auto.run@gmail.com"
+            }
+        }
+    }
+}

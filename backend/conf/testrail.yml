@@ -1,0 +1,17 @@
+testrail:
+  plan:
+  - id: 26595408
+    name: CTS-Preview-MFG - 239 - Athens UK - 20260918
+  - id: 26648972
+    name: CTS-Preview-MFG - 239 - Alpine CA - 20260918
+  - id: 26595350
+    name: CTS-Preview-MFG - 239 - Sandia DE - 20260918
+  - id: 26595379
+    name: CTS-Preview-MFG - 239 - Damon US - 20260918
+  - id: 26595466
+    name: CTS-Preview-MFG - 239 - Miami LATAM - 20260918
+  - id: 27064595
+    name: CTS Preview MFG - Roku OS - XXH.05E00700A
+  - id: 27307809
+    name: BT - Milestone - DVT & PVT (Without most 4K platform exclusive coverage)
+      - Automation Reliability Test on US R2

@@ -1,0 +1,20 @@
+{
+    "name": "d_ws22_Damon_US_26595379",
+    "description": "",
+    "tasks": [
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "HdmiInputResQuantumDataTest.test_vesa_800x600_60",
+                "testrail_case_id": 2659885416,
+                "device": "d_ws22_Damon_US_2",
+                "testrail_plan_id": 27020513,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "timeout": 360000
+        }
+    ],
+    "execution_mode": "SERIAL"
+}

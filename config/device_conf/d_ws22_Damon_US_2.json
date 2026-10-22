@@ -1,0 +1,16 @@
+{
+    "roku": {
+        "device_id": "S27F762DCXCP",
+        "brand_name": "TCL",
+        "ip_address": "10.64.22.68",
+        "qa_bot_config": {
+            "host": "10.64.16.146"
+        },
+        "serial_number": "X032000DCXCP",
+        "display_power_config": {
+            "host": "10.64.16.20",
+            "model": "TP_LINK_HS300",
+            "outlet": 4
+        }
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "name": "d_ws22_athens_uk",
+    "description": "",
+    "tasks": [
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "HdmiInputResQuantumDataTest.test_vesa_640x480_60",
+                "device": "d_ws22_athens_uk_2",
+                "testrail_plan_id": 0,
+                "repeat": 0,
+                "automation_test_branch": "yuzheng/AUTO-72959/fix",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        }
+    ],
+    "execution_mode": "SERIAL"
+}
