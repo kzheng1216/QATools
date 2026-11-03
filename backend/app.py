@@ -9,7 +9,11 @@ from fastapi.middleware.cors import CORSMiddleware
 
 
 def create_app():
-    my_app = FastAPI()
+    my_app = FastAPI(
+        title="Zen API",
+        version="1.0.0",
+        description="",
+    )
     register_router(my_app)
     register_middleware(my_app)
     return my_app

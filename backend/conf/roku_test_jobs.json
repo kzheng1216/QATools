@@ -1,13 +1,13 @@
 [
   {
-    "id": "f0d16bd2d39c",
+    "id": "1cb8b466fba0",
     "device": "US_KIT-428_athens",
     "automation_id": "bdd-2790705513",
     "testrail_case_id": "2790705513",
-    "repeat": 0,
-    "pid": 15614,
-    "log_file": "roku_test__bdd-2790705513__2790705513__US_KIT-428_athens__0__20261103_065221.log",
-    "command": "/root/.virtualenvs/docker-ra/bin/roku_test -d /workspaces/automation-ide/mycode/QATools/config/device_conf/US_KIT-428_athens.json  --allow dangerous --allow duration-hours --filter 'bdd-2790705513' ~/automated_tests/tests",
-    "started_at": "2026-11-03 06:52:21 UTC"
+    "repeat": 3,
+    "pid": 31808,
+    "log_file": "roku_test__bdd-2790705513__2790705513__US_KIT-428_athens__3__20261103_072145.log",
+    "command": "/root/.virtualenvs/docker-ra/bin/roku_test -d /workspaces/automation-ide/mycode/QATools/config/device_conf/US_KIT-428_athens.json --repeat 3 --allow dangerous --allow duration-hours --filter 'bdd-2790705513' ~/automated_tests/tests",
+    "started_at": "2026-11-03 07:21:45 UTC"
   }
 ]

@@ -3,9 +3,9 @@ runcase_user_query_list:
 roku_test_cache_data:
   automation_id:
   - bdd-2790705513
+  - CECSettingsTest.test_update_cec_device_list_message
   - HdmiInputResQuantumDataTest.test_vesa_4096_2160_60_444_8bit
   - HdmiInputResQuantumDataTest.test_vesa_1280x1024_60
-  - CECSettingsTest.test_update_cec_device_list_message
   - TunerTest.test_channel_instant_replay
   - MPSmoke.test_smoke_rsg_hls_live
   - TRCParamountProviderTestCase.test_live_now_free_trial_hint_present
@@ -17,9 +17,9 @@ roku_test_cache_data:
   - HdmiInputResQuantumDataTest.test_4096_2160_30
   testrail_case_id:
   - '2790705513'
+  - '3289956360'
   - '2659885426'
   - '2659885422'
-  - '3289956360'
   - '278253547'
   - '2681115972'
   - '2660704941'
