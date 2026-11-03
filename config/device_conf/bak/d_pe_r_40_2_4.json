@@ -1,0 +1,11 @@
+{
+    "roku": {
+        "ip_address": "10.64.44.24",
+        "serial_number": "X02900EH0KCT",
+        "device_id": "S1DPY5DH0KCT",
+        "brand_name": "RCA",
+        "maxwell_config": {
+            "host": "10.64.29.240"
+        }
+    }
+}

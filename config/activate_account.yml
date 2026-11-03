@@ -1,0 +1,11 @@
+activate_account:
+  US: trc_gctest_us2@roku.com
+  DE: hkhaki.roku@gmail.com
+  PA: rokutest_pan@outlook.com
+  UK: gcrelease_trc_uk@roku.com
+  CO: rokutestlatam_col@outlook.com
+  BR: brtestroku@outlook.com
+  MX: gcrelease_trc_mx@roku.com
+  AU: rtvsp_sh_eurokutest_au@roku.com
+  CA: catestroku@gmail.com
+  DEFAULT: trc_gctest_us2@roku.com

@@ -1,0 +1,45 @@
+{
+    "roku": {
+        "ip_address": "10.64.20.14",
+        "serial_number": "X01200NRE1KC",
+        "device_id": "S0RE543RE1KC",
+        "brand_name": "PHILIPS",
+        "maxwell_config": {
+            "host": "10.64.29.240",
+            "port": 80
+        },
+        "devices_config": {
+            "HDMI 1": {
+                "brand_name": "Roku",
+                "ip_address": "10.64.19.178",
+                "device_type": "ROKU",
+                "serial_number": "YT0024012683",
+                "device_id": "7J96C2012683",
+                "product": "cooper2",
+                "power_config": {
+                    "host": "10.64.25.69",
+                    "outlet": 7,
+                    "model": "90_240VAC_SMART_PDU"
+                }
+            }
+        },
+        "power_config": {
+            "host": "10.64.25.211",
+            "outlet": 3,
+            "model": "RTVSP_POWER_SWITCH"
+        },
+        "qa_bot_config": {
+            "host": "10.64.19.167"
+        },
+        "rtvsp_config": {
+            "host": "10.64.19.167",
+            "port": 1
+        },
+        "serial_config": {
+            "host": "10.64.19.167",
+            "serial_port": 1,
+            "model": "5",
+            "baudrate": 115200
+        }
+    }
+}

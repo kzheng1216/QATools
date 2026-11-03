@@ -1,0 +1,15 @@
+server_config:
+  host: 0.0.0.0
+  port: 9888
+# Names of the data files under backend/conf. services/data_service.py reads
+# this map at startup to build its stores, so a file can be renamed here
+# without touching any code.
+data_files:
+  tabs: tabs_data.yml
+  agent: agent_data.yml
+  analyze: analyze_data.yml
+  file_transfer: file_transfer_data.yml
+  runcase: runcase_data.yml
+  ref: ref.yml
+  testrail: testrail.yml
+  user: user.yml

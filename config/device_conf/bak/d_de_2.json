@@ -1,0 +1,11 @@
+{
+    "roku": {
+        "device_id": "S0XNH2DXA37H",
+        "serial_number": "X020008XA37H",
+        "brand_name": "QBell",
+        "ip_address": "10.64.24.99",
+        "maxwell_config": {
+            "host": "10.64.29.240"
+        }
+    }
+}

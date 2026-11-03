@@ -1,0 +1,11 @@
+file_transfer:
+  root: /workspaces/automation-ide/mycode/data/file_transfer
+  http_port: 9000
+  scp_server_cache: []
+  cmd_cache:
+  - path: test/restart.sh
+    args: ''
+    exit_code: 0
+    at: '2026-10-06 05:02:40'
+  - cmd: ls -l
+  - cmd: pwd

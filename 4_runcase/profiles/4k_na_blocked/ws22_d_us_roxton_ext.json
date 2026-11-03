@@ -1,0 +1,52 @@
+{
+    "name": "d_us_roxton",
+    "description": "",
+    "tasks": [
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2659883019",
+                "device": "d_ws22_us_roxton",
+                "testrail_plan_id": 25772547,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2659883021",
+                "device": "d_ws22_us_roxton",
+                "testrail_plan_id": 25772547,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2659883022",
+                "device": "d_ws22_us_roxton",
+                "testrail_plan_id": 25772547,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        }
+    ],
+    "execution_mode": "SERIAL"
+}

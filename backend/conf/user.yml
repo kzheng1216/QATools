@@ -1,0 +1,10 @@
+users:
+  - name: yuzheng
+    email: yuzheng@roku.com
+    password: 123456
+  - name: zzhang
+    email: zzhang@roku.com
+    password: 123456
+  - name: na123
+    email: na123@roku.com
+    password: 123456

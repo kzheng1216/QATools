@@ -1,0 +1,22 @@
+{
+    "name": "execution plan 2655393379",
+    "description": "execution plan 2655393379",
+    "tasks": [
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "StoreModePowerSettings.test_poweron_last_used_input_av",
+                "device": "d_ws22_Sandia_DE",
+                "testrail_plan_id": 25510916,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "PARALLEL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 36000
+        }
+    ],
+    "execution_mode": "SERIAL"
+}

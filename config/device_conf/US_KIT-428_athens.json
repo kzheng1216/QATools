@@ -1,0 +1,16 @@
+{
+    "roku": {
+        "ip_address": "10.64.20.157",
+        "serial_number": "X01200Y74NAU",
+        "device_id": "S14UD0074NAU",
+        "brand_name": "Philips",
+        "qa_bot_config": {
+            "host": "10.64.26.234"
+        },
+        "display_power_config": {
+            "host": "10.64.21.252",
+            "model": "TP_LINK_HS300",
+            "outlet": 2
+        }
+    }
+}

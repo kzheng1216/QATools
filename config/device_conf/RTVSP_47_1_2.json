@@ -1,0 +1,30 @@
+{
+    "roku": {
+        "ip_address": "10.64.25.102",
+        "serial_number": "X019006W6SYG",
+        "device_id": "S08C304W6SYG",
+        "brand_name": "Hisense",
+        "maxwell_config": {
+            "host": "10.64.29.240",
+            "port": 80
+        },
+        "power_config": {
+            "host": "10.64.24.237",
+            "outlet": 3,
+            "model": "RTVSP_POWER_SWITCH"
+        },
+        "qa_bot_config": {
+            "host": "10.64.25.31"
+        },
+        "rtvsp_config": {
+            "host": "10.64.25.31",
+            "port": 1
+        },
+        "serial_config": {
+            "host": "10.64.25.31",
+            "serial_port": 1,
+            "model": "ToolBot",
+            "baudrate": 115200
+        }
+    }
+}

@@ -1,0 +1,52 @@
+{
+    "name": "execution plan 2655393379",
+    "description": "execution plan 2655393379",
+    "tasks": [
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2659899180",
+                "device": "d_us_428_avr",
+                "testrail_plan_id": 0,
+                "repeat": 0,
+                "automation_test_branch": "yuzheng/AUTO-72549/2659899180_fix",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "PARALLEL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 36000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2659899180",
+                "device": "d_de_2",
+                "testrail_plan_id": 0,
+                "repeat": 0,
+                "automation_test_branch": "yuzheng/AUTO-72549/2659899180_fix",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "PARALLEL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 36000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2659899180",
+                "device": "d_us_r_64_2_2",
+                "testrail_plan_id": 0,
+                "repeat": 0,
+                "automation_test_branch": "yuzheng/AUTO-72549/2659899180_fix",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "PARALLEL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 36000
+        }
+    ],
+    "execution_mode": "SERIAL"
+}

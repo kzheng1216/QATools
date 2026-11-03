@@ -1,0 +1,39 @@
+2026-10-13 02:23:51 - QATools - INFO - Parsing profile from: /workspaces/automation-ide/mycode/QATools/4_runcase/common/../profiles/donuts_damon.json
+2026-10-13 02:23:51 - QATools - INFO - Total tasks to execute: 1
+2026-10-13 02:23:51 - QATools - INFO - --------------------------------------------------------
+2026-10-13 02:23:51 - QATools - INFO - - Run Task: 1/1
+2026-10-13 02:23:51 - QATools - INFO - - Case IDs: ['HdmiInputResQuantumDataTest.test_vesa_800x600_60']
+2026-10-13 02:23:51 - QATools - INFO - Case:HdmiInputResQuantumDataTest.test_vesa_800x600_60 | main  | main  | DeviceName:d_ws22_Damon_US | DeviceSN:X032000DCXCP | DeviceIP:10.64.22.68     | PlanId:[file-system]27020513 | Repeat:0   | Time:2026-10-13 02:23:51 |
+2026-10-13 02:23:52 - QATools - ERROR - QA Hub returned HTTP 422
+{"status": -1, "error": "Roku X032000DCXCP is not reserved by yuzheng"}
+2026-10-13 02:23:52 - QATools - INFO - Result: {'error': 'QA Hub returned HTTP 422'}
+2026-10-13 02:23:52 - QATools - ERROR - No suite was created for ['HdmiInputResQuantumDataTest.test_vesa_800x600_60']. QA Hub response: {'error': 'QA Hub returned HTTP 422'}
+2026-10-13 02:23:52 - QATools - ERROR - No suite ID to track.
+2026-10-13 02:23:52 - QATools - INFO - - Case IDs: ['HdmiInputResQuantumDataTest.test_vesa_800x600_60'], Status: Aborted
+2026-10-13 02:23:52 - QATools - INFO - #########################################################
+2026-10-13 02:23:52 - QATools - INFO - -- [Summary] --
+2026-10-13 02:23:52 - QATools - INFO - #########################################################
+2026-10-13 02:23:52 - QATools - INFO - - Result: 1/1
+2026-10-13 02:23:52 - QATools - INFO - - Case IDs: ['HdmiInputResQuantumDataTest.test_vesa_800x600_60'], Status: Aborted
+2026-10-13 02:24:53 - QATools - INFO - Parsing profile from: /workspaces/automation-ide/mycode/QATools/4_runcase/common/../profiles/donuts_damon.json
+2026-10-13 02:27:24 - QATools - INFO - Parsing profile from: /workspaces/automation-ide/mycode/QATools/4_runcase/common/../profiles/donuts_damon.json
+2026-10-13 02:28:21 - QATools - INFO - Parsing profile from: /workspaces/automation-ide/mycode/QATools/4_runcase/common/../profiles/donuts_damon.json
+2026-10-13 02:43:54 - QATools - INFO - Parsing profile from: /workspaces/automation-ide/mycode/QATools/4_runcase/common/../profiles/donuts_damon.json
+2026-10-13 05:06:04 - QATools - INFO - Parsing profile from: /workspaces/automation-ide/mycode/QATools/4_runcase/common/../profiles/AUTO78202_damon_480i.json
+2026-10-13 05:06:04 - QATools - INFO - Total tasks to execute: 1
+2026-10-13 05:06:04 - QATools - INFO - --------------------------------------------------------
+2026-10-13 05:06:04 - QATools - INFO - - Run Task: 1/1
+2026-10-13 05:06:04 - QATools - INFO - - Case IDs: ['HdmiInputResQuantumDataTest.test_480i_60']
+2026-10-13 05:06:04 - QATools - INFO - Case:HdmiInputResQuantumDataTest.test_480i_60 | yuzheng/AUTO-78202/fix_issue | main  | DeviceName:d_ws22_Damon_US | DeviceSN:X032000DCXCP | DeviceIP:10.64.22.68     | PlanId:[file-system]0   | Repeat:0   | Time:2026-10-13 05:06:04 |
+2026-10-13 05:06:05 - QATools - ERROR - QA Hub returned HTTP 422
+{"status": -1, "error": "Roku X032000DCXCP is not reserved by yuzheng"}
+2026-10-13 05:06:05 - QATools - INFO - Result: {'error': 'QA Hub returned HTTP 422'}
+2026-10-13 05:06:05 - QATools - ERROR - No suite was created for ['HdmiInputResQuantumDataTest.test_480i_60']. QA Hub response: {'error': 'QA Hub returned HTTP 422'}
+2026-10-13 05:06:05 - QATools - ERROR - No suite ID to track.
+2026-10-13 05:06:05 - QATools - INFO - - Case IDs: ['HdmiInputResQuantumDataTest.test_480i_60'], Status: Aborted
+2026-10-13 05:06:05 - QATools - INFO - #########################################################
+2026-10-13 05:06:05 - QATools - INFO - -- [Summary] --
+2026-10-13 05:06:05 - QATools - INFO - #########################################################
+2026-10-13 05:06:05 - QATools - INFO - - Result: 1/1
+2026-10-13 05:06:05 - QATools - INFO - - Case IDs: ['HdmiInputResQuantumDataTest.test_480i_60'], Status: Aborted
+2026-10-13 05:06:20 - QATools - INFO - Parsing profile from: /workspaces/automation-ide/mycode/QATools/4_runcase/common/../profiles/donuts_damon.json

@@ -1,0 +1,40 @@
+{
+    "roku": {
+        "ip_address": "10.64.42.140",
+        "serial_number": "X020001HTLG5",
+        "device_id": "S14NG37HTLG5",
+        "brand_name": "KOGAN",
+        "maxwell_config": {
+            "host": "10.64.29.240",
+            "port": 80
+        },
+        "devices_config": {
+            "HDMI 1": {
+                "brand_name": "Roku",
+                "ip_address": "10.64.16.254",
+                "device_type": "ROKU",
+                "serial_number": "X004003XJMDU",
+                "device_id": "S012206XJMDU",
+                "product": "nemo"
+            }
+        },
+        "power_config": {
+            "host": "10.64.39.240",
+            "outlet": 4,
+            "model": "RTVSP_POWER_SWITCH"
+        },
+        "qa_bot_config": {
+            "host": "10.64.42.136"
+        },
+        "rtvsp_config": {
+            "host": "10.64.42.136",
+            "port": 1
+        },
+        "serial_config": {
+            "host": "10.64.42.136",
+            "serial_port": 1,
+            "model": "5",
+            "baudrate": 115200
+        }
+    }
+}

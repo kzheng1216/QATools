@@ -1,0 +1,202 @@
+{
+    "name": "d_ws22_athens_uk",
+    "description": "",
+    "tasks": [
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2659884673",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "yuzheng/NO-JIRA/main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2659884675",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "yuzheng/NO-JIRA/main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "AddInputHDMI3.test_add_tv_input",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "yuzheng/NO-JIRA/main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2659883947",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "yuzheng/NO-JIRA/main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2659884317",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "yuzheng/NO-JIRA/main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2659901699",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "yuzheng/NO-JIRA/main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2659885898",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "yuzheng/NO-JIRA/main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2659883022",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "yuzheng/NO-JIRA/main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "ConnectDevices.test_connect_devices_do_this_later",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "yuzheng/NO-JIRA/main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "FactoryResetTV.test_tv_setting_reset_to_default_after_factory_reset",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "yuzheng/NO-JIRA/main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "GuidedSetup.test_wired_auto_connect",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "yuzheng/NO-JIRA/main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2659884091",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "yuzheng/NO-JIRA/main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2659884095",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "yuzheng/NO-JIRA/main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        }
+    ],
+    "execution_mode": "SERIAL"
+}

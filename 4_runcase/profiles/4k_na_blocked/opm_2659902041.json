@@ -1,0 +1,22 @@
+{
+    "name": "execution plan 2655393379",
+    "description": "execution plan 2655393379",
+    "tasks": [
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "SoftwareUpdateInterrupt.test_power_cycle_when_software_update_reboot",
+                "device": "d_us_r_24_1_1",
+                "testrail_plan_id": 0,
+                "repeat": 2,
+                "automation_test_branch": "yuzheng/AUTO-71814/2659902041_fix",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "PARALLEL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 36000
+        }
+    ],
+    "execution_mode": "SERIAL"
+}

@@ -1,0 +1,16 @@
+2026-10-04 06:31:15 - QATools - INFO - Parsing profile from: /workspaces/automation-ide/mycode/QATools/4_runcase/common/../profiles/p_01.json
+2026-10-04 06:31:15 - QATools - INFO - Total tasks to execute: 1
+2026-10-04 06:31:15 - QATools - INFO - --------------------------------------------------------
+2026-10-04 06:31:15 - QATools - INFO - - Run Task: 1/1
+2026-10-04 06:31:15 - QATools - INFO - - Case IDs: ['2726306176']
+2026-10-04 06:31:15 - QATools - INFO - Case:2726306176 | main  | main  | DeviceName:d_ws22_athens_uk | DeviceSN:X01200PEY323 | DeviceIP:10.64.37.156    | PlanId:[file-system]0   | Repeat:0   | Time:2026-10-04 06:31:15 |
+2026-10-04 06:31:18 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2940078]}
+2026-10-04 06:31:18 - QATools - INFO - Current suite ID: 2940078
+2026-10-04 06:31:34 - QATools - INFO - Test suite: 2940078 status: Running
+2026-10-04 06:35:40 - QATools - INFO - Test suite: 2940078 status: Skipped
+2026-10-04 06:35:40 - QATools - INFO - - Case IDs: ['2726306176'], Status: Skipped
+2026-10-04 06:35:40 - QATools - INFO - #########################################################
+2026-10-04 06:35:40 - QATools - INFO - -- [Summary] --
+2026-10-04 06:35:40 - QATools - INFO - #########################################################
+2026-10-04 06:35:40 - QATools - INFO - - Result: 1/1
+2026-10-04 06:35:40 - QATools - INFO - - Case IDs: ['2726306176'], Status: Skipped

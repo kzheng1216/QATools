@@ -1,0 +1,22 @@
+{
+    "name": "execution plan 2659886400",
+    "description": "execution plan 2659886400",
+    "tasks": [
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2659886400",
+                "device": "d_de_2",
+                "testrail_plan_id": 0,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "PARALLEL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 36000
+        }
+    ],
+    "execution_mode": "SERIAL"
+}

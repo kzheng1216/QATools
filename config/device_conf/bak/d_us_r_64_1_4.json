@@ -1,0 +1,30 @@
+{
+    "roku": {
+        "ip_address": "10.64.20.12",
+        "serial_number": "X012005AAN0P",
+        "device_id": "S0T442DAAN0P",
+        "brand_name": "Roku",
+        "maxwell_config": {
+            "host": "10.64.29.240",
+            "port": 80
+        },
+        "power_config": {
+            "host": "10.64.25.214",
+            "outlet": 4,
+            "model": "RTVSP_POWER_SWITCH"
+        },
+        "qa_bot_config": {
+            "host": "10.64.25.111"
+        },
+        "rtvsp_config": {
+            "host": "10.64.25.111",
+            "port": 1
+        },
+        "serial_config": {
+            "host": "10.64.25.111",
+            "serial_port": 1,
+            "model": "5",
+            "baudrate": 115200
+        }
+    }
+}

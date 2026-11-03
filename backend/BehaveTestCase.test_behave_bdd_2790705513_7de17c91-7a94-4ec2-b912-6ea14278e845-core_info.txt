@@ -1,0 +1,6 @@
+Platform: athens
+ESN: X019006W6SYG
+Device ID: S08C304W6SYG
+Test Name: BehaveTestCase.test_behave_bdd_2790705513 (uuid: 7de17c91-7a94-4ec2-b912-6ea14278e845)
+Core ID: X019006W6SYG.CHH.05E00700A.20261027.081946
+Core Details: https://whitney.eng.roku.com/cgi-bin/roku-cores/vcore?core=X019006W6SYG.CHH.05E00700A.20261027.081946

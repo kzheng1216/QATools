@@ -1,0 +1,81 @@
+2026-10-10 01:26:40 - QATools - INFO - Parsing profile from: /workspaces/automation-ide/mycode/QATools/4_runcase/common/../profiles/p2.json
+2026-10-10 01:26:40 - QATools - INFO - Total tasks to execute: 1
+2026-10-10 01:26:40 - QATools - INFO - --------------------------------------------------------
+2026-10-10 01:26:40 - QATools - INFO - - Run Task: 1/1
+2026-10-10 01:26:40 - QATools - INFO - - Case IDs: ['339569987', '339569987']
+2026-10-10 01:26:40 - QATools - INFO - Case:339569987  | main  | main  | DeviceName:d2         | DeviceSN:X01200Y74NAU | DeviceIP:10.64.21.162    | PlanId:[file-system]0   | Repeat:0   | Time:2026-10-10 01:26:40 |
+2026-10-10 01:26:43 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2952926]}
+2026-10-10 01:26:43 - QATools - INFO - Current suite ID: 2952926
+2026-10-10 01:26:59 - QATools - INFO - Test suite: 2952926 status: Running
+2026-10-10 01:44:44 - QATools - INFO - Test suite: 2952926 status: Pass
+2026-10-10 01:44:44 - QATools - INFO - Test suite 2952926 passed.
+2026-10-10 01:44:44 - QATools - INFO - Stopping further execution due to stop_if_success=True.
+2026-10-10 01:44:44 - QATools - INFO - - Case IDs: ['339569987', '339569987'], Status: Pass
+2026-10-10 01:44:44 - QATools - INFO - #########################################################
+2026-10-10 01:44:44 - QATools - INFO - -- [Summary] --
+2026-10-10 01:44:44 - QATools - INFO - #########################################################
+2026-10-10 01:44:44 - QATools - INFO - - Result: 1/1
+2026-10-10 01:44:44 - QATools - INFO - - Case IDs: ['339569987', '339569987'], Status: Pass
+2026-10-10 02:23:05 - QATools - INFO - Parsing profile from: /workspaces/automation-ide/mycode/QATools/4_runcase/common/../profiles/sample_profile.json
+2026-10-10 02:23:25 - QATools - INFO - Parsing profile from: /workspaces/automation-ide/mycode/QATools/4_runcase/common/../profiles/_t_new.json
+2026-10-10 02:23:25 - QATools - INFO - Parsing profile from: /workspaces/automation-ide/mycode/QATools/4_runcase/common/../profiles/_t_leg.json
+2026-10-10 02:33:05 - QATools - INFO - Parsing profile from: /workspaces/automation-ide/mycode/QATools/4_runcase/common/../profiles/_t_new.json
+2026-10-10 02:33:05 - QATools - INFO - Parsing profile from: /workspaces/automation-ide/mycode/QATools/4_runcase/common/../profiles/_t_leg.json
+2026-10-10 02:39:21 - QATools - INFO - Parsing profile from: /workspaces/automation-ide/mycode/QATools/4_runcase/common/../profiles/p2.json
+2026-10-10 02:39:21 - QATools - INFO - Total tasks to execute: 2
+2026-10-10 02:39:21 - QATools - INFO - --------------------------------------------------------
+2026-10-10 02:39:21 - QATools - INFO - - Run Task: 1/2
+2026-10-10 02:39:21 - QATools - INFO - - Case IDs: ['339569987']
+2026-10-10 02:39:21 - QATools - INFO - Case:339569987  | main  | main  | DeviceName:d2         | DeviceSN:X01200Y74NAU | DeviceIP:10.64.21.162    | PlanId:[file-system]0   | Repeat:0   | Time:2026-10-10 02:39:21 |
+2026-10-10 02:39:23 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2953070]}
+2026-10-10 02:39:23 - QATools - INFO - Current suite ID: 2953070
+2026-10-10 02:39:39 - QATools - INFO - Test suite: 2953070 status: Running
+2026-10-10 02:57:04 - QATools - INFO - Test suite: 2953070 status: Pass
+2026-10-10 02:57:04 - QATools - INFO - Test suite 2953070 passed.
+2026-10-10 02:57:04 - QATools - INFO - Stopping further execution due to stop_if_success=True.
+2026-10-10 02:57:04 - QATools - INFO - - Case IDs: ['339569987'], Status: Pass
+2026-10-10 02:57:04 - QATools - INFO - --------------------------------------------------------
+2026-10-10 02:57:04 - QATools - INFO - - Run Task: 2/2
+2026-10-10 02:57:04 - QATools - INFO - - Case IDs: ['339569987']
+2026-10-10 02:57:04 - QATools - INFO - Case:339569987  | main  | main  | DeviceName:d2         | DeviceSN:X01200Y74NAU | DeviceIP:10.64.21.162    | PlanId:[file-system]0   | Repeat:0   | Time:2026-10-10 02:57:04 |
+2026-10-10 02:57:06 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2953097]}
+2026-10-10 02:57:06 - QATools - INFO - Current suite ID: 2953097
+2026-10-10 02:57:23 - QATools - INFO - Test suite: 2953097 status: Running
+2026-10-10 03:14:58 - QATools - INFO - Test suite: 2953097 status: Pass
+2026-10-10 03:14:58 - QATools - INFO - Test suite 2953097 passed.
+2026-10-10 03:14:58 - QATools - INFO - Stopping further execution due to stop_if_success=True.
+2026-10-10 03:14:58 - QATools - INFO - - Case IDs: ['339569987'], Status: Pass
+2026-10-10 03:14:58 - QATools - INFO - #########################################################
+2026-10-10 03:14:58 - QATools - INFO - -- [Summary] --
+2026-10-10 03:14:58 - QATools - INFO - #########################################################
+2026-10-10 03:14:58 - QATools - INFO - - Result: 2/2
+2026-10-10 03:14:58 - QATools - INFO - - Case IDs: ['339569987'], Status: Pass
+2026-10-10 03:14:58 - QATools - INFO - - Case IDs: ['339569987'], Status: Pass
+2026-10-10 08:31:57 - QATools - INFO - Parsing profile from: /workspaces/automation-ide/mycode/QATools/4_runcase/common/../profiles/p_01.json
+2026-10-10 08:31:57 - QATools - INFO - Total tasks to execute: 2
+2026-10-10 08:31:57 - QATools - INFO - --------------------------------------------------------
+2026-10-10 08:31:57 - QATools - INFO - - Run Task: 1/2
+2026-10-10 08:31:57 - QATools - INFO - - Case IDs: ['2659885517']
+2026-10-10 08:31:57 - QATools - INFO - Case:2659885517 | main  | main  | DeviceName:d_ws22_athens_uk | DeviceSN:X01200PEY323 | DeviceIP:10.64.37.156    | PlanId:[file-system]26595408 | Repeat:0   | Time:2026-10-10 08:31:57 |
+2026-10-10 08:31:58 - QATools - ERROR - QA Hub returned HTTP 422
+{"status": -1, "error": "Roku X01200PEY323 is not reserved by yuzheng"}
+2026-10-10 08:31:58 - QATools - INFO - Result: {'error': 'QA Hub returned HTTP 422'}
+2026-10-10 08:31:58 - QATools - ERROR - No suite was created for ['2659885517']. QA Hub response: {'error': 'QA Hub returned HTTP 422'}
+2026-10-10 08:31:58 - QATools - ERROR - No suite ID to track.
+2026-10-10 08:31:58 - QATools - INFO - - Case IDs: ['2659885517'], Status: Aborted
+2026-10-10 08:31:58 - QATools - INFO - --------------------------------------------------------
+2026-10-10 08:31:58 - QATools - INFO - - Run Task: 2/2
+2026-10-10 08:31:58 - QATools - INFO - - Case IDs: ['2659885255']
+2026-10-10 08:31:58 - QATools - INFO - Case:2659885255 | main  | main  | DeviceName:d_ws22_athens_uk | DeviceSN:X01200PEY323 | DeviceIP:10.64.37.156    | PlanId:[file-system]26595408 | Repeat:0   | Time:2026-10-10 08:31:58 |
+2026-10-10 08:31:59 - QATools - ERROR - QA Hub returned HTTP 422
+{"status": -1, "error": "Roku X01200PEY323 is not reserved by yuzheng"}
+2026-10-10 08:31:59 - QATools - INFO - Result: {'error': 'QA Hub returned HTTP 422'}
+2026-10-10 08:31:59 - QATools - ERROR - No suite was created for ['2659885255']. QA Hub response: {'error': 'QA Hub returned HTTP 422'}
+2026-10-10 08:31:59 - QATools - ERROR - No suite ID to track.
+2026-10-10 08:31:59 - QATools - INFO - - Case IDs: ['2659885255'], Status: Aborted
+2026-10-10 08:31:59 - QATools - INFO - #########################################################
+2026-10-10 08:31:59 - QATools - INFO - -- [Summary] --
+2026-10-10 08:31:59 - QATools - INFO - #########################################################
+2026-10-10 08:31:59 - QATools - INFO - - Result: 2/2
+2026-10-10 08:31:59 - QATools - INFO - - Case IDs: ['2659885517'], Status: Aborted
+2026-10-10 08:31:59 - QATools - INFO - - Case IDs: ['2659885255'], Status: Aborted

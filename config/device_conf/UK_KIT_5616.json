@@ -1,0 +1,20 @@
+{
+    "roku": {
+        "ip_address": "10.64.22.102",
+        "serial_number": "X02000HMAXM4",
+        "device_id": "S0XSP05MAXM4",
+        "brand_name": "LOGIK",
+        "maxwell_config": {
+            "host": "10.64.29.240",
+            "port": 80
+        },
+        "qa_bot_config": {
+            "host": "10.64.26.234"
+        },
+        "display_power_config": {
+            "host": "10.64.21.252",
+            "model": "TP_LINK_HS300",
+            "outlet": 2
+        }
+    }
+}

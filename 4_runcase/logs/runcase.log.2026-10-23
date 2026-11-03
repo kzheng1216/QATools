@@ -1,0 +1,6 @@
+2026-10-23 12:40:18 - QATools - INFO - Parsing profile from: /workspaces/automation-ide/mycode/QATools/4_runcase/common/../profiles/flaky_case01.json
+2026-10-23 12:40:18 - QATools - INFO - Total tasks to execute: 1
+2026-10-23 12:40:18 - QATools - INFO - --------------------------------------------------------
+2026-10-23 12:40:18 - QATools - INFO - - Run Task: 1/1
+2026-10-23 12:40:18 - QATools - INFO - - Case IDs: ['PrimeVideoChannelTestCase.test_beacon_channel_launch_performance_from_suspend_wireless']
+2026-10-23 12:40:18 - QATools - INFO - Case:PrimeVideoChannelTestCase.test_beacon_channel_launch_performance_from_suspend_wireless | main  | main  | DeviceName:d_flaky_us | DeviceSN:X019005EYV00 | DeviceIP:10.64.21.98     | PlanId:[file-system]0   | Repeat:0   | Time:2026-10-23 12:40:18 |

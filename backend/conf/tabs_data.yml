@@ -1,0 +1,13 @@
+tabs:
+  dashboard: true
+  device: true
+  profile: true
+  testrail: true
+  runcase: true
+  rokutest: true
+  analyzehistory: true
+  agent: true
+  reference: true
+  filetransfer: true
+  donuts: true
+  activate: true

@@ -1,0 +1,12 @@
+/* Global reset. The app scrolls as one document (single scrollbar on the
+   right), so the banner and left sider move together with the content. */
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  min-height: 100%;
+}

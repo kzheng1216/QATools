@@ -1,0 +1,22 @@
+{
+    "name": "ws22",
+    "description": "ws22",
+    "tasks": [
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "PowerOnSpecificInputTest.test_reboot_power_on_home_screen",
+                "device": "d_uk_2",
+                "testrail_plan_id": 25772488,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "PARALLEL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 36000
+        }
+    ],
+    "execution_mode": "SERIAL"
+}

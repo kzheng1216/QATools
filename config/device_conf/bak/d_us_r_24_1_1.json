@@ -1,0 +1,30 @@
+{
+    "roku": {
+        "ip_address": "10.64.24.11",
+        "serial_number": "X00100THS2MA",
+        "device_id": "S02KA00HS2MA",
+        "brand_name": "Hisense",
+        "maxwell_config": {
+            "host": "10.64.29.240",
+            "port": 80
+        },
+        "power_config": {
+            "host": "10.64.18.72",
+            "outlet": 1,
+            "model": "RTVSP_POWER_SWITCH"
+        },
+        "qa_bot_config": {
+            "host": "10.64.18.72"
+        },
+        "rtvsp_config": {
+            "host": "10.64.18.72",
+            "port": 1
+        },
+        "serial_config": {
+            "host": "10.64.18.72",
+            "serial_port": 1,
+            "model": "5",
+            "baudrate": 115200
+        }
+    }
+}

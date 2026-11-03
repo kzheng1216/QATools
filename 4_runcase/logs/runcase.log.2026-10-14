@@ -1,0 +1,245 @@
+2026-10-14 05:39:03 - QATools - INFO - Parsing profile from: /workspaces/automation-ide/mycode/QATools/4_runcase/common/../profiles/BacklogReview_p01.json
+2026-10-14 05:40:02 - QATools - INFO - Parsing profile from: /workspaces/automation-ide/mycode/QATools/4_runcase/common/../profiles/BacklogReview_p01.json
+2026-10-14 05:42:06 - QATools - INFO - Parsing profile from: /workspaces/automation-ide/mycode/QATools/4_runcase/common/../profiles/BacklogReview_p01.json
+2026-10-14 05:45:09 - QATools - INFO - Parsing profile from: /workspaces/automation-ide/mycode/QATools/4_runcase/common/../profiles/BacklogReview_p01.json
+2026-10-14 05:50:25 - QATools - INFO - Parsing profile from: /workspaces/automation-ide/mycode/QATools/4_runcase/common/../profiles/BacklogReview_p01.json
+2026-10-14 05:53:24 - QATools - INFO - Parsing profile from: /workspaces/automation-ide/mycode/QATools/4_runcase/common/../profiles/BacklogReview_p01.json
+2026-10-14 05:53:24 - QATools - INFO - Total tasks to execute: 1
+2026-10-14 05:53:24 - QATools - INFO - --------------------------------------------------------
+2026-10-14 05:53:24 - QATools - INFO - - Run Task: 1/1
+2026-10-14 05:53:24 - QATools - INFO - - Case IDs: ['RMPVideoPlaybackTransitionTests.test_video_hlg_hdr10plus_playback_transition']
+2026-10-14 05:53:24 - QATools - INFO - Case:RMPVideoPlaybackTransitionTests.test_video_hlg_hdr10plus_playback_transition | main  | main  | DeviceName:US_KIT-428_athens | DeviceSN:X01200Y74NAU | DeviceIP:10.64.21.162    | PlanId:[file-system]0   | Repeat:0   | Time:2026-10-14 05:53:24 |
+2026-10-14 05:53:27 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2961874]}
+2026-10-14 05:53:27 - QATools - INFO - Current suite ID: 2961874
+2026-10-14 05:53:45 - QATools - INFO - Test suite: 2961874 status: Running
+2026-10-14 05:55:51 - QATools - INFO - Test suite: 2961874 status: Skipped
+2026-10-14 05:55:51 - QATools - INFO - - Case IDs: ['RMPVideoPlaybackTransitionTests.test_video_hlg_hdr10plus_playback_transition'], Status: Skipped
+2026-10-14 05:55:51 - QATools - INFO - #########################################################
+2026-10-14 05:55:51 - QATools - INFO - -- [Summary] --
+2026-10-14 05:55:51 - QATools - INFO - #########################################################
+2026-10-14 05:55:51 - QATools - INFO - - Result: 1/1
+2026-10-14 05:55:51 - QATools - INFO - - Case IDs: ['RMPVideoPlaybackTransitionTests.test_video_hlg_hdr10plus_playback_transition'], Status: Skipped
+2026-10-14 06:24:09 - QATools - INFO - Parsing profile from: /workspaces/automation-ide/mycode/QATools/4_runcase/common/../profiles/BacklogReview_p01.json
+2026-10-14 06:24:09 - QATools - INFO - Total tasks to execute: 34
+2026-10-14 06:24:09 - QATools - INFO - --------------------------------------------------------
+2026-10-14 06:24:09 - QATools - INFO - - Run Task: 1/34
+2026-10-14 06:24:09 - QATools - INFO - - Case IDs: ['YouTubeChannelTestCase.test_stream_1_minute']
+2026-10-14 06:24:09 - QATools - INFO - Case:YouTubeChannelTestCase.test_stream_1_minute | main  | main  | DeviceName:US_KIT-428_athens | DeviceSN:X01200Y74NAU | DeviceIP:10.64.21.162    | PlanId:[file-system]0   | Repeat:0   | Time:2026-10-14 06:24:09 |
+2026-10-14 06:24:12 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2961929]}
+2026-10-14 06:24:12 - QATools - INFO - Current suite ID: 2961929
+2026-10-14 06:24:30 - QATools - INFO - Test suite: 2961929 status: Setup
+2026-10-14 06:25:27 - QATools - ERROR - Error Occurred for test suite 2961929: HTTP Error 403: Forbidden
+2026-10-14 06:25:27 - QATools - INFO - - Case IDs: ['YouTubeChannelTestCase.test_stream_1_minute'], Status: Aborted
+2026-10-14 06:25:27 - QATools - INFO - --------------------------------------------------------
+2026-10-14 06:25:27 - QATools - INFO - - Run Task: 2/34
+2026-10-14 06:25:27 - QATools - INFO - - Case IDs: ['FeaturedFreeNavigationTestCase.test_press_home_and_down_navigates_to_featured_free']
+2026-10-14 06:25:27 - QATools - INFO - Case:FeaturedFreeNavigationTestCase.test_press_home_and_down_navigates_to_featured_free | main  | main  | DeviceName:US_KIT-428_athens | DeviceSN:X01200Y74NAU | DeviceIP:10.64.21.162    | PlanId:[file-system]0   | Repeat:0   | Time:2026-10-14 06:25:27 |
+2026-10-14 06:25:28 - QATools - ERROR - QA Hub returned HTTP 422
+{"status": -1, "error": "FeaturedFreeNavigationTestCase.test_press_home_and_down_navigates_to_featured_free is not a valid test"}
+2026-10-14 06:25:28 - QATools - INFO - Result: {'error': 'QA Hub returned HTTP 422'}
+2026-10-14 06:25:28 - QATools - ERROR - No suite was created for ['FeaturedFreeNavigationTestCase.test_press_home_and_down_navigates_to_featured_free']. QA Hub response: {'error': 'QA Hub returned HTTP 422'}
+2026-10-14 06:25:28 - QATools - ERROR - No suite ID to track.
+2026-10-14 06:25:28 - QATools - INFO - - Case IDs: ['FeaturedFreeNavigationTestCase.test_press_home_and_down_navigates_to_featured_free'], Status: Aborted
+2026-10-14 06:25:28 - QATools - INFO - --------------------------------------------------------
+2026-10-14 06:25:28 - QATools - INFO - - Run Task: 3/34
+2026-10-14 06:25:28 - QATools - INFO - - Case IDs: ['PrimeVideoChannelTestCase.test_beacon_channel_launch_performance_from_suspend_wireless']
+2026-10-14 06:25:28 - QATools - INFO - Case:PrimeVideoChannelTestCase.test_beacon_channel_launch_performance_from_suspend_wireless | main  | main  | DeviceName:US_KIT-428_athens | DeviceSN:X01200Y74NAU | DeviceIP:10.64.21.162    | PlanId:[file-system]0   | Repeat:0   | Time:2026-10-14 06:25:28 |
+2026-10-14 06:25:31 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2961932]}
+2026-10-14 06:25:31 - QATools - INFO - Current suite ID: 2961932
+2026-10-14 06:25:49 - QATools - INFO - Test suite: 2961932 status: Running
+2026-10-14 06:27:55 - QATools - INFO - Test suite: 2961932 status: Blocked
+2026-10-14 06:27:55 - QATools - INFO - - Case IDs: ['PrimeVideoChannelTestCase.test_beacon_channel_launch_performance_from_suspend_wireless'], Status: Blocked
+2026-10-14 06:27:55 - QATools - INFO - --------------------------------------------------------
+2026-10-14 06:27:55 - QATools - INFO - - Run Task: 4/34
+2026-10-14 06:27:55 - QATools - INFO - - Case IDs: ['TunerChannelChangeTimeWithSensor.test_replay_digital_channel_change_time_ldr']
+2026-10-14 06:27:55 - QATools - INFO - Case:TunerChannelChangeTimeWithSensor.test_replay_digital_channel_change_time_ldr | main  | main  | DeviceName:US_KIT-428_athens | DeviceSN:X01200Y74NAU | DeviceIP:10.64.21.162    | PlanId:[file-system]0   | Repeat:0   | Time:2026-10-14 06:27:55 |
+2026-10-14 06:27:58 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2961937]}
+2026-10-14 06:27:58 - QATools - INFO - Current suite ID: 2961937
+2026-10-14 06:28:14 - QATools - INFO - Test suite: 2961937 status: Setup
+2026-10-14 06:38:14 - QATools - ERROR - Error Occurred for test suite 2961937: HTTP Error 403: Forbidden
+2026-10-14 06:38:14 - QATools - INFO - - Case IDs: ['TunerChannelChangeTimeWithSensor.test_replay_digital_channel_change_time_ldr'], Status: Aborted
+2026-10-14 06:38:14 - QATools - INFO - --------------------------------------------------------
+2026-10-14 06:38:14 - QATools - INFO - - Run Task: 5/34
+2026-10-14 06:38:14 - QATools - INFO - - Case IDs: ['StoreModeEpopSettings.test_epop_reappears_timing_after_previous_epop_cycles']
+2026-10-14 06:38:14 - QATools - INFO - Case:StoreModeEpopSettings.test_epop_reappears_timing_after_previous_epop_cycles | main  | main  | DeviceName:US_KIT-428_athens | DeviceSN:X01200Y74NAU | DeviceIP:10.64.21.162    | PlanId:[file-system]0   | Repeat:0   | Time:2026-10-14 06:38:14 |
+2026-10-14 06:38:19 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2961959]}
+2026-10-14 06:38:19 - QATools - INFO - Current suite ID: 2961959
+2026-10-14 06:38:22 - QATools - INFO - Test suite: 2961959 status: Setup
+2026-10-14 06:47:18 - QATools - ERROR - Error Occurred for test suite 2961959: HTTP Error 403: Forbidden
+2026-10-14 06:47:18 - QATools - INFO - - Case IDs: ['StoreModeEpopSettings.test_epop_reappears_timing_after_previous_epop_cycles'], Status: Aborted
+2026-10-14 06:47:18 - QATools - INFO - --------------------------------------------------------
+2026-10-14 06:47:18 - QATools - INFO - - Run Task: 6/34
+2026-10-14 06:47:18 - QATools - INFO - - Case IDs: ['WhatToWatchBOBTest.test_verify_bob_lines_displayed']
+2026-10-14 06:47:18 - QATools - INFO - Case:WhatToWatchBOBTest.test_verify_bob_lines_displayed | main  | main  | DeviceName:US_KIT-428_athens | DeviceSN:X01200Y74NAU | DeviceIP:10.64.21.162    | PlanId:[file-system]0   | Repeat:0   | Time:2026-10-14 06:47:18 |
+2026-10-14 06:47:21 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2961980]}
+2026-10-14 06:47:21 - QATools - INFO - Current suite ID: 2961980
+2026-10-14 06:47:39 - QATools - INFO - Test suite: 2961980 status: Setup
+2026-10-14 06:57:50 - QATools - ERROR - Error Occurred for test suite 2961980: HTTP Error 403: Forbidden
+2026-10-14 06:57:50 - QATools - INFO - - Case IDs: ['WhatToWatchBOBTest.test_verify_bob_lines_displayed'], Status: Aborted
+2026-10-14 06:57:50 - QATools - INFO - --------------------------------------------------------
+2026-10-14 06:57:50 - QATools - INFO - - Run Task: 7/34
+2026-10-14 06:57:50 - QATools - INFO - - Case IDs: ['PrimeVideoChannelTestCase.test_partner_button_in_another_channel_uninstalled']
+2026-10-14 06:57:50 - QATools - INFO - Case:PrimeVideoChannelTestCase.test_partner_button_in_another_channel_uninstalled | main  | main  | DeviceName:US_KIT-428_athens | DeviceSN:X01200Y74NAU | DeviceIP:10.64.21.162    | PlanId:[file-system]0   | Repeat:0   | Time:2026-10-14 06:57:50 |
+2026-10-14 06:57:53 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2961990]}
+2026-10-14 06:57:53 - QATools - INFO - Current suite ID: 2961990
+2026-10-14 06:58:09 - QATools - INFO - Test suite: 2961990 status: Setup
+2026-10-14 06:59:30 - QATools - INFO - Test suite: 2961990 status: Running
+2026-10-14 07:04:24 - QATools - INFO - Test suite: 2961990 status: Pass
+2026-10-14 07:04:24 - QATools - INFO - Test suite 2961990 passed.
+2026-10-14 07:04:24 - QATools - INFO - - Case IDs: ['PrimeVideoChannelTestCase.test_partner_button_in_another_channel_uninstalled'], Status: Pass
+2026-10-14 07:04:24 - QATools - INFO - --------------------------------------------------------
+2026-10-14 07:04:24 - QATools - INFO - - Run Task: 8/34
+2026-10-14 07:04:24 - QATools - INFO - - Case IDs: ['DisneyPlusChannelTestCase.test_launch_using_partner_button_uninstalled']
+2026-10-14 07:04:24 - QATools - INFO - Case:DisneyPlusChannelTestCase.test_launch_using_partner_button_uninstalled | main  | main  | DeviceName:US_KIT-428_athens | DeviceSN:X01200Y74NAU | DeviceIP:10.64.21.162    | PlanId:[file-system]0   | Repeat:0   | Time:2026-10-14 07:04:24 |
+2026-10-14 07:04:27 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2961997]}
+2026-10-14 07:04:27 - QATools - INFO - Current suite ID: 2961997
+2026-10-14 07:04:45 - QATools - INFO - Test suite: 2961997 status: Setup
+2026-10-14 07:09:40 - QATools - ERROR - Error Occurred for test suite 2961997: HTTP Error 403: Forbidden
+2026-10-14 07:09:40 - QATools - INFO - - Case IDs: ['DisneyPlusChannelTestCase.test_launch_using_partner_button_uninstalled'], Status: Aborted
+2026-10-14 07:09:40 - QATools - INFO - --------------------------------------------------------
+2026-10-14 07:09:40 - QATools - INFO - - Run Task: 9/34
+2026-10-14 07:09:40 - QATools - INFO - - Case IDs: ['DisneyPlusChannelTestCase.test_partner_button_in_another_channel_uninstalled']
+2026-10-14 07:09:40 - QATools - INFO - Case:DisneyPlusChannelTestCase.test_partner_button_in_another_channel_uninstalled | main  | main  | DeviceName:US_KIT-428_athens | DeviceSN:X01200Y74NAU | DeviceIP:10.64.21.162    | PlanId:[file-system]0   | Repeat:0   | Time:2026-10-14 07:09:40 |
+2026-10-14 07:09:42 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2962006]}
+2026-10-14 07:09:42 - QATools - INFO - Current suite ID: 2962006
+2026-10-14 07:09:59 - QATools - INFO - Test suite: 2962006 status: Setup
+2026-10-14 07:17:24 - QATools - INFO - Parsing profile from: /workspaces/automation-ide/mycode/QATools/4_runcase/common/../profiles/Flaky_US_KIT-428_athens.json
+2026-10-14 07:17:24 - QATools - INFO - Total tasks to execute: 34
+2026-10-14 07:17:24 - QATools - INFO - --------------------------------------------------------
+2026-10-14 07:17:24 - QATools - INFO - - Run Task: 1/34
+2026-10-14 07:17:24 - QATools - INFO - - Case IDs: ['YouTubeChannelTestCase.test_stream_1_minute']
+2026-10-14 07:17:24 - QATools - INFO - Case:YouTubeChannelTestCase.test_stream_1_minute | main  | main  | DeviceName:US_KIT-428_athens | DeviceSN:X01200Y74NAU | DeviceIP:10.64.21.162    | PlanId:[file-system]0   | Repeat:0   | Time:2026-10-14 07:17:24 |
+2026-10-14 07:17:27 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2962012]}
+2026-10-14 07:17:27 - QATools - INFO - Current suite ID: 2962012
+2026-10-14 07:17:45 - QATools - INFO - Test suite: 2962012 status: Setup
+2026-10-14 08:15:56 - QATools - INFO - Parsing profile from: /workspaces/automation-ide/mycode/QATools/4_runcase/common/../profiles/Flaky_US_KIT-428_athens.json
+2026-10-14 08:15:56 - QATools - INFO - Total tasks to execute: 34
+2026-10-14 08:15:56 - QATools - INFO - --------------------------------------------------------
+2026-10-14 08:15:56 - QATools - INFO - - Run Task: 1/34
+2026-10-14 08:15:56 - QATools - INFO - - Case IDs: ['YouTubeChannelTestCase.test_stream_1_minute']
+2026-10-14 08:15:56 - QATools - INFO - Case:YouTubeChannelTestCase.test_stream_1_minute | main  | main  | DeviceName:US_KIT-428_athens | DeviceSN:X01200Y74NAU | DeviceIP:10.64.21.162    | PlanId:[file-system]0   | Repeat:0   | Time:2026-10-14 08:15:56 |
+2026-10-14 08:15:58 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2962145]}
+2026-10-14 08:15:58 - QATools - INFO - Current suite ID: 2962145
+2026-10-14 08:16:16 - QATools - INFO - Test suite: 2962145 status: Setup
+2026-10-14 08:26:14 - QATools - ERROR - Error Occurred for test suite 2962145: HTTP Error 403: Forbidden
+2026-10-14 08:26:14 - QATools - INFO - - Case IDs: ['YouTubeChannelTestCase.test_stream_1_minute'], Status: Aborted
+2026-10-14 08:26:14 - QATools - INFO - --------------------------------------------------------
+2026-10-14 08:26:14 - QATools - INFO - - Run Task: 2/34
+2026-10-14 08:26:14 - QATools - INFO - - Case IDs: ['FeaturedFreeNavigationTestCase.test_press_home_and_down_navigates_to_featured_free']
+2026-10-14 08:26:14 - QATools - INFO - Case:FeaturedFreeNavigationTestCase.test_press_home_and_down_navigates_to_featured_free | main  | main  | DeviceName:US_KIT-428_athens | DeviceSN:X01200Y74NAU | DeviceIP:10.64.21.162    | PlanId:[file-system]0   | Repeat:0   | Time:2026-10-14 08:26:14 |
+2026-10-14 08:26:16 - QATools - ERROR - QA Hub returned HTTP 422
+{"status": -1, "error": "FeaturedFreeNavigationTestCase.test_press_home_and_down_navigates_to_featured_free is not a valid test"}
+2026-10-14 08:26:16 - QATools - INFO - Result: {'error': 'QA Hub returned HTTP 422'}
+2026-10-14 08:26:16 - QATools - ERROR - No suite was created for ['FeaturedFreeNavigationTestCase.test_press_home_and_down_navigates_to_featured_free']. QA Hub response: {'error': 'QA Hub returned HTTP 422'}
+2026-10-14 08:26:16 - QATools - ERROR - No suite ID to track.
+2026-10-14 08:26:16 - QATools - INFO - - Case IDs: ['FeaturedFreeNavigationTestCase.test_press_home_and_down_navigates_to_featured_free'], Status: Aborted
+2026-10-14 08:26:16 - QATools - INFO - --------------------------------------------------------
+2026-10-14 08:26:16 - QATools - INFO - - Run Task: 3/34
+2026-10-14 08:26:16 - QATools - INFO - - Case IDs: ['PrimeVideoChannelTestCase.test_beacon_channel_launch_performance_from_suspend_wireless']
+2026-10-14 08:26:16 - QATools - INFO - Case:PrimeVideoChannelTestCase.test_beacon_channel_launch_performance_from_suspend_wireless | main  | main  | DeviceName:US_KIT-428_athens | DeviceSN:X01200Y74NAU | DeviceIP:10.64.21.162    | PlanId:[file-system]0   | Repeat:0   | Time:2026-10-14 08:26:16 |
+2026-10-14 08:26:18 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2962155]}
+2026-10-14 08:26:18 - QATools - INFO - Current suite ID: 2962155
+2026-10-14 08:26:34 - QATools - INFO - Test suite: 2962155 status: Setup
+2026-10-14 08:32:30 - QATools - INFO - Test suite: 2962155 status: Running
+2026-10-14 08:34:50 - QATools - INFO - Test suite: 2962155 status: Blocked
+2026-10-14 08:34:50 - QATools - INFO - - Case IDs: ['PrimeVideoChannelTestCase.test_beacon_channel_launch_performance_from_suspend_wireless'], Status: Blocked
+2026-10-14 08:34:50 - QATools - INFO - --------------------------------------------------------
+2026-10-14 08:34:50 - QATools - INFO - - Run Task: 4/34
+2026-10-14 08:34:50 - QATools - INFO - - Case IDs: ['TunerChannelChangeTimeWithSensor.test_replay_digital_channel_change_time_ldr']
+2026-10-14 08:34:50 - QATools - INFO - Case:TunerChannelChangeTimeWithSensor.test_replay_digital_channel_change_time_ldr | main  | main  | DeviceName:US_KIT-428_athens | DeviceSN:X01200Y74NAU | DeviceIP:10.64.21.162    | PlanId:[file-system]0   | Repeat:0   | Time:2026-10-14 08:34:50 |
+2026-10-14 08:34:52 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2962175]}
+2026-10-14 08:34:52 - QATools - INFO - Current suite ID: 2962175
+2026-10-14 08:35:09 - QATools - INFO - Test suite: 2962175 status: Setup
+2026-10-14 08:38:38 - QATools - ERROR - Error Occurred for test suite 2962175: HTTP Error 403: Forbidden
+2026-10-14 08:38:38 - QATools - INFO - - Case IDs: ['TunerChannelChangeTimeWithSensor.test_replay_digital_channel_change_time_ldr'], Status: Aborted
+2026-10-14 08:38:38 - QATools - INFO - --------------------------------------------------------
+2026-10-14 08:38:38 - QATools - INFO - - Run Task: 5/34
+2026-10-14 08:38:38 - QATools - INFO - - Case IDs: ['StoreModeEpopSettings.test_epop_reappears_timing_after_previous_epop_cycles']
+2026-10-14 08:38:38 - QATools - INFO - Case:StoreModeEpopSettings.test_epop_reappears_timing_after_previous_epop_cycles | main  | main  | DeviceName:US_KIT-428_athens | DeviceSN:X01200Y74NAU | DeviceIP:10.64.21.162    | PlanId:[file-system]0   | Repeat:0   | Time:2026-10-14 08:38:38 |
+2026-10-14 08:38:41 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2962180]}
+2026-10-14 08:38:41 - QATools - INFO - Current suite ID: 2962180
+2026-10-14 08:38:57 - QATools - INFO - Test suite: 2962180 status: Setup
+2026-10-14 08:49:00 - QATools - ERROR - Error Occurred for test suite 2962180: HTTP Error 403: Forbidden
+2026-10-14 08:49:00 - QATools - INFO - - Case IDs: ['StoreModeEpopSettings.test_epop_reappears_timing_after_previous_epop_cycles'], Status: Aborted
+2026-10-14 08:49:00 - QATools - INFO - --------------------------------------------------------
+2026-10-14 08:49:00 - QATools - INFO - - Run Task: 6/34
+2026-10-14 08:49:00 - QATools - INFO - - Case IDs: ['WhatToWatchBOBTest.test_verify_bob_lines_displayed']
+2026-10-14 08:49:00 - QATools - INFO - Case:WhatToWatchBOBTest.test_verify_bob_lines_displayed | main  | main  | DeviceName:US_KIT-428_athens | DeviceSN:X01200Y74NAU | DeviceIP:10.64.21.162    | PlanId:[file-system]0   | Repeat:0   | Time:2026-10-14 08:49:00 |
+2026-10-14 08:49:01 - QATools - ERROR - QA Hub returned HTTP 502
+<html>
+<head><title>502 Bad Gateway</title></head>
+<body>
+<center><h1>502 Bad Gateway</h1></center>
+</body>
+</html>
+
+2026-10-14 08:49:01 - QATools - INFO - Result: {'error': 'QA Hub returned HTTP 502'}
+2026-10-14 08:49:01 - QATools - ERROR - No suite was created for ['WhatToWatchBOBTest.test_verify_bob_lines_displayed']. QA Hub response: {'error': 'QA Hub returned HTTP 502'}
+2026-10-14 08:49:01 - QATools - ERROR - No suite ID to track.
+2026-10-14 08:49:01 - QATools - INFO - - Case IDs: ['WhatToWatchBOBTest.test_verify_bob_lines_displayed'], Status: Aborted
+2026-10-14 08:49:01 - QATools - INFO - --------------------------------------------------------
+2026-10-14 08:49:01 - QATools - INFO - - Run Task: 7/34
+2026-10-14 08:49:01 - QATools - INFO - - Case IDs: ['PrimeVideoChannelTestCase.test_partner_button_in_another_channel_uninstalled']
+2026-10-14 08:49:01 - QATools - INFO - Case:PrimeVideoChannelTestCase.test_partner_button_in_another_channel_uninstalled | main  | main  | DeviceName:US_KIT-428_athens | DeviceSN:X01200Y74NAU | DeviceIP:10.64.21.162    | PlanId:[file-system]0   | Repeat:0   | Time:2026-10-14 08:49:01 |
+2026-10-14 08:49:06 - QATools - ERROR - QA Hub returned HTTP 502
+<html>
+<head><title>502 Bad Gateway</title></head>
+<body>
+<center><h1>502 Bad Gateway</h1></center>
+</body>
+</html>
+
+2026-10-14 08:49:06 - QATools - INFO - Result: {'error': 'QA Hub returned HTTP 502'}
+2026-10-14 08:49:06 - QATools - ERROR - No suite was created for ['PrimeVideoChannelTestCase.test_partner_button_in_another_channel_uninstalled']. QA Hub response: {'error': 'QA Hub returned HTTP 502'}
+2026-10-14 08:49:06 - QATools - ERROR - No suite ID to track.
+2026-10-14 08:49:06 - QATools - INFO - - Case IDs: ['PrimeVideoChannelTestCase.test_partner_button_in_another_channel_uninstalled'], Status: Aborted
+2026-10-14 08:49:06 - QATools - INFO - --------------------------------------------------------
+2026-10-14 08:49:06 - QATools - INFO - - Run Task: 8/34
+2026-10-14 08:49:06 - QATools - INFO - - Case IDs: ['DisneyPlusChannelTestCase.test_launch_using_partner_button_uninstalled']
+2026-10-14 08:49:06 - QATools - INFO - Case:DisneyPlusChannelTestCase.test_launch_using_partner_button_uninstalled | main  | main  | DeviceName:US_KIT-428_athens | DeviceSN:X01200Y74NAU | DeviceIP:10.64.21.162    | PlanId:[file-system]0   | Repeat:0   | Time:2026-10-14 08:49:06 |
+2026-10-14 08:49:18 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2962200]}
+2026-10-14 08:49:18 - QATools - INFO - Current suite ID: 2962200
+2026-10-14 08:49:37 - QATools - INFO - Test suite: 2962200 status: Queued
+2026-10-14 08:49:37 - QATools - INFO - Test suite 2962200 is queued. Retrying...
+2026-10-14 08:49:37 - QATools - INFO - Case:DisneyPlusChannelTestCase.test_launch_using_partner_button_uninstalled | main  | main  | DeviceName:US_KIT-428_athens | DeviceSN:X01200Y74NAU | DeviceIP:10.64.21.162    | PlanId:[file-system]0   | Repeat:0   | Time:2026-10-14 08:49:37 |
+2026-10-14 08:49:40 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2962201]}
+2026-10-14 08:49:40 - QATools - INFO - Current suite ID: 2962201
+2026-10-14 08:50:10 - QATools - INFO - Case:DisneyPlusChannelTestCase.test_launch_using_partner_button_uninstalled | main  | main  | DeviceName:US_KIT-428_athens | DeviceSN:X01200Y74NAU | DeviceIP:10.64.21.162    | PlanId:[file-system]0   | Repeat:0   | Time:2026-10-14 08:50:10 |
+2026-10-14 08:50:13 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2962202]}
+2026-10-14 08:50:13 - QATools - INFO - Current suite ID: 2962202
+2026-10-14 08:50:43 - QATools - INFO - Case:DisneyPlusChannelTestCase.test_launch_using_partner_button_uninstalled | main  | main  | DeviceName:US_KIT-428_athens | DeviceSN:X01200Y74NAU | DeviceIP:10.64.21.162    | PlanId:[file-system]0   | Repeat:0   | Time:2026-10-14 08:50:43 |
+2026-10-14 08:50:46 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2962204]}
+2026-10-14 08:50:46 - QATools - INFO - Current suite ID: 2962204
+2026-10-14 08:51:14 - QATools - INFO - - Case IDs: ['DisneyPlusChannelTestCase.test_launch_using_partner_button_uninstalled'], Status: Queued
+2026-10-14 08:51:14 - QATools - INFO - --------------------------------------------------------
+2026-10-14 08:51:14 - QATools - INFO - - Run Task: 9/34
+2026-10-14 08:51:14 - QATools - INFO - - Case IDs: ['DisneyPlusChannelTestCase.test_partner_button_in_another_channel_uninstalled']
+2026-10-14 08:51:14 - QATools - INFO - Case:DisneyPlusChannelTestCase.test_partner_button_in_another_channel_uninstalled | main  | main  | DeviceName:US_KIT-428_athens | DeviceSN:X01200Y74NAU | DeviceIP:10.64.21.162    | PlanId:[file-system]0   | Repeat:0   | Time:2026-10-14 08:51:14 |
+2026-10-14 08:51:17 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2962205]}
+2026-10-14 08:51:17 - QATools - INFO - Current suite ID: 2962205
+2026-10-14 08:51:34 - QATools - INFO - Test suite: 2962205 status: Queued
+2026-10-14 08:51:34 - QATools - INFO - Test suite 2962205 is queued. Retrying...
+2026-10-14 08:51:35 - QATools - INFO - Case:DisneyPlusChannelTestCase.test_partner_button_in_another_channel_uninstalled | main  | main  | DeviceName:US_KIT-428_athens | DeviceSN:X01200Y74NAU | DeviceIP:10.64.21.162    | PlanId:[file-system]0   | Repeat:0   | Time:2026-10-14 08:51:34 |
+2026-10-14 08:51:39 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2962206]}
+2026-10-14 08:51:39 - QATools - INFO - Current suite ID: 2962206
+2026-10-14 08:52:09 - QATools - INFO - Case:DisneyPlusChannelTestCase.test_partner_button_in_another_channel_uninstalled | main  | main  | DeviceName:US_KIT-428_athens | DeviceSN:X01200Y74NAU | DeviceIP:10.64.21.162    | PlanId:[file-system]0   | Repeat:0   | Time:2026-10-14 08:52:09 |
+2026-10-14 08:52:11 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2962208]}
+2026-10-14 08:52:11 - QATools - INFO - Current suite ID: 2962208
+2026-10-14 08:52:41 - QATools - INFO - Case:DisneyPlusChannelTestCase.test_partner_button_in_another_channel_uninstalled | main  | main  | DeviceName:US_KIT-428_athens | DeviceSN:X01200Y74NAU | DeviceIP:10.64.21.162    | PlanId:[file-system]0   | Repeat:0   | Time:2026-10-14 08:52:41 |
+2026-10-14 08:52:44 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2962212]}
+2026-10-14 08:52:44 - QATools - INFO - Current suite ID: 2962212
+2026-10-14 08:53:17 - QATools - INFO - - Case IDs: ['DisneyPlusChannelTestCase.test_partner_button_in_another_channel_uninstalled'], Status: Queued
+2026-10-14 08:53:17 - QATools - INFO - --------------------------------------------------------
+2026-10-14 08:53:17 - QATools - INFO - - Run Task: 10/34
+2026-10-14 08:53:17 - QATools - INFO - - Case IDs: ['RMPVideoPlaybackTransitionTests.test_video_sdr_hdr10plus_playback_transition']
+2026-10-14 08:53:17 - QATools - INFO - Case:RMPVideoPlaybackTransitionTests.test_video_sdr_hdr10plus_playback_transition | main  | main  | DeviceName:US_KIT-428_athens | DeviceSN:X01200Y74NAU | DeviceIP:10.64.21.162    | PlanId:[file-system]0   | Repeat:0   | Time:2026-10-14 08:53:17 |
+2026-10-14 08:53:20 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2962214]}
+2026-10-14 08:53:20 - QATools - INFO - Current suite ID: 2962214
+2026-10-14 08:53:39 - QATools - INFO - Test suite: 2962214 status: Queued
+2026-10-14 08:53:39 - QATools - INFO - Test suite 2962214 is queued. Retrying...
+2026-10-14 08:53:40 - QATools - INFO - Case:RMPVideoPlaybackTransitionTests.test_video_sdr_hdr10plus_playback_transition | main  | main  | DeviceName:US_KIT-428_athens | DeviceSN:X01200Y74NAU | DeviceIP:10.64.21.162    | PlanId:[file-system]0   | Repeat:0   | Time:2026-10-14 08:53:40 |
+2026-10-14 08:53:45 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2962215]}
+2026-10-14 08:53:45 - QATools - INFO - Current suite ID: 2962215
+2026-10-14 08:54:17 - QATools - INFO - Case:RMPVideoPlaybackTransitionTests.test_video_sdr_hdr10plus_playback_transition | main  | main  | DeviceName:US_KIT-428_athens | DeviceSN:X01200Y74NAU | DeviceIP:10.64.21.162    | PlanId:[file-system]0   | Repeat:0   | Time:2026-10-14 08:54:17 |
+2026-10-14 08:54:19 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2962219]}
+2026-10-14 08:54:19 - QATools - INFO - Current suite ID: 2962219

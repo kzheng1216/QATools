@@ -1,0 +1,37 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+4_runcase/log.txt
+
+# Zone.Identifier / *.Identifier files
+*.Identifier
+
+# Ignore device_conf files
+config/device_conf/d_*.json
+config/device_conf/back/*
+
+# Ignore log
+5_activate/logs/*
+4_runcase/logs/*.log
+4_runcase/*.log
+*.log
+backend/logs/*
+frontend/logs/*
+logs/*
+
+# Ignore profile files
+4_runcase/profiles/opm*.json
+4_runcase/profiles/kz*.json
+4_runcase/profiles/p*.json
+
+
+# data files
+# Everything the backend writes under data/ is runtime output: ignore the
+# CONTENTS of every data/<dir>/ (including dirs added later, so no new rule is
+# needed per directory), but keep each directory itself in git through a
+# tracked .gitkeep, so a fresh clone has the layout the backend expects.
+data/*/*
+!data/*/.gitkeep
+

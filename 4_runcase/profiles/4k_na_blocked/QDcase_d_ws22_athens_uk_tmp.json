@@ -1,0 +1,412 @@
+{
+    "name": "d_ws22_athens_uk",
+    "description": "",
+    "tasks": [
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "HdmiInputResQuantumDataTest.test_480i_60",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "yuzheng/AUTO-73510/fix_issue",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "HdmiInputResQuantumDataTest.test_480p_60",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "yuzheng/AUTO-73510/fix_issue",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "HdmiInputResQuantumDataTest.test_720p_24",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "yuzheng/AUTO-73510/fix_issue",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "HdmiInputResQuantumDataTest.test_720p_30",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "yuzheng/AUTO-73510/fix_issue",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "HdmiInputResQuantumDataTest.test_720p_60",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "yuzheng/AUTO-73510/fix_issue",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "HdmiInputResQuantumDataTest.test_1080i_60",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "yuzheng/AUTO-73510/fix_issue",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "HdmiInputResQuantumDataTest.test_1080p_24",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "yuzheng/AUTO-73510/fix_issue",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "HdmiInputResQuantumDataTest.test_1080p_30",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "yuzheng/AUTO-73510/fix_issue",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "HdmiInputResQuantumDataTest.test_1080p_60",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "yuzheng/AUTO-73510/fix_issue",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "HdmiInputResQuantumDataTest.test_3840_2160_30",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "yuzheng/AUTO-73510/fix_issue",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "HdmiInputResQuantumDataTest.test_3840_2160_60",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "yuzheng/AUTO-73510/fix_issue",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "HdmiInputResQuantumDataTest.test_4096_2160_24",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "yuzheng/AUTO-73510/fix_issue",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "HdmiInputResQuantumDataTest.test_4096_2160_30",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "yuzheng/AUTO-73510/fix_issue",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "HdmiInputResQuantumDataTest.test_4096_2160_60",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "yuzheng/AUTO-73510/fix_issue",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "HdmiInputResQuantumDataTest.test_vesa_640x480_60",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "yuzheng/AUTO-73510/fix_issue",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "HdmiInputResQuantumDataTest.test_vesa_720x400_70",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "yuzheng/AUTO-73510/fix_issue",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "HdmiInputResQuantumDataTest.test_vesa_800x600_56",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "yuzheng/AUTO-73510/fix_issue",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "HdmiInputResQuantumDataTest.test_vesa_800x600_60",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "yuzheng/AUTO-73510/fix_issue",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "HdmiInputResQuantumDataTest.test_vesa_1024x768_60",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "yuzheng/AUTO-73510/fix_issue",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "HdmiInputResQuantumDataTest.test_vesa_1280x720_60",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "yuzheng/AUTO-73510/fix_issue",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "HdmiInputResQuantumDataTest.test_vesa_1280x800_60",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "yuzheng/AUTO-73510/fix_issue",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "HdmiInputResQuantumDataTest.test_vesa_1280x800_75",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "yuzheng/AUTO-73510/fix_issue",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "HdmiInputResQuantumDataTest.test_vesa_1280x960_60",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "yuzheng/AUTO-73510/fix_issue",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "HdmiInputResQuantumDataTest.test_vesa_1280x1024_60",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "yuzheng/AUTO-73510/fix_issue",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "HdmiInputResQuantumDataTest.test_vesa_1440x900_60",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "yuzheng/AUTO-73510/fix_issue",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "HdmiInputResQuantumDataTest.test_vesa_1680x1050_60",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "yuzheng/AUTO-73510/fix_issue",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "HdmiInputResQuantumDataTest.test_vesa_1920x1080_60",
+                "device": "d_ws22_athens_uk",
+                "testrail_plan_id": 26042426,
+                "repeat": 0,
+                "automation_test_branch": "yuzheng/AUTO-73510/fix_issue",
+                "roku_automation_branch": "main"
+            },
+            "execution_mode": "SERIAL",
+            "stop_if_success": true,
+            "print_console_message": false,
+            "timeout": 360000
+        }
+    ],
+    "execution_mode": "SERIAL"
+}
