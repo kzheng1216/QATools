@@ -13,9 +13,6 @@
                 "automation_test_branch": "main",
                 "roku_automation_branch": "main"
             },
-            "execution_mode": "SERIAL",
-            "stop_if_success": true,
-            "print_console_message": false,
             "timeout": 360000
         },
         {
@@ -29,9 +26,6 @@
                 "automation_test_branch": "main",
                 "roku_automation_branch": "main"
             },
-            "execution_mode": "SERIAL",
-            "stop_if_success": true,
-            "print_console_message": false,
             "timeout": 360000
         },
         {
@@ -45,9 +39,6 @@
                 "automation_test_branch": "main",
                 "roku_automation_branch": "main"
             },
-            "execution_mode": "SERIAL",
-            "stop_if_success": true,
-            "print_console_message": false,
             "timeout": 360000
         },
         {
@@ -61,9 +52,6 @@
                 "automation_test_branch": "main",
                 "roku_automation_branch": "main"
             },
-            "execution_mode": "SERIAL",
-            "stop_if_success": true,
-            "print_console_message": false,
             "timeout": 360000
         },
         {
@@ -77,9 +65,6 @@
                 "automation_test_branch": "main",
                 "roku_automation_branch": "main"
             },
-            "execution_mode": "SERIAL",
-            "stop_if_success": true,
-            "print_console_message": false,
             "timeout": 360000
         },
         {
@@ -93,9 +78,6 @@
                 "automation_test_branch": "main",
                 "roku_automation_branch": "main"
             },
-            "execution_mode": "SERIAL",
-            "stop_if_success": true,
-            "print_console_message": false,
             "timeout": 360000
         },
         {
@@ -109,9 +91,6 @@
                 "automation_test_branch": "main",
                 "roku_automation_branch": "main"
             },
-            "execution_mode": "SERIAL",
-            "stop_if_success": true,
-            "print_console_message": false,
             "timeout": 360000
         },
         {
@@ -125,9 +104,6 @@
                 "automation_test_branch": "main",
                 "roku_automation_branch": "main"
             },
-            "execution_mode": "SERIAL",
-            "stop_if_success": true,
-            "print_console_message": false,
             "timeout": 360000
         },
         {
@@ -141,9 +117,6 @@
                 "automation_test_branch": "main",
                 "roku_automation_branch": "main"
             },
-            "execution_mode": "SERIAL",
-            "stop_if_success": true,
-            "print_console_message": false,
             "timeout": 360000
         },
         {
@@ -157,9 +130,6 @@
                 "automation_test_branch": "main",
                 "roku_automation_branch": "main"
             },
-            "execution_mode": "SERIAL",
-            "stop_if_success": true,
-            "print_console_message": false,
             "timeout": 360000
         },
         {
@@ -173,9 +143,6 @@
                 "automation_test_branch": "main",
                 "roku_automation_branch": "main"
             },
-            "execution_mode": "SERIAL",
-            "stop_if_success": true,
-            "print_console_message": false,
             "timeout": 360000
         },
         {
@@ -189,9 +156,6 @@
                 "automation_test_branch": "main",
                 "roku_automation_branch": "main"
             },
-            "execution_mode": "SERIAL",
-            "stop_if_success": true,
-            "print_console_message": false,
             "timeout": 360000
         },
         {
@@ -205,9 +169,6 @@
                 "automation_test_branch": "main",
                 "roku_automation_branch": "main"
             },
-            "execution_mode": "SERIAL",
-            "stop_if_success": true,
-            "print_console_message": false,
             "timeout": 360000
         },
         {
@@ -221,9 +182,6 @@
                 "automation_test_branch": "main",
                 "roku_automation_branch": "main"
             },
-            "execution_mode": "SERIAL",
-            "stop_if_success": true,
-            "print_console_message": false,
             "timeout": 360000
         },
         {
@@ -237,9 +195,6 @@
                 "automation_test_branch": "main",
                 "roku_automation_branch": "main"
             },
-            "execution_mode": "SERIAL",
-            "stop_if_success": true,
-            "print_console_message": false,
             "timeout": 360000
         },
         {
@@ -253,9 +208,6 @@
                 "automation_test_branch": "main",
                 "roku_automation_branch": "main"
             },
-            "execution_mode": "SERIAL",
-            "stop_if_success": true,
-            "print_console_message": false,
             "timeout": 360000
         },
         {
@@ -269,9 +221,6 @@
                 "automation_test_branch": "main",
                 "roku_automation_branch": "main"
             },
-            "execution_mode": "SERIAL",
-            "stop_if_success": true,
-            "print_console_message": false,
             "timeout": 360000
         },
         {
@@ -285,9 +234,6 @@
                 "automation_test_branch": "main",
                 "roku_automation_branch": "main"
             },
-            "execution_mode": "SERIAL",
-            "stop_if_success": true,
-            "print_console_message": false,
             "timeout": 360000
         },
         {
@@ -301,9 +247,6 @@
                 "automation_test_branch": "main",
                 "roku_automation_branch": "main"
             },
-            "execution_mode": "SERIAL",
-            "stop_if_success": true,
-            "print_console_message": false,
             "timeout": 360000
         },
         {
@@ -317,9 +260,6 @@
                 "automation_test_branch": "main",
                 "roku_automation_branch": "main"
             },
-            "execution_mode": "SERIAL",
-            "stop_if_success": true,
-            "print_console_message": false,
             "timeout": 360000
         },
         {
@@ -333,9 +273,6 @@
                 "automation_test_branch": "main",
                 "roku_automation_branch": "main"
             },
-            "execution_mode": "SERIAL",
-            "stop_if_success": true,
-            "print_console_message": false,
             "timeout": 360000
         },
         {
@@ -349,9 +286,6 @@
                 "automation_test_branch": "main",
                 "roku_automation_branch": "main"
             },
-            "execution_mode": "SERIAL",
-            "stop_if_success": true,
-            "print_console_message": false,
             "timeout": 360000
         },
         {
@@ -365,9 +299,6 @@
                 "automation_test_branch": "main",
                 "roku_automation_branch": "main"
             },
-            "execution_mode": "SERIAL",
-            "stop_if_success": true,
-            "print_console_message": false,
             "timeout": 360000
         },
         {
@@ -381,9 +312,6 @@
                 "automation_test_branch": "main",
                 "roku_automation_branch": "main"
             },
-            "execution_mode": "SERIAL",
-            "stop_if_success": true,
-            "print_console_message": false,
             "timeout": 360000
         },
         {
@@ -397,9 +325,6 @@
                 "automation_test_branch": "main",
                 "roku_automation_branch": "main"
             },
-            "execution_mode": "SERIAL",
-            "stop_if_success": true,
-            "print_console_message": false,
             "timeout": 360000
         },
         {
@@ -413,9 +338,6 @@
                 "automation_test_branch": "main",
                 "roku_automation_branch": "main"
             },
-            "execution_mode": "SERIAL",
-            "stop_if_success": true,
-            "print_console_message": false,
             "timeout": 360000
         },
         {
@@ -429,9 +351,6 @@
                 "automation_test_branch": "main",
                 "roku_automation_branch": "main"
             },
-            "execution_mode": "SERIAL",
-            "stop_if_success": true,
-            "print_console_message": false,
             "timeout": 360000
         },
         {
@@ -445,9 +364,6 @@
                 "automation_test_branch": "main",
                 "roku_automation_branch": "main"
             },
-            "execution_mode": "SERIAL",
-            "stop_if_success": true,
-            "print_console_message": false,
             "timeout": 360000
         },
         {
@@ -461,9 +377,6 @@
                 "automation_test_branch": "main",
                 "roku_automation_branch": "main"
             },
-            "execution_mode": "SERIAL",
-            "stop_if_success": true,
-            "print_console_message": false,
             "timeout": 360000
         }
     ],

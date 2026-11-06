@@ -22,11 +22,9 @@ _TEMPERATURE_UNSUPPORTED_PREFIXES: tuple[str, ...] = (
     "claude-4.",
     "claude-opus-4-",
     "gpt-5-codex",
-    # Claude 5 family (opus/sonnet, any vendor suffix) only supports temperature=1.
     "claude-5-",
     "claude-opus-5",
     "claude-sonnet-5",
-    # Reasoning GPT models only support temperature=1 while reasoning is active.
     "gpt-5.5",
     "gpt-5.6",
     "gpt-6",
@@ -159,9 +157,6 @@ class AIClient:
             sys_prompt = self._RAG_SYSTEM_PROMPT
             context = None
 
-            # 1) Structured JIRA path. Questions like "the tickets I closed last
-            #    week" are structured queries (assignee/status/date) that semantic
-            #    search cannot answer, so first try to translate to JQL and run it.
             try:
                 jql = await self._maybe_jql(question)
             except Exception as exc:  # noqa: BLE001
@@ -181,8 +176,6 @@ class AIClient:
                 except Exception as exc:  # noqa: BLE001
                     logger.warning("JIRA JQL query failed: %s", exc)
 
-            # 2) Semantic-search fallback. The gateway occasionally returns
-            #    transient 5xx; retry a couple times.
             if context is None:
                 results: list[dict[str, Any]] = []
                 search_failed = False
@@ -198,10 +191,6 @@ class AIClient:
                         logger.warning(
                             "Internal search attempt %d failed: %s", attempt + 1, exc
                         )
-                # ALWAYS keep the RAG system prompt when internal access was
-                # requested, even when nothing came back. Otherwise the model
-                # silently falls back to a generic assistant and tells the user
-                # it "cannot access Roku internal systems" — the original bug.
                 if results:
                     context = _format_context(results)
                 elif search_failed:
@@ -331,14 +320,6 @@ class AIClient:
             arguments["sources"] = sources
 
         url = f"{self._gateway_root}/mcp-rest/tools/call"
-        # The correct tool name is "<server_id>-<tool>" = "ai_hub_search-search"
-        # with server_id "ai_hub_search". The bare "search" name is kept only as
-        # a defensive secondary.
-        #
-        # Probed 2026-09-25: the gateway is FLAKY — the SAME valid payload returns
-        # 200 on some calls and 500 "Tool search not found" on others (~1-in-5
-        # success in a burst). So retry the whole attempt several times; a 500 is
-        # transient here, not a permanent "wrong tool name" signal.
         names = ("ai_hub_search-search", "search")
         last_resp = None
         max_attempts = 6
@@ -364,8 +345,6 @@ class AIClient:
                             "MCP search returned non-JSON response"
                         ) from exc
 
-                # A non-"not found" 4xx/5xx is a real error — stop the inner loop
-                # and let the outer retry decide (it may still be transient).
                 if "not found" not in resp.text.lower():
                     break
 

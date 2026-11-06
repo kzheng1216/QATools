@@ -1,0 +1,25 @@
+2026-10-24 14:04:27 - QATools - INFO - Parsing profile from: /workspaces/automation-ide/mycode/QATools/4_runcase/common/../profiles/p_01.json
+2026-10-24 14:04:27 - QATools - INFO - Total tasks to execute: 1
+2026-10-24 14:04:27 - QATools - INFO - --------------------------------------------------------
+2026-10-24 14:04:27 - QATools - INFO - - Run Task: 1/1
+2026-10-24 14:04:27 - QATools - INFO - - Case IDs: ['2659885517']
+2026-10-24 14:04:27 - QATools - INFO - Case:2659885517 | main  | main  | DeviceName:RTVSP_47_1_2 | DeviceSN:X019006W6SYG | DeviceIP:10.64.25.102    | PlanId:[file-system]0   | Repeat:0   | Time:2026-10-24 14:04:27 |
+2026-10-24 14:04:29 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2987295]}
+2026-10-24 14:04:29 - QATools - INFO - Current suite ID: 2987295
+2026-10-24 14:04:52 - QATools - INFO - Test suite: 2987295 status: Running
+2026-10-24 14:08:58 - QATools - INFO - Test suite: 2987295 status: Blocked
+2026-10-24 14:08:58 - QATools - INFO - - Case IDs: ['2659885517'], Status: Blocked
+2026-10-24 14:08:58 - QATools - INFO - #########################################################
+2026-10-24 14:08:58 - QATools - INFO - -- [Summary] --
+2026-10-24 14:08:58 - QATools - INFO - #########################################################
+2026-10-24 14:08:58 - QATools - INFO - - Result: 1/1
+2026-10-24 14:08:58 - QATools - INFO - - Case IDs: ['2659885517'], Status: Blocked
+2026-10-24 14:29:27 - QATools - INFO - Parsing profile from: /workspaces/automation-ide/mycode/QATools/4_runcase/common/../profiles/p_01.json
+2026-10-24 14:29:27 - QATools - INFO - Total tasks to execute: 1
+2026-10-24 14:29:27 - QATools - INFO - --------------------------------------------------------
+2026-10-24 14:29:27 - QATools - INFO - - Run Task: 1/1
+2026-10-24 14:29:27 - QATools - INFO - - Case IDs: ['2659885517']
+2026-10-24 14:29:27 - QATools - INFO - Case:2659885517 | main  | main  | DeviceName:RTVSP_47_1_2 | DeviceSN:X019006W6SYG | DeviceIP:10.64.25.102    | PlanId:[file-system]0   | Repeat:0   | Time:2026-10-24 14:29:27 |
+2026-10-24 14:29:29 - QATools - INFO - Result: {'status': 0, 'suite_ids': [2987312]}
+2026-10-24 14:29:29 - QATools - INFO - Current suite ID: 2987312
+2026-10-24 14:29:48 - QATools - INFO - Test suite: 2987312 status: Running

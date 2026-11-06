@@ -335,16 +335,22 @@ class AnalyzeConfigBody(BaseModel):
 def get_analyze_config() -> dict:
     """Return the Analyze default locale + prompt template.
 
-    `default_locale` falls back to the agent_controller default; the prompt
-    template has no built-in default and is "" until configured in Settings.
+    Both fall back to the agent_controller built-in defaults when not
+    configured. `default_prompt_template` is the built-in prompt, used by
+    Settings' "Reset to Default".
     """
     from . import agent_controller
 
     ac = _read(ANALYZE_STORE, "analyze_config", {}) or {}
+    configured = ac.get("prompt_template") or ""
+    # Same shape as the Split prompt GET (default / is_default / placeholders).
     return {
         "default_locale": ac.get("default_locale")
         or agent_controller._DEFAULT_ANALYZE_LOCALE,
-        "prompt_template": ac.get("prompt_template") or "",
+        "prompt_template": configured or agent_controller.DEFAULT_ANALYZE_PROMPT_TEMPLATE,
+        "default_prompt_template": agent_controller.DEFAULT_ANALYZE_PROMPT_TEMPLATE,
+        "is_default": not configured,
+        "placeholders": list(agent_controller.ANALYZE_PROMPT_PLACEHOLDERS),
     }
 
 
@@ -363,6 +369,15 @@ def update_analyze_config(body: AnalyzeConfigBody) -> dict:
         )
     if not body.prompt_template.strip():
         raise HTTPException(status_code=400, detail="prompt_template cannot be empty")
+    from .agent_controller import ANALYZE_PROMPT_PLACEHOLDERS
+
+    # Same validation as the Split prompt update.
+    missing = [p for p in ANALYZE_PROMPT_PLACEHOLDERS if p not in body.prompt_template]
+    if missing:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Prompt template must contain the placeholder(s): {', '.join(missing)}",
+        )
 
     analyze = _read(ANALYZE_STORE, "analyze_config", {}) or {}
     analyze["default_locale"] = locale
@@ -370,6 +385,57 @@ def update_analyze_config(body: AnalyzeConfigBody) -> dict:
     _write(ANALYZE_STORE, "analyze_config", analyze)
     logger.info("Analyze config updated (default_locale=%s)", locale)
     return {"message": "Analyze settings saved"}
+
+
+# ---------- Split Profile prompt (analyze_data.yml: analyze_config.split_prompt_template)
+
+
+class SplitPromptBody(BaseModel):
+    split_prompt_template: str = Field(
+        ...,
+        description="Prompt used by Profile -> Split. Must contain {devices} and {cases}.",
+    )
+
+
+@router.get("/v1/config/analyze/split_prompt/get")
+def get_split_prompt() -> dict:
+    """Return the Split prompt (configured, else built-in) and the default."""
+    from .profile_controller import DEFAULT_SPLIT_PROMPT, SPLIT_PROMPT_PLACEHOLDERS
+
+    ac = _read(ANALYZE_STORE, "analyze_config", {}) or {}
+    configured = ac.get("split_prompt_template") or ""
+    return {
+        "split_prompt_template": configured or DEFAULT_SPLIT_PROMPT,
+        "default_split_prompt_template": DEFAULT_SPLIT_PROMPT,
+        "is_default": not configured,
+        "placeholders": list(SPLIT_PROMPT_PLACEHOLDERS),
+    }
+
+
+@router.put("/v1/config/analyze/split_prompt/update")
+def update_split_prompt(body: SplitPromptBody) -> dict:
+    """Persist the Split prompt to analyze_data.yml (applies on the next split).
+
+    Only `split_prompt_template` is touched; the rest of analyze_config
+    (locale, analyze prompt) is preserved.
+    """
+    from .profile_controller import SPLIT_PROMPT_PLACEHOLDERS
+
+    template = body.split_prompt_template
+    if not template.strip():
+        raise HTTPException(status_code=400, detail="split_prompt_template cannot be empty")
+    missing = [p for p in SPLIT_PROMPT_PLACEHOLDERS if p not in template]
+    if missing:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Split prompt must contain the placeholder(s): {', '.join(missing)}",
+        )
+
+    analyze = _read(ANALYZE_STORE, "analyze_config", {}) or {}
+    analyze["split_prompt_template"] = template
+    _write(ANALYZE_STORE, "analyze_config", analyze)
+    logger.info("Split prompt updated (%d chars)", len(template))
+    return {"message": "Split prompt saved"}
 
 
 # ---------- Account settings (stored directly in config/env.py) ----------

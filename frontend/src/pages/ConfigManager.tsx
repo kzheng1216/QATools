@@ -5,6 +5,7 @@ import {
   Modal,
   Space,
   Table,
+  Tabs,
   Typography,
   message,
   Popconfirm,
@@ -16,6 +17,8 @@ import {
   EyeOutlined,
   DeleteOutlined,
   ReloadOutlined,
+  FormOutlined,
+  CodeOutlined,
 } from "@ant-design/icons";
 import { jsonModalWidth } from "../components/JsonView";
 import JsonCodeEditor from "../components/JsonCodeEditor";
@@ -59,6 +62,17 @@ interface Props {
   // Optional map of JSON field name -> description. When set, hovering a key in
   // the View/Edit JSON editor shows its description in a tooltip.
   fieldDocs?: Record<string, string>;
+  // Optional guided (form-based) editor. When given, the Add/Edit/View dialog
+  // shows two tabs -- "Guided" (this component) and "JSON" (the raw editor) --
+  // both bound to the same JSON text, so switching tabs keeps every edit.
+  formEditor?: (props: {
+    value: string;
+    onChange: (next: string) => void;
+    readOnly?: boolean;
+  }) => ReactNode;
+  // Fixed dialog width used while the guided tab is active. The JSON tab keeps
+  // auto-sizing to its content.
+  formEditorWidth?: number;
 }
 
 type Mode = "add" | "edit" | "view";
@@ -74,6 +88,8 @@ export default function ConfigManager({
   loadRows,
   extraColumns,
   fieldDocs,
+  formEditor,
+  formEditorWidth = 1000,
 }: Props) {
   const [rows, setRows] = useState<Row[]>([]);
   const [loading, setLoading] = useState(false);
@@ -85,6 +101,9 @@ export default function ConfigManager({
   const [jsonText, setJsonText] = useState("");
   const [jsonError, setJsonError] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
+  // Which editor tab is showing. Defaults to the guided one when available,
+  // since that's the friendlier entry point for building a profile.
+  const [editorTab, setEditorTab] = useState<"form" | "json">("form");
 
   const load = () => {
     setLoading(true);
@@ -104,6 +123,7 @@ export default function ConfigManager({
     setName("");
     setJsonText(addTemplate);
     setJsonError(null);
+    setEditorTab(formEditor ? "form" : "json");
     setOpen(true);
   };
 
@@ -114,6 +134,7 @@ export default function ConfigManager({
       setName(item);
       setJsonText(JSON.stringify(data, null, 4));
       setJsonError(null);
+      setEditorTab(formEditor ? "form" : "json");
       setOpen(true);
     } catch (e) {
       message.error(`Open failed: ${(e as Error).message}`);
@@ -211,6 +232,69 @@ export default function ConfigManager({
   const modalTitle =
     mode === "add" ? `Add ${title}` : mode === "edit" ? `Edit ${title}: ${name}` : `View ${title}: ${name}`;
 
+  // The raw JSON editor, shared by the single-editor layout and the JSON tab.
+  const jsonEditor = (
+    <div>
+      <JsonCodeEditor
+        value={jsonText}
+        readOnly={mode === "view"}
+        onChange={setJsonText}
+        onValidityChange={setJsonError}
+        fieldDocs={fieldDocs}
+      />
+      {mode !== "view" && jsonError && (
+        <Typography.Text
+          type="danger"
+          style={{ display: "block", marginTop: 6, fontFamily: "monospace" }}
+        >
+          Invalid JSON: {jsonError}
+        </Typography.Text>
+      )}
+    </div>
+  );
+
+  const editorBody = formEditor ? (
+    <Tabs
+      activeKey={editorTab}
+      onChange={(k) => setEditorTab(k as "form" | "json")}
+      size="small"
+      items={[
+        {
+          key: "form",
+          label: (
+            <span>
+              <FormOutlined /> Guided
+            </span>
+          ),
+          children: formEditor({
+            value: jsonText,
+            onChange: (next) => {
+              setJsonText(next);
+              // The guided editor always emits valid JSON, so clear any error
+              // left over from hand-editing on the JSON tab.
+              setJsonError(null);
+            },
+            readOnly: mode === "view",
+          }),
+        },
+        {
+          key: "json",
+          label: (
+            <span>
+              <CodeOutlined /> JSON
+            </span>
+          ),
+          children: jsonEditor,
+        },
+      ]}
+    />
+  ) : (
+    <div>
+      <Typography.Text strong>Content (JSON)</Typography.Text>
+      {jsonEditor}
+    </div>
+  );
+
   return (
     <div>
       <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 16 }}>
@@ -268,8 +352,19 @@ export default function ConfigManager({
           disabled: mode !== "view" && !!jsonError,
         }}
         cancelText={mode === "view" ? "Close" : "Cancel"}
-        // Auto-size the dialog to the JSON content (widest line), clamped.
-        width={jsonModalWidth(jsonText)}
+        // The guided tab uses a roomy fixed width; the JSON tab auto-sizes to
+        // its content (widest line), clamped.
+        width={
+          formEditor && editorTab === "form"
+            ? formEditorWidth
+            : jsonModalWidth(jsonText)
+        }
+        // Pin the dialog near the top and cap the body height so a tall form
+        // (the guided editor runs well past one screen) scrolls inside the
+        // modal instead of overflowing off-screen, which would leave the last
+        // fields unreachable.
+        style={{ top: 24 }}
+        styles={{ body: { maxHeight: "calc(100vh - 220px)", overflowY: "auto" } }}
         destroyOnClose
       >
         <Space direction="vertical" style={{ width: "100%" }}>
@@ -283,24 +378,7 @@ export default function ConfigManager({
               onChange={(e) => setName(e.target.value)}
             />
           </div>
-          <div>
-            <Typography.Text strong>Content (JSON)</Typography.Text>
-            <JsonCodeEditor
-              value={jsonText}
-              readOnly={mode === "view"}
-              onChange={setJsonText}
-              onValidityChange={setJsonError}
-              fieldDocs={fieldDocs}
-            />
-            {mode !== "view" && jsonError && (
-              <Typography.Text
-                type="danger"
-                style={{ display: "block", marginTop: 6, fontFamily: "monospace" }}
-              >
-                Invalid JSON: {jsonError}
-              </Typography.Text>
-            )}
-          </div>
+          {editorBody}
         </Space>
       </Modal>
     </div>

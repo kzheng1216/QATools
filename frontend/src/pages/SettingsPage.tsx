@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import {
   Button,
   Card,
@@ -40,6 +40,8 @@ import {
   restartBackend,
   getAnalyzeConfig,
   updateAnalyzeConfig,
+  getSplitPrompt,
+  updateSplitPrompt,
   getAccount,
   updateAccount,
   listActivateAccounts,
@@ -122,6 +124,14 @@ export default function SettingsPage({ onChanged }: { onChanged?: () => void }) 
   // Analyze settings: default locale (radio) + prompt template (textarea).
   const [analyzeLocale, setAnalyzeLocale] = useState<AnalyzeLocale>("en-US");
   const [analyzePrompt, setAnalyzePrompt] = useState<string>("");
+  // Built-in Analyze prompt, restored by "Reset to Default".
+  const [analyzeDefault, setAnalyzeDefault] = useState<string>("");
+  const [analyzePlaceholders, setAnalyzePlaceholders] = useState<string[]>([
+    "{lang}",
+    "{content}",
+  ]);
+  // Same rule as the Split prompt: Save is blocked while any is missing.
+  const analyzeMissing = analyzePlaceholders.filter((p) => !analyzePrompt.includes(p));
   const [analyzeLoading, setAnalyzeLoading] = useState(false);
   const [analyzeSaving, setAnalyzeSaving] = useState(false);
   // Prompt template view mode: "edit" (raw textarea) or "preview" (markdown).
@@ -133,6 +143,8 @@ export default function SettingsPage({ onChanged }: { onChanged?: () => void }) 
       .then((c) => {
         setAnalyzeLocale(c.default_locale);
         setAnalyzePrompt(c.prompt_template);
+        setAnalyzeDefault(c.default_prompt_template ?? "");
+        if (c.placeholders) setAnalyzePlaceholders(c.placeholders);
       })
       .catch((e: Error) => message.error(`Load analyze settings failed: ${e.message}`))
       .finally(() => setAnalyzeLoading(false));
@@ -154,6 +166,44 @@ export default function SettingsPage({ onChanged }: { onChanged?: () => void }) 
       message.error(`Save failed: ${(e as Error).message}`);
     } finally {
       setAnalyzeSaving(false);
+    }
+  };
+
+  // Split Profile prompt (analyze_data.yml: analyze_config.split_prompt_template).
+  const [splitPrompt, setSplitPrompt] = useState<string>("");
+  const [splitDefault, setSplitDefault] = useState<string>("");
+  const [splitPlaceholders, setSplitPlaceholders] = useState<string[]>([
+    "{devices}",
+    "{cases}",
+  ]);
+  const [splitLoading, setSplitLoading] = useState(false);
+  const [splitSaving, setSplitSaving] = useState(false);
+  // Same Edit/Preview toggle (and default) as the Analyze prompt.
+  const [splitView, setSplitView] = useState<"edit" | "preview">("preview");
+  // Placeholders the backend needs; Save is blocked while any is missing.
+  const splitMissing = splitPlaceholders.filter((p) => !splitPrompt.includes(p));
+
+  const loadSplitPrompt = () => {
+    setSplitLoading(true);
+    getSplitPrompt()
+      .then((c) => {
+        setSplitPrompt(c.split_prompt_template);
+        setSplitDefault(c.default_split_prompt_template);
+        setSplitPlaceholders(c.placeholders);
+      })
+      .catch((e: Error) => message.error(`Load split prompt failed: ${e.message}`))
+      .finally(() => setSplitLoading(false));
+  };
+
+  const handleSaveSplitPrompt = async () => {
+    setSplitSaving(true);
+    try {
+      const res = await updateSplitPrompt(splitPrompt);
+      message.success(res.message); // read fresh per split, no restart needed
+    } catch (e) {
+      message.error(`Save failed: ${(e as Error).message}`);
+    } finally {
+      setSplitSaving(false);
     }
   };
 
@@ -385,6 +435,7 @@ export default function SettingsPage({ onChanged }: { onChanged?: () => void }) 
     loadCredData();
     loadDefaultModel();
     loadAnalyzeConfig();
+    loadSplitPrompt();
     loadAccount();
     loadActivateAccounts();
   }, []);
@@ -643,62 +694,72 @@ export default function SettingsPage({ onChanged }: { onChanged?: () => void }) 
               <Radio value="zh-CN">中文 (zh-CN)</Radio>
             </Radio.Group>
           </div>
-          <div>
-            <Space
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                marginBottom: 6,
-              }}
-            >
-              <Text strong>Prompt Template</Text>
-              <Segmented
-                size="small"
-                value={promptView}
-                onChange={(v) => setPromptView(v as "edit" | "preview")}
-                options={[
-                  { label: "Edit", value: "edit" },
-                  { label: "Preview", value: "preview" },
-                ]}
-              />
-            </Space>
-            <Text type="secondary" style={{ display: "block", marginBottom: 6 }}>
-              Markdown. Use <Text code>{"{lang}"}</Text> for the output language
-              and <Text code>{"{content}"}</Text> for the log content.
-            </Text>
-            {promptView === "edit" ? (
-              <TextArea
-                value={analyzePrompt}
-                onChange={(e) => setAnalyzePrompt(e.target.value)}
-                autoSize={{ minRows: 10, maxRows: 28 }}
-                style={{ fontFamily: "monospace", fontSize: 12 }}
-              />
-            ) : (
-              <div
-                className="chat-markdown"
-                style={{
-                  border: "1px solid rgba(255,255,255,0.15)",
-                  borderRadius: 6,
-                  padding: "8px 14px",
-                  maxHeight: 520,
-                  overflow: "auto",
-                }}
-              >
-                {analyzePrompt.trim() ? (
-                  <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                    {analyzePrompt}
-                  </ReactMarkdown>
-                ) : (
-                  <Text type="secondary">
-                    (empty — switch to Edit to add a prompt template)
-                  </Text>
-                )}
-              </div>
-            )}
-          </div>
-          <Button type="primary" loading={analyzeSaving} onClick={handleSaveAnalyze}>
-            Save Analyze Settings
+          <PromptTemplateEditor
+            value={analyzePrompt}
+            onChange={setAnalyzePrompt}
+            view={promptView}
+            onViewChange={setPromptView}
+            hint={
+              <>
+                Markdown. Use <Text code>{"{lang}"}</Text> for the output language
+                and <Text code>{"{content}"}</Text> for the log content.
+              </>
+            }
+          />
+          <PromptActions
+            value={analyzePrompt}
+            defaultValue={analyzeDefault}
+            missing={analyzeMissing}
+            saving={analyzeSaving}
+            saveLabel="Save Analyze Settings"
+            onSave={handleSaveAnalyze}
+            onReset={() => setAnalyzePrompt(analyzeDefault)}
+          />
+        </Space>
+      </Card>
+
+      <Card
+        title="Split Profile Prompt"
+        style={{ marginBottom: 16 }}
+        extra={
+          <Button
+            size="small"
+            icon={<ReloadOutlined />}
+            onClick={loadSplitPrompt}
+            loading={splitLoading}
+          >
+            Refresh
           </Button>
+        }
+      >
+        <Text type="secondary" style={{ display: "block", marginBottom: 12 }}>
+          Prompt template used when you click <Text strong>Split</Text> on the Profile
+          page. Changes apply immediately (no restart).
+        </Text>
+        <Space direction="vertical" style={{ width: "100%" }} size="middle">
+          <PromptTemplateEditor
+            value={splitPrompt}
+            onChange={setSplitPrompt}
+            view={splitView}
+            onViewChange={setSplitView}
+            hint={
+              <>
+                Markdown. Use <Text code>{"{devices}"}</Text> for the device list and{" "}
+                <Text code>{"{cases}"}</Text> for the cases (both required). Keep the
+                JSON reply format{" "}
+                <Text code>{'{"cases": [{"key", "compatible", "reason"}]}'}</Text>.
+              </>
+            }
+          />
+          <PromptActions
+            value={splitPrompt}
+            defaultValue={splitDefault}
+            missing={splitMissing}
+            saving={splitSaving}
+            saveLabel="Save Split Prompt"
+            onSave={handleSaveSplitPrompt}
+            onReset={() => setSplitPrompt(splitDefault)}
+          />
         </Space>
       </Card>
 
@@ -1068,5 +1129,139 @@ export default function SettingsPage({ onChanged }: { onChanged?: () => void }) 
         ]}
       />
     </div>
+  );
+}
+
+// One font for both Edit and Preview, so toggling never changes how the text
+// looks. The preview's `.prompt-preview` class (markdown.css) makes headings,
+// code and lists inherit this instead of using their own Markdown sizes.
+const PROMPT_FONT = {
+  fontFamily: '"Consolas", "Menlo", monospace',
+  fontSize: 13,
+  lineHeight: 1.6,
+} as const;
+
+// Shared prompt-template editor so every prompt on this page (Analyze, Split
+// Profile, ...) looks and behaves the same: a "Prompt Template" header with an
+// Edit/Preview toggle, a hint line, then the editor or a Markdown preview.
+function PromptTemplateEditor({
+  value,
+  onChange,
+  view,
+  onViewChange,
+  hint,
+  label = "Prompt Template",
+}: {
+  value: string;
+  onChange: (next: string) => void;
+  view: "edit" | "preview";
+  onViewChange: (next: "edit" | "preview") => void;
+  hint?: ReactNode;
+  label?: string;
+}) {
+  return (
+    <div>
+      <Space
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          marginBottom: 6,
+        }}
+      >
+        <Text strong>{label}</Text>
+        <Segmented
+          size="small"
+          value={view}
+          onChange={(v) => onViewChange(v as "edit" | "preview")}
+          options={[
+            { label: "Edit", value: "edit" },
+            { label: "Preview", value: "preview" },
+          ]}
+        />
+      </Space>
+      {hint && (
+        <Text type="secondary" style={{ display: "block", marginBottom: 6 }}>
+          {hint}
+        </Text>
+      )}
+      {view === "edit" ? (
+        <TextArea
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          autoSize={{ minRows: 10, maxRows: 28 }}
+          style={PROMPT_FONT}
+        />
+      ) : (
+        <div
+          className="chat-markdown prompt-preview"
+          style={{
+            ...PROMPT_FONT,
+            border: "1px solid rgba(255,255,255,0.15)",
+            borderRadius: 6,
+            padding: "8px 14px",
+            maxHeight: 520,
+            overflow: "auto",
+          }}
+        >
+          {value.trim() ? (
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>{value}</ReactMarkdown>
+          ) : (
+            <Text type="secondary">(empty — switch to Edit to add a prompt template)</Text>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// Shared action row for every prompt on this page, so Save / Reset behave the
+// same everywhere:
+//  - a red hint lists required placeholders missing from the editor;
+//  - Save is disabled while the prompt is empty or a placeholder is missing;
+//  - "Reset to Default" (with confirmation) only refills the editor with the
+//    built-in default -- nothing is saved until Save is clicked. It is
+//    clickable as soon as the default has loaded (even if the editor already
+//    matches it); it is only disabled while no default is available.
+function PromptActions({
+  value,
+  defaultValue,
+  missing,
+  saving,
+  saveLabel,
+  onSave,
+  onReset,
+}: {
+  value: string;
+  defaultValue: string;
+  missing: string[];
+  saving: boolean;
+  saveLabel: string;
+  onSave: () => void;
+  onReset: () => void;
+}) {
+  return (
+    <>
+      {missing.length > 0 && (
+        <Text type="danger">Missing required placeholder(s): {missing.join(", ")}</Text>
+      )}
+      <Space>
+        <Button
+          type="primary"
+          loading={saving}
+          disabled={!value.trim() || missing.length > 0}
+          onClick={onSave}
+        >
+          {saveLabel}
+        </Button>
+        <Popconfirm
+          title="Replace the editor content with the built-in default?"
+          description={`Not saved until you click ${saveLabel}.`}
+          okText="Reset"
+          onConfirm={onReset}
+        >
+          <Button disabled={!defaultValue}>Reset to Default</Button>
+        </Popconfirm>
+      </Space>
+    </>
   );
 }

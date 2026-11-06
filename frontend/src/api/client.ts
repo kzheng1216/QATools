@@ -213,6 +213,12 @@ export type AnalyzeLocale = "en-US" | "zh-CN";
 export interface AnalyzeConfig {
   default_locale: AnalyzeLocale;
   prompt_template: string;
+  // GET-only fields, same shape as SplitPromptConfig: the built-in prompt
+  // (restored by "Reset to Default"), whether it's in use, and the required
+  // placeholders.
+  default_prompt_template?: string;
+  is_default?: boolean;
+  placeholders?: string[];
 }
 
 export function getAnalyzeConfig(): Promise<AnalyzeConfig> {
@@ -223,6 +229,27 @@ export function updateAnalyzeConfig(
   body: AnalyzeConfig
 ): Promise<{ message: string }> {
   return request("PUT", "/v1/config/analyze/update", body);
+}
+
+// Prompt used by Profile -> Split (analyze_data.yml:
+// analyze_config.split_prompt_template). Must contain {devices} and {cases}.
+export interface SplitPromptConfig {
+  split_prompt_template: string;
+  default_split_prompt_template: string;
+  is_default: boolean;
+  placeholders: string[];
+}
+
+export function getSplitPrompt(): Promise<SplitPromptConfig> {
+  return request("GET", "/v1/config/analyze/split_prompt/get");
+}
+
+export function updateSplitPrompt(
+  split_prompt_template: string
+): Promise<{ message: string }> {
+  return request("PUT", "/v1/config/analyze/split_prompt/update", {
+    split_prompt_template,
+  });
 }
 
 export function restartBackend(): Promise<{ message: string }> {
@@ -261,18 +288,74 @@ export function addProfile(name: string, data: unknown): Promise<{ message: stri
 export function updateProfile(name: string, data: unknown): Promise<{ message: string }> {
   return request("PATCH", `/v1/profile/update/${name}`, data);
 }
+export interface SplitAssignment {
+  case_id: string;
+  testrail_case_id: string | number;
+  title: string;
+  device: string;
+  compatible: string[];
+  reason: string;
+  // No selected device matched -> placed on the first selected device.
+  fallback: boolean;
+  // The AI batch for this case failed -> treated as compatible everywhere.
+  ai_failed: boolean;
+}
+
+export interface SplitResult {
+  message: string;
+  profiles: { device: string; profile: string; count: number }[];
+  assignments: SplitAssignment[];
+}
+
+// Split a profile's cases across devices (AI matches each case's TestRail
+// execution conditions to the devices, then cases are balanced). Writes one
+// `<profile>__<nnn>` profile (e.g. p_01__001) per device that received cases (next free
+// number; existing profiles are never overwritten).
+export function splitProfile(name: string, devices: string[]): Promise<SplitResult> {
+  return request("POST", `/v1/profile/split/${encodeURIComponent(name)}`, {
+    devices,
+  });
+}
+
 export function deleteProfile(name: string): Promise<{ message: string }> {
   return request("DELETE", `/v1/profile/delete/${name}`);
 }
 
 // ---------- Run case ----------
 // Backend takes profile_name + select as query params.
+// `autoAnalyze` asks the backend to analyze every non-passing case once the
+// profile run finishes, writing per-case markdown reports plus a `p__...yml`
+// profile report into data/analyzer_history.
 export function runCase(
   profileName: string,
-  select: string
-): Promise<{ message: string; pid: number }> {
-  const qs = `?profile_name=${encodeURIComponent(profileName)}&select=${encodeURIComponent(select)}`;
+  select: string,
+  autoAnalyze = false,
+  locale?: string
+): Promise<{ message: string; pid: number; auto_analyze?: boolean }> {
+  const qs =
+    `?profile_name=${encodeURIComponent(profileName)}&select=${encodeURIComponent(select)}` +
+    `&auto_analyze=${autoAnalyze ? "true" : "false"}` +
+    (locale ? `&locale=${encodeURIComponent(locale)}` : "");
   return request("POST", `/v1/runcase/run${qs}`);
+}
+
+export interface ProfileAnalyzeResult {
+  profile_report: string;
+  status: string;
+  count_case: number;
+  count_nopass_case: number;
+  case_analyze_report: string[];
+}
+
+// Analyze the non-passing cases of a profile's latest run on demand.
+export function analyzeProfile(
+  profileName: string,
+  locale?: string
+): Promise<ProfileAnalyzeResult> {
+  const qs =
+    `?profile_name=${encodeURIComponent(profileName)}` +
+    (locale ? `&locale=${encodeURIComponent(locale)}` : "");
+  return request("POST", `/v1/runcase/analyze_profile${qs}`);
 }
 
 export interface RunningCase {
@@ -758,6 +841,9 @@ export interface AnalyzeHistoryItem {
   locale: string;
   datetime: string;
   date: string;
+  // Profile analyze reports (.yml) that list this file as a case report. A
+  // bound file can't be deleted until those profile reports are deleted.
+  bound_profile_reports?: string[];
 }
 
 export async function listAnalyzeHistory(filters?: {
@@ -791,6 +877,59 @@ export async function getAnalyzeHistory(name: string): Promise<string> {
 
 export function deleteAnalyzeHistory(name: string): Promise<{ message: string }> {
   return request("DELETE", `/v1/analyze_history/delete?name=${encodeURIComponent(name)}`);
+}
+
+// ---------- Profile analyze reports ----------
+export interface ProfileReportCase {
+  testrail_case_id: string;
+  name: string;
+}
+
+export interface ProfileAnalyzeReport {
+  name: string;
+  profile_name: string;
+  // "analyzing" while per-case analyses are still running, else "completed".
+  status: string;
+  analyzed_count: number;
+  count_nopass_case: number;
+  count_case: number;
+  locale: string;
+  datetime: string;
+  date: string;
+  case_analyze_report: string[];
+  cases: ProfileReportCase[];
+}
+
+export async function listProfileAnalyzeReports(filters?: {
+  profile?: string;
+  locale?: string;
+  date?: string;
+}): Promise<ProfileAnalyzeReport[]> {
+  const p = new URLSearchParams();
+  if (filters?.profile) p.set("profile", filters.profile);
+  if (filters?.locale) p.set("locale", filters.locale);
+  if (filters?.date) p.set("date", filters.date);
+  const qs = p.toString() ? `?${p.toString()}` : "";
+  const data = await request<{ items: ProfileAnalyzeReport[] }>(
+    "GET",
+    `/v1/analyze_history/profile/list${qs}`
+  );
+  return data.items ?? [];
+}
+
+export async function getProfileAnalyzeReport(name: string): Promise<string> {
+  const data = await request<{ name: string; content: string }>(
+    "GET",
+    `/v1/analyze_history/profile/view?name=${encodeURIComponent(name)}`
+  );
+  return data.content;
+}
+
+export function deleteProfileAnalyzeReport(name: string): Promise<{ message: string }> {
+  return request(
+    "DELETE",
+    `/v1/analyze_history/profile/delete?name=${encodeURIComponent(name)}`
+  );
 }
 
 // ---------- Chat sessions ----------

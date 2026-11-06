@@ -12,9 +12,6 @@
                 "automation_test_branch": "main",
                 "roku_automation_branch": "main"
             },
-            "execution_mode": "PARALLEL",
-            "stop_if_success": true,
-            "print_console_message": false,
             "timeout": 36000
         }
     ],

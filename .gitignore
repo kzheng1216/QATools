@@ -21,6 +21,10 @@ backend/logs/*
 frontend/logs/*
 logs/*
 
+# Ignore node_modules
+node_modules/*
+frontend/node_modules/*
+
 # Ignore profile files
 4_runcase/profiles/opm*.json
 4_runcase/profiles/kz*.json

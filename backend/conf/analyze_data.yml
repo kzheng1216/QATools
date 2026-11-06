@@ -1,5 +1,5 @@
 analyze_config:
-  default_locale: zh-CN
+  default_locale: en-US
   prompt_template: 'You are a senior QA automation engineer analyzing a failed test/build
     log.
 
@@ -47,3 +47,20 @@ analyze_config:
     {content}
 
     >>>'
+  split_prompt_template: "You are assigning Roku automated test cases to test devices.\n\
+    \nFor EACH case decide which of the candidate devices satisfy the case's\nexecution\
+    \ conditions. Compare the case's preconditions / steps / mode-account\nstatus\
+    \ / region / required equipment with each device's peripherals (QA Bot,\nMaxwell,\
+    \ STB, Power, AVR, HDMI inputs, tuner) and Roku info (Account Type =\nregion,\
+    \ Linked = connected/unconnected mode, Connection Type = wifi/ethernet,\nform\
+    \ factor, 4K, tuner types, ...).\n\nRules:\n- A device is compatible only if nothing\
+    \ in the case conditions rules it out.\n- \"Connected Mode / Linked\" requires\
+    \ Linked=True; \"Unconnected Mode / Unlinked\"\n  requires Linked=False; \"Connected\
+    \ Mode & Unconnected Mode\" accepts either.\n- Region requirements must match\
+    \ the device Account Type / Model Region\n  (UK == GB). \"Global\" accepts any\
+    \ region.\n- If a case needs equipment (e.g. Maxwell, an STB on HDMI, AVR, a signal\n\
+    \  generator) the device must have it.\n- If no condition can be determined, every\
+    \ device is compatible.\n- Do NOT balance load; only judge compatibility.\n\n\
+    Return ONLY a JSON object, no prose, no code fence:\n{\"cases\": [{\"key\": \"\
+    <case key>\", \"compatible\": [\"<device>\", ...],\n            \"reason\": \"\
+    <= 20 words\"}]}\n\nCANDIDATE DEVICES:\n{devices}\n\nCASES:\n{cases}\n"

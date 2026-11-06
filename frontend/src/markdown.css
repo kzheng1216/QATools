@@ -88,3 +88,24 @@
 .device-info-md td:first-child {
   white-space: nowrap;
 }
+
+/* Prompt template preview (Settings): render with exactly the same font family
+   and size as the Edit textarea, so switching Edit <-> Preview doesn't change
+   the text style. Size/family come from the container's inline style; every
+   descendant inherits them. Headings stay bold so the structure still reads. */
+.chat-markdown.prompt-preview,
+.chat-markdown.prompt-preview * {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+.chat-markdown.prompt-preview h1,
+.chat-markdown.prompt-preview h2,
+.chat-markdown.prompt-preview h3,
+.chat-markdown.prompt-preview h4 {
+  font-weight: 700;
+  margin: 10px 0 4px;
+}
+.chat-markdown.prompt-preview code {
+  padding: 0 3px;
+}

@@ -59,7 +59,7 @@ def create_execution_with_profile(profile: str) -> TaskExecution:
                 execution_mode=ExecutionMode[
                     task_data.get("execution_mode", "SERIAL")
                 ].value,
-                stop_if_success=bool(task_data.get("stop_if_success", False)),
+                stop_if_success=bool(task_data.get("stop_if_success", True)),
                 print_console_message=bool(
                     task_data.get("print_console_message", False)
                 ),

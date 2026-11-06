@@ -6,8 +6,10 @@ import {
   Popconfirm,
   Select,
   Space,
+  Spin,
   Table,
   Tag,
+  Tooltip,
   Typography,
   message,
 } from "antd";
@@ -18,7 +20,10 @@ import {
   listAnalyzeHistory,
   getAnalyzeHistory,
   deleteAnalyzeHistory,
+  listProfileAnalyzeReports,
+  deleteProfileAnalyzeReport,
   type AnalyzeHistoryItem,
+  type ProfileAnalyzeReport,
 } from "../api/client";
 
 const { Title, Text } = Typography;
@@ -38,6 +43,13 @@ export default function AnalyzeHistoryPage() {
   // filters instantly without per-keystroke server round-trips.
   const [allItems, setAllItems] = useState<AnalyzeHistoryItem[]>([]);
   const [loading, setLoading] = useState(false);
+
+  // Profile analyze reports (p__<profile>__<nopass>__<count>__<locale>__<dt>.yml)
+  const [profileReports, setProfileReports] = useState<ProfileAnalyzeReport[]>([]);
+  const [profileLoading, setProfileLoading] = useState(false);
+  const [prProfile, setPrProfile] = useState<string | undefined>();
+  const [prLocale, setPrLocale] = useState<string | undefined>();
+  const [prDate, setPrDate] = useState<string | undefined>();
 
   // Filters
   const [testrailCaseId, setTestrailCaseId] = useState<string | undefined>();
@@ -61,7 +73,60 @@ export default function AnalyzeHistoryPage() {
       .finally(() => setLoading(false));
   };
 
+  const loadProfileReports = () => {
+    setProfileLoading(true);
+    listProfileAnalyzeReports()
+      .then(setProfileReports)
+      .catch((e: Error) => message.error(`Load profile reports failed: ${e.message}`))
+      .finally(() => setProfileLoading(false));
+  };
+
   useEffect(load, []);
+  useEffect(loadProfileReports, []);
+
+  // While any profile is still analyzing, poll so the row flips from
+  // "Analyzing n/m" to the case links on its own.
+  const anyAnalyzing = profileReports.some((r) => r.status === "analyzing");
+  useEffect(() => {
+    if (!anyAnalyzing) return;
+    // Refresh both lists: case reports written during the run become bound to
+    // the profile report, which changes whether they can be deleted.
+    const t = setInterval(() => {
+      loadProfileReports();
+      load();
+    }, 5000);
+    return () => clearInterval(t);
+  }, [anyAnalyzing]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Distinct values for the profile-report filters.
+  const prProfileOptions = Array.from(
+    new Set(profileReports.map((i) => i.profile_name).filter(Boolean))
+  ).sort();
+  const prLocaleOptions = Array.from(
+    new Set(profileReports.map((i) => i.locale).filter(Boolean))
+  ).sort();
+  const prDateOptions = Array.from(
+    new Set(profileReports.map((i) => i.date).filter(Boolean))
+  ).sort((a, b) => b.localeCompare(a));
+
+  const filteredProfileReports = profileReports.filter((i) => {
+    if (prProfile && i.profile_name !== prProfile) return false;
+    if (prLocale && i.locale !== prLocale) return false;
+    if (prDate && i.date !== prDate) return false;
+    return true;
+  });
+
+  const handleDeleteProfileReport = async (name: string) => {
+    try {
+      const res = await deleteProfileAnalyzeReport(name);
+      message.success(res.message);
+      loadProfileReports();
+      // Its case reports may now be unbound (deletable) -- refresh that list.
+      load();
+    } catch (e) {
+      message.error(`Delete failed: ${(e as Error).message}`);
+    }
+  };
 
   // Distinct values for the dropdown filters.
   const testrailOptions = Array.from(
@@ -124,6 +189,157 @@ export default function AnalyzeHistoryPage() {
       <Title level={4} style={{ marginTop: 0 }}>
         Analyze History
       </Title>
+      {/* Profile-level analyze reports, one row per profile run. */}
+      <Card
+        style={{ marginBottom: 16 }}
+        title={`Profile Analyze Reports (${filteredProfileReports.length})`}
+        extra={
+          <Button
+            size="small"
+            icon={<ReloadOutlined />}
+            onClick={loadProfileReports}
+            loading={profileLoading}
+          >
+            Refresh
+          </Button>
+        }
+      >
+        <Space style={{ marginBottom: 12 }} wrap>
+          <Select
+            allowClear
+            showSearch
+            placeholder="profile"
+            style={{
+              width: Math.min(
+                600,
+                Math.max(
+                  200,
+                  prProfileOptions.reduce((m, c) => Math.max(m, c.length), 10) * 8 + 56
+                )
+              ),
+            }}
+            value={prProfile}
+            onChange={setPrProfile}
+            options={prProfileOptions.map((p) => ({ value: p, label: p }))}
+          />
+          <Select
+            allowClear
+            placeholder="locale"
+            style={{ minWidth: 130 }}
+            value={prLocale}
+            onChange={setPrLocale}
+            options={prLocaleOptions.map((l) => ({ value: l, label: l }))}
+          />
+          <Select
+            allowClear
+            showSearch
+            placeholder="date"
+            style={{ minWidth: 150 }}
+            value={prDate}
+            onChange={setPrDate}
+            options={prDateOptions.map((d) => ({ value: d, label: d }))}
+          />
+        </Space>
+        <Table<ProfileAnalyzeReport>
+          size="small"
+          rowKey="name"
+          loading={profileLoading}
+          dataSource={filteredProfileReports}
+          tableLayout="fixed"
+          pagination={{ defaultPageSize: 10, pageSizeOptions: [10, 15, 30, 50], showSizeChanger: true }}
+          columns={[
+            {
+              title: "Profile Name",
+              dataIndex: "profile_name",
+              key: "profile_name",
+              ellipsis: true,
+              sorter: (a, b) => a.profile_name.localeCompare(b.profile_name),
+              render: (p: string) => p || "-",
+            },
+            {
+              title: "NoPass Cases",
+              dataIndex: "count_nopass_case",
+              key: "count_nopass_case",
+              width: 130,
+              sorter: (a, b) => a.count_nopass_case - b.count_nopass_case,
+              render: (n: number) =>
+                n > 0 ? <Tag color="error">{n}</Tag> : <Tag color="success">0</Tag>,
+            },
+            {
+              title: "Total Cases",
+              dataIndex: "count_case",
+              key: "count_case",
+              width: 120,
+              sorter: (a, b) => a.count_case - b.count_case,
+            },
+            {
+              title: "Locale",
+              dataIndex: "locale",
+              key: "locale",
+              width: 90,
+            },
+            {
+              title: "Date/Time",
+              dataIndex: "datetime",
+              key: "datetime",
+              width: 190,
+              sorter: (a, b) => a.datetime.localeCompare(b.datetime),
+              defaultSortOrder: "descend",
+              render: (dt: string) => (dt ? dt.replace("_", " ") : "-"),
+            },
+            {
+              title: "Case Report",
+              key: "cases",
+              render: (_, r) => {
+                // Case links only appear once every non-passing case has been
+                // analyzed; until then the row reports its progress.
+                if (r.status === "analyzing") {
+                  return (
+                    <Space size={6}>
+                      <Spin size="small" />
+                      <Tag color="processing">
+                        Analyzing {r.analyzed_count}/{r.count_nopass_case}
+                      </Tag>
+                    </Space>
+                  );
+                }
+                if (!r.cases || !r.cases.length) return "-";
+                return (
+                  <span>
+                    {r.cases.map((c, idx) => (
+                      <span key={c.name}>
+                        {/* Clicking shows the case's analyze report in the modal. */}
+                        <a onClick={() => openView(c.name)}>
+                          {c.testrail_case_id || c.name}
+                        </a>
+                        {idx < r.cases.length - 1 ? ", " : ""}
+                      </span>
+                    ))}
+                  </span>
+                );
+              },
+            },
+            {
+              title: "Action",
+              key: "action",
+              width: 100,
+              render: (_, r) => (
+                <Popconfirm
+                  title="Delete this profile report?"
+                  okText="Delete"
+                  okButtonProps={{ danger: true }}
+                  onConfirm={() => handleDeleteProfileReport(r.name)}
+                >
+                  <Button size="small" danger icon={<DeleteOutlined />}>
+                    Delete
+                  </Button>
+                </Popconfirm>
+              ),
+            },
+          ]}
+        />
+      </Card>
+
       <Card
         title={`Saved Analyses (${items.length})`}
         extra={
@@ -294,16 +510,39 @@ export default function AnalyzeHistoryPage() {
                   <Button size="small" icon={<EyeOutlined />} onClick={() => openView(r.name)}>
                     View
                   </Button>
-                  <Popconfirm
-                    title="Delete this analysis?"
-                    okText="Delete"
-                    okButtonProps={{ danger: true }}
-                    onConfirm={() => handleDelete(r.name)}
-                  >
-                    <Button size="small" danger icon={<DeleteOutlined />}>
-                      Delete
-                    </Button>
-                  </Popconfirm>
+                  {r.bound_profile_reports && r.bound_profile_reports.length > 0 ? (
+                    // Bound to a profile report: deleting it would leave that
+                    // report pointing at a missing file, so it's blocked here
+                    // (and by the backend, which returns 409).
+                    <Tooltip
+                      title={
+                        <div>
+                          Used by Profile Analyze Report(s):
+                          {r.bound_profile_reports.map((p) => (
+                            <div key={p} style={{ fontFamily: "monospace", fontSize: 12 }}>
+                              {p}
+                            </div>
+                          ))}
+                          Delete the profile report first.
+                        </div>
+                      }
+                    >
+                      <Button size="small" danger disabled icon={<DeleteOutlined />}>
+                        Delete
+                      </Button>
+                    </Tooltip>
+                  ) : (
+                    <Popconfirm
+                      title="Delete this analysis?"
+                      okText="Delete"
+                      okButtonProps={{ danger: true }}
+                      onConfirm={() => handleDelete(r.name)}
+                    >
+                      <Button size="small" danger icon={<DeleteOutlined />}>
+                        Delete
+                      </Button>
+                    </Popconfirm>
+                  )}
                 </Space>
               ),
             },

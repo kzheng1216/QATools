@@ -3,6 +3,9 @@ import { Button, Modal, Select, Space, Tooltip, Typography, message } from "antd
 import { PlusOutlined } from "@ant-design/icons";
 import type { ColumnsType } from "antd/es/table";
 import ConfigManager, { type Row } from "./ConfigManager";
+import ProfileFormEditor from "../components/ProfileFormEditor";
+import SplitProfileButton from "../components/SplitProfileButton";
+import { PROFILE_TEMPLATE } from "../components/profileModel";
 import {
   listProfiles,
   listProfileDetails,
@@ -18,11 +21,8 @@ import {
 
 const { Text } = Typography;
 
-const PROFILE_TEMPLATE = JSON.stringify(
-  { name: "", description: "", tasks: [] },
-  null,
-  4
-);
+// New profiles start from the shared template (one blank task with every
+// optional field written out), so the JSON tab and the guided tab agree.
 
 // Modal that generates a profile from an existing testrail_data file.
 function GenerateWithRunPlan({ onDone }: { onDone: () => void }) {
@@ -157,8 +157,8 @@ function GenerateWithRunPlan({ onDone }: { onDone: () => void }) {
 const PROFILE_FIELD_DOCS: Record<string, string> = {
   name: 'e.g. "execution plan 2659884070"',
   description: 'e.g. "4K NA blocked re-run" (any free text, "" allowed)',
-  tasks: 'Array of task objects, e.g. [ { "config": { ... }, "execution_mode": "SERIAL", ... } ]',
-  execution_mode: '"SERIAL" or "PARALLEL"',
+  tasks: 'Array of task objects, e.g. [ { "config": { ... }, "timeout": 36000 }, ... ]',
+  execution_mode: '"SERIAL" or "PARALLEL" (profile level: how the tasks run)',
   config:
     'A config object, e.g. { "case_type": "BDD", "case_id": "2659884070", "device": "d_01", "testrail_plan_id": 0, "repeat": 0, "automation_test_branch": "main", "roku_automation_branch": "main" }',
   case_type: '"BDD" | "UT" | "NEW"',
@@ -170,9 +170,6 @@ const PROFILE_FIELD_DOCS: Record<string, string> = {
   repeat: "e.g. 0 (run once), 2 (run 3 times total)",
   automation_test_branch: 'e.g. "main" or "yuzheng/AUTO-73326/fix"',
   roku_automation_branch: 'e.g. "main"',
-  test_source: '"file-system" (single case) or "testrail" (whole plan)',
-  stop_if_success: "true or false",
-  print_console_message: "true or false",
   timeout: "Seconds, e.g. 36000 or 360000",
 };
 
@@ -189,6 +186,13 @@ const PROFILE_COLUMNS: ColumnsType<Row> = [
     },
   },
   {
+    title: "Execution mode",
+    key: "execution_mode",
+    dataIndex: "execution_mode",
+    width: 140,
+    render: (v: unknown) => String(v ?? "") || "-",
+  },
+  {
     title: "Total tasks",
     key: "total_tasks",
     dataIndex: "total_tasks",
@@ -196,25 +200,19 @@ const PROFILE_COLUMNS: ColumnsType<Row> = [
     align: "center" as const,
     sorter: (a: Row, b: Row) => Number(a.total_tasks ?? 0) - Number(b.total_tasks ?? 0),
   },
-  {
-    title: "Execution mode",
-    key: "execution_mode",
-    dataIndex: "execution_mode",
-    width: 140,
-    render: (v: unknown) => String(v ?? "") || "-",
-  },
 ];
 
 export default function ProfilePage() {
   return (
     <ConfigManager
       title="Profile"
-      actionsWidth={250}
+      actionsWidth={280}
       addTemplate={PROFILE_TEMPLATE}
       searchable
       loadRows={listProfileDetails}
       extraColumns={PROFILE_COLUMNS}
       fieldDocs={PROFILE_FIELD_DOCS}
+      formEditor={(p) => <ProfileFormEditor {...p} />}
       api={{
         list: listProfiles,
         get: getProfile,
@@ -223,6 +221,7 @@ export default function ProfilePage() {
         remove: deleteProfile,
       }}
       extraActions={(reload) => <GenerateWithRunPlan onDone={reload} />}
+      rowActions={(name, reload) => <SplitProfileButton profile={name} onDone={reload} />}
     />
   );
 }

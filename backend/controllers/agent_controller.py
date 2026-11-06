@@ -25,17 +25,43 @@ _LOG_FETCH_MAX_CHARS = 60000
 # Default Analyze locale
 _DEFAULT_ANALYZE_LOCALE = "en-US"
 
+ANALYZE_PROMPT_PLACEHOLDERS = ("{lang}", "{content}")
+DEFAULT_ANALYZE_PROMPT_TEMPLATE = """You are a senior QA automation engineer analyzing a failed test/build log.
+Analyze the log below and produce a detailed root-cause analysis in {lang}, formatted as Markdown with these sections:
+## Summary — one or two sentences: what was tested and the overall outcome; mention the case id and device when known.
+## Device Context — briefly note the DUT (device under test) from the provided device info (ip, serial, brand, power/serial host, linked HDMI devices, region hints in the device name); call out anything that could explain the failure (offline power switch, wrong outlet, mismatched serial host, missing HDMI device, etc.).
+## Verdict — PASS / FAIL / BLOCKED / FLAKY plus your confidence (High/Medium/Low).
+## Key Errors — quote the most important error/exception lines verbatim in code blocks, with line/timestamp if available; prioritize the FIRST error that triggered the failure over downstream noise.
+## Root Cause — the most likely cause, distinguishing between a product/software-under-test bug, a test/automation framework issue, an environment/infrastructure issue (device offline, network, build setup), or a flaky/timing issue; cross-check against the device config when relevant; if uncertain give the top 2 hypotheses ranked by likelihood.
+## Impact — what functionality is affected and how severe.
+## Suggested Next Steps — concrete, ordered actions to confirm and fix or retry, naming any specific component, config, device, or owner.
+## Related Signals — warnings, retries, version mismatches, or anomalies worth noting even if not the direct cause.
+
+Rules: base every claim on evidence from the log and quote the relevant lines; if the log is truncated or inconclusive, say so and state what else is needed; do not invent errors that are not present.
+
+Log:
+<<<
+{content}
+>>>"""
+
 
 def _analyze_config() -> dict:
     """Read the `analyze_config` section from analyze_data.yml"""
     locale = _DEFAULT_ANALYZE_LOCALE
-    prompt_template = ""
+    prompt_template = DEFAULT_ANALYZE_PROMPT_TEMPLATE
     try:
         ac = config_module.read_section("analyze_config") or {}
         if ac.get("default_locale"):
             locale = str(ac["default_locale"])
-        if ac.get("prompt_template"):
-            prompt_template = str(ac["prompt_template"])
+        configured = str(ac.get("prompt_template") or "")
+        # Same rule as the Split prompt: a template missing a required
+        # placeholder would analyze without the log / language, so use the
+        # built-in default instead.
+        missing = [p for p in ANALYZE_PROMPT_PLACEHOLDERS if p not in configured]
+        if configured.strip() and not missing:
+            prompt_template = configured
+        elif configured.strip():
+            logger.warning("Analyze prompt lacks %s; using built-in default", missing)
     except Exception as exc:  # noqa: BLE001
         logger.warning("Falling back to default analyze config: %s", exc)
     return {"default_locale": locale, "prompt_template": prompt_template}
@@ -321,7 +347,7 @@ async def agent_search(req: AgentSearchRequest) -> AgentSearchResponse:
     svc = _get_service()
     try:
         results = await svc.search(req.query, sources=req.sources, limit=req.limit)
-    except Exception as exc:  # noqa: BLE001
+    except Exception as exc:
         logger.exception("AI search failed")
         raise HTTPException(status_code=502, detail=f"AI search failed: {exc}") from exc
     return AgentSearchResponse(

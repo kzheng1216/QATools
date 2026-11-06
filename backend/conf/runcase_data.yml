@@ -1,5 +1,6 @@
 runcase_user_query_list:
 - name: yuzheng
+- name: zzhang
 roku_test_cache_data:
   automation_id:
   - bdd-2790705513

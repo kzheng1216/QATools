@@ -4,6 +4,7 @@ import {
   Button,
   Card,
   AutoComplete,
+  Checkbox,
   Col,
   Input,
   InputNumber,
@@ -84,6 +85,9 @@ export default function RunCasePage() {
   const [profiles, setProfiles] = useState<string[]>([]);
   const [profile, setProfile] = useState<string>();
   const [select, setSelect] = useState<string>("All");
+  // When enabled, the backend analyzes every non-passing case after the run
+  // finishes and writes per-case + per-profile reports into analyzer_history.
+  const [autoAnalyze, setAutoAnalyze] = useState(false);
   const [loadingProfiles, setLoadingProfiles] = useState(false);
   const [running, setRunning] = useState(false);
   const [runResult, setRunResult] = useState<{ type: "success" | "error"; text: string } | null>(null);
@@ -347,7 +351,12 @@ export default function RunCasePage() {
     }
     setRunning(true);
     try {
-      const res = await runCase(profile, select);
+      const res = await runCase(
+        profile,
+        select,
+        autoAnalyze,
+        autoAnalyze ? defaultLocaleRef.current : undefined
+      );
       const text = `${res.message} (pid ${res.pid})`;
       message.success(text);
       setRunResult({ type: "success", text });
@@ -779,6 +788,17 @@ export default function RunCasePage() {
                         onChange={setSelect}
                         options={SELECT_OPTIONS}
                       />
+                    </div>
+                    <div style={{ paddingBottom: 6 }}>
+                      <Checkbox
+                        checked={autoAnalyze}
+                        onChange={(e) => setAutoAnalyze(e.target.checked)}
+                      >
+                        Auto analyze
+                      </Checkbox>
+                      <div style={{ fontSize: 12, color: "#999", marginTop: 2 }}>
+                        Analyze all non-passing cases after the run
+                      </div>
                     </div>
                     <Button
                       type="primary"
