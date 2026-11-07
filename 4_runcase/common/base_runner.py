@@ -44,9 +44,7 @@ class BaseRunner:
             tasks=[
                 QAHubTask(
                     config=self.c2659886400_DE(),
-                    execution_mode=ExecutionMode.SERIAL.value,
                     stop_if_success=True,
-                    print_console_message=False,
                     timeout=36000,
                 )
             ],

@@ -317,6 +317,19 @@ export function splitProfile(name: string, devices: string[]): Promise<SplitResu
   });
 }
 
+export interface MatchDeviceResult {
+  device: string;
+  reason: string;
+}
+
+/** Pick the device that best matches a TestRail case (Split Profile Prompt). */
+export function matchDeviceForCase(
+  testrailCaseId: string | number
+): Promise<MatchDeviceResult> {
+  const q = encodeURIComponent(String(testrailCaseId).trim());
+  return request("POST", `/v1/profile/match_device?testrail_case_id=${q}`);
+}
+
 export function deleteProfile(name: string): Promise<{ message: string }> {
   return request("DELETE", `/v1/profile/delete/${name}`);
 }

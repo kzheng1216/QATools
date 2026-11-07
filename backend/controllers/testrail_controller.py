@@ -47,6 +47,7 @@ def _save_plans(plans: list) -> None:
         logger.error("%s", exc)
         raise HTTPException(status_code=500, detail=str(exc)) from exc
 
+
 router = APIRouter()
 
 # TestRail API base and per-test result view link.
@@ -58,14 +59,14 @@ _AUTH = base64.b64encode(f"{EMAIL}:{TESTRAIL_API_KEY}".encode()).decode()
 _HEADERS = {"Authorization": f"Basic {_AUTH}", "Content-Type": "application/json"}
 
 
-def _tr_get(endpoint: str) -> dict | list:
+def _tr_get(endpoint: str, timeout: float = 60) -> dict | list:
     """Call a TestRail API v2 GET endpoint and return the parsed JSON.
     Example: https://testrail.eswat.roku.com/testrail/index.php?/api/v2/get_tests/26595380&status_id=Failed
     """
     req = urllib.request.Request(
         f"{_API_URL}/{endpoint}", headers=_HEADERS, method="GET"
     )
-    with urllib.request.urlopen(req, timeout=60) as resp:
+    with urllib.request.urlopen(req, timeout=timeout) as resp:
         body = resp.read().decode("utf-8", errors="replace")
     return json.loads(body) if body else {}
 
@@ -76,10 +77,20 @@ def _statuses() -> list[dict]:
     Example: https://testrail.eswat.roku.com/testrail/index.php?/api/v2/get_statuses
     Passed: 1, Blocked: 2, Untested: 3, For Review: 4, Failed: 5, NA: 8, Retest: 9, Broken: 10
     """
-    data = _tr_get("get_statuses")
+    # data = _tr_get("get_statuses")
+    # return [
+    #     {"id": s["id"], "name": s.get("name"), "label": s.get("label")}
+    #     for s in (data if isinstance(data, list) else data.get("statuses", []))
+    # ]
     return [
-        {"id": s["id"], "name": s.get("name"), "label": s.get("label")}
-        for s in (data if isinstance(data, list) else data.get("statuses", []))
+        {"id": 1, "name": "Passed", "label": "Passed"},
+        {"id": 2, "name": "Blocked", "label": "Blocked"},
+        {"id": 3, "name": "Untested", "label": "Untested"},
+        {"id": 4, "name": "For Review", "label": "For Review"},
+        {"id": 5, "name": "Failed", "label": "Failed"},
+        {"id": 8, "name": "NA", "label": "NA"},
+        {"id": 9, "name": "Retest", "label": "Retest"},
+        {"id": 10, "name": "Broken", "label": "Broken"},
     ]
 
 

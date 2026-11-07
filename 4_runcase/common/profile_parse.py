@@ -28,6 +28,20 @@ def _parse_config(config_data: dict) -> Config:
     )
 
 
+def _parse_task(task_data: dict) -> QAHubTask:
+    """Build a QAHubTask from one profile task dict."""
+    return QAHubTask(
+        config=_parse_config(task_data["config"]),
+        stop_if_success=bool(task_data.get("stop_if_success", True)),
+        timeout=task_data.get("timeout", 36000),
+    )
+
+
+def _parse_execution_mode(mode: str = "SERIAL") -> str:
+    """Map profile execution_mode name to ExecutionMode value."""
+    return ExecutionMode[str(mode or "SERIAL").upper()].value
+
+
 def create_execution_with_profile(profile: str) -> TaskExecution:
     """Create a TaskExecution object based on the provided profile JSON file."""
     if not profile.endswith(".json"):
@@ -41,37 +55,9 @@ def create_execution_with_profile(profile: str) -> TaskExecution:
     with open(profile_path, "r") as f:
         profile_data = json.load(f)
 
-    tasks = []
-    for task_data in profile_data.get("tasks", []):
-        # New format: each task carries a single `config` object. Fall back to the
-        # first entry of the legacy `configs` list so older profile files keep working.
-        if "config" in task_data:
-            config_data = task_data["config"]
-        else:
-            legacy = task_data.get("configs", [])
-            if not legacy:
-                continue
-            config_data = legacy[0]
-
-        tasks.append(
-            QAHubTask(
-                config=_parse_config(config_data),
-                execution_mode=ExecutionMode[
-                    task_data.get("execution_mode", "SERIAL")
-                ].value,
-                stop_if_success=bool(task_data.get("stop_if_success", True)),
-                print_console_message=bool(
-                    task_data.get("print_console_message", False)
-                ),
-                timeout=task_data.get("timeout", 36000),
-            )
-        )
-
     return TaskExecution(
-        tasks=tasks,
-        execution_mode=ExecutionMode[
-            profile_data.get("execution_mode", "SERIAL")
-        ].value,
+        tasks=[_parse_task(task) for task in profile_data.get("tasks", [])],
+        execution_mode=_parse_execution_mode(profile_data.get("execution_mode")),
         profile_name=profile,
     )
 

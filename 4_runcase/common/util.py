@@ -27,7 +27,7 @@ CONST_NOTEST = "NoTest"
 
 # Queued Retry
 QUEUED_RETRY_COUNT = 3
-QUEUED_RETRY_DELAY = 10  # seconds
+QUEUED_RETRY_DELAY = 60  # seconds
 
 # Track Result
 TRACK_RESULT_INTERVAL = 10  # seconds

@@ -1,11 +1,12 @@
 {
-    "name": "execution plan 2659886400",
-    "description": "execution plan 2659886400",
+    "name": "execution sample profile",
+    "description": "execution sample profile",
     "tasks": [
         {
             "config": {
                 "case_type": "BDD",
                 "case_id": "2659886400",
+                "testrail_case_id": 2659886400,
                 "device": "d_de_2",
                 "testrail_plan_id": 0,
                 "repeat": 0,
@@ -13,6 +14,19 @@
                 "roku_automation_branch": "main"
             },
             "timeout": 36000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "HdmiInputResQuantumDataTest.test_vesa_1280x800_75",
+                "testrail_case_id": 2659885420,
+                "device": "d_ws22_Damon_US",
+                "testrail_plan_id": 0,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "timeout": 360000
         }
     ],
     "execution_mode": "SERIAL"
