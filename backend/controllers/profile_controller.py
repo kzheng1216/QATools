@@ -3,6 +3,7 @@ import json
 import os
 import re
 import sys
+import urllib.error
 
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
@@ -346,28 +347,48 @@ def delete_profile(profile_name: str) -> dict:
 # ===========================================================================
 
 _ROKU_INFO_KEYS = (
+    "Account Name",
     "Account Type",
     "Linked",
     "Connection Type",
     "Model Region",
+    "Secure",
     "Locale",
     "Form Factor",
     "Device Type",
     "Platform Name",
     "Brand Name",
     "Model",
+    "Headphone Connected",
     "Software Major Version",
     "Num HDMI Inputs",
+    "Supports 2k",
     "Supports 4k",
     "Supports 8k",
     "Supports ATSC",
     "Supported Tuner Types",
+    "Supports HDR",
+    "Supports HDR10",
+    "Supports HDR10+",
+    "Supports Freely",
+    "Supports Freeview Play",
+    "Supports MEMC",
+    "Supports Local Dimming",
+    "Supports Volume Mode",
+    "Whitelisted",
+    "App Install Mode",
+    "IR Enabled",
+    "LLAT Installed",
+    "LLAT Permissions",
+    "Manufacturer",
     "Supports Bluetooth",
     "Is Soundbar",
     "Headless",
+    "Supported Audio Codecs",
     "Supported Power Regulation",
     "Freeview Certified",
     "Image Type",
+    "Panel Size",
 )
 
 # TestRail case fields that describe execution conditions. Dropdown /
@@ -383,6 +404,8 @@ _CASE_TEXT_LIMIT = 900  # chars per text field sent to the model
 _AI_BATCH_SIZE = 10  # cases per AI request
 _AI_CONCURRENCY = 3
 _TESTRAIL_CONCURRENCY = 8
+_TESTRAIL_TIMEOUT = 8  # seconds; don't stall Split / Auto-match on a dead API
+_DEVICE_INFO_TIMEOUT = 8
 
 _case_field_labels: dict[str, dict[str, str]] | None = None
 
@@ -414,7 +437,7 @@ def _write_new_split_profile(
 
 def _device_summary(device: str) -> dict:
     """Matching-relevant facts about a device (no credentials)."""
-    from .device_controller import device_conf_dir, view_device_info
+    from .device_controller import _load_roku_info, device_conf_dir
 
     path = os.path.join(device_conf_dir, f"{device}.json")
     if not os.path.isfile(path):
@@ -449,7 +472,7 @@ def _device_summary(device: str) -> dict:
 
     roku_info: dict = {}
     try:
-        info = view_device_info(device) or {}
+        info = _load_roku_info(device, timeout=_DEVICE_INFO_TIMEOUT) or {}
         roku_info = {k: info[k] for k in _ROKU_INFO_KEYS if k in info}
     except Exception as exc:  # noqa: BLE001 - info is best-effort
         logger.warning("Split: no Roku info for '%s': %s", device, exc)
@@ -464,37 +487,51 @@ def _load_case_field_labels() -> dict[str, dict[str, str]]:
         return _case_field_labels
     from .testrail_controller import _tr_get
 
-    labels: dict[str, dict[str, str]] = {}
     try:
-        for field in _tr_get("get_case_fields") or []:
-            name = field.get("system_name")
-            if name not in _CASE_LABEL_FIELDS:
-                continue
-            options: dict[str, str] = {}
-            for cfg in field.get("configs") or []:
-                items = ((cfg or {}).get("options") or {}).get("items") or ""
-                for line in str(items).splitlines():
-                    if "," in line:
-                        key, _, label = line.partition(",")
-                        options[key.strip()] = label.strip()
-            labels[name] = options
+        fields = _tr_get("get_case_fields", timeout=_TESTRAIL_TIMEOUT) or []
     except Exception as exc:  # noqa: BLE001
         logger.warning("Split: could not load TestRail case fields: %s", exc)
+        return {}  # do not cache a failed fetch
+
+    labels: dict[str, dict[str, str]] = {}
+    for field in fields:
+        name = field.get("system_name")
+        if name not in _CASE_LABEL_FIELDS:
+            continue
+        options: dict[str, str] = {}
+        for cfg in field.get("configs") or []:
+            items = ((cfg or {}).get("options") or {}).get("items") or ""
+            for line in str(items).splitlines():
+                if "," in line:
+                    key, _, label = line.partition(",")
+                    options[key.strip()] = label.strip()
+        labels[name] = options
     _case_field_labels = labels
     return labels
 
 
 def _case_conditions(testrail_case_id) -> dict:
-    """Execution conditions of a TestRail case (empty dict if unavailable)."""
+    """Execution conditions of a TestRail case.
+
+    Returns {"_not_found": True} when TestRail says the case does not exist.
+    Returns a note dict when TestRail is unreachable (caller may still match).
+    """
     from .testrail_controller import _tr_get
 
     if not str(testrail_case_id or "").strip().isdigit():
         return {}
     try:
-        case = _tr_get(f"get_case/{testrail_case_id}") or {}
+        case = _tr_get(f"get_case/{testrail_case_id}", timeout=_TESTRAIL_TIMEOUT) or {}
+    except urllib.error.HTTPError as exc:
+        if exc.code == 404:
+            return {"_not_found": True}
+        logger.warning("Split: TestRail case %s unavailable: %s", testrail_case_id, exc)
+        return {
+            "note": f"TestRail unavailable ({exc.code}); matching without case fields"
+        }
     except Exception as exc:  # noqa: BLE001
         logger.warning("Split: TestRail case %s unavailable: %s", testrail_case_id, exc)
-        return {}
+        return {"note": f"TestRail unavailable ({exc}); matching without case fields"}
 
     labels = _load_case_field_labels()
     out: dict = {"title": case.get("title", "")}
@@ -568,12 +605,55 @@ async def _ai_compatibility(
         reply = await _get_service().chat(prompt, use_internal=False)
 
     parsed = _extract_json(reply)
+    return _map_verdicts(batch, parsed.get("cases") or [], names)
+
+
+def _map_verdicts(batch: list[dict], parsed_cases, names: list[str]) -> dict[str, dict]:
+    """Map model case entries onto batch keys (index, testrail id, or position)."""
+    cooked: list[dict] = []
+    by_raw: dict[str, dict] = {}
+    for item in parsed_cases or []:
+        if not isinstance(item, dict):
+            continue
+        compatible = [n for n in (item.get("compatible") or []) if n in names]
+        entry = {
+            "compatible": compatible,
+            "reason": str(item.get("reason", "")),
+        }
+        cooked.append(entry)
+        raw = str(item.get("key", "")).strip()
+        if raw:
+            by_raw.setdefault(raw, entry)
+
     result: dict[str, dict] = {}
-    for item in parsed.get("cases") or []:
-        key = str(item.get("key", ""))
-        # Keep only real candidate names, in selection order.
-        compatible = [n for n in names if n in (item.get("compatible") or [])]
-        result[key] = {"compatible": compatible, "reason": str(item.get("reason", ""))}
+    claimed: set[int] = set()
+
+    def _claim(entry: dict) -> None:
+        for j, other in enumerate(cooked):
+            if other is entry:
+                claimed.add(j)
+                break
+
+    for i, case in enumerate(batch):
+        aliases = [
+            str(case.get("key", "")),
+            str(case.get("testrail_case_id") or ""),
+            str(case.get("case_id") or ""),
+        ]
+        for alias in aliases:
+            alias = alias.strip()
+            if alias and alias in by_raw:
+                result[str(case.get("key", i))] = by_raw[alias]
+                _claim(by_raw[alias])
+                break
+
+    missing = [c for i, c in enumerate(batch) if str(c.get("key", i)) not in result]
+    unused = [e for j, e in enumerate(cooked) if j not in claimed]
+    if missing and not result and len(cooked) == len(batch):
+        for case, entry in zip(batch, cooked):
+            result[str(case.get("key", ""))] = entry
+    elif len(missing) == 1 and unused:
+        result[str(missing[0].get("key", ""))] = unused[0]
     return result
 
 
@@ -636,7 +716,13 @@ async def split_profile(profile_name: str, req: SplitProfileRequest) -> dict:
         *(_conditions(c["testrail_case_id"]) for c in cases)
     )
     for case, cond in zip(cases, conditions):
-        case["conditions"] = cond
+        # Drop internal fetch flags; keep a note so the model knows fields are missing.
+        if cond.get("_not_found"):
+            case["conditions"] = {
+                "note": f"TestRail case {case['testrail_case_id']} was not found"
+            }
+        else:
+            case["conditions"] = {k: v for k, v in cond.items() if k != "_not_found"}
 
     ai_sem = asyncio.Semaphore(_AI_CONCURRENCY)
     template = _split_prompt_template()
@@ -647,6 +733,15 @@ async def split_profile(profile_name: str, req: SplitProfileRequest) -> dict:
         *(_ai_compatibility(b, devices, ai_sem, template) for b in batches),
         return_exceptions=True,
     )
+    if results and all(isinstance(res, BaseException) for res in results):
+        first = results[0]
+        detail = getattr(first, "detail", None) or first
+        logger.error("Split: AI analysis failed for every batch: %s", detail)
+        raise HTTPException(
+            status_code=502,
+            detail=f"AI analysis failed ({type(first).__name__})",
+        ) from first
+
     verdicts: dict[str, dict] = {}
     for batch, res in zip(batches, results):
         if isinstance(res, BaseException):
@@ -717,4 +812,78 @@ async def split_profile(profile_name: str, req: SplitProfileRequest) -> dict:
             }
             for c in cases
         ],
+    }
+
+
+@router.post("/v1/profile/match_device")
+async def match_device_for_case(testrail_case_id: str) -> dict:
+    """Pick the device that best matches a TestRail case (Split Profile Prompt).
+
+    Uses every file in the current device list. Returns the device filename
+    and the model's matching reason.
+    """
+    case_id = str(testrail_case_id or "").strip()
+    if not case_id.isdigit():
+        raise HTTPException(
+            status_code=400,
+            detail=f"'testrail_case_id' must be an integer, got '{testrail_case_id}'",
+        )
+
+    from .device_controller import list_devices
+
+    files = list_devices().get("devices") or []
+    device_names = [f[: -len(".json")] if f.endswith(".json") else f for f in files]
+    device_names = [d for d in device_names if d]
+    if not device_names:
+        raise HTTPException(status_code=400, detail="No devices available")
+
+    logger.info(
+        "Match device for TestRail case %s across %d device(s)",
+        case_id,
+        len(device_names),
+    )
+
+    devices = await asyncio.gather(
+        *(asyncio.to_thread(_device_summary, d) for d in device_names)
+    )
+    await asyncio.to_thread(_load_case_field_labels)
+    conditions = await asyncio.to_thread(_case_conditions, case_id)
+    if conditions.get("_not_found"):
+        raise HTTPException(
+            status_code=404,
+            detail=f"TestRail case '{case_id}' not found",
+        )
+    conditions = {k: v for k, v in conditions.items() if k != "_not_found"}
+
+    batch = [
+        {
+            "key": "0",
+            "testrail_case_id": case_id,
+            "conditions": conditions,
+        }
+    ]
+    template = _split_prompt_template()
+    ai_sem = asyncio.Semaphore(1)
+    try:
+        verdicts = await _ai_compatibility(batch, devices, ai_sem, template)
+    except Exception as exc:  # noqa: BLE001
+        detail = getattr(exc, "detail", None) or exc
+        logger.error("Match device: AI analysis failed: %s", detail)
+        raise HTTPException(
+            status_code=502,
+            detail=f"AI analysis failed ({type(exc).__name__})",
+        ) from exc
+
+    verdict = verdicts.get("0") or next(iter(verdicts.values()), {})
+    compatible = verdict.get("compatible") or []
+    reason = str(verdict.get("reason") or "").strip()
+    if not compatible:
+        raise HTTPException(
+            status_code=404,
+            detail=reason or f"No compatible device for TestRail case '{case_id}'",
+        )
+
+    return {
+        "device": f"{compatible[0]}.json",
+        "reason": reason,
     }

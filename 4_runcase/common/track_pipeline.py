@@ -48,7 +48,7 @@ def get_build_url(suite_id: int | str) -> str | None:
     return f"{JENKINS_JOB_URL}/{build_number}/"
 
 
-def track_result(suite_id: int | str, print_console_message=False) -> dict[str, Any]:
+def track_result(suite_id: int | str) -> dict[str, Any]:
     """Query the testcase status once and return an exit code."""
     # -----------------------------------
     # Check result

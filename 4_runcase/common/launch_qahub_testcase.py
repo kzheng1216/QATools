@@ -77,7 +77,6 @@ def build_payload(config: Config) -> dict[str, Any]:
         else config.CASE_ID
     )
 
-    # SUITE_NAME = f"[JWS]-[{config.device['name']}]-[TP:<{config.TEST_SOURCE}>:{config.TESTRAIL_PLAN_ID}]-[{config.CASE_TYPE}:{config.CASE_ID}]-[SN:{SN}]"
     SUITE_NAME = f"{SUITE_NAME_PREFIX}{config.device['name']}_{config.CASE_ID}_{config.TESTRAIL_PLAN_ID}_{config.REPEAT}"
 
     payload: dict[str, Any] = {
@@ -135,7 +134,7 @@ def post_suite(qahub_url: str, token: str, payload: dict[str, Any]) -> dict[str,
 
 def print_log(config: Config):
     log_dir = Path(__file__).resolve().parents[1]
-    log_path = log_dir / "log.txt"
+    log_path = log_dir / "logs" / "runcase_history.txt"
     existing_content = log_path.read_text() if log_path.exists() else ""
     line_count = len(existing_content.splitlines()) + 1
 

@@ -14,14 +14,16 @@ import {
   Tag,
   Tooltip,
   Typography,
+  message,
 } from "antd";
 import {
   CopyOutlined,
   DeleteOutlined,
   PlusOutlined,
   QuestionCircleOutlined,
+  ThunderboltOutlined,
 } from "@ant-design/icons";
-import { listDevices } from "../api/client";
+import { listDevices, matchDeviceForCase } from "../api/client";
 import {
   CASE_TYPES,
   EXEC_MODES,
@@ -79,6 +81,7 @@ interface Props {
 export default function ProfileFormEditor({ value, onChange, readOnly }: Props) {
   const [devices, setDevices] = useState<string[]>([]);
   const [activeKeys, setActiveKeys] = useState<string[]>(["0"]);
+  const [matchingIndex, setMatchingIndex] = useState<number | null>(null);
 
   useEffect(() => {
     listDevices()
@@ -138,6 +141,23 @@ export default function ProfileFormEditor({ value, onChange, readOnly }: Props) 
   const removeTask = (index: number) => {
     if (!profile || readOnly) return;
     patch({ tasks: tasks.filter((_, i) => i !== index) });
+  };
+
+  const autoMatchDevice = async (index: number, testrailCaseId: string) => {
+    if (readOnly) return;
+    setMatchingIndex(index);
+    try {
+      const res = await matchDeviceForCase(testrailCaseId);
+      const device = res.device.replace(/\.json$/i, "");
+      patchConfig(index, { device });
+      message.success(
+        res.reason ? `Matched ${device}: ${res.reason}` : `Matched ${device}`
+      );
+    } catch (e) {
+      message.error(`Auto-match failed: ${(e as Error).message}`);
+    } finally {
+      setMatchingIndex(null);
+    }
   };
 
   // The JSON tab can hold text this editor can't drive — say so instead of
@@ -312,27 +332,6 @@ export default function ProfileFormEditor({ value, onChange, readOnly }: Props) 
                     <Row gutter={12}>
                       <Col span={12}>
                         <Field
-                          label="Device"
-                          hint="A device name from the Device tab."
-                        >
-                          <Select
-                            style={{ width: "100%" }}
-                            value={cfg.device || undefined}
-                            disabled={readOnly}
-                            placeholder="Select a device"
-                            showSearch
-                            // Lets the user type a device that isn't registered yet.
-                            options={devices.map((d) => ({
-                              value: d,
-                              label: d,
-                            }))}
-                            onChange={(v) => patchConfig(i, { device: v })}
-                            notFoundContent="No devices"
-                          />
-                        </Field>
-                      </Col>
-                      <Col span={12}>
-                        <Field
                           label="TestRail case ID"
                           hint="e.g. 2659884070. Leave empty when not uploading."
                         >
@@ -354,6 +353,44 @@ export default function ProfileFormEditor({ value, onChange, readOnly }: Props) 
                               });
                             }}
                           />
+                        </Field>
+                      </Col>
+                      <Col span={12}>
+                        <Field
+                          label="Device"
+                          hint="A device name from the Device tab. Auto-match uses the TestRail case ID."
+                        >
+                          <div style={{ display: "flex", gap: 8 }}>
+                            <Select
+                              style={{ flex: 1, minWidth: 0 }}
+                              value={cfg.device || undefined}
+                              disabled={readOnly}
+                              placeholder="Select a device"
+                              showSearch
+                              options={devices.map((d) => ({
+                                value: d,
+                                label: d,
+                              }))}
+                              onChange={(v) => patchConfig(i, { device: v })}
+                              notFoundContent="No devices"
+                            />
+                            <Button
+                              icon={<ThunderboltOutlined />}
+                              disabled={
+                                readOnly ||
+                                String(cfg.testrail_case_id ?? "").trim() === ""
+                              }
+                              loading={matchingIndex === i}
+                              onClick={() =>
+                                autoMatchDevice(
+                                  i,
+                                  String(cfg.testrail_case_id ?? "").trim()
+                                )
+                              }
+                            >
+                              Auto-match
+                            </Button>
+                          </div>
                         </Field>
                       </Col>
                     </Row>

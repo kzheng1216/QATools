@@ -32,110 +32,101 @@ class QAHubTask:
     def __init__(
         self,
         config: Config,
-        execution_mode: str = ExecutionMode.SERIAL.value,
         stop_if_success: bool = False,  # Stop all tasks and exit if a test suite passes
-        print_console_message=True,  # Whether to print the console message from Jenkins
         timeout: int = 6 * 60 * 60,  # Timeout in seconds for tracking the test suite
-        status: TaskStatus = TaskStatus.PENDING,
+        status: TaskStatus = TaskStatus.PROCESSING,
     ):
         self.stop_if_success = stop_if_success
-        self.execution_mode = execution_mode
         self.config = config
-        # Kept as single-element lists so the cache/report/frontend formats (which
-        # expect case_ids / testrail_case_ids arrays) stay unchanged.
         self.case_ids = [config.CASE_ID]
         self.testrail_case_ids = [config.TESTRAIL_CASE_ID]
         self.suite_id = None
         self.build_number = None
         self.log_url = None
-        self.print_console_message = print_console_message
         self.timeout = timeout
         self.status = status
+
+    def cache_result(self) -> dict[str, str]:
+        """Cache the result of the test suite."""
+        return {
+            str(self.case_ids): {
+                "case_ids": self.case_ids,
+                "testrail_case_ids": self.testrail_case_ids,
+                "status": self.status.value,
+                "log_url": self.log_url,
+                "build_number": self.build_number,
+            }
+        }
 
     def triger_test_suite(self, config: Config):
         """Trigger the test suite for each configuration in the task."""
         self.result = launch_test(config)
-        logger.info(f"Result: {self.result}")
+        # logger.info(f"Result: {self.result}")
         suite_ids = self.result.get("suite_ids", [])
         if not suite_ids:
             self.suite_id = None
             self.status = TaskStatus.ABORTED
-            logger.error(
-                f"No suite was created for {self.case_ids}. "
-                f"QA Hub response: {self.result}"
-            )
             return
         self.suite_id = suite_ids[0]
-        logger.info(f"Current suite ID: {self.suite_id}")
-
-    def retry_trigger_test_suite(self, config: Config):
-        if self.suite_id is not None:
-            terminate_suite(self.suite_id)
-        self.triger_test_suite(config)
 
     def launch(self):
         """Launch the test suite for the task's configuration."""
-        self.triger_test_suite(self.config)
-        if self.execution_mode == ExecutionMode.PARALLEL.value:
-            return
-
-        self.track()
-        self.should_continue()
-
-    def should_continue(self) -> bool:
-        """Check if the execution should continue."""
-        if self.status == TaskStatus.QUEUED:
-            logger.info(f"Test suite {self.suite_id} is queued. Retrying...")
-            for _ in range(QUEUED_RETRY_COUNT):
-                self.retry_trigger_test_suite(self.config)
-                self.track()
-                if self.status != TaskStatus.QUEUED:
-                    return False
+        for _ in range(QUEUED_RETRY_COUNT):
+            self.triger_test_suite(self.config)
+            self.track()
+            if self.status == TaskStatus.QUEUED and self.suite_id is not None:
+                terminate_suite(self.suite_id)
                 sleep(QUEUED_RETRY_DELAY)
+                continue
+            break
 
-        if self.status == TaskStatus.PASS:
-            logger.info(f"Test suite {self.suite_id} passed.")
-            if self.stop_if_success:
-                logger.info("Stopping further execution due to stop_if_success=True.")
-                return False
-        return True
+    def is_stop_tracking(self) -> bool:
+        """Check if the tracking should be stopped."""
+        # Timeout
+        if self.timeout <= 0:
+            logger.error(f"Test suite {self.suite_id} tracking timed out.")
+            return True
+
+        # No suite ID to track
+        if self.suite_id is None:
+            logger.error(f"Test suite {self.suite_id} no suite ID to track.")
+            return True
+
+        # Not running or setup or running
+        if self.status not in [
+            TaskStatus.PROCESSING,
+            TaskStatus.SETUP,
+            TaskStatus.RUNNING,
+        ]:
+            logger.warning(
+                f"Test suite {self.suite_id} status: {self.status.value}, breaking out of the tracking loop..."
+            )
+            return True
+
+        # Sleep and continue tracking
+        sleep(TRACK_RESULT_INTERVAL)
+        self.timeout -= TRACK_RESULT_INTERVAL
+        return False
 
     def track(self):
         """Track the result of the test suite until it is no longer running or until timeout."""
-        while True:
-            if self.timeout <= 0:
-                logger.error(f"Test suite {self.suite_id} tracking timed out.")
-                return
-            if self.suite_id is None:
-                logger.error("No suite ID to track.")
-                return
-            try:
-                result = track_result(
-                    self.suite_id, print_console_message=self.print_console_message
-                )
+        try:
+            while True:
+                if self.is_stop_tracking():
+                    break
+
+                # Track the result of the test suite
+                result = track_result(self.suite_id)
                 curr_task_status = result["task_status"]
 
                 if curr_task_status.value != self.status.value:
                     self.status = curr_task_status
                     self.log_url = result["log_url"]
                     self.build_number = result["build_number"]
-                    logger.info(
-                        f"Test suite: {self.suite_id} status: {self.status.value}"
-                    )
 
-                if self.status not in [
-                    TaskStatus.PROCESSING,
-                    TaskStatus.SETUP,
-                    TaskStatus.RUNNING,
-                ]:
-                    break
-
-                sleep(TRACK_RESULT_INTERVAL)
-                self.timeout -= TRACK_RESULT_INTERVAL
-            except Exception as e:
-                logger.error(f"Error Occurred for test suite {self.suite_id}: {e}")
-                self.status = TaskStatus.ABORTED
-                break
+        except Exception as e:
+            logger.error(f"Error Occurred for test suite {self.suite_id}: {e}")
+            self.status = TaskStatus.ABORTED
 
 
 class TaskExecution:
@@ -149,6 +140,7 @@ class TaskExecution:
         self.current_task_index = 1
         self.execution_mode = execution_mode
         self.profile_name = profile_name
+        self.task_count = len(self.tasks)
 
         # Set up cache directory and load existing cache if available
         cache_dir = Path(CASE_CACHE_PATH)
@@ -163,56 +155,51 @@ class TaskExecution:
 
     def execute(self, select=CONST_ALL):
         """Execute the tasks based on the provided selection criteria."""
-        threads = []
-        task_count = len(self.tasks)
-        logger.info(f"Total tasks to execute: {task_count}")
+        logger.info(f"Total tasks to execute: {self.task_count}")
         self.current_task_index = 1
+        threads: list[Thread] = []
 
-        # Clear cache if executing all tasks
         if select == CONST_ALL:
             self.clear_cache()
             self.cache = {}
 
+        is_serial = self.execution_mode == ExecutionMode.SERIAL.value
         for task in self.tasks:
             if self.check_skip_tasks(task, select):
                 continue
 
             logger.info("--------------------------------------------------------")
-            logger.info(f"- Run Task: {self.current_task_index}/{task_count}")
-            logger.info(f"- Case IDs: {task.case_ids}")
-
-            if self.execution_mode == ExecutionMode.SERIAL.value:
+            logger.info(
+                f"- [Task:{self.current_task_index}/{self.task_count}] - Case: [{task.testrail_case_ids}][{task.case_ids}]"
+            )
+            if is_serial:
                 task.launch()
             else:
                 thread = Thread(target=task.launch)
                 thread.start()
                 threads.append(thread)
-            logger.info(f"- Case IDs: {task.case_ids}, Status: {task.status.value}")
-            self.save_case_cache(
-                {
-                    str(task.case_ids): {
-                        "case_ids": task.case_ids,
-                        "testrail_case_ids": task.testrail_case_ids,
-                        "status": task.status.value,
-                        "log_url": task.log_url,
-                        "build_number": task.build_number,
-                    }
-                }
-            )
-            if self.current_task_index < task_count:
-                self.current_task_index += 1
 
+            logger.info(f"- [Result]: {task.status.value}")
+            self.save_case_cache(task.cache_result())
+            self.current_task_index = min(self.current_task_index + 1, self.task_count)
+
+        self.print_summary()
+        self.generate_summary_report()
+        for thread in threads:
+            thread.join()
+
+    def print_summary(self):
+        """Print the summary of the executed tasks."""
         logger.info("#########################################################")
         logger.info("-- [Summary] --")
         logger.info("#########################################################")
-        logger.info(f"- Result: {self.current_task_index}/{task_count}")
+        logger.info(
+            f"- Total Tasks: {self.task_count}, Executed Tasks: {self.current_task_index}"
+        )
         for task in self.tasks:
-            logger.info(f"- Case IDs: {task.case_ids}, Status: {task.status.value}")
-        self.generate_summary_report()
-
-        # Wait for all parallel threads to complete
-        for thread in threads:
-            thread.join()
+            logger.info(
+                f"- Case: {task.testrail_case_ids} - {task.case_ids}, Result: {task.status.value}"
+            )
 
     def generate_summary_report(self):
         """Generate a summary report of the executed tasks.

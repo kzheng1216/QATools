@@ -10,16 +10,16 @@ __pycache__/
 
 # Ignore device_conf files
 config/device_conf/d_*.json
-config/device_conf/back/*
+config/device_conf/back/*.*
 
 # Ignore log
-5_activate/logs/*
-4_runcase/logs/*.log
+5_activate/logs/*.*
+4_runcase/logs/*.*
 4_runcase/*.log
 *.log
-backend/logs/*
-frontend/logs/*
-logs/*
+backend/logs/*.*
+frontend/logs/*.*
+logs/*.*
 
 # Ignore node_modules
 node_modules/*
