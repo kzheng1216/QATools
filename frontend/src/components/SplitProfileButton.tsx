@@ -11,7 +11,7 @@ import {
   Typography,
   message,
 } from "antd";
-import { ScissorOutlined } from "@ant-design/icons";
+import { PartitionOutlined } from "@ant-design/icons";
 import {
   listDevices,
   splitProfile,
@@ -81,7 +81,7 @@ export default function SplitProfileButton({ profile, onDone }: Props) {
         <Button
           type="primary"
           size="small"
-          icon={<ScissorOutlined />}
+          icon={<PartitionOutlined />}
           onClick={() => {
             reset();
             setOpen(true);
@@ -111,7 +111,7 @@ export default function SplitProfileButton({ profile, onDone }: Props) {
               </Button>
               <Button
                 type="primary"
-                icon={<ScissorOutlined />}
+                icon={<PartitionOutlined />}
                 loading={splitting}
                 disabled={selected.length === 0}
                 onClick={handleSplit}

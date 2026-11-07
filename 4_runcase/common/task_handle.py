@@ -32,14 +32,12 @@ class QAHubTask:
     def __init__(
         self,
         config: Config,
-        execution_mode: str = ExecutionMode.SERIAL.value,
         stop_if_success: bool = False,  # Stop all tasks and exit if a test suite passes
         print_console_message=True,  # Whether to print the console message from Jenkins
         timeout: int = 6 * 60 * 60,  # Timeout in seconds for tracking the test suite
         status: TaskStatus = TaskStatus.PENDING,
     ):
         self.stop_if_success = stop_if_success
-        self.execution_mode = execution_mode
         self.config = config
         # Kept as single-element lists so the cache/report/frontend formats (which
         # expect case_ids / testrail_case_ids arrays) stay unchanged.
@@ -51,6 +49,18 @@ class QAHubTask:
         self.print_console_message = print_console_message
         self.timeout = timeout
         self.status = status
+
+    def cache_result(self) -> dict[str, str]:
+        """Cache the result of the test suite."""
+        return {
+            str(self.case_ids): {
+                "case_ids": self.case_ids,
+                "testrail_case_ids": self.testrail_case_ids,
+                "status": self.status.value,
+                "log_url": self.log_url,
+                "build_number": self.build_number,
+            }
+        }
 
     def triger_test_suite(self, config: Config):
         """Trigger the test suite for each configuration in the task."""
@@ -76,9 +86,6 @@ class QAHubTask:
     def launch(self):
         """Launch the test suite for the task's configuration."""
         self.triger_test_suite(self.config)
-        if self.execution_mode == ExecutionMode.PARALLEL.value:
-            return
-
         self.track()
         self.should_continue()
 
@@ -128,6 +135,9 @@ class QAHubTask:
                     TaskStatus.SETUP,
                     TaskStatus.RUNNING,
                 ]:
+                    logger.warning(
+                        f"Test suite {self.suite_id} status: {self.status.value}, breaking out of the tracking loop..."
+                    )
                     break
 
                 sleep(TRACK_RESULT_INTERVAL)
@@ -149,6 +159,7 @@ class TaskExecution:
         self.current_task_index = 1
         self.execution_mode = execution_mode
         self.profile_name = profile_name
+        self.task_count = len(self.tasks)
 
         # Set up cache directory and load existing cache if available
         cache_dir = Path(CASE_CACHE_PATH)
@@ -163,56 +174,47 @@ class TaskExecution:
 
     def execute(self, select=CONST_ALL):
         """Execute the tasks based on the provided selection criteria."""
-        threads = []
-        task_count = len(self.tasks)
-        logger.info(f"Total tasks to execute: {task_count}")
+        logger.info(f"Total tasks to execute: {self.task_count}")
         self.current_task_index = 1
+        threads: list[Thread] = []
 
-        # Clear cache if executing all tasks
         if select == CONST_ALL:
             self.clear_cache()
             self.cache = {}
 
+        is_serial = self.execution_mode == ExecutionMode.SERIAL.value
         for task in self.tasks:
             if self.check_skip_tasks(task, select):
                 continue
 
             logger.info("--------------------------------------------------------")
-            logger.info(f"- Run Task: {self.current_task_index}/{task_count}")
-            logger.info(f"- Case IDs: {task.case_ids}")
-
-            if self.execution_mode == ExecutionMode.SERIAL.value:
+            logger.info(
+                f"- [Task:{self.current_task_index}/{self.task_count}] - Case: {task.case_ids}"
+            )
+            if is_serial:
                 task.launch()
             else:
                 thread = Thread(target=task.launch)
                 thread.start()
                 threads.append(thread)
-            logger.info(f"- Case IDs: {task.case_ids}, Status: {task.status.value}")
-            self.save_case_cache(
-                {
-                    str(task.case_ids): {
-                        "case_ids": task.case_ids,
-                        "testrail_case_ids": task.testrail_case_ids,
-                        "status": task.status.value,
-                        "log_url": task.log_url,
-                        "build_number": task.build_number,
-                    }
-                }
-            )
-            if self.current_task_index < task_count:
-                self.current_task_index += 1
 
+            logger.info(f"- [Result]: {task.status.value}")
+            self.save_case_cache(task.cache_result())
+            self.current_task_index = min(self.current_task_index + 1, self.task_count)
+
+        self.print_summary()
+        self.generate_summary_report()
+        for thread in threads:
+            thread.join()
+
+    def print_summary(self):
+        """Print the summary of the executed tasks."""
         logger.info("#########################################################")
         logger.info("-- [Summary] --")
         logger.info("#########################################################")
-        logger.info(f"- Result: {self.current_task_index}/{task_count}")
+        logger.info(f"- Result: {self.current_task_index}/{self.task_count}")
         for task in self.tasks:
             logger.info(f"- Case IDs: {task.case_ids}, Status: {task.status.value}")
-        self.generate_summary_report()
-
-        # Wait for all parallel threads to complete
-        for thread in threads:
-            thread.join()
 
     def generate_summary_report(self):
         """Generate a summary report of the executed tasks.

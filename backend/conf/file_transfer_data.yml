@@ -3,6 +3,15 @@ file_transfer:
   http_port: 9000
   scp_server_cache: []
   cmd_cache:
+  - cmdline: cd ..
+    exit_code: 0
+    at: '2026-11-07 04:06:57'
+  - cmdline: pwd
+    exit_code: 0
+    at: '2026-11-07 04:06:38'
+  - cmdline: ls
+    exit_code: 0
+    at: '2026-11-07 04:06:36'
   - path: test/restart.sh
     args: ''
     exit_code: 0
