@@ -1,8 +1,8 @@
 tabs:
   dashboard: true
+  testrail: true
   device: true
   profile: true
-  testrail: true
   runcase: true
   rokutest: true
   analyzehistory: true

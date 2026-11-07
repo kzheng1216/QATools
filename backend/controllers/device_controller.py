@@ -160,9 +160,8 @@ def view_device(device_name: str) -> dict:
     return json.loads(device_data)
 
 
-@router.get("/v1/device/device_info/{device_name}")
-def view_device_info(device_name: str) -> dict:
-    """View the device info of a specific device."""
+def _load_roku_info(device_name: str, *, timeout: float = 60) -> dict:
+    """Load cached Roku info, or fetch it from QA Hub."""
     logger.info("View device info: %s", device_name)
 
     try:
@@ -183,7 +182,7 @@ def view_device_info(device_name: str) -> dict:
             headers=QAHUB_HEADERS,
             method="GET",
         )
-        with urllib.request.urlopen(req, timeout=60) as resp:
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
             payload = json.loads(resp.read().decode("utf-8", errors="replace") or "{}")
         device_info = payload.get("roku_info", {}).get(serial_number, {})
         device_info.pop("Installed Apps")
@@ -200,6 +199,12 @@ def view_device_info(device_name: str) -> dict:
             status_code=500,
             detail=f"Error reading device info for '{device_name}'",
         ) from exc
+
+
+@router.get("/v1/device/device_info/{device_name}")
+def view_device_info(device_name: str) -> dict:
+    """View the device info of a specific device."""
+    return _load_roku_info(device_name)
 
 
 @router.patch("/v1/device/update/{device_name}")
