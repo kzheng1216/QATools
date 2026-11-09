@@ -1,5 +1,5 @@
 analyze_config:
-  default_locale: en-US
+  default_locale: zh-CN
   prompt_template: 'You are a senior QA automation engineer analyzing a failed test/build
     log.
 

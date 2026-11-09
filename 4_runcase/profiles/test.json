@@ -1,0 +1,20 @@
+{
+    "name": "test",
+    "description": "",
+    "tasks": [
+        {
+            "config": {
+                "case_type": "BDD",
+                "case_id": "2757382637",
+                "device": "US_KIT-428_athens",
+                "testrail_case_id": 2757382637,
+                "testrail_plan_id": 0,
+                "repeat": 0,
+                "automation_test_branch": "main",
+                "roku_automation_branch": "main"
+            },
+            "timeout": 36000
+        }
+    ],
+    "execution_mode": "SERIAL"
+}
