@@ -181,8 +181,18 @@ DELETE {{host}}/v1/runcase/user_query_list/yuzheng
 ##===========================================================
 ##- Roku Test (local roku_test runner)
 ##===========================================================
-### Run a roku_test (QUERY params)
+### Queue a roku_test case on a device (QUERY params)
+### Each device runs ONE case at a time; extra cases wait in that device's queue.
 POST {{host}}/v1/rokutest/run?device=d_01&automated_test_id=bdd-2659886031&testrail_case_id=2659886031&repeat=0
+
+### Per-device queues -> { queues: [{ device, running, queued: [...], pending }] }
+GET {{host}}/v1/rokutest/queues
+
+### Reorder a WAITING case inside its device queue
+POST {{host}}/v1/rokutest/queues/d_01/move/<job_id>?direction=up
+
+### Drop every WAITING case of a device (a running case keeps going)
+DELETE {{host}}/v1/rokutest/queues/d_01
 
 ### Status of a run by pid -> { pid, status: running|not_running, command }
 GET {{host}}/v1/rokutest/status/123456

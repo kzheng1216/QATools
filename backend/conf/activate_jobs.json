@@ -1,11 +1,86 @@
 [
   {
+    "id": "4e3c60a69278",
+    "device_name": "RTVSP_18_2_1",
+    "mode": "connected",
+    "email": "trc_gctest_us2@roku.com",
+    "pid": 42829,
+    "log_file": "connected__activate__RTVSP_18_2_1__20261114_061229.log",
+    "command": "python3 /workspaces/automation-ide/mycode/QATools/5_activate/factory_reset_and_activate.py RTVSP_18_2_1 trc_gctest_us2@roku.com",
+    "started_at": "2026-11-14 06:12:29 UTC",
+    "precheck": {
+      "device_name": "RTVSP_18_2_1",
+      "allowed": true,
+      "reason": "Precheck skipped"
+    }
+  },
+  {
+    "id": "185d11906893",
+    "device_name": "US_KIT-428_athens_wired",
+    "mode": "connected",
+    "email": "trc_gctest_us2@roku.com",
+    "pid": 296949,
+    "log_file": "connected__activate__US_KIT-428_athens_wired__20261110_093513.log",
+    "command": "python3 /workspaces/automation-ide/mycode/QATools/5_activate/factory_reset_and_activate.py US_KIT-428_athens_wired trc_gctest_us2@roku.com",
+    "started_at": "2026-11-10 09:35:13 UTC",
+    "precheck": {
+      "device_name": "US_KIT-428_athens_wired",
+      "allowed": true,
+      "reason": "Precheck skipped"
+    }
+  },
+  {
+    "id": "7e2d30f8093c",
+    "device_name": "UK_KIT_5616",
+    "mode": "connected",
+    "email": "gcrelease_trc_uk@roku.com",
+    "pid": 296153,
+    "log_file": "connected__activate__UK_KIT_5616__20261110_093031.log",
+    "command": "python3 /workspaces/automation-ide/mycode/QATools/5_activate/factory_reset_and_activate.py UK_KIT_5616 gcrelease_trc_uk@roku.com",
+    "started_at": "2026-11-10 09:30:31 UTC",
+    "precheck": {
+      "device_name": "UK_KIT_5616",
+      "allowed": true,
+      "reason": "Precheck skipped"
+    }
+  },
+  {
+    "id": "16d960481f89",
+    "device_name": "UK_KIT_5616",
+    "mode": "unconnected",
+    "email": "",
+    "pid": 289348,
+    "log_file": "unconnected__activate__UK_KIT_5616__20261110_085146.log",
+    "command": "python3 /workspaces/automation-ide/mycode/QATools/5_activate/factory_reset_and_unconnected_mode.py UK_KIT_5616",
+    "started_at": "2026-11-10 08:51:46 UTC",
+    "precheck": {
+      "device_name": "UK_KIT_5616",
+      "allowed": true,
+      "reason": "Precheck skipped"
+    }
+  },
+  {
+    "id": "f092f64cd315",
+    "device_name": "US_KIT-428_athens",
+    "mode": "unconnected",
+    "email": "",
+    "pid": 273571,
+    "log_file": "unconnected__activate__US_KIT-428_athens__20261110_072136.log",
+    "command": "python3 /workspaces/automation-ide/mycode/QATools/5_activate/factory_reset_and_unconnected_mode.py US_KIT-428_athens",
+    "started_at": "2026-11-10 07:21:36 UTC",
+    "precheck": {
+      "device_name": "US_KIT-428_athens",
+      "allowed": true,
+      "reason": "Precheck skipped"
+    }
+  },
+  {
     "id": "5faaea9cfd06",
     "device_name": "US_KIT-428_athens",
     "mode": "connected",
     "email": "trc_gctest_us2@roku.com",
     "pid": 10935,
-    "log_file": "connected_activate_US_KIT-428_athens_20261103_062940.log",
+    "log_file": "connected__activate__US_KIT-428_athens__20261103_062940.log",
     "command": "python3 /workspaces/automation-ide/mycode/QATools/5_activate/factory_reset_and_activate.py US_KIT-428_athens trc_gctest_us2@roku.com",
     "started_at": "2026-11-03 06:29:40 UTC",
     "precheck": {
@@ -20,7 +95,7 @@
     "mode": "connected",
     "email": "gcrelease_trc_uk@roku.com",
     "pid": 108235,
-    "log_file": "connected_activate_UK_KIT_5616_20261102_091039.log",
+    "log_file": "connected__activate__UK_KIT_5616__20261102_091039.log",
     "command": "python3 /workspaces/automation-ide/mycode/QATools/5_activate/factory_reset_and_activate.py UK_KIT_5616 gcrelease_trc_uk@roku.com",
     "started_at": "2026-11-02 09:10:39 UTC",
     "precheck": {
@@ -35,7 +110,7 @@
     "mode": "connected",
     "email": "hkhaki.roku@gmail.com",
     "pid": 101772,
-    "log_file": "connected_activate_DE_KIT_11065_20261102_083322.log",
+    "log_file": "connected__activate__DE_KIT_11065__20261102_083322.log",
     "command": "python3 /workspaces/automation-ide/mycode/QATools/5_activate/factory_reset_and_activate.py DE_KIT_11065 hkhaki.roku@gmail.com",
     "started_at": "2026-11-02 08:33:22 UTC",
     "precheck": {
@@ -50,7 +125,7 @@
     "mode": "connected",
     "email": "gcrelease_trc_uk@roku.com",
     "pid": 9296,
-    "log_file": "connected_activate_UK_KIT_5616_20261102_013859.log",
+    "log_file": "connected__activate__UK_KIT_5616__20261102_013859.log",
     "command": "python3 /workspaces/automation-ide/mycode/QATools/5_activate/factory_reset_and_activate.py UK_KIT_5616 gcrelease_trc_uk@roku.com",
     "started_at": "2026-11-02 01:38:59 UTC",
     "precheck": {
@@ -65,7 +140,7 @@
     "mode": "connected",
     "email": "trc_gctest_us2@roku.com",
     "pid": 9293,
-    "log_file": "connected_activate_d_flaky_sandia_20261102_013859.log",
+    "log_file": "connected__activate__d_flaky_sandia__20261102_013859.log",
     "command": "python3 /workspaces/automation-ide/mycode/QATools/5_activate/factory_reset_and_activate.py d_flaky_sandia trc_gctest_us2@roku.com",
     "started_at": "2026-11-02 01:38:59 UTC",
     "precheck": {
@@ -80,7 +155,7 @@
     "mode": "connected",
     "email": "yuzheng@roku.com",
     "pid": 9290,
-    "log_file": "connected_activate_US_KIT-428_athens_20261102_013859.log",
+    "log_file": "connected__activate__US_KIT-428_athens__20261102_013859.log",
     "command": "python3 /workspaces/automation-ide/mycode/QATools/5_activate/factory_reset_and_activate.py US_KIT-428_athens yuzheng@roku.com",
     "started_at": "2026-11-02 01:38:59 UTC",
     "precheck": {
@@ -95,7 +170,7 @@
     "mode": "connected",
     "email": "gcrelease_trc_uk@roku.com",
     "pid": 6314,
-    "log_file": "connected_activate_UK_KIT_5616_20261102_012603.log",
+    "log_file": "connected__activate__UK_KIT_5616__20261102_012603.log",
     "command": "python3 /workspaces/automation-ide/mycode/QATools/5_activate/factory_reset_and_activate.py UK_KIT_5616 gcrelease_trc_uk@roku.com",
     "started_at": "2026-11-02 01:26:03 UTC",
     "precheck": {
@@ -110,7 +185,7 @@
     "mode": "connected",
     "email": "gcrelease_trc_uk@roku.com",
     "pid": 5481,
-    "log_file": "connected_activate_UK_KIT_5616_20261102_012239.log",
+    "log_file": "connected__activate__UK_KIT_5616__20261102_012239.log",
     "command": "python3 /workspaces/automation-ide/mycode/QATools/5_activate/factory_reset_and_activate.py UK_KIT_5616 gcrelease_trc_uk@roku.com",
     "started_at": "2026-11-02 01:22:39 UTC",
     "precheck": {
@@ -125,7 +200,7 @@
     "mode": "connected",
     "email": "gcrelease_trc_uk@roku.com",
     "pid": 4662,
-    "log_file": "connected_activate_UK_KIT_5616_20261102_011942.log",
+    "log_file": "connected__activate__UK_KIT_5616__20261102_011942.log",
     "command": "python3 /workspaces/automation-ide/mycode/QATools/5_activate/factory_reset_and_activate.py UK_KIT_5616 gcrelease_trc_uk@roku.com",
     "started_at": "2026-11-02 01:19:42 UTC",
     "precheck": {
@@ -139,7 +214,7 @@
     "device_name": "US_KIT-428_athens",
     "mode": "connected",
     "pid": 48849,
-    "log_file": "connected_activate_US_KIT-428_athens_20261030_145414.log",
+    "log_file": "connected__activate__US_KIT-428_athens__20261030_145414.log",
     "command": "python3 /workspaces/automation-ide/mycode/QATools/5_activate/factory_reset_and_activate.py US_KIT-428_athens",
     "started_at": "2026-10-30 14:54:14 UTC",
     "precheck": {
@@ -153,7 +228,7 @@
     "device_name": "UK_KIT_5616",
     "mode": "connected",
     "pid": 991197,
-    "log_file": "connected_activate_UK_KIT_5616_20261030_072735.log",
+    "log_file": "connected__activate__UK_KIT_5616__20261030_072735.log",
     "command": "python3 /workspaces/automation-ide/mycode/QATools/5_activate/factory_reset_and_activate.py UK_KIT_5616",
     "started_at": "2026-10-30 07:27:35 UTC",
     "precheck": {
@@ -167,7 +242,7 @@
     "device_name": "UK_KIT_5616",
     "mode": "connected",
     "pid": 986104,
-    "log_file": "connected_activate_UK_KIT_5616_20261030_070322.log",
+    "log_file": "connected__activate__UK_KIT_5616__20261030_070322.log",
     "command": "python3 /workspaces/automation-ide/mycode/QATools/5_activate/factory_reset_and_activate.py UK_KIT_5616",
     "started_at": "2026-10-30 07:03:22 UTC",
     "precheck": {
@@ -181,7 +256,7 @@
     "device_name": "d_flaky_sandia",
     "mode": "connected",
     "pid": 979687,
-    "log_file": "connected_activate_d_flaky_sandia_20261030_063601.log",
+    "log_file": "connected__activate__d_flaky_sandia__20261030_063601.log",
     "command": "python3 /workspaces/automation-ide/mycode/QATools/5_activate/factory_reset_and_activate.py d_flaky_sandia",
     "started_at": "2026-10-30 06:36:01 UTC",
     "precheck": {
@@ -195,7 +270,7 @@
     "device_name": "US_KIT-428_athens",
     "mode": "connected",
     "pid": 977775,
-    "log_file": "connected_activate_US_KIT-428_athens_20261030_062645.log",
+    "log_file": "connected__activate__US_KIT-428_athens__20261030_062645.log",
     "command": "python3 /workspaces/automation-ide/mycode/QATools/5_activate/factory_reset_and_activate.py US_KIT-428_athens",
     "started_at": "2026-10-30 06:26:45 UTC",
     "precheck": {
@@ -209,7 +284,7 @@
     "device_name": "US_KIT-428_athens",
     "mode": "unconnected",
     "pid": 976448,
-    "log_file": "unconnected_activate_US_KIT-428_athens_20261030_062025.log",
+    "log_file": "unconnected__activate__US_KIT-428_athens__20261030_062025.log",
     "command": "python3 /workspaces/automation-ide/mycode/QATools/5_activate/factory_reset_and_unconnected_mode.py US_KIT-428_athens",
     "started_at": "2026-10-30 06:20:25 UTC",
     "precheck": {
@@ -223,7 +298,7 @@
     "device_name": "US_KIT-428_athens",
     "mode": "connected",
     "pid": 971731,
-    "log_file": "connected_activate_US_KIT-428_athens_20261030_055721.log",
+    "log_file": "connected__activate__US_KIT-428_athens__20261030_055721.log",
     "command": "python3 /workspaces/automation-ide/mycode/QATools/5_activate/factory_reset_and_activate.py US_KIT-428_athens",
     "started_at": "2026-10-30 05:57:21 UTC",
     "precheck": {

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import shlex
 import signal
 import subprocess
@@ -51,7 +52,43 @@ MODE_CONNECTED = "connected"
 MODE_UNCONNECTED = "unconnected"
 MODES = (MODE_CONNECTED, MODE_UNCONNECTED)
 
+# Conversion log file name:  {mode}__activate__{device_name}__{YYYYmmdd_HHMMSS}.log
+#
+# The fields are "__"-delimited so that a device name containing single
+# underscores (UK_KIT_5616, US_KIT-428_athens_wired, ...) stays unambiguous.
+# Logs written before that rule used single underscores throughout and are
+# migrated on startup by _migrate_log_names().
+_LEGACY_LOG_RE = re.compile(
+    r"^(?P<mode>connected|unconnected)_activate_(?P<device>.+)_(?P<ts>\d{8}_\d{6})\.log$"
+)
+
 _jobs_lock = threading.Lock()
+
+
+def _log_name(mode: str, device_name: str, timestamp: str) -> str:
+    """Build a conversion log file name in the canonical "__" format."""
+    return f"{mode}__activate__{device_name}__{timestamp}.log"
+
+
+def _parse_log_name(log_file: str) -> dict:
+    """Pull {mode, device_name, timestamp} back out of a log file name.
+
+    Understands both the canonical "__" format and the legacy single-underscore
+    one (logs that could not be migrated, e.g. a name collision).
+    """
+    name = os.path.basename(log_file or "")
+    base = name.removesuffix(".log")
+    parts = base.split("__")
+    if len(parts) == 4 and parts[1] == "activate":
+        return {"mode": parts[0], "device_name": parts[2], "timestamp": parts[3]}
+    legacy = _LEGACY_LOG_RE.match(name)
+    if legacy:
+        return {
+            "mode": legacy.group("mode"),
+            "device_name": legacy.group("device"),
+            "timestamp": legacy.group("ts"),
+        }
+    return {"mode": "", "device_name": "", "timestamp": ""}
 
 
 def _load_jobs() -> list[dict]:
@@ -99,6 +136,70 @@ def _log_path(log_file: str) -> str:
     return os.path.join(LOG_DIR, name)
 
 
+def _migrate_log_names() -> dict:
+    """Rename legacy single-underscore conversion logs to the "__" format.
+
+    {mode}_activate_{device}_{ts}.log  ->  {mode}__activate__{device}__{ts}.log
+
+    Runs once at import. The job entries in activate_jobs.json are rewritten to
+    point at the new names, so View / Delete / Result keep working for history.
+    A pre-existing target is never overwritten (the old file is left in place).
+    """
+    renamed: dict[str, str] = {}
+    skipped: list[str] = []
+    try:
+        os.makedirs(LOG_DIR, exist_ok=True)
+        names = os.listdir(LOG_DIR)
+    except OSError as exc:
+        logger.error("Cannot list %s for log migration: %s", LOG_DIR, exc)
+        return {"renamed": {}, "skipped": []}
+
+    for name in sorted(names):
+        match = _LEGACY_LOG_RE.match(name)
+        if not match:
+            continue  # already "__", or the shared activate.log / rotations
+        new_name = _log_name(
+            match.group("mode"), match.group("device"), match.group("ts")
+        )
+        if new_name == name:
+            continue
+        src = os.path.join(LOG_DIR, name)
+        dst = os.path.join(LOG_DIR, new_name)
+        if os.path.exists(dst):
+            logger.warning(
+                "Skipping log migration for %s: %s already exists", name, new_name
+            )
+            skipped.append(name)
+            continue
+        try:
+            os.rename(src, dst)
+        except OSError as exc:
+            logger.error("Failed to rename log %s -> %s: %s", name, new_name, exc)
+            skipped.append(name)
+            continue
+        renamed[name] = new_name
+
+    if renamed:
+        # Re-point the tracked jobs at the renamed files.
+        try:
+            with _jobs_lock:
+                jobs = _load_jobs()
+                changed = False
+                for job in jobs:
+                    old = os.path.basename(job.get("log_file") or "")
+                    if old in renamed:
+                        job["log_file"] = renamed[old]
+                        changed = True
+                if changed:
+                    _save_jobs(jobs)
+        except Exception:  # noqa: BLE001
+            logger.exception("Failed to update job log_file references")
+        logger.info(
+            "Migrated %s activate log file name(s) to the '__' format", len(renamed)
+        )
+    return {"renamed": renamed, "skipped": skipped}
+
+
 def _job_result(log_file: str) -> str:
     """Derive a coarse outcome from the job's log file."""
     path = _log_path(log_file)
@@ -129,7 +230,36 @@ def _decorate(job: dict) -> dict:
         job["log_mtime"] = os.path.getmtime(_log_path(job.get("log_file", "")))
     except (OSError, HTTPException):
         job["log_mtime"] = 0
+    # Epoch form of started_at, so the table can sort on it (the string is a
+    # display format, not sortable across months).
+    job["started_epoch"] = _started_epoch(job)
     return job
+
+
+def _started_epoch(job: dict) -> float:
+    """started_at as a UTC epoch (0 when it cannot be parsed)."""
+    raw = str(job.get("started_at") or "").replace(" UTC", "").strip()
+    if raw:
+        try:
+            return (
+                datetime.strptime(raw, "%Y-%m-%d %H:%M:%S")
+                .replace(tzinfo=UTC)
+                .timestamp()
+            )
+        except ValueError:
+            pass
+    # Fall back to the timestamp embedded in the log file name.
+    stamp = _parse_log_name(job.get("log_file", "")).get("timestamp", "")
+    if stamp:
+        try:
+            return (
+                datetime.strptime(stamp, "%Y%m%d_%H%M%S")
+                .replace(tzinfo=UTC)
+                .timestamp()
+            )
+        except ValueError:
+            pass
+    return 0
 
 
 def _activate_accounts() -> dict:
@@ -334,7 +464,7 @@ def _spawn(device_name: str, mode: str, email: str = "") -> dict:
         else RUN_ACTIVATE_SCRIPT_UNCONNECTED
     )
     timestamp = datetime.now(UTC).strftime("%Y%m%d_%H%M%S")
-    log_file_name = f"{mode}_activate_{device_name}_{timestamp}.log"
+    log_file_name = _log_name(mode, device_name, timestamp)
     log_file = os.path.join(LOG_DIR, log_file_name)
     cmd = f"python3 {shlex.quote(script)} {shlex.quote(device_name)}"
     # Connected Mode links an account, so the email may be overridden per run.
@@ -526,7 +656,11 @@ def stop_activation(pid: int) -> dict:
 
 @router.get("/v1/activate/log/list")
 def list_activation_logs() -> dict:
-    """List the conversion log files in 5_activate/logs (newest first)."""
+    """List the conversion log files in 5_activate/logs (newest first).
+
+    Each entry also carries the fields parsed out of its name (mode / device /
+    timestamp), which the UI uses for its filter dropdowns.
+    """
     try:
         os.makedirs(LOG_DIR, exist_ok=True)
         files = [f for f in os.listdir(LOG_DIR) if f.endswith(".log")]
@@ -542,7 +676,17 @@ def list_activation_logs() -> dict:
             size = os.path.getsize(full)
         except OSError:
             mtime, size = 0, 0
-        logs.append({"name": name, "mtime": mtime, "size": size})
+        parsed = _parse_log_name(name)
+        logs.append(
+            {
+                "name": name,
+                "mtime": mtime,
+                "size": size,
+                "mode": parsed.get("mode", ""),
+                "device_name": parsed.get("device_name", ""),
+                "timestamp": parsed.get("timestamp", ""),
+            }
+        )
     logs.sort(key=lambda x: x["mtime"], reverse=True)
     return {"logs": logs}
 
@@ -587,3 +731,5 @@ def delete_activation_log(log_file: str) -> dict:
     return {"message": f"Log file '{log_file}' deleted"}
 
 
+# Bring historical log file names up to the canonical "__" format on startup.
+_migrate_log_names()

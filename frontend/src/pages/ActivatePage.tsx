@@ -35,8 +35,10 @@ import {
   Typography,
   message,
 } from "antd";
+import type { ColumnsType } from "antd/es/table";
 import {
   ApiOutlined,
+  ClearOutlined,
   DeleteOutlined,
   MailOutlined,
   DisconnectOutlined,
@@ -170,6 +172,14 @@ export default function ActivatePage() {
   const [selected, setSelected] = useState<string[]>([]);
   const [mode, setMode] = useState<ActivateMode>("connected");
 
+  // Conversion Jobs table filters (applied client-side over the job list).
+  const [filterDevice, setFilterDevice] = useState<string>();
+  const [filterMode, setFilterMode] = useState<ActivateMode>();
+  const [filterEmail, setFilterEmail] = useState<string>();
+  const [filterStatus, setFilterStatus] = useState<string>();
+  const [filterResult, setFilterResult] = useState<string>();
+  const [filterDate, setFilterDate] = useState<string>();
+
   // device_name -> activation account email (Connected Mode only). Prefilled
   // from the backend default (country mapping) and editable by the user.
   const [emails, setEmails] = useState<Record<string, string>>({});
@@ -253,6 +263,71 @@ export default function ActivatePage() {
   }, [refreshJobs]);
 
   const runningJobs = useMemo(() => jobs.filter((j) => j.running), [jobs]);
+
+  // ---------- Conversion Jobs filters ----------
+  // Each job's UTC date (from started_at) drives the date filter.
+  const jobDate = (j: ActivateJob) => (j.started_at || "").slice(0, 10);
+
+  const deviceFilterOptions = useMemo(
+    () =>
+      Array.from(new Set(jobs.map((j) => j.device_name).filter(Boolean))).sort(),
+    [jobs]
+  );
+  const emailFilterOptions = useMemo(
+    () => Array.from(new Set(jobs.map((j) => j.email).filter(Boolean) as string[])).sort(),
+    [jobs]
+  );
+  const resultFilterOptions = useMemo(
+    () => Array.from(new Set(jobs.map((j) => j.result).filter(Boolean))).sort(),
+    [jobs]
+  );
+  const dateFilterOptions = useMemo(
+    () =>
+      Array.from(new Set(jobs.map(jobDate).filter(Boolean))).sort((a, b) =>
+        b.localeCompare(a)
+      ), // newest first
+    [jobs]
+  );
+
+  const filteredJobs = useMemo(
+    () =>
+      jobs.filter(
+        (j) =>
+          (!filterDevice || j.device_name === filterDevice) &&
+          (!filterMode || j.mode === filterMode) &&
+          (!filterEmail || j.email === filterEmail) &&
+          (!filterStatus ||
+            (filterStatus === "running" ? j.running : !j.running)) &&
+          (!filterResult || j.result === filterResult) &&
+          (!filterDate || jobDate(j) === filterDate)
+      ),
+    [
+      jobs,
+      filterDevice,
+      filterMode,
+      filterEmail,
+      filterStatus,
+      filterResult,
+      filterDate,
+    ]
+  );
+
+  const filtersActive =
+    !!filterDevice ||
+    !!filterMode ||
+    !!filterEmail ||
+    !!filterStatus ||
+    !!filterResult ||
+    !!filterDate;
+
+  const clearFilters = () => {
+    setFilterDevice(undefined);
+    setFilterMode(undefined);
+    setFilterEmail(undefined);
+    setFilterStatus(undefined);
+    setFilterResult(undefined);
+    setFilterDate(undefined);
+  };
 
   // Running jobs are tailed automatically; keep their tabs open.
   useEffect(() => {
@@ -446,13 +521,24 @@ export default function ActivatePage() {
     { title: "Reason", dataIndex: "reason", key: "reason", ellipsis: true },
   ];
 
-  const jobColumns = [
-    { title: "Device", dataIndex: "device_name", key: "device_name", width: 220 },
+  const jobColumns: ColumnsType<ActivateJob> = [
+    {
+      title: "Device",
+      dataIndex: "device_name",
+      key: "device_name",
+      width: 220,
+      sorter: (a: ActivateJob, b: ActivateJob) =>
+        (a.device_name || "").localeCompare(b.device_name || ""),
+      sortDirections: ["ascend", "descend"],
+    },
     {
       title: "Mode",
       dataIndex: "mode",
       key: "mode",
       width: 170,
+      sorter: (a: ActivateJob, b: ActivateJob) =>
+        (a.mode || "").localeCompare(b.mode || ""),
+      sortDirections: ["ascend", "descend"],
       render: (m: ActivateMode) => (
         <Tag color={m === "connected" ? "blue" : "purple"}>{modeLabel(m)}</Tag>
       ),
@@ -463,14 +549,28 @@ export default function ActivatePage() {
       key: "email",
       width: 220,
       ellipsis: true,
+      sorter: (a: ActivateJob, b: ActivateJob) =>
+        (a.email || "").localeCompare(b.email || ""),
+      sortDirections: ["ascend", "descend"],
       render: (v: string) => v || "-",
     },
-    { title: "PID", dataIndex: "pid", key: "pid", width: 90 },
+    {
+      title: "PID",
+      dataIndex: "pid",
+      key: "pid",
+      width: 90,
+      sorter: (a: ActivateJob, b: ActivateJob) => (a.pid ?? 0) - (b.pid ?? 0),
+      sortDirections: ["ascend", "descend"],
+    },
     {
       title: "Status",
       dataIndex: "status",
       key: "status",
       width: 110,
+      // running first when ascending
+      sorter: (a: ActivateJob, b: ActivateJob) =>
+        Number(b.running) - Number(a.running),
+      sortDirections: ["ascend", "descend"],
       render: (_: string, r: ActivateJob) => (
         <Tag color={r.running ? "processing" : "default"}>
           {r.running ? "running" : "finished"}
@@ -482,6 +582,9 @@ export default function ActivatePage() {
       dataIndex: "result",
       key: "result",
       width: 110,
+      sorter: (a: ActivateJob, b: ActivateJob) =>
+        (a.result || "").localeCompare(b.result || ""),
+      sortDirections: ["ascend", "descend"],
       render: (v: string) =>
         !v ? (
           "-"
@@ -491,12 +594,25 @@ export default function ActivatePage() {
           </Tag>
         ),
     },
-    { title: "Started (UTC)", dataIndex: "started_at", key: "started_at", width: 190 },
+    {
+      title: "Started (UTC)",
+      dataIndex: "started_at",
+      key: "started_at",
+      width: 190,
+      // Sort on the epoch, not the formatted string (which isn't ordered).
+      sorter: (a: ActivateJob, b: ActivateJob) =>
+        (a.started_epoch ?? 0) - (b.started_epoch ?? 0),
+      sortDirections: ["descend", "ascend"],
+      render: (v: string) => v || "-",
+    },
     {
       title: "Log Updated",
       dataIndex: "log_mtime",
       key: "log_mtime",
       width: 190,
+      sorter: (a: ActivateJob, b: ActivateJob) =>
+        (a.log_mtime ?? 0) - (b.log_mtime ?? 0),
+      sortDirections: ["descend", "ascend"],
       render: (v: number) => fmtTime(v),
     },
     {
@@ -771,19 +887,95 @@ export default function ActivatePage() {
 
       {/* Jobs */}
       <Card
-        title={`Conversion Jobs (${jobs.length}${runningJobs.length ? `, ${runningJobs.length} running` : ""})`}
+        title={`Conversion Jobs (${
+          filtersActive ? `${filteredJobs.length}/${jobs.length}` : jobs.length
+        }${runningJobs.length ? `, ${runningJobs.length} running` : ""})`}
         extra={
-          <Button size="small" icon={<ReloadOutlined />} onClick={() => refreshJobs()}>
-            Refresh
-          </Button>
+          <Space size={4}>
+            <Button
+              size="small"
+              icon={<ClearOutlined />}
+              disabled={!filtersActive}
+              onClick={clearFilters}
+            >
+              Clear filters
+            </Button>
+            <Button size="small" icon={<ReloadOutlined />} onClick={() => refreshJobs()}>
+              Refresh
+            </Button>
+          </Space>
         }
       >
-        <Table
+        <Space style={{ marginBottom: 16 }} wrap>
+          <Select
+            style={{ width: 240 }}
+            placeholder="Filter by device"
+            value={filterDevice}
+            onChange={setFilterDevice}
+            options={deviceFilterOptions.map((d) => ({ value: d, label: d }))}
+            showSearch
+            optionFilterProp="label"
+            popupMatchSelectWidth={false}
+            allowClear
+          />
+          <Select
+            style={{ width: 190 }}
+            placeholder="Filter by mode"
+            value={filterMode}
+            onChange={setFilterMode}
+            options={[
+              { value: "connected", label: modeLabel("connected") },
+              { value: "unconnected", label: modeLabel("unconnected") },
+            ]}
+            allowClear
+          />
+          <Select
+            style={{ width: 230 }}
+            placeholder="Filter by account email"
+            value={filterEmail}
+            onChange={setFilterEmail}
+            options={emailFilterOptions.map((e) => ({ value: e, label: e }))}
+            showSearch
+            optionFilterProp="label"
+            popupMatchSelectWidth={false}
+            allowClear
+          />
+          <Select
+            style={{ width: 150 }}
+            placeholder="Filter by status"
+            value={filterStatus}
+            onChange={setFilterStatus}
+            options={[
+              { value: "running", label: "running" },
+              { value: "finished", label: "finished" },
+            ]}
+            allowClear
+          />
+          <Select
+            style={{ width: 150 }}
+            placeholder="Filter by result"
+            value={filterResult}
+            onChange={setFilterResult}
+            options={resultFilterOptions.map((r) => ({ value: r, label: r }))}
+            allowClear
+          />
+          <Select
+            style={{ width: 170 }}
+            placeholder="Filter by date (UTC)"
+            value={filterDate}
+            onChange={setFilterDate}
+            options={dateFilterOptions.map((d) => ({ value: d, label: d }))}
+            showSearch
+            optionFilterProp="label"
+            allowClear
+          />
+        </Space>
+        <Table<ActivateJob>
           size="small"
           rowKey="id"
           loading={loadingJobs}
           columns={jobColumns}
-          dataSource={jobs}
+          dataSource={filteredJobs}
           pagination={{ pageSize: 10, showSizeChanger: true }}
           scroll={{ x: 1520 }}
         />

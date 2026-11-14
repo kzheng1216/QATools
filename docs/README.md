@@ -85,7 +85,7 @@ controls tabs — it only configures the Vite dev server.
 | Device | CRUD device JSON, QA Hub sync, reserve, download, live `device_info` |
 | Profile | CRUD profiles (Guided form + JSON tabs), generate from TestRail, **Split**, **Auto-match** |
 | Run Case | Run a profile (optional **Auto analyze**), watch processes/suites, view results |
-| Run Case in local | Run one case via the `roku_test` CLI with a live log tail |
+| Run Case in local | Queue cases per device via the `roku_test` CLI (one at a time per device) with a live log tail |
 | Analyze History | Profile analyze reports + per-case AI analyses (Markdown) |
 | TestRail Case | Manage plans, search cases by status, cache results |
 | Prompt | AI assistant (RAG over JIRA/Confluence/TestRail/GitLab), sessions, Skills |
@@ -481,7 +481,7 @@ All routes under `/v1`; interactive docs at `http://<host>:9888/docs`.
 | `/v1/device` | Device | `list`, `list_details`, `download`, `device_info`, `sync_with_qa_hub`, `reservations` |
 | `/v1/profile` | Profile | `list_details`, `generate_with_testrail_data`, **`split/{name}`**, **`match_device`** |
 | `/v1/runcase` | Run Case | `run` (`auto_analyze`), `analyze_profile`, cache/report files, QA Hub suites, `user_query_list` |
-| `/v1/rokutest` | Roku Test | `run`, `jobs`, `cache/{field}`, log list/view/download/delete |
+| `/v1/rokutest` | Roku Test | `run` (enqueue), `queues` (per-device, move/clear), `jobs`, `cache/{field}`, log list/view/download/delete |
 | `/v1/branch/automated_tests` | Branch | `list`, `current`, `checkout` |
 | `/v1/testrail` | TestRail | statuses, plans, `plan/case/list`, `plan/case/add`, cached data |
 | `/v1/agent`, `/v1/session`, `/v1/skill` | AI | chat, analyze, search, model switch, sessions, skills (`export/all`) |

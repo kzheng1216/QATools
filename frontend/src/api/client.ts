@@ -499,6 +499,14 @@ export function getSuiteBuildUrl(
 }
 
 // ---------- Roku Test ----------
+/** Lifecycle of a queued/run case. A device runs one case at a time. */
+export type RokuTestStatus =
+  | "queued"
+  | "running"
+  | "finished"
+  | "stopped"
+  | "error";
+
 export interface RokuTestJob {
   id: string;
   device: string;
@@ -506,12 +514,17 @@ export interface RokuTestJob {
   testrail_case_id: string;
   repeat: number;
   pid: number;
-  /** basename of the log file in data/roku_test_log */
+  /** basename of the log file in data/roku_test_log ("" while queued) */
   log_file: string;
   command: string;
   started_at: string;
+  queued_at?: string;
+  finished_at?: string;
   running: boolean;
-  status: "running" | "finished";
+  status: RokuTestStatus;
+  /** 0 = running now, 1..n = waiting in its device queue, -1 = not queued. */
+  queue_position: number;
+  error?: string;
   result: string;
   elapsed_time: number;
   log_mtime: number;
@@ -522,9 +535,25 @@ export interface RokuTestRunResult {
   command: string;
   log_file: string;
   pid: number;
+  /** True when the device was busy and the case is waiting its turn. */
+  queued: boolean;
+  queue_position: number;
   job: RokuTestJob;
 }
 
+/** One device's queue: the case running now + the cases waiting behind it. */
+export interface RokuTestQueue {
+  device: string;
+  running: RokuTestJob | null;
+  queued: RokuTestJob[];
+  pending: number;
+}
+
+/**
+ * Queue a case on a device. It starts at once when the device is idle,
+ * otherwise it waits behind that device's other cases (one at a time per
+ * device; different devices run in parallel).
+ */
 export function runRokuTest(
   device: string,
   automationId: string,
@@ -537,6 +566,39 @@ export function runRokuTest(
     `&testrail_case_id=${encodeURIComponent(testrailCaseId)}` +
     `&repeat=${repeat}`;
   return request("POST", `/v1/rokutest/run${qs}`);
+}
+
+// ---------- Roku test device queues ----------
+export async function listRokuTestQueues(): Promise<RokuTestQueue[]> {
+  const d = await request<{ queues: RokuTestQueue[] }>(
+    "GET",
+    "/v1/rokutest/queues"
+  );
+  return d.queues ?? [];
+}
+
+/** Move a WAITING case one place up/down inside its device queue. */
+export function moveRokuTestQueueJob(
+  device: string,
+  jobId: string,
+  direction: "up" | "down"
+): Promise<{ message: string; queue_position: number }> {
+  return request(
+    "POST",
+    `/v1/rokutest/queues/${encodeURIComponent(device)}/move/${encodeURIComponent(
+      jobId
+    )}?direction=${direction}`
+  );
+}
+
+/** Drop every waiting case of a device (a running case is left alone). */
+export function clearRokuTestQueue(
+  device: string
+): Promise<{ message: string; removed: number }> {
+  return request(
+    "DELETE",
+    `/v1/rokutest/queues/${encodeURIComponent(device)}`
+  );
 }
 
 // ---------- Roku test input history (runcase_data.yml roku_test_cache_data) ----------
@@ -583,8 +645,9 @@ export function stopRokuTest(
 }
 
 // ---------- Roku test jobs (backend/conf/roku_test_jobs.json) ----------
-// Several roku_test runs can be in flight at once; each is tracked as a job so
-// the UI can tail them in separate tabs and stop them one by one.
+// Jobs queue per device: several devices can be busy at once, each running one
+// case at a time, so the UI can tail them in separate tabs and stop them one
+// by one. Active (queued / running) jobs are always returned, whatever `limit`.
 export async function listRokuTestJobs(limit = 50): Promise<RokuTestJob[]> {
   const d = await request<{ jobs: RokuTestJob[] }>(
     "GET",
@@ -599,11 +662,12 @@ export function stopRokuTestJob(
   return request("POST", `/v1/rokutest/jobs/${encodeURIComponent(jobId)}/stop`);
 }
 
+/** Forget a job. A queued case is cancelled; a running one must be stopped first. */
 export function deleteRokuTestJob(jobId: string): Promise<{ message: string }> {
   return request("DELETE", `/v1/rokutest/jobs/${encodeURIComponent(jobId)}`);
 }
 
-/** Drop every finished job entry; running jobs are kept (log files untouched). */
+/** Drop every finished job entry; queued / running jobs are kept (logs untouched). */
 export function clearRokuTestJobs(): Promise<{
   message: string;
   removed: number;
@@ -655,6 +719,17 @@ export async function listBranches(): Promise<string[]> {
     "/v1/branch/automated_tests/list"
   );
   return data.automated_tests_branches ?? [];
+}
+
+/** Branch switching is blocked while any local case is running. */
+export interface BranchLock {
+  locked: boolean;
+  running: { id: string; device: string; automation_id: string; pid: number }[];
+  reason: string;
+}
+
+export async function getBranchLock(): Promise<BranchLock> {
+  return request<BranchLock>("GET", "/v1/branch/automated_tests/lock");
 }
 
 export async function getCurrentBranch(): Promise<string> {
@@ -1579,6 +1654,8 @@ export interface ActivateJob {
   log_file: string;
   command: string;
   started_at: string;
+  /** started_at as a UTC epoch, for sorting (0 when unknown). */
+  started_epoch: number;
   running: boolean;
   status: "running" | "finished";
   result: string;

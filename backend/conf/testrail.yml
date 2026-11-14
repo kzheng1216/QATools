@@ -17,3 +17,5 @@ testrail:
       - Automation Reliability Test on US R2
   - id: 27767296
     name: QD cases refactoring - 1103
+  - id: 27928252
+    name: My AUTO Case - 20261109

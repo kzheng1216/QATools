@@ -1,0 +1,33 @@
+{
+    "name": "QDcase",
+    "description": "",
+    "tasks": [
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "HdmiInputResQuantumDataTest.test_vesa_1024x768_60",
+                "testrail_case_id": 2659885417,
+                "device": "US_KIT-428_athens_wired",
+                "testrail_plan_id": 0,
+                "repeat": 0,
+                "automation_test_branch": "yuzheng/TOOLS-69852/qd_refactor",
+                "roku_automation_branch": "main"
+            },
+            "timeout": 360000
+        },
+        {
+            "config": {
+                "case_type": "UT",
+                "case_id": "HdmiInputResQuantumDataTest.test_1080i_60",
+                "testrail_case_id": 2659885342,
+                "device": "US_KIT-428_athens_wired",
+                "testrail_plan_id": 0,
+                "repeat": 0,
+                "automation_test_branch": "yuzheng/TOOLS-69852/qd_refactor",
+                "roku_automation_branch": "main"
+            },
+            "timeout": 360000
+        }
+    ],
+    "execution_mode": "SERIAL"
+}

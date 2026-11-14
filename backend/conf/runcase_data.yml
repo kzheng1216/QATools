@@ -3,6 +3,13 @@ runcase_user_query_list:
 - name: zzhang
 roku_test_cache_data:
   automation_id:
+  - HdmiInputResQuantumDataTest.test_vesa_1024x768_60
+  - bdd-191437360
+  - bdd-2659904019
+  - bdd-2659883280
+  - bdd-2659910457
+  - bdd-2659903647
+  - '2659903647'
   - bdd-2790705513
   - CECSettingsTest.test_update_cec_device_list_message
   - HdmiInputResQuantumDataTest.test_vesa_4096_2160_60_444_8bit
@@ -17,6 +24,12 @@ roku_test_cache_data:
   - HdmiInputResQuantumDataTest.test_vesa_3840_2160_60_444_8bit
   - HdmiInputResQuantumDataTest.test_4096_2160_30
   testrail_case_id:
+  - '2659885417'
+  - '191437360'
+  - '2659904019'
+  - '2659883280'
+  - '2659910457'
+  - '2659903647'
   - '2790705513'
   - '3289956360'
   - '2659885426'

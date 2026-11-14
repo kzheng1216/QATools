@@ -10,7 +10,7 @@
         "display_power_config": {
             "host": "10.64.21.252",
             "model": "TP_LINK_HS300",
-            "outlet": 2
+            "outlet": 3
         }
     }
 }

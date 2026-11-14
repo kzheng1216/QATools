@@ -1,4 +1,3 @@
-import asyncio
 import json
 import os
 import re
@@ -10,7 +9,7 @@ import sys
 import threading
 import time
 import uuid
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 
 from fastapi import APIRouter, HTTPException
 from fastapi.responses import FileResponse
@@ -41,10 +40,37 @@ _RAN_IN_RE = re.compile(r"^Ran \d+ tests? in ([\d.]+)s", re.M)
 JOBS_PATH = os.path.abspath(
     os.path.join(QATOOLS_ROOT, "backend", "conf", "roku_test_jobs.json")
 )
+# Finished entries kept in the jobs file; queued / running ones are never
+# dropped (they are the queue itself).
 MAX_JOBS = 200
 _jobs_lock = threading.Lock()
 
+# ---------------------------------------------------------------------------
+# Per-device run queues
+#
+# Every device has its own FIFO queue and runs AT MOST ONE case at a time;
+# different devices still run in parallel. The jobs file is the single source
+# of truth (so a backend restart resumes the queues), and one worker thread per
+# busy device starts the next case as soon as the current one exits.
+# ---------------------------------------------------------------------------
+STATUS_QUEUED = "queued"
+STATUS_RUNNING = "running"
+STATUS_FINISHED = "finished"
+STATUS_STOPPED = "stopped"
+STATUS_ERROR = "error"
+# Statuses that keep a job in its device queue.
+ACTIVE_STATUSES = (STATUS_QUEUED, STATUS_RUNNING)
+# How often a worker re-checks whether its running case has exited.
+QUEUE_POLL_SECONDS = 1.0
+
+_queues_lock = threading.Lock()
+_queue_workers: dict[str, threading.Thread] = {}
+
 router = APIRouter()
+
+
+def _utc_now() -> str:
+    return datetime.now(UTC).strftime("%Y-%m-%d %H:%M:%S UTC")
 
 
 def _load_jobs() -> list[dict]:
@@ -56,25 +82,69 @@ def _load_jobs() -> list[dict]:
         return []
 
 
+def _trim_jobs(jobs: list[dict]) -> list[dict]:
+    """Cap the history at MAX_JOBS finished entries, keeping every active job.
+
+    Plain truncation could drop a queued job (and with it a case the user is
+    still waiting for), so only finished entries are discarded.
+    """
+    kept: list[dict] = []
+    finished = 0
+    for job in jobs:
+        if _stored_status(job) in ACTIVE_STATUSES:
+            kept.append(job)
+            continue
+        if finished < MAX_JOBS:
+            kept.append(job)
+            finished += 1
+    return kept
+
+
 def _save_jobs(jobs: list[dict]) -> None:
+    """Persist the jobs file. Callers must hold _jobs_lock."""
     os.makedirs(os.path.dirname(JOBS_PATH), exist_ok=True)
     try:
-        with open(JOBS_PATH, "w", encoding="utf-8") as f:
-            json.dump(jobs[:MAX_JOBS], f, indent=2)
+        # Write-then-rename: a crash mid-write would otherwise leave a
+        # truncated file and lose every queued job.
+        tmp = f"{JOBS_PATH}.tmp"
+        with open(tmp, "w", encoding="utf-8") as f:
+            json.dump(_trim_jobs(jobs), f, indent=2)
+        # Keep the original file mode (the fresh temp file would reset it).
+        try:
+            os.chmod(tmp, os.stat(JOBS_PATH).st_mode & 0o7777)
+        except OSError:
+            pass
+        os.replace(tmp, JOBS_PATH)
     except OSError as exc:
         logger.error("Error writing roku test jobs file: %s", exc)
 
 
-def _add_job(job: dict) -> None:
-    with _jobs_lock:
-        jobs = _load_jobs()
-        jobs.insert(0, job)
-        _save_jobs(jobs)
+def _proc_stat(pid: int) -> tuple[str, int] | None:
+    """(state, starttime) of a pid from /proc, or None when it is gone."""
+    try:
+        with open(f"/proc/{pid}/stat", encoding="utf-8", errors="replace") as fh:
+            data = fh.read()
+    except OSError:
+        return None
+    # The comm field can contain spaces and parens, so parse after its ')'.
+    try:
+        fields = data[data.rindex(")") + 1 :].split()
+        return fields[0], int(fields[19])
+    except (ValueError, IndexError):
+        return None
 
 
 def _pid_alive(pid: int) -> bool:
+    """Whether pid is a live process (a zombie counts as finished).
+
+    Runs are started detached, so a not-yet-reaped child would still answer
+    kill(0) and could block its device queue forever.
+    """
     if not pid or pid <= 0:
         return False
+    stat = _proc_stat(pid)
+    if stat is not None:
+        return stat[0] != "Z"
     try:
         os.kill(pid, 0)
     except (ProcessLookupError, ValueError):
@@ -84,16 +154,78 @@ def _pid_alive(pid: int) -> bool:
     return True
 
 
-def _decorate_job(job: dict) -> dict:
-    """Attach live running state / result / elapsed time to a stored job."""
+def _job_process_alive(job: dict) -> bool:
+    """Whether the job's own process is still running.
+
+    Also compares the recorded process start time, so a recycled pid (e.g.
+    after a container restart) can't be mistaken for the original run and
+    stall the device queue.
+    """
+    pid = int(job.get("pid") or 0)
+    if not _pid_alive(pid):
+        return False
+    want = job.get("proc_start")
+    if want in (None, ""):
+        return True
+    stat = _proc_stat(pid)
+    if stat is None:
+        return True
+    return int(want) == stat[1]
+
+
+def _stored_status(job: dict) -> str:
+    """Lifecycle status of a stored job (jobs written before the queue existed
+    have no 'status' field, so fall back to their pid)."""
+    status = str(job.get("status") or "")
+    if status:
+        return status
+    return STATUS_RUNNING if _job_process_alive(job) else STATUS_FINISHED
+
+
+def _queue_key(job: dict) -> tuple[int, str]:
+    """Sort key giving a device's queue its order (enqueue order by default)."""
+    return (int(job.get("seq") or 0), str(job.get("queued_at") or ""))
+
+
+def _next_seq(jobs: list[dict]) -> int:
+    return max((int(j.get("seq") or 0) for j in jobs), default=-1) + 1
+
+
+def _queue_positions(jobs: list[dict]) -> dict[str, int]:
+    """job id -> place in its device queue: 0 = running now, 1..n = waiting."""
+    positions: dict[str, int] = {}
+    by_device: dict[str, list[dict]] = {}
+    for job in jobs:
+        status = _stored_status(job)
+        if status == STATUS_RUNNING:
+            positions[str(job.get("id") or "")] = 0
+        elif status == STATUS_QUEUED:
+            by_device.setdefault(str(job.get("device") or ""), []).append(job)
+    for queued in by_device.values():
+        for place, job in enumerate(sorted(queued, key=_queue_key), start=1):
+            positions[str(job.get("id") or "")] = place
+    return positions
+
+
+def _decorate_job(job: dict, positions: dict[str, int] | None = None) -> dict:
+    """Attach live state / queue place / result / elapsed time to a stored job."""
     job = dict(job)
-    running = _pid_alive(int(job.get("pid") or 0))
+    status = _stored_status(job)
+    # The worker persists this a moment later; report it right away.
+    if status == STATUS_RUNNING and not _job_process_alive(job):
+        status = STATUS_FINISHED
+    running = status == STATUS_RUNNING
+    queued = status == STATUS_QUEUED
     log_name = os.path.basename(job.get("log_file") or "")
     full = os.path.join(roku_test_dir, log_name) if log_name else ""
     job["log_file"] = log_name
     job["running"] = running
-    job["status"] = "running" if running else "finished"
-    job["result"] = "" if running else (_parse_result(full) if full else "Unknown")
+    job["status"] = status
+    job["queue_position"] = (positions or {}).get(str(job.get("id") or ""), -1)
+    if running or queued:
+        job["result"] = ""
+    else:
+        job["result"] = _parse_result(full) if full else "Unknown"
     job["elapsed_time"] = _get_elapsed_time(full) if full else 0
     try:
         job["log_mtime"] = os.path.getmtime(full)
@@ -255,19 +387,21 @@ def _roku_test_bin() -> str:
     return shutil.which("roku_test") or "roku_test"
 
 
-async def _run_roku_test_cmd(cmd: str, log_file: str) -> int:
+def _spawn_roku_test(cmd: str, log_file: str) -> int:
+    """Start `cmd` detached, redirect its output to log_file, return its pid."""
     os.makedirs(os.path.dirname(log_file), exist_ok=True)
     # setsid puts the test in its own session/process group so that stopping it
     # can signal the whole group (roku_test spawns child processes) without ever
     # touching the backend's own group.
     shell_cmd = f"(setsid {cmd} > {shlex.quote(log_file)} 2>&1 & echo $!)"
-    process = await asyncio.create_subprocess_shell(
+    process = subprocess.Popen(
         shell_cmd,
-        stdout=asyncio.subprocess.PIPE,
-        stderr=asyncio.subprocess.DEVNULL,
+        shell=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.DEVNULL,
     )
-    stdout, _ = await process.communicate()
-    return int(stdout.decode().strip())
+    stdout, _ = process.communicate()
+    return int((stdout or b"").decode().strip())
 
 
 def _get_git_branch_name() -> str:
@@ -280,48 +414,276 @@ def _get_git_branch_name() -> str:
     return stdout.decode().strip()
 
 
+def _build_cmd(job: dict) -> tuple[str, str]:
+    """(command, log file path) for a queued job, named at start time."""
+    device = str(job.get("device") or "")
+    automation_id = str(job.get("automation_id") or "")
+    testrail_case_id = str(job.get("testrail_case_id") or "")
+    repeat = int(job.get("repeat") or 0)
+
+    timestamp = datetime.now(UTC)
+    log_file = ""
+    # A queue starts cases back to back, so two runs of the same case can land
+    # in the same second; bump the stamp rather than overwrite an older log.
+    for _ in range(60):
+        candidate = os.path.join(
+            roku_test_dir,
+            f"roku_test__{automation_id}__{testrail_case_id}__{device}__{repeat}"
+            f"__{timestamp.strftime('%Y%m%d_%H%M%S')}.log",
+        )
+        if not os.path.exists(candidate):
+            log_file = candidate
+            break
+        timestamp += timedelta(seconds=1)
+    else:
+        log_file = candidate
+
+    repeat_arg = f"--repeat {repeat}" if repeat > 0 else ""
+    cmd = (
+        f"{_roku_test_bin()} -d {device_conf_dir}/{device}.json {repeat_arg} "
+        f"--allow dangerous --allow duration-hours --filter {shlex.quote(automation_id)} "
+        f"{os.path.expanduser('~/automated_tests/tests')}"
+    )
+    return cmd, log_file
+
+
+def _advance_device(device: str) -> bool:
+    """Move a device's queue forward one step.
+
+    Reaps the finished run (if any), then starts the oldest waiting case when
+    the device is idle. Returns True while the device still has work, so its
+    worker knows whether to keep polling.
+
+    Holds _jobs_lock across the spawn: only one case may ever be starting on a
+    device, and the job must never be observable as running without its pid.
+    """
+    with _jobs_lock:
+        jobs = _load_jobs()
+        mine = [j for j in jobs if j.get("device") == device]
+        dirty = False
+
+        # 1. Reap: a job recorded as running whose process is gone is finished.
+        running = None
+        for job in mine:
+            if _stored_status(job) != STATUS_RUNNING:
+                continue
+            if _job_process_alive(job):
+                running = job
+            else:
+                job["status"] = STATUS_FINISHED
+                job["finished_at"] = _utc_now()
+                dirty = True
+                logger.info(
+                    "Roku test finished: device='%s' automation_id='%s' pid=%s",
+                    device,
+                    job.get("automation_id"),
+                    job.get("pid"),
+                )
+
+        queued = sorted(
+            (j for j in mine if _stored_status(j) == STATUS_QUEUED), key=_queue_key
+        )
+
+        # 2. Device still busy: nothing to start yet.
+        if running is not None:
+            if dirty:
+                _save_jobs(jobs)
+            return True
+
+        if not queued:
+            if dirty:
+                _save_jobs(jobs)
+            return False
+
+        # 3. Device idle: start the case at the head of its queue.
+        job = queued[0]
+        cmd, log_file = _build_cmd(job)
+        try:
+            pid = _spawn_roku_test(cmd, log_file)
+        except (OSError, ValueError) as exc:
+            job["status"] = STATUS_ERROR
+            job["error"] = f"Failed to start: {exc}"
+            job["finished_at"] = _utc_now()
+            _save_jobs(jobs)
+            logger.error(
+                "Failed to start roku test on device '%s' (%s): %s",
+                device,
+                job.get("automation_id"),
+                exc,
+            )
+            # Don't wedge the queue on one bad case.
+            return len(queued) > 1
+
+        stat = _proc_stat(pid)
+        job["pid"] = pid
+        job["log_file"] = os.path.basename(log_file)
+        job["command"] = cmd
+        job["status"] = STATUS_RUNNING
+        job["proc_start"] = stat[1] if stat else ""
+        job["started_at"] = _utc_now()
+        _save_jobs(jobs)
+
+    logger.info(
+        "Roku test started: device='%s' automated_test_id='%s' testrail_case_id='%s' pid=%s log=%s",
+        device,
+        job.get("automation_id"),
+        job.get("testrail_case_id"),
+        pid,
+        log_file,
+    )
+    return True
+
+
+def _queue_worker(device: str) -> None:
+    """Drain one device's queue, one case at a time."""
+    try:
+        while True:
+            try:
+                busy = _advance_device(device)
+            except Exception:  # noqa: BLE001
+                logger.exception("Roku test queue worker error on device %s", device)
+                busy = True  # back off, then retry
+            if not busy:
+                # Exit only if nothing slipped in while we were deciding
+                # (enqueue takes _queues_lock to (re)start the worker).
+                with _queues_lock:
+                    if not _device_has_active(device):
+                        _queue_workers.pop(device, None)
+                        return
+            time.sleep(QUEUE_POLL_SECONDS)
+    finally:
+        with _queues_lock:
+            if _queue_workers.get(device) is threading.current_thread():
+                _queue_workers.pop(device, None)
+
+
+def _device_has_active(device: str) -> bool:
+    with _jobs_lock:
+        return any(
+            j.get("device") == device and _stored_status(j) in ACTIVE_STATUSES
+            for j in _load_jobs()
+        )
+
+
+def list_running_runs() -> list[dict]:
+    """The cases executing right now, across all devices.
+
+    Exposed for other controllers (the branch switch is blocked while a case is
+    running, since every run reads the test files out of the shared
+    automated_tests working tree).
+    """
+    with _jobs_lock:
+        jobs = _load_jobs()
+    return [
+        {
+            "id": j.get("id", ""),
+            "device": j.get("device", ""),
+            "automation_id": j.get("automation_id", ""),
+            "pid": int(j.get("pid") or 0),
+        }
+        for j in jobs
+        if _stored_status(j) == STATUS_RUNNING and _job_process_alive(j)
+    ]
+
+
+def list_queued_runs() -> list[dict]:
+    """The cases waiting in a device queue (they have not started yet)."""
+    with _jobs_lock:
+        jobs = _load_jobs()
+    return [
+        {
+            "id": j.get("id", ""),
+            "device": j.get("device", ""),
+            "automation_id": j.get("automation_id", ""),
+        }
+        for j in jobs
+        if _stored_status(j) == STATUS_QUEUED
+    ]
+
+
+def _ensure_worker(device: str) -> None:
+    """Make sure a worker thread is draining this device's queue."""
+    with _queues_lock:
+        thread = _queue_workers.get(device)
+        if thread is not None and thread.is_alive():
+            return
+        thread = threading.Thread(
+            target=_queue_worker,
+            args=(device,),
+            name=f"rokutest-queue-{device}",
+            daemon=True,
+        )
+        _queue_workers[device] = thread
+        thread.start()
+
+
+def _resume_queues() -> None:
+    """Restart the queue workers for every device with unfinished work.
+
+    The jobs file survives a backend restart, so cases queued before it still
+    run, and runs that outlived the backend are adopted (not restarted).
+    """
+    try:
+        with _jobs_lock:
+            devices = {
+                str(j.get("device") or "")
+                for j in _load_jobs()
+                if _stored_status(j) in ACTIVE_STATUSES
+            }
+    except Exception:  # noqa: BLE001
+        logger.exception("Failed to read roku test jobs while resuming queues")
+        return
+    for device in sorted(d for d in devices if d):
+        logger.info("Resuming roku test queue for device %s", device)
+        _ensure_worker(device)
+
+
 @router.post("/v1/rokutest/run")
-async def run_roku_test(
+def run_roku_test(
     device: str,
     automated_test_id: str,
     testrail_case_id: str,
     repeat: int = 0,
 ) -> dict:
-    """
-    Run a Roku test with the specified device, case_id and repeat.
-    """
-    timestamp = datetime.now(UTC).strftime("%Y%m%d_%H%M%S")
-    log_file = os.path.join(
-        roku_test_dir,
-        f"roku_test__{automated_test_id}__{testrail_case_id}__{device}__{repeat}__{timestamp}.log",
-    )
-    repeat_arg = f"--repeat {repeat}" if repeat > 0 else ""
-    cmd = f"{_roku_test_bin()} -d {device_conf_dir}/{device}.json {repeat_arg} --allow dangerous --allow duration-hours --filter '{automated_test_id}' ~/automated_tests/tests"
-    logger.info(
-        "Run roku test: device='%s' automated_test_id='%s' testrail_case_id='%s' repeat=%s",
-        device,
-        automated_test_id,
-        testrail_case_id,
-        repeat,
-    )
-    pid = await _run_roku_test_cmd(cmd, log_file)
+    """Queue a Roku test case on a device.
 
-    # Track the run as a job so several runs can be shown / stopped separately.
+    Each device has its own FIFO queue and runs one case at a time: the job
+    starts immediately when the device is idle, otherwise it waits behind the
+    cases already queued for that device. Different devices run in parallel.
+    """
+    if not os.path.isfile(os.path.join(device_conf_dir, f"{device}.json")):
+        raise HTTPException(status_code=400, detail=f"Unknown device '{device}'")
+
     job = {
         "id": uuid.uuid4().hex[:12],
         "device": device,
         "automation_id": automated_test_id,
         "testrail_case_id": testrail_case_id,
         "repeat": repeat,
-        "pid": pid,
-        "log_file": os.path.basename(log_file),
-        "command": cmd,
-        "started_at": datetime.now(UTC).strftime("%Y-%m-%d %H:%M:%S UTC"),
+        "pid": 0,
+        "log_file": "",
+        "command": "",
+        "status": STATUS_QUEUED,
+        "queued_at": _utc_now(),
+        "started_at": "",
     }
-    try:
-        _add_job(job)
-    except Exception as exc:  # noqa: BLE001
-        logger.warning("Failed to persist roku test job: %s", exc)
+    logger.info(
+        "Queue roku test: device='%s' automated_test_id='%s' testrail_case_id='%s' repeat=%s",
+        device,
+        automated_test_id,
+        testrail_case_id,
+        repeat,
+    )
+    with _jobs_lock:
+        jobs = _load_jobs()
+        job["seq"] = _next_seq(jobs)
+        jobs.insert(0, job)
+        _save_jobs(jobs)
+
+    # Start it right away when the device is idle, so the response can carry
+    # the pid / log file of a run that is live by the time the UI gets it.
+    _advance_device(device)
+    _ensure_worker(device)
 
     # Remember the inputs in the history cache (best-effort; never fail the run).
     try:
@@ -330,40 +692,155 @@ async def run_roku_test(
     except Exception as exc:  # noqa: BLE001
         logger.warning("Failed to update roku_test input cache: %s", exc)
 
-    logger.info(
-        "Roku test started: device='%s' automated_test_id='%s' testrail_case_id='%s' pid=%s log=%s",
-        device,
-        automated_test_id,
-        testrail_case_id,
-        pid,
-        log_file,
-    )
+    with _jobs_lock:
+        jobs = _load_jobs()
+        positions = _queue_positions(jobs)
+        stored = next((j for j in jobs if j.get("id") == job["id"]), job)
+    current = _decorate_job(stored, positions)
+    position = current["queue_position"]
+    queued = current["status"] == STATUS_QUEUED
+
+    if queued:
+        msg = (
+            f"Case '{automated_test_id}' queued on device '{device}' at position "
+            f"{position} (the device is busy; it runs when the cases ahead finish)"
+        )
+    else:
+        msg = (
+            f"Roku test with device '{device}', automated_test_id "
+            f"'{automated_test_id}' and testrail_case_id '{testrail_case_id}' "
+            f"and repeat '{repeat}' started"
+        )
     return {
-        "message": f"Roku test with device '{device}', automated_test_id '{automated_test_id}' and testrail_case_id '{testrail_case_id}' and repeat '{repeat}' started",
-        "command": cmd,
-        "log_file": log_file,
-        "pid": pid,
-        "job": _decorate_job(job),
+        "message": msg,
+        "command": current.get("command", ""),
+        "log_file": current.get("log_file", ""),
+        "pid": current.get("pid", 0),
+        "queued": queued,
+        "queue_position": position,
+        "job": current,
+    }
+
+
+@router.get("/v1/rokutest/queues")
+def list_roku_test_queues() -> dict:
+    """The per-device queues: each device's running case + the cases waiting."""
+    with _jobs_lock:
+        jobs = _load_jobs()
+        positions = _queue_positions(jobs)
+    queues: dict[str, dict] = {}
+    for job in jobs:
+        if _stored_status(job) not in ACTIVE_STATUSES:
+            continue
+        device = str(job.get("device") or "")
+        entry = queues.setdefault(device, {"device": device, "running": None, "queued": []})
+        decorated = _decorate_job(job, positions)
+        if decorated["status"] == STATUS_RUNNING:
+            entry["running"] = decorated
+        else:
+            entry["queued"].append(decorated)
+    for entry in queues.values():
+        entry["queued"].sort(key=lambda j: j["queue_position"])
+        entry["pending"] = len(entry["queued"])
+    return {"queues": [queues[d] for d in sorted(queues)]}
+
+
+@router.post("/v1/rokutest/queues/{device}/move/{job_id}")
+def move_roku_test_queue_job(device: str, job_id: str, direction: str) -> dict:
+    """Reorder a waiting case inside its device queue ('up' or 'down')."""
+    if direction not in ("up", "down"):
+        raise HTTPException(
+            status_code=400, detail="direction must be 'up' or 'down'"
+        )
+    with _jobs_lock:
+        jobs = _load_jobs()
+        queued = sorted(
+            (
+                j
+                for j in jobs
+                if j.get("device") == device and _stored_status(j) == STATUS_QUEUED
+            ),
+            key=_queue_key,
+        )
+        idx = next(
+            (i for i, j in enumerate(queued) if j.get("id") == job_id), None
+        )
+        if idx is None:
+            raise HTTPException(
+                status_code=404,
+                detail=f"No queued job '{job_id}' for device '{device}'",
+            )
+        swap = idx - 1 if direction == "up" else idx + 1
+        if swap < 0 or swap >= len(queued):
+            raise HTTPException(
+                status_code=400, detail=f"Job is already {'first' if swap < 0 else 'last'}"
+            )
+        # Swapping the sort keys moves the job without renumbering the queue.
+        a, b = queued[idx], queued[swap]
+        a["seq"], b["seq"] = b.get("seq", 0), a.get("seq", 0)
+        a["queued_at"], b["queued_at"] = (
+            b.get("queued_at", ""),
+            a.get("queued_at", ""),
+        )
+        _save_jobs(jobs)
+        positions = _queue_positions(jobs)
+    logger.info("Moved queued job %s %s on device %s", job_id, direction, device)
+    return {
+        "message": f"Job '{job_id}' moved {direction}",
+        "queue_position": positions.get(job_id, -1),
+    }
+
+
+@router.delete("/v1/rokutest/queues/{device}")
+def clear_roku_test_queue(device: str) -> dict:
+    """Drop every WAITING case of a device. A running case is left alone."""
+    with _jobs_lock:
+        jobs = _load_jobs()
+        kept = [
+            j
+            for j in jobs
+            if not (
+                j.get("device") == device and _stored_status(j) == STATUS_QUEUED
+            )
+        ]
+        removed = len(jobs) - len(kept)
+        if removed:
+            _save_jobs(kept)
+    logger.info("Cleared %s queued job(s) on device %s", removed, device)
+    return {
+        "message": f"Cleared {removed} queued case(s) on '{device}'",
+        "removed": removed,
     }
 
 
 @router.get("/v1/rokutest/jobs")
 def list_roku_test_jobs(limit: int = 50) -> dict:
-    """List tracked roku_test runs (newest first) with live running state."""
+    """List tracked roku_test runs (newest first) with live running state.
+
+    Active (queued / running) jobs are always included, whatever the limit, so
+    the UI can never lose sight of a queue.
+    """
     with _jobs_lock:
         jobs = _load_jobs()
-    return {"jobs": [_decorate_job(j) for j in jobs[: max(1, limit)]]}
+        positions = _queue_positions(jobs)
+    limit = max(1, limit)
+    head = jobs[:limit]
+    seen = {id(j) for j in head}
+    extra = [
+        j for j in jobs[limit:] if _stored_status(j) in ACTIVE_STATUSES and id(j) not in seen
+    ]
+    return {"jobs": [_decorate_job(j, positions) for j in head + extra]}
 
 
 @router.delete("/v1/rokutest/jobs")
 def clear_roku_test_jobs() -> dict:
-    """Clear all finished jobs. Running jobs are kept (stop them first).
+    """Clear all finished jobs. Queued / running jobs are kept (stop them first).
 
     Log files are never touched — only the tracking entries are dropped.
     """
     with _jobs_lock:
         jobs = _load_jobs()
-        kept = [j for j in jobs if _pid_alive(int(j.get("pid") or 0))]
+        kept = [j for j in jobs if _stored_status(j) in ACTIVE_STATUSES]
         removed = len(jobs) - len(kept)
         if removed:
             _save_jobs(kept)
@@ -377,29 +854,60 @@ def clear_roku_test_jobs() -> dict:
 
 @router.delete("/v1/rokutest/jobs/{job_id}")
 def delete_roku_test_job(job_id: str) -> dict:
-    """Forget a job (log file untouched). Running jobs must be stopped first."""
+    """Forget a job (log file untouched).
+
+    A QUEUED job is cancelled (dropped from its device queue); a RUNNING job
+    must be stopped first.
+    """
     with _jobs_lock:
         jobs = _load_jobs()
         target = next((j for j in jobs if j.get("id") == job_id), None)
         if target is None:
             raise HTTPException(status_code=404, detail=f"Job '{job_id}' not found")
-        if _pid_alive(int(target.get("pid") or 0)):
+        if _stored_status(target) == STATUS_RUNNING:
             raise HTTPException(
                 status_code=400, detail="Job is still running; stop it first"
             )
+        was_queued = _stored_status(target) == STATUS_QUEUED
         _save_jobs([j for j in jobs if j.get("id") != job_id])
+    if was_queued:
+        logger.info("Cancelled queued roku test job %s", job_id)
+        return {"message": f"Queued job '{job_id}' cancelled"}
     return {"message": f"Job '{job_id}' removed"}
 
 
 @router.post("/v1/rokutest/jobs/{job_id}/stop")
 def stop_roku_test_job(job_id: str) -> dict:
-    """Stop one tracked run (by job id), leaving the other runs alone."""
+    """Stop one tracked run (by job id), leaving the other runs alone.
+
+    The device queue is NOT paused: the next case waiting for that device
+    starts right after. Use DELETE /v1/rokutest/queues/{device} to drop the
+    rest of the queue.
+    """
     with _jobs_lock:
         job = next((j for j in _load_jobs() if j.get("id") == job_id), None)
     if job is None:
         raise HTTPException(status_code=404, detail=f"Job '{job_id}' not found")
+    if _stored_status(job) == STATUS_QUEUED:
+        raise HTTPException(
+            status_code=400,
+            detail="Job has not started yet; delete it to cancel the queued case",
+        )
     res = stop_roku_test(int(job.get("pid") or 0))
     res["id"] = job_id
+    # Record it as stopped so the worker doesn't relabel it as finished, then
+    # let the device move on to the next queued case.
+    device = str(job.get("device") or "")
+    with _jobs_lock:
+        jobs = _load_jobs()
+        stored = next((j for j in jobs if j.get("id") == job_id), None)
+        if stored is not None and _stored_status(stored) == STATUS_RUNNING:
+            stored["status"] = STATUS_STOPPED
+            stored["finished_at"] = _utc_now()
+            _save_jobs(jobs)
+    if device:
+        _advance_device(device)
+        _ensure_worker(device)
     return res
 
 
@@ -493,7 +1001,7 @@ def list_roku_test_logs() -> dict:
     running_names: set[str] = {
         os.path.basename(j.get("log_file") or "")
         for j in stored_jobs
-        if _pid_alive(int(j.get("pid") or 0))
+        if _stored_status(j) == STATUS_RUNNING and _job_process_alive(j)
     }
     running_names.discard("")
     known_names = {os.path.basename(j.get("log_file") or "") for j in stored_jobs}
@@ -605,6 +1113,10 @@ def delete_roku_test_log(log_file: str) -> dict:
         return {"message": f"Log file '{log_file}' deleted"}
     except FileNotFoundError:
         raise HTTPException(status_code=404, detail=f"Log file '{log_file}' not found")
+
+
+# Cases queued before a backend restart keep their place and still run.
+_resume_queues()
 
 
 if __name__ == "__main__":

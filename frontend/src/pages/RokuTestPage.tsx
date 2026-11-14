@@ -30,6 +30,9 @@ import {
   SaveOutlined,
   CopyOutlined,
   StopOutlined,
+  PlusOutlined,
+  ArrowUpOutlined,
+  ArrowDownOutlined,
 } from "@ant-design/icons";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -42,6 +45,9 @@ import {
   stopRokuTestJob,
   deleteRokuTestJob,
   clearRokuTestJobs,
+  listRokuTestQueues,
+  moveRokuTestQueueJob,
+  clearRokuTestQueue,
   listRokuTestLogs,
   viewRokuTestLog,
   deleteRokuTestLog,
@@ -54,6 +60,7 @@ import {
   checkoutBranch,
   type RokuTestLog,
   type RokuTestJob,
+  type RokuTestQueue,
   type AnalyzeLocale,
 } from "../api/client";
 
@@ -71,6 +78,9 @@ const REFRESH_OPTIONS = [
 ];
 const DEFAULT_REFRESH_MS = 3000;
 const REFRESH_STORAGE_KEY = "rokutest-log-refresh";
+
+/** Which rows the merged Cases table shows. */
+type CaseView = "active" | "finished" | "all";
 
 // Lines matching this are error lines and get highlighted red.
 const ERROR_RE = /\b(ERROR|Traceback|FAIL|Exception|AssertionError|res: (Fail|Error))\b/;
@@ -129,9 +139,6 @@ function formatElapsed(sec?: number | null): string {
   if (m) return `${m}m ${String(s).padStart(2, "0")}s`;
   return `${s}s`;
 }
-
-const fmtTime = (epoch?: number) =>
-  epoch ? new Date(epoch * 1000).toLocaleString() : "-";
 
 /** One live-tailing log pane (one per running roku_test job tab). */
 function LogPane({
@@ -281,12 +288,22 @@ export default function RokuTestPage() {
   const [filterResult, setFilterResult] = useState<string>();
   const [filterDate, setFilterDate] = useState<string>();
 
-  // All tracked roku_test runs (backend/conf/roku_test_jobs.json). Several can
-  // be running at the same time; each gets its own live-log tab and Stop button.
+  // All tracked roku_test runs (backend/conf/roku_test_jobs.json). Every device
+  // has its own queue and runs ONE case at a time (different devices run in
+  // parallel); each running case gets its own live-log tab and Stop button.
   const [jobs, setJobs] = useState<RokuTestJob[]>([]);
   const [loadingJobs, setLoadingJobs] = useState(false);
   const [stoppingId, setStoppingId] = useState<string | null>(null);
   const [clearingJobs, setClearingJobs] = useState(false);
+
+  // Per-device queues (GET /v1/rokutest/queues), used to group the Cases table.
+  const [queues, setQueues] = useState<RokuTestQueue[]>([]);
+  const [queueBusyId, setQueueBusyId] = useState<string | null>(null);
+  const [clearingQueue, setClearingQueue] = useState<string | null>(null);
+
+  // Which slice of the merged Cases table to show. Active = queued + running
+  // (grouped per device), so the queue is readable without the finished noise.
+  const [caseView, setCaseView] = useState<CaseView>("active");
 
   // Log files currently being tailed (one tab each) + their content.
   const [openLogs, setOpenLogs] = useState<string[]>([]);
@@ -421,6 +438,15 @@ export default function RokuTestPage() {
   useEffect(loadBranches, []);
 
   const handleCheckout = async (name: string) => {
+    // A run reads its test files from the shared automated_tests tree, so the
+    // branch must stay put while a case is executing (the backend also
+    // enforces this with a 409).
+    if (branchLocked) {
+      message.warning(
+        "A case is running — wait for it to finish or stop it before switching branch"
+      );
+      return;
+    }
     setCheckingOut(true);
     try {
       await checkoutBranch(name);
@@ -455,7 +481,12 @@ export default function RokuTestPage() {
   const refreshJobs = useCallback(async (silent = false) => {
     if (!silent) setLoadingJobs(true);
     try {
-      setJobs(await listRokuTestJobs());
+      const [jobList, queueList] = await Promise.all([
+        listRokuTestJobs(),
+        listRokuTestQueues(),
+      ]);
+      setJobs(jobList);
+      setQueues(queueList);
     } catch (e) {
       if (!silent) message.error(`Load jobs failed: ${(e as Error).message}`);
     } finally {
@@ -468,6 +499,61 @@ export default function RokuTestPage() {
   }, [refreshJobs]);
 
   const runningJobs = useMemo(() => jobs.filter((j) => j.running), [jobs]);
+  // The branch is shared by every run (one automated_tests working tree), so it
+  // is locked as soon as any case is executing. Queued cases do NOT lock it:
+  // they run on whatever branch is checked out when their turn comes.
+  const branchLocked = runningJobs.length > 0;
+  const queuedJobs = useMemo(
+    () => jobs.filter((j) => j.status === "queued"),
+    [jobs]
+  );
+  // Jobs that can be dropped from the list (queued ones are cancelled instead).
+  const finishedJobCount = useMemo(
+    () => jobs.filter((j) => !j.running && j.status !== "queued").length,
+    [jobs]
+  );
+  // Cases already lined up for the device selected above, so the Run button can
+  // say whether this one starts now or joins the queue.
+  const selectedDeviceQueue = useMemo(
+    () => queues.find((q) => q.device === device),
+    [queues, device]
+  );
+  const selectedDeviceBusy = !!(
+    selectedDeviceQueue?.running || selectedDeviceQueue?.pending
+  );
+
+  // ---------- merged Cases table ----------
+  // Active rows come from the per-device queues so each device's cases stay
+  // together and in execution order: running first, then its waiting cases.
+  const activeRows = useMemo(
+    () =>
+      queues.flatMap((q) => [...(q.running ? [q.running] : []), ...q.queued]),
+    [queues]
+  );
+  const finishedRows = useMemo(
+    () => jobs.filter((j) => !j.running && j.status !== "queued"),
+    [jobs]
+  );
+  const caseRows = useMemo(() => {
+    if (caseView === "active") return activeRows;
+    if (caseView === "finished") return finishedRows;
+    return [...activeRows, ...finishedRows]; // active on top, history below
+  }, [caseView, activeRows, finishedRows]);
+
+  // device -> { first row id, waiting count } so only the first row of a device
+  // prints its name + queue controls (the rest are indented continuations).
+  const deviceGroups = useMemo(() => {
+    const map: Record<string, { firstId: string; pending: number }> = {};
+    caseRows.forEach((r) => {
+      if (!map[r.device]) {
+        map[r.device] = {
+          firstId: r.id,
+          pending: queues.find((q) => q.device === r.device)?.pending ?? 0,
+        };
+      }
+    });
+    return map;
+  }, [caseRows, queues]);
 
   // Every running job is tailed automatically; keep its tab open (and keep any
   // tab the user opened manually / left open after the run finished).
@@ -531,12 +617,20 @@ export default function RokuTestPage() {
         testrailCaseId.trim(),
         repeat
       );
-      message.success(`${res.message} (pid ${res.pid})`);
-      // Open a live-log tab for this run; previously started runs keep theirs.
-      const name = basename(res.log_file);
-      setOpenLogs((prev) => [name, ...prev.filter((n) => n !== name)]);
-      setActiveLog(name);
-      setLogContent((prev) => ({ ...prev, [name]: "" }));
+      if (res.queued) {
+        // The device is busy: the case waits its turn, so there is no log to
+        // tail yet (the tab opens by itself once the case starts).
+        message.success(
+          `Queued on '${device}' at position ${res.queue_position} — it runs when the case(s) ahead finish`
+        );
+      } else {
+        message.success(`${res.message} (pid ${res.pid})`);
+        // Open a live-log tab for this run; previously started runs keep theirs.
+        const name = basename(res.log_file);
+        setOpenLogs((prev) => [name, ...prev.filter((n) => n !== name)]);
+        setActiveLog(name);
+        setLogContent((prev) => ({ ...prev, [name]: "" }));
+      }
       refreshJobs(true);
       // The backend persists the inputs to config.yml; reflect it in the
       // dropdowns right away (newest first, de-duped).
@@ -552,7 +646,8 @@ export default function RokuTestPage() {
     }
   };
 
-  // Stop ONE tracked run (other running jobs are untouched).
+  // Stop ONE tracked run (other running jobs are untouched). The device queue
+  // is not paused: the next case waiting for that device starts right after.
   const handleStopJob = async (job: RokuTestJob) => {
     setStoppingId(job.id);
     try {
@@ -583,7 +678,37 @@ export default function RokuTestPage() {
     }
   };
 
-  // Clear every FINISHED job entry; running jobs stay in the list.
+  // Reorder a WAITING case inside its device queue.
+  const handleMoveQueueJob = async (
+    job: RokuTestJob,
+    direction: "up" | "down"
+  ) => {
+    setQueueBusyId(job.id);
+    try {
+      await moveRokuTestQueueJob(job.device, job.id, direction);
+      await refreshJobs(true);
+    } catch (e) {
+      message.error(`Move failed: ${(e as Error).message}`);
+    } finally {
+      setQueueBusyId(null);
+    }
+  };
+
+  // Drop every waiting case of one device (its running case keeps going).
+  const handleClearQueue = async (deviceName: string) => {
+    setClearingQueue(deviceName);
+    try {
+      const res = await clearRokuTestQueue(deviceName);
+      message.success(res.message);
+      await refreshJobs(true);
+    } catch (e) {
+      message.error(`Clear queue failed: ${(e as Error).message}`);
+    } finally {
+      setClearingQueue(null);
+    }
+  };
+
+  // Clear every FINISHED job entry; queued / running jobs stay in the list.
   const handleClearJobs = async () => {
     setClearingJobs(true);
     try {
@@ -812,18 +937,47 @@ export default function RokuTestPage() {
       <Card style={{ marginBottom: 16 }}>
         <Space size="large" wrap align="end">
           <div style={{ minWidth: 320 }}>
-            <Text strong>Branch (automated_tests)</Text>
-            <Select
-              style={{ width: "100%", marginTop: 8 }}
-              placeholder="Select a branch"
-              loading={loadingBranches || checkingOut}
-              value={branch}
-              onChange={handleCheckout}
-              options={branches.map((b) => ({ value: b, label: b }))}
-              showSearch
-              optionFilterProp="label"
-              popupMatchSelectWidth={false}
-            />
+            <Space size={6}>
+              <Text strong>Branch (automated_tests)</Text>
+              {branchLocked && (
+                <Tooltip
+                  title={`Locked while a case runs: ${runningJobs
+                    .map((j) => `${j.automation_id} on ${j.device}`)
+                    .join(", ")}`}
+                >
+                  <Text type="warning" style={{ fontSize: 12 }}>
+                    Locked:{" "}
+                    {runningJobs.length === 1
+                      ? "case is running"
+                      : `${runningJobs.length} cases are running`}
+                  </Text>
+                </Tooltip>
+              )}
+            </Space>
+            <Tooltip
+              title={
+                branchLocked
+                  ? `Branch is locked while a case runs: ${runningJobs
+                      .map((j) => `${j.automation_id} on ${j.device}`)
+                      .join(", ")}`
+                  : ""
+              }
+            >
+              <Select
+                style={{ width: "100%", marginTop: 8 }}
+                placeholder="Select a branch"
+                loading={loadingBranches || checkingOut}
+                // Switching branch mid-run would swap the test files under the
+                // live run (one shared automated_tests working tree).
+                disabled={branchLocked}
+                value={branch}
+                onChange={handleCheckout}
+                options={branches.map((b) => ({ value: b, label: b }))}
+                showSearch
+                optionFilterProp="label"
+                popupMatchSelectWidth={false}
+              />
+            </Tooltip>
           </div>
           <div style={{ minWidth: 240 }}>
             <Text strong>Device</Text>
@@ -885,21 +1039,34 @@ export default function RokuTestPage() {
           </div>
           <Button
             type="primary"
-            icon={<PlayCircleOutlined />}
+            icon={selectedDeviceBusy ? <PlusOutlined /> : <PlayCircleOutlined />}
             loading={running}
             disabled={!canRun}
             onClick={handleRun}
           >
-            Run
+            {selectedDeviceBusy ? "Add to queue" : "Run"}
           </Button>
         </Space>
+
+        {/* The device runs one case at a time, so make it obvious that this
+            case will wait rather than start now. */}
+        {selectedDeviceBusy && (
+          <Text type="secondary" style={{ display: "block", marginTop: 8 }}>
+            {`'${device}' is busy (${selectedDeviceQueue?.running ? "1 running" : "idle"}, ${
+              selectedDeviceQueue?.pending ?? 0
+            } waiting) — this case is appended to its queue and runs in order.`}
+          </Text>
+        )}
 
         {runningJobs.length > 0 && (
           <Alert
             style={{ marginTop: 16 }}
             type="info"
             showIcon
-            message={`${runningJobs.length} roku_test run(s) in progress`}
+            message={
+              `${runningJobs.length} roku_test run(s) in progress` +
+              (queuedJobs.length ? `, ${queuedJobs.length} case(s) queued` : "")
+            }
             description={
               <Space direction="vertical" size={2} style={{ width: "100%" }}>
                 {runningJobs.map((j) => (
@@ -911,6 +1078,292 @@ export default function RokuTestPage() {
             }
           />
         )}
+      </Card>
+
+      {/* Per-device queues: one case runs at a time per device, in order. */}
+      {/* Cases: per-device queues (active, grouped) + finished history, in one table */}
+      <Card
+        style={{ marginBottom: 16 }}
+        title={`Cases (${activeRows.length} active${
+          finishedJobCount ? `, ${finishedJobCount} finished` : ""
+        })`}
+        extra={
+          <Space size={4}>
+            <Text type="secondary" style={{ fontSize: 12 }}>
+              Show
+            </Text>
+            <Segmented
+              size="small"
+              value={caseView}
+              onChange={(v) => setCaseView(v as CaseView)}
+              options={[
+                { label: `Active (${activeRows.length})`, value: "active" },
+                { label: `Finished (${finishedJobCount})`, value: "finished" },
+                { label: "All", value: "all" },
+              ]}
+            />
+            <Popconfirm
+              title="Clear finished cases?"
+              description="Only stopped / finished cases leave the list. Queued, running cases and all log files are kept."
+              okText="Clear"
+              okButtonProps={{ danger: true }}
+              disabled={!finishedJobCount}
+              onConfirm={handleClearJobs}
+            >
+              <Button
+                size="small"
+                danger
+                icon={<ClearOutlined />}
+                loading={clearingJobs}
+                disabled={!finishedJobCount}
+              >
+                Clear finished
+              </Button>
+            </Popconfirm>
+            <Button size="small" icon={<ReloadOutlined />} onClick={() => refreshJobs()}>
+              Refresh
+            </Button>
+          </Space>
+        }
+      >
+        <Table<RokuTestJob>
+          size="small"
+          rowKey="id"
+          loading={loadingJobs}
+          dataSource={caseRows}
+          pagination={
+            caseView === "active"
+              ? false
+              : { pageSize: 10, showSizeChanger: true, size: "small" }
+          }
+          locale={{
+            emptyText:
+              caseView === "finished"
+                ? "No finished case yet."
+                : "No case queued or running. Add one above.",
+          }}
+          columns={[
+            {
+              // Device + queue place in one cell: the first row of each device
+              // carries the name and its queue controls, the rest just show
+              // their position, which reads like a grouped list.
+              title: "Device / Queue",
+              key: "device",
+              width: 260,
+              render: (_: unknown, r: RokuTestJob) => {
+                const group = deviceGroups[r.device];
+                const isFirst = group?.firstId === r.id;
+                return (
+                  <Space size={4} wrap>
+                    {isFirst ? (
+                      <>
+                        <Tag color="blue" style={{ marginRight: 0 }}>
+                          {r.device}
+                        </Tag>
+                        {group && group.pending > 0 && (
+                          <Popconfirm
+                            title={`Clear the queue of '${r.device}'?`}
+                            description="Every WAITING case is dropped. A running case keeps going."
+                            okText="Clear"
+                            okButtonProps={{ danger: true }}
+                            onConfirm={() => handleClearQueue(r.device)}
+                          >
+                            <Tooltip title={`Clear ${group.pending} waiting case(s)`}>
+                              <Button
+                                size="small"
+                                type="text"
+                                danger
+                                icon={<ClearOutlined />}
+                                loading={clearingQueue === r.device}
+                              />
+                            </Tooltip>
+                          </Popconfirm>
+                        )}
+                      </>
+                    ) : (
+                      <Text type="secondary" style={{ fontSize: 12, paddingLeft: 8 }}>
+                        ↳
+                      </Text>
+                    )}
+                    {r.running ? (
+                      <Tag color="processing">now</Tag>
+                    ) : r.status === "queued" ? (
+                      <Tag>#{r.queue_position}</Tag>
+                    ) : null}
+                  </Space>
+                );
+              },
+            },
+            {
+              title: "Case",
+              key: "case",
+              ellipsis: true,
+              render: (_: unknown, r: RokuTestJob) => (
+                <Space direction="vertical" size={0}>
+                  <Text style={{ fontSize: 13 }}>{r.automation_id}</Text>
+                  <Text type="secondary" style={{ fontSize: 11 }}>
+                    {r.testrail_case_id ? (
+                      <a
+                        href={`https://testrail.eswat.roku.com/testrail/index.php?/cases/view/${r.testrail_case_id}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {r.testrail_case_id}
+                      </a>
+                    ) : (
+                      "-"
+                    )}
+                    {r.repeat > 0 && ` · repeat ${r.repeat}`}
+                    {r.pid > 0 && ` · pid ${r.pid}`}
+                  </Text>
+                </Space>
+              ),
+            },
+            {
+              title: "Status",
+              key: "status",
+              width: 110,
+              render: (_: unknown, r: RokuTestJob) =>
+                r.status === "queued" ? (
+                  <Tooltip title={`Waiting for '${r.device}' — position ${r.queue_position}`}>
+                    <Tag color="warning">queued</Tag>
+                  </Tooltip>
+                ) : (
+                  <Tooltip title={r.error || ""}>
+                    <Tag color={r.running ? "processing" : "default"}>{r.status}</Tag>
+                  </Tooltip>
+                ),
+            },
+            {
+              title: "Result",
+              dataIndex: "result",
+              key: "result",
+              width: 150,
+              render: (res: string) => {
+                const parts = resultParts(res);
+                if (!parts.length) return <Text type="secondary">-</Text>;
+                return (
+                  <Space size={4} wrap>
+                    {parts.map((p, i) => (
+                      <Tag key={`${p}-${i}`} color={resultPartColor(p)}>
+                        {p}
+                      </Tag>
+                    ))}
+                  </Space>
+                );
+              },
+            },
+            {
+              // Started + elapsed in one column: the time is what matters, the
+              // duration is secondary.
+              title: "Started / Elapsed",
+              key: "timing",
+              width: 175,
+              render: (_: unknown, r: RokuTestJob) => {
+                if (r.status === "queued") {
+                  return <Text type="secondary">waiting…</Text>;
+                }
+                const elapsed = formatElapsed(r.elapsed_time);
+                return (
+                  <Space direction="vertical" size={0}>
+                    <Text style={{ fontSize: 12 }}>
+                      {r.started_at ? r.started_at.replace(" UTC", "") : "-"}
+                    </Text>
+                    <Text type="secondary" style={{ fontSize: 11 }}>
+                      {r.running ? "running…" : elapsed === "-" ? "-" : elapsed}
+                    </Text>
+                  </Space>
+                );
+              },
+            },
+            {
+              title: "Action",
+              key: "action",
+              width: 150,
+              render: (_: unknown, r: RokuTestJob) => {
+                const group = deviceGroups[r.device];
+                if (r.running) {
+                  return (
+                    <Popconfirm
+                      title={`Stop PID ${r.pid}?`}
+                      description="Only this case is terminated; the next queued case starts."
+                      okText="Stop"
+                      okButtonProps={{ danger: true }}
+                      onConfirm={() => handleStopJob(r)}
+                    >
+                      <Tooltip title="Stop">
+                        <Button
+                          size="small"
+                          danger
+                          icon={<StopOutlined />}
+                          loading={stoppingId === r.id}
+                        />
+                      </Tooltip>
+                    </Popconfirm>
+                  );
+                }
+                if (r.status === "queued") {
+                  return (
+                    <Space size={4}>
+                      <Tooltip title="Run earlier">
+                        <Button
+                          size="small"
+                          icon={<ArrowUpOutlined />}
+                          disabled={r.queue_position <= 1}
+                          loading={queueBusyId === r.id}
+                          onClick={() => handleMoveQueueJob(r, "up")}
+                        />
+                      </Tooltip>
+                      <Tooltip title="Run later">
+                        <Button
+                          size="small"
+                          icon={<ArrowDownOutlined />}
+                          disabled={r.queue_position >= (group?.pending ?? 0)}
+                          loading={queueBusyId === r.id}
+                          onClick={() => handleMoveQueueJob(r, "down")}
+                        />
+                      </Tooltip>
+                      <Popconfirm
+                        title="Remove this case from the queue?"
+                        okText="Remove"
+                        okButtonProps={{ danger: true }}
+                        onConfirm={() => handleDeleteJob(r.id)}
+                      >
+                        <Tooltip title="Cancel">
+                          <Button size="small" danger icon={<DeleteOutlined />} />
+                        </Tooltip>
+                      </Popconfirm>
+                    </Space>
+                  );
+                }
+                return (
+                  <Space size={4}>
+                    {r.log_file && (
+                      <Tooltip title="View log">
+                        <Button
+                          size="small"
+                          icon={<EyeOutlined />}
+                          onClick={() => openLog(r.log_file)}
+                        />
+                      </Tooltip>
+                    )}
+                    <Popconfirm
+                      title="Remove this case from the list?"
+                      description="The log file is kept."
+                      okText="Remove"
+                      okButtonProps={{ danger: true }}
+                      onConfirm={() => handleDeleteJob(r.id)}
+                    >
+                      <Tooltip title="Remove">
+                        <Button size="small" danger icon={<DeleteOutlined />} />
+                      </Tooltip>
+                    </Popconfirm>
+                  </Space>
+                );
+              },
+            },
+          ]}
+        />
       </Card>
 
       {/* Live logs: one tab per run (multiple runs can be live at once) */}
@@ -1006,160 +1459,6 @@ export default function RokuTestPage() {
             })}
           />
         )}
-      </Card>
-
-      {/* Jobs (persisted in backend/conf/roku_test_jobs.json) */}
-      <Card
-        style={{ marginBottom: 16 }}
-        title={`Test Jobs (${jobs.length}${
-          runningJobs.length ? `, ${runningJobs.length} running` : ""
-        })`}
-        extra={
-          <Space size={4}>
-            <Popconfirm
-              title="Clear finished jobs?"
-              description="Only stopped / finished jobs are removed from the list. Running jobs and all log files are kept."
-              okText="Clear"
-              okButtonProps={{ danger: true }}
-              disabled={jobs.length === runningJobs.length}
-              onConfirm={handleClearJobs}
-            >
-              <Button
-                size="small"
-                danger
-                icon={<ClearOutlined />}
-                loading={clearingJobs}
-                disabled={jobs.length === runningJobs.length}
-              >
-                Clear finished
-              </Button>
-            </Popconfirm>
-            <Button size="small" icon={<ReloadOutlined />} onClick={() => refreshJobs()}>
-              Refresh
-            </Button>
-          </Space>
-        }
-      >
-        <Table<RokuTestJob>
-          size="small"
-          rowKey="id"
-          loading={loadingJobs}
-          dataSource={jobs}
-          pagination={{ pageSize: 10, showSizeChanger: true }}
-          scroll={{ x: 1300 }}
-          columns={[
-            { title: "Device", dataIndex: "device", key: "device", width: 200 },
-            {
-              title: "Automation ID",
-              dataIndex: "automation_id",
-              key: "automation_id",
-              ellipsis: true,
-            },
-            {
-              title: "TestRail Case ID",
-              dataIndex: "testrail_case_id",
-              key: "testrail_case_id",
-              width: 150,
-            },
-            { title: "Repeat", dataIndex: "repeat", key: "repeat", width: 80 },
-            { title: "PID", dataIndex: "pid", key: "pid", width: 90 },
-            {
-              title: "Status",
-              key: "status",
-              width: 110,
-              render: (_: unknown, r: RokuTestJob) => (
-                <Tag color={r.running ? "processing" : "default"}>
-                  {r.running ? "running" : "finished"}
-                </Tag>
-              ),
-            },
-            {
-              title: "Result",
-              dataIndex: "result",
-              key: "result",
-              width: 180,
-              render: (res: string) => {
-                const parts = resultParts(res);
-                if (!parts.length) return <Tag>-</Tag>;
-                return (
-                  <Space size={4} wrap>
-                    {parts.map((p, i) => (
-                      <Tag key={`${p}-${i}`} color={resultPartColor(p)}>
-                        {p}
-                      </Tag>
-                    ))}
-                  </Space>
-                );
-              },
-            },
-            {
-              title: "Elapsed time",
-              dataIndex: "elapsed_time",
-              key: "elapsed_time",
-              width: 130,
-              render: (v: number, r: RokuTestJob) =>
-                r.running ? (
-                  <Tag color="processing">running</Tag>
-                ) : formatElapsed(v) === "-" ? (
-                  <span>-</span>
-                ) : (
-                  <Tooltip title={`${v}s`}>
-                    <Tag color="yellow">{formatElapsed(v)}</Tag>
-                  </Tooltip>
-                ),
-            },
-            {
-              title: "Started (UTC)",
-              dataIndex: "started_at",
-              key: "started_at",
-              width: 190,
-            },
-            {
-              title: "Log Updated",
-              dataIndex: "log_mtime",
-              key: "log_mtime",
-              width: 190,
-              render: (v: number) => fmtTime(v),
-            },
-            {
-              title: "Action",
-              key: "action",
-              width: 180,
-              render: (_: unknown, r: RokuTestJob) => (
-                <Space size={4} wrap>
-                  <Popconfirm
-                    title={`Stop PID ${r.pid}?`}
-                    okText="Stop"
-                    okButtonProps={{ danger: true }}
-                    disabled={!r.running}
-                    onConfirm={() => handleStopJob(r)}
-                  >
-                    <Button
-                      size="small"
-                      danger
-                      icon={<StopOutlined />}
-                      disabled={!r.running}
-                      loading={stoppingId === r.id}
-                    >
-                      Stop
-                    </Button>
-                  </Popconfirm>
-                  <Popconfirm
-                    title="Remove this job from the list?"
-                    okText="Remove"
-                    okButtonProps={{ danger: true }}
-                    disabled={r.running}
-                    onConfirm={() => handleDeleteJob(r.id)}
-                  >
-                    <Button size="small" danger icon={<DeleteOutlined />} disabled={r.running}>
-                      Delete
-                    </Button>
-                  </Popconfirm>
-                </Space>
-              ),
-            },
-          ]}
-        />
       </Card>
 
       {/* Log list */}
